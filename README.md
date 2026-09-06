@@ -7,11 +7,17 @@ Tema 01. Introducción a la Programación Software. 1DAW. Curso 2026-2027
 
 ## Contenidos
 
-1. [Fundamentos de la Programación](01-fundamentos-programacion.md)
-2. [Lenguajes de Programación](02-lenguajes-programacion.md)
-3. [Elementos Básicos de un Programa](03-elementos-programa.md)
-4. [El Lenguaje de Programación C#: Primeros Pasos](04-pseudocodigo-daw.md)
-5. [Resumen](05-resumen.md)
+1. [Qué es la Programación](01-que-es-programacion.md)
+2. [El Entorno .NET](02-entorno-dotnet.md)
+3. [Soluciones y Proyectos](03-soluciones-proyectos.md)
+4. [Estructura de un Programa](04-estructura-programa.md)
+5. [Tipos de Datos](05-tipos-datos.md)
+6. [Variables, Constantes y Literales](06-variables-constantes-literales.md)
+7. [Operadores y Expresiones](07-operadores-expresiones.md)
+8. [Conversiones de Tipo](08-conversiones-tipo.md)
+9. [Entrada y Salida de Datos](09-entrada-salida.md)
+10. [Comentarios y Documentación](10-comentarios-documentacion.md)
+11. [Resumen y Conclusiones](11-resumen.md)
 
 ## Contenido en YouTube
 
