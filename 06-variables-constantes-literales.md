@@ -5,7 +5,6 @@
   - [6.4. Diferencias entre variable, constante y literal](#64-diferencias-entre-variable-constante-y-literal)
   - [6.5. Enumeraciones](#65-enumeraciones)
   - [6.6. Código autodocumentado](#66-código-autodocumentado)
-  - [6.7. Resumen](#67-resumen)
 
 
 # 6. Variables, Constantes y Literales
@@ -295,7 +294,9 @@ double precioConIva = precio * (1 + Iva / 100);
 
 > 💡 **Consejo:** Un buen programador escribe código que se entiende solo. Si necesitas un comentario para explicar qué hace una línea, probablemente el nombre de la variable o método no es bueno.
 
-## 6.7. Resumen
+---
+
+**Resumen del punto:**
 
 | Concepto | Descripción | Ejemplo |
 |----------|-------------|---------|

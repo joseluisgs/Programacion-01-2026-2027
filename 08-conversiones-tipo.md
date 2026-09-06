@@ -4,7 +4,6 @@
   - [8.3. Conversiones explícitas (casting)](#83-conversiones-explícitas-casting)
   - [8.4. Métodos de conversión](#84-métodos-de-conversión)
   - [8.5. Errores comunes](#85-errores-comunes)
-  - [8.6. Resumen](#86-resumen)
 
 
 # 8. Conversiones de Tipo
@@ -211,7 +210,9 @@ double resultado = (double)a / b;  // 3.333...
 
 > 💡 **Consejo:** Los errores de conversión son de los más comunes en programación. Siempre valida los datos antes de convertirlos.
 
-## 8.6. Resumen
+---
+
+**Resumen del punto:**
 
 | Tipo de conversión | Cómo se hace | Cuándo usar |
 |--------------------|--------------|-------------|

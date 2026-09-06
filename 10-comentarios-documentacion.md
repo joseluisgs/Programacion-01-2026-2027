@@ -3,7 +3,6 @@
   - [10.2. Tipos de comentarios en C#](#102-tipos-de-comentarios-en-c)
   - [10.3. Cuándo usar comentarios](#103-cuándo-usar-comentarios)
   - [10.4. Documentación XML](#104-documentación-xml)
-  - [10.5. Resumen](#105-resumen)
 
 
 # 10. Comentarios y Documentación
@@ -194,7 +193,9 @@ public class Persona
 
 > 💡 **Consejo:** Documenta siempre las clases públicas, interfaces y métodos públicos. El código privado y los métodos internos no siempre necesitan documentación XML.
 
-## 10.5. Resumen
+---
+
+**Resumen del punto:**
 
 | Tipo de comentario | Sintaxis | Uso |
 |--------------------|----------|-----|

@@ -5,7 +5,6 @@
   - [7.4. Operadores relacionales](#74-operadores-relacionales)
   - [7.5. Operadores lógicos](#75-operadores-lógicos)
   - [7.6. Precedencia de operadores](#76-precedencia-de-operadores)
-  - [7.7. Resumen](#77-resumen)
 
 
 # 7. Operadores y Expresiones
@@ -297,7 +296,9 @@ Console.WriteLine(apellidoFinal);  // "García"
 
 > 📝 **Nota:** `??` es muy útil para asignar valores por defecto cuando una variable puede ser `null`.
 
-## 7.7. Resumen
+---
+
+**Resumen del punto:**
 
 | Tipo de operador | Operadores | Uso |
 |------------------|------------|-----|

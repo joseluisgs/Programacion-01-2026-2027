@@ -5,7 +5,6 @@
   - [2.4. Scripting en C# 14](#24-scripting-en-c-14)
   - [2.5. NuGet: gestor de paquetes](#25-nuget-gestor-de-paquetes)
   - [2.6. IDEs: Rider y VS Code](#26-ideas-rider-y-vs-code)
-  - [2.7. Resumen](#27-resumen)
 
 
 # 2. El Entorno .NET
@@ -277,7 +276,9 @@ Un **IDE (Integrated Development Environment)** es la herramienta visual donde e
 2. Instala la extensión **C# Dev Kit** (de Microsoft)
 3. Instala la extensión **.NET Install Tool**
 
-## 2.7. Resumen
+---
+
+**Resumen del punto:**
 
 | Componente | Descripción |
 |------------|-------------|

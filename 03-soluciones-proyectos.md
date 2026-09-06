@@ -12,7 +12,6 @@
   - [3.7. Compilar y ejecutar](#37-compilar-y-ejecutar)
     - [El proceso de compilación](#el-proceso-de-compilación)
     - [Comandos de compilación](#comandos-de-compilación)
-  - [3.8. Resumen](#38-resumen)
 
 
 # 3. Soluciones y Proyectos
@@ -249,7 +248,9 @@ dotnet restore
 
 > 💡 **Consejo:** Usa `dotnet run` para desarrollo rápido. Usa `dotnet build` cuando solo quieras verificar que el código compila sin errores.
 
-## 3.8. Resumen
+---
+
+**Resumen del punto:**
 
 | Concepto | Descripción |
 |----------|-------------|

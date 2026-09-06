@@ -7,7 +7,6 @@
   - [4.6. El archivo .csproj](#46-el-archivo-csproj)
   - [4.7. El archivo .slnx](#47-el-archivo-slnx)
   - [4.8. Tabla de equivalencias: Pseudocódigo → C# → Java](#48-tabla-de-equivalencias-pseudocódigo--c--java)
-  - [4.9. Resumen](#49-resumen)
 
 
 # 4. Estructura de un Programa
@@ -431,7 +430,9 @@ Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 
 > 💡 **Consejo:** C# es más parecido a Java que a pseudocódigo. Si vienes de Java, notarás que C# es más conciso (Top-Level Statements) y tiene más azúcar sintáctico (`var`, `??`, `$""`, etc.).
 
-## 4.9. Resumen
+---
+
+**Resumen del punto:**
 
 | Concepto | Descripción |
 |----------|-------------|

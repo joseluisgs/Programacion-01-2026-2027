@@ -4,7 +4,6 @@
     - [9.1.2. Concatenación](#912-concatenación)
     - [9.1.3. Interpolación de strings (templates)](#913-interpolación-de-strings-templates)
   - [9.2. Entrada de datos](#92-entrada-de-datos)
-  - [9.3. Resumen](#93-resumen)
 
 
 # 9. Entrada y Salida de Datos
@@ -191,7 +190,9 @@ Esto es especialmente útil en programas con mucha entrada/salida, donde repites
 
 > 💡 **Consejo:** En ejemplos y scripts cortos, `using static` ahorra mucho espacio. En proyectos grandes, Many developers prefer `Console.WriteLine` por claridad.
 
-## 9.4. Resumen
+---
+
+**Resumen del punto:**
 
 | Operación | Método/Operador | Ejemplo |
 |-----------|-----------------|---------|

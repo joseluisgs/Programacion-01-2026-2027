@@ -14,7 +14,6 @@
     - [1.3.7. Basado en eventos](#137-basado-en-eventos)
   - [1.4. Lenguajes de programación](#14-lenguajes-de-programación)
   - [1.5. Diferencia entre algoritmo y programa](#15-diferencia-entre-algoritmo-y-programa)
-  - [1.6. Resumen](#16-resumen)
 
 
 # 1. Qué es la Programación
@@ -533,7 +532,9 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 
 > 💡 **Analogía:** El algoritmo es el plano de una casa. El programa es la casa construida. Puedes tener un plano perfecto pero construir mal la casa, o construir una casa sin plano (que probablemente se caiga).
 
-## 1.6. Resumen
+---
+
+**Resumen del punto:**
 
 | Concepto | Definición |
 |----------|------------|

@@ -7,7 +7,6 @@
   - [5.3. Otros tipos de datos](#53-otros-tipos-de-datos)
   - [5.4. Tabla resumen de tipos](#54-tabla-resumen-de-tipos)
   - [5.5. El tipo var y la inferencia](#55-el-tipo-var-y-la-inferencia)
-  - [5.6. Resumen](#56-resumen)
 
 
 # 5. Tipos de Datos
@@ -173,7 +172,9 @@ var precio = 19.99m;         // Claramente un decimal (sufijo m)
 var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 ```
 
-## 5.6. Resumen
+---
+
+**Resumen del punto:**
 
 | Concepto | Descripción |
 |----------|-------------|
