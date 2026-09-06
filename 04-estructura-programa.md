@@ -386,45 +386,98 @@ El `.slnx` es el archivo de solución en el nuevo formato XML. Es más simple y 
 
 > 📝 **Nota:** El formato `.slnx` es el nuevo estándar de .NET. El antiguo formato `.sln` sigue funcionando pero es más complejo.
 
-## 4.8. Scripting en C#: lo primero que aprenderás
+## 4.8. Scripting en C# 14: lo primero que aprenderás
 
-Antes de crear proyectos completos, podemos escribir código C# directamente como un script. Esto es ideal para aprender y probar cosas rápidas.
+Desde .NET 10 con C# 14, podemos escribir y ejecutar código C# directamente como un script, sin necesidad de crear un proyecto (.csproj). Solo necesitas un archivo `.cs`:
 
-> 💡 **Analogía:** Scripting es como escribir una nota rápida en un papel. No necesitas preparar un documento formal, solo escribes y ejecutas.
-
-```bash
-# Crear un archivo de script
-dotnet script init
-
-# Crear un archivo .csx (C# Script)
-echo 'Console.WriteLine("¡Hola desde un script!")' > hola.csx
-
-# Ejecutar el script
-dotnet script hola.csx
+```csharp
+// Archivo: hola.cs
+Console.WriteLine("¡Hola desde un script!");
+Console.WriteLine($"2 + 3 = {2 + 3}");
 ```
 
-O aún más rápido, directamente desde la consola:
+Para ejecutarlo, solo necesitas un comando:
 
 ```bash
-# Ejecutar código C# directamente
-dotnet script -e "Console.WriteLine(2 + 3)"
+dotnet run hola.cs
 ```
 
-> 📝 **Nota:** Los scripts usan extensión `.csx` y permiten Top-Level Statements por defecto. Son perfectos para probar cosas rápidamente sin crear un proyecto completo.
+> 💡 **Analogía:** Scripting es como escribir una nota rápida en un papel. No necesitas preparar un documento formal, solo escribes y ejecutas. El compilador crea un proyecto temporal en caché, compila y ejecuta automáticamente.
 
-📌 **Ejemplo real:** Muchos administradores de sistemas usan scripts de C# para automatizar tareas: renombrar archivos, convertir datos, hacer copias de seguridad, etc.
+### Usar paquetes NuGet en scripts
+
+Si necesitas usar un paquete externo, lo indicas con `#:package`:
+
+```csharp
+#:package Newtonsoft.Json
+
+using Newtonsoft.Json;
+
+var persona = new { Nombre = "Ana", Edad = 25 };
+string json = JsonConvert.SerializeObject(persona);
+Console.WriteLine(json);
+```
+
+### Usar SDKs en scripts
+
+Para usar un SDK (como el web SDK para APIs mínimas), lo indicas con `#:sdk`:
+
+```csharp
+#:sdk Microsoft.NET.Sdk.Web
+
+var app = WebApplication.Create(args);
+app.MapGet("/", () => "Hola desde una API mínima");
+app.Run();
+```
+
+📌 **Ejemplo real:** Los scripts de C# son ideales para automatizar tareas del sistema, probar ideas rápidas o aprender. Muchos administradores de sistemas los usan para renombrar archivos, convertir datos o hacer copias de seguridad.
 
 ### Diferencia entre script y proyecto
 
-| Característica | Script (`.csx`) | Proyecto (`.csproj`) |
+| Característica | Script (`.cs`) | Proyecto (`.csproj`) |
 |----------------|-----------------|----------------------|
-| **Archivos** | Uno o varios `.csx` | `Program.cs` + `.csproj` |
-| **Compilación** | No compila, interpreta | Compila a ejecutable |
+| **Archivos** | Uno o varios `.cs` | `Program.cs` + `.csproj` |
+| **Compilación** | Automática en caché | Compila a ejecutable |
 | **Uso** | Pruebas rápidas, scripts | Aplicaciones reales |
-| **Rendimiento** | Más lento | Más rápido |
+| **Rendimiento** | Más lento (compila cada vez) | Más rápido |
 | **Distribución** | Necesita dotnet install | Ejecutable independiente |
 
-## 4.9. Tu primer "Hola Mundo": paso a paso
+> 📝 **Nota:** Más información sobre scripting en [C# Moves to Scripting (NetMentor)](https://www.netmentor.es/entrada/csharp-scripting).
+
+## 4.9. Formato .slnx: el nuevo estándar
+
+En .NET 10, el formato de solución por defecto es `.slnx` (XML-based), no el antiguo `.sln`. El nuevo formato es más simple y legible:
+
+**Antes (.sln - formato antiguo):**
+```
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+...
+```
+
+**Ahora (.slnx - nuevo formato):**
+```xml
+<Solution>
+  <Project Path="MiProyecto/MiProyecto.csproj" />
+</Solution>
+```
+
+### Migrar de .sln a .slnx
+
+Si tienes un proyecto antiguo con `.sln`, puedes migrar con un solo comando:
+
+```bash
+dotnet sln migrate
+```
+
+Esto genera un archivo `.slnx` a partir del `.sln` existente.
+
+> ⚠️ **Advertencia:** Si tienes ambos archivos (`.sln` y `.slnx`) en la misma carpeta, debes especificar cuál usar: `dotnet build MiSolucion.slnx`. Si no, el compilador no sabe cuál elegir.
+
+> 📝 **Nota:** Más información en [Introducing support for SLNX (Microsoft DevBlog)](https://devblogs.microsoft.com/dotnet/introducing-slnx-support-dotnet-cli/).
+
+## 4.10. Tu primer "Hola Mundo": paso a paso
 
 Ahora vamos a crear nuestro primer programa completo paso a paso. Sigue cada comando en orden:
 
@@ -435,11 +488,13 @@ mkdir MiPrimeraSolucion
 cd MiPrimeraSolucion
 ```
 
-**Paso 2: Crear la solución**
+**Paso 2: Crear la solución (.slnx)**
 
 ```bash
 dotnet new sln --name MiPrimeraSolucion
 ```
+
+> 📝 **Nota:** En .NET 10 esto crea un archivo `.slnx` automáticamente.
 
 **Paso 3: Crear el proyecto de consola**
 
@@ -447,7 +502,7 @@ dotnet new sln --name MiPrimeraSolucion
 dotnet new console --name MiPrimeraSolucion
 ```
 
-> 📝 **Nota:** Esto crea una carpeta `MiPrimeraSolucion/` con un archivo `Program.cs` y un archivo `MiPrimeraSolucion.csproj`.
+> 📝 **Nota:** Esto crea una carpeta `MiPrimeraSolucion/` con un archivo `Program.cs` y un archivo `MiPrimeraSolucion.csproj`. **El archivo principal SIEMPRE se llama `Program.cs`** — no le cambies el nombre.
 
 **Paso 4: Añadir el proyecto a la solución**
 
