@@ -1,0 +1,43 @@
+# Archivos de la asignatura
+*.pptx
+*.pdf
+upload.sh
+.DS_Store
+AGENTS.md
+
+# Compilación
+bin/
+obj/
+out/
+
+# IDEs
+.idea/
+.vs/
+.vscode/
+*.sln.iml
+*.DotSettings.user
+
+# Archivos temporales
+*.user
+*.suo
+*.userprefs
+*.log
+*.cache
+*.pdb
+*.tmp
+*.bak
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+artifacts/
+
+# Publicaciones
+publish/
+TestResults/
+
+# Carpetas excluidas
+/docs/
+/multimedia/
+/evaluacion/
