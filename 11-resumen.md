@@ -260,6 +260,4 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 - [ ] ¿Recuerdo que `ReadLine()` siempre me da un `string` y debo convertirlo?
 - [ ] ¿Sé usar `TryParse` en vez de `Parse` para entrada de usuario?
 
-> 💡 **Consejo para el examen:** Si marcas todos los puntos, estás listo para el examen de esta unidad. Si falta alguno, revisa el tema correspondiente. La clave es **entender**, no memorizar.
-
 > 🔧 **Truco:** La mejor forma de aprender programación es practicando. No leas solo los apuntes: abre el IDE y prueba cada ejemplo. Modifícalos, rompelos, arreglalos. Eso es como se aprende.
