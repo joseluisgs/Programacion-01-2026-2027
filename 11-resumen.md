@@ -238,6 +238,7 @@ graph TD
 Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas preguntas:
 
 - [ ] ¿Entiendo que un programa es una solución a un problema y no solo código?
+- [ ] ¿Tengo claro que **siempre** hay que diseñar el algoritmo en papel ANTES de escribir código? (Análisis → Diseño → Codificación)
 - [ ] ¿Sé la diferencia entre un algoritmo y un programa?
 - [ ] ¿Recuerdo las 6 características de un algoritmo?
 - [ ] ¿Sé explicar la diferencia entre compilado e interpretado?

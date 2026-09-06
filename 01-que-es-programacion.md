@@ -178,7 +178,7 @@ graph TD
 
 > "Pido un número al usuario. Si el resto de dividirlo entre 2 es 0, muestro que es par. Si no, muestro que es impar."
 
-> ⚠️ **Advertencia:** Antes de escribir una sola línea de código, siempre debemos diseñar el algoritmo. Es como hacer los planos antes de construir una casa. Los programadores novatos suelen querer escribir código directamente, pero eso suele llevar a problemas.
+> ⚠️ **Advertencia:** **¡primero el papel, luego el código!** Antes de escribir una sola línea de C#, siempre debemos diseñar el algoritmo en papel o en un borrador. Es como hacer los planos antes de construir una casa. Los programadores novatos suelen querer escribir código directamente, pero eso suele llevar a problemas graves: código desordenado, errores lógicos y tiempo perdido. **Análisis → Diseño → Codificación.** Saltarse ese orden es una mala práctica que nos lastrará siempre.
 
 ### Reglas para el diseño de algoritmos
 

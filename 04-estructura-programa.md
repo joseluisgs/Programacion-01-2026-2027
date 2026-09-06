@@ -479,6 +479,8 @@ Esto genera un archivo `.slnx` a partir del `.sln` existente.
 
 ## 4.10. Tu primer "Hola Mundo": paso a paso
 
+> 💡 **Punto de partida:** ¿Recuerdas la regla de oro? **Primero el papel, luego el código.** Antes de escribir este programa, ya deberías haber pensado qué quieres hacer: mostrar un mensaje, la fecha y el nombre. Eso es análisis y diseño. Ahora solo falta la codificación, que es lo que vamos a hacer aquí.
+
 Ahora vamos a crear nuestro primer programa completo paso a paso. Sigue cada comando en orden:
 
 **Paso 1: Crear la carpeta de la solución**
