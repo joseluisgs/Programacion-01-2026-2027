@@ -2,9 +2,20 @@
   - [2.1. ¿Qué es .NET?](#21-qué-es-net)
   - [2.2. Instalación y verificación](#22-instalación-y-verificación)
   - [2.3. La línea de comandos (CLI)](#23-la-línea-de-comandos-cli)
+    - [Comandos esenciales](#comandos-esenciales)
+    - [Crear un proyecto paso a paso](#crear-un-proyecto-paso-a-paso)
+    - [Listar plantillas disponibles](#listar-plantillas-disponibles)
   - [2.4. Scripting en C# 14](#24-scripting-en-c-14)
+    - [Crear y ejecutar un script](#crear-y-ejecutar-un-script)
+    - [Usar paquetes NuGet en scripts](#usar-paquetes-nuget-en-scripts)
+    - [Usar SDKs en scripts](#usar-sdks-en-scripts)
   - [2.5. NuGet: gestor de paquetes](#25-nuget-gestor-de-paquetes)
-  - [2.6. IDEs: Rider y VS Code](#26-ideas-rider-y-vs-code)
+    - [Configuración de NuGet](#configuración-de-nuget)
+    - [Instalar un paquete](#instalar-un-paquete)
+    - [Buscar paquetes](#buscar-paquetes)
+  - [2.6. IDEs: Rider y VS Code](#26-ides-rider-y-vs-code)
+    - [JetBrains Rider (recomendado)](#jetbrains-rider-recomendado)
+    - [Visual Studio Code (alternativa)](#visual-studio-code-alternativa)
 
 
 # 2. El Entorno .NET
@@ -56,6 +67,10 @@ Cuando escribes código en C#, el proceso es:
 3. **La CLR** ejecuta el código en tu máquina
 
 > 💡 **Analogía:** .NET es como un restaurante completo. C# es el idioma en que escribes las recetas. El SDK son las herramientas de cocina. La BCL es la despensa con ingredientes ya preparados. La CLR es el chef que ejecuta las recetas.
+
+> 📝 **Nota:** En la asignatura de **Entornos de Desarrollo** se explica en detalle cómo funciona el proceso de traducción y .NET. Si quieres profundizar, consulta:
+> - [Proceso de Traducción, Máquinas Virtuales y Entornos de Ejecución](https://github.com/joseluisgs/EntornosDesarrollo-01-2026-2027/blob/main/06-proceso-traduccion.md)
+> - [Caso de Estudio: C# y .NET](https://github.com/joseluisgs/EntornosDesarrollo-01-2026-2027/blob/main/09-caso-estudio.md)
 
 **Versiones actuales:**
 

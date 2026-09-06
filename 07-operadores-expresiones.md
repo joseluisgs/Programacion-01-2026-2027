@@ -105,6 +105,30 @@ total %= 10;    // total = 5
 
 > 💡 **Consejo:** Los operadores de asignación compuesta (`+=`, `-=`, etc.) son más legibles y concisos que escribir `x = x + 3`.
 
+### ⚠️ Cuidado: `+=` no es lo mismo que `=+`
+
+Este es un error muy común de principiantes. Aunque parecen iguales, significan cosas completamente diferentes:
+
+```csharp
+int x = 5;
+
+x += 3;   // x = x + 3  →  x = 8  ✅ Suma 3 a x
+x = +3;   // x = (+3)    →  x = 3  ❌ Asigna +3 a x (el + es unario)
+
+int y = 10;
+y += 5;   // y = y + 5  →  y = 15  ✅ Suma 5 a y
+y = +5;   // y = (+5)    →  y = 5   ❌ Asigna +5 a y
+```
+
+> ⚠️ **Advertencia:** `+=` es "suma y asigna" (el operador de suma compuesto). `=+` es "asigna un positivo" (asignación + operador unario `+`). No los confundas, porque el compilador no da error pero el resultado es muy diferente.
+
+| Expresión | Significado | Resultado con x=5 |
+|-----------|-------------|-------------------|
+| `x += 3` | x = x + 3 | x = 8 |
+| `x = +3` | x = (+3) | x = 3 |
+| `x -= 3` | x = x - 3 | x = 2 |
+| `x = -3` | x = (-3) | x = -3 |
+
 ## 7.4. Operadores relacionales
 
 Los operadores relacionales comparan valores y devuelven un `bool` (`true` o `false`).

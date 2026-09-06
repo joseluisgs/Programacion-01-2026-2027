@@ -59,6 +59,45 @@ string class;              // No puede ser palabra reservada
 
 > 💡 **Consejo:** Usa siempre **camelCase** para variables: primera palabra en minúsculas, las demás con mayúscula inicial. Ejemplo: `nombreCliente`, `precioTotal`, `esActivo`.
 
+### ¿Qué es un identificador?
+
+Un **identificador** es el nombre que le damos a una variable, constante, método, clase... Es la "etiqueta" que usamos para referirnos a algo.
+
+```csharp
+int edad = 25;      // "edad" es el identificador
+string nombre = "Ana"; // "nombre" es el identificador
+const double Iva = 21.0; // "Iva" es el identificador
+```
+
+> 💡 **Analogía:** El identificador es como el nombre que le pones a una entrada en tu agenda de teléfonos. "María" es el identificador, pero por detrás hay un número de teléfono (dirección de memoria) donde se almacena la información.
+
+### Cómo funciona por debajo: memoria
+
+Cuando declaras una variable, el compilador reserva una **zona de memoria** (un "cajón") para almacenar el valor. El identificador apunta a esa zona de memoria:
+
+```mermaid
+graph LR
+    A["Identificador<br/>edad"] --> B["Direccion de memoria<br/>0x7FF8A1B0"]
+    B --> C["Valor almacenado<br/>25"]
+    D["Identificador<br/>nombre"] --> E["Direccion de memoria<br/>0x7FF8A1C0"]
+    E --> F["Valor almacenado<br/>Ana"]
+
+    style A fill:#4CAF50,color:#fff
+    style B fill:#607D8B,color:#fff
+    style C fill:#2196F3,color:#fff
+    style D fill:#4CAF50,color:#fff
+    style E fill:#607D8B,color:#fff
+    style F fill:#2196F3,color:#fff
+```
+
+Cada variable tiene:
+- **Un nombre** (identificador): lo que tú escribes en el código
+- **Una dirección de memoria**: dónde se guarda físicamente
+- **Un tipo**: qué tipo de datos puede almacenar
+- **Un valor**: la información que contiene
+
+> 📝 **Nota:** Tú no controlas la dirección de memoria (la asigna el sistema operativo), pero sí controlas el nombre y el valor. Por eso los identificadores deben ser descriptivos: porque son la forma que tienes de "llamar" a esa zona de memoria.
+
 ### Inicialización
 
 Siempre es buena práctica inicializar las variables al declararlas:
@@ -117,6 +156,47 @@ void Contar()
 }
 ```
 
+### El valor null: el error de un billón de dólares
+
+Las variables de tipos **referencia** (`string`, arrays, clases) pueden tener un valor especial llamado `null`. Significa que **la variable no apunta a ningún objeto** — está vacía, como un teléfono sin número asignado.
+
+```csharp
+string nombre = null;  // nombre no apunta a ningún string
+int[] numeros = null;  // numeros no apunta a ningún array
+
+// Intentar usar null → error en tiempo de ejecución
+Console.WriteLine(nombre.Length);  // ❌ NullReferenceException
+```
+
+> ⚠️ **Advertencia:** `null` es una de las fuentes más comunes de errores en programación. Si intentas usar una variable que es `null` (como llamar a un método o acceder a una propiedad), el programa falla.
+
+**La historia del "error de un billón de dólares":**
+
+En 2009, Tony Hoare, el científico que inventó `null` en 1965, se disculpó públicamente llamándolo su "error de un billón de dólares". Lo creó para representar "ausencia de valor" en el lenguaje ALGOL W, pero no previo las consecuencias: miles de millones de bugs en todo el mundo causados por intentar usar `null` sin querer.
+
+> 💡 **Analogía:** `null` es como tener una entrada en tu agenda de teléfonos que dice "María" pero no tiene número. Si intentas llamar, no puedes. Peor aún, si intentas preguntarle algo a María, no hay María a quien preguntar.
+
+**Cómo protegerse de null en C#:**
+
+```csharp
+// Los tipos pueden ser "nullables" con ?
+string? nombre = null;  // Puede ser null
+
+// Operador de coalescencia: si es null, usa otro valor
+string nombreSeguro = nombre ?? "Desconocido";
+
+// Operador condicional: accede solo si no es null
+int? longitud = nombre?.Length;  // Si nombre es null, longitud será null
+
+// Verificar antes de usar
+if (nombre != null)
+{
+    Console.WriteLine(nombre.Length);
+}
+```
+
+> 📝 **Nota:** En C# con `<Nullable>enable</Nullable>` en el `.csproj`, el compilador te avisa cuando intentas usar un valor que podría ser null. Esto reduce enormemente los bugs.
+
 ## 6.2. Constantes
 
 Una **constante** es un valor que **no puede cambiar** una vez asignado. Se declara con `const`.
@@ -136,6 +216,33 @@ Iva = 22.0;  // ❌ Error: no se puede modificar una constante
 ```
 
 > 💡 **Consejo:** Usa **PascalCase** para constantes: primera letra en mayúscula. Ejemplo: `Iva`, `Pais`, `MaximoUsuarios`.
+
+### Las constantes son de compilación
+
+Las constantes (`const`) se resuelven en **tiempo de compilación**, no en tiempo de ejecución. Esto significa que el compilador las reemplaza directamente por su valor, como un "buscar y reemplazar":
+
+```csharp
+const double Iva = 21.0;
+double precio = 100.0;
+double total = precio * (1 + Iva / 100);
+```
+
+Lo que el compilador ve después de "buscar y reemplazar":
+
+```csharp
+double precio = 100.0;
+double total = precio * (1 + 21.0 / 100);  // Iva se reemplaza por 21.0
+```
+
+> 💡 **Analogía:** Una constante es como un post-it en tu monitor donde pones "IVA = 21%". Cada vez que necesitas ese valor, miras el post-it. Pero el compilador es más listo: reemplaza el post-it directamente por el valor en el código final.
+
+**Ventajas de las constantes de compilación:**
+
+- **Rendimiento:** No hay búsqueda en memoria, el valor ya está en el código
+- **Seguridad:** No se puede cambiar accidentalmente
+- **Claridad:** El nombre describe qué es el valor
+
+> ⚠️ **Advertencia:** Como las constantes se reemplazan en compilación, no puedes usar valores calculados en runtime. Por ejemplo, `const double Iva = DateTime.Now.Month == 12 ? 25.0 : 21.0;` NO funciona.
 
 ### ¿Cuándo usar const vs readonly?
 

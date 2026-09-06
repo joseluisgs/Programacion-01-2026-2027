@@ -6,7 +6,9 @@
   - [4.5. Using static: comodidad en la escritura](#45-using-static-comodidad-en-la-escritura)
   - [4.6. El archivo .csproj](#46-el-archivo-csproj)
   - [4.7. El archivo .slnx](#47-el-archivo-slnx)
-  - [4.8. Tabla de equivalencias: Pseudocódigo → C# → Java](#48-tabla-de-equivalencias-pseudocódigo--c--java)
+  - [4.8. Scripting en C#: lo primero que aprenderás](#48-scripting-en-c-lo-primero-que-aprenderás)
+  - [4.9. Tu primer "Hola Mundo": paso a paso](#49-tu-primer-hola-mundo-paso-a-paso)
+  - [4.10. Tabla de equivalencias: Pseudocódigo → C# → Java](#410-tabla-de-equivalencias-pseudocódigo--c--java)
 
 
 # 4. Estructura de un Programa
@@ -258,6 +260,10 @@ Gracias a `<ImplicitUsings>enable</ImplicitUsings>` en el `.csproj`, estos names
 
 No necesitas escribir `using System;` — ya está incluido.
 
+> 📝 **Nota:** Si tu `.csproj` tiene `<ImplicitUsings>enable</ImplicitUsings>`, no necesitas poner `using System;` en cada archivo. El compilador lo incluye automáticamente. Si lo quitas, tendrás que escribir `using System;` en todos los archivos.
+
+> ⚠️ **Advertencia:** El archivo principal de un proyecto de consola **siempre** se llama `Program.cs`. No le cambies el nombre, porque el compilador busca ese archivo específicamente para Top-Level Statements.
+
 ## 4.5. Using static: comodidad en la escritura
 
 El `using static` te permite usar los miembros estáticos de una clase **sin escribir el nombre de la clase cada vez**. Es especialmente útil con `Console`.
@@ -380,6 +386,111 @@ El `.slnx` es el archivo de solución en el nuevo formato XML. Es más simple y 
 
 > 📝 **Nota:** El formato `.slnx` es el nuevo estándar de .NET. El antiguo formato `.sln` sigue funcionando pero es más complejo.
 
+## 4.8. Scripting en C#: lo primero que aprenderás
+
+Antes de crear proyectos completos, podemos escribir código C# directamente como un script. Esto es ideal para aprender y probar cosas rápidas.
+
+> 💡 **Analogía:** Scripting es como escribir una nota rápida en un papel. No necesitas preparar un documento formal, solo escribes y ejecutas.
+
+```bash
+# Crear un archivo de script
+dotnet script init
+
+# Crear un archivo .csx (C# Script)
+echo 'Console.WriteLine("¡Hola desde un script!")' > hola.csx
+
+# Ejecutar el script
+dotnet script hola.csx
+```
+
+O aún más rápido, directamente desde la consola:
+
+```bash
+# Ejecutar código C# directamente
+dotnet script -e "Console.WriteLine(2 + 3)"
+```
+
+> 📝 **Nota:** Los scripts usan extensión `.csx` y permiten Top-Level Statements por defecto. Son perfectos para probar cosas rápidamente sin crear un proyecto completo.
+
+📌 **Ejemplo real:** Muchos administradores de sistemas usan scripts de C# para automatizar tareas: renombrar archivos, convertir datos, hacer copias de seguridad, etc.
+
+### Diferencia entre script y proyecto
+
+| Característica | Script (`.csx`) | Proyecto (`.csproj`) |
+|----------------|-----------------|----------------------|
+| **Archivos** | Uno o varios `.csx` | `Program.cs` + `.csproj` |
+| **Compilación** | No compila, interpreta | Compila a ejecutable |
+| **Uso** | Pruebas rápidas, scripts | Aplicaciones reales |
+| **Rendimiento** | Más lento | Más rápido |
+| **Distribución** | Necesita dotnet install | Ejecutable independiente |
+
+## 4.9. Tu primer "Hola Mundo": paso a paso
+
+Ahora vamos a crear nuestro primer programa completo paso a paso. Sigue cada comando en orden:
+
+**Paso 1: Crear la carpeta de la solución**
+
+```bash
+mkdir MiPrimeraSolucion
+cd MiPrimeraSolucion
+```
+
+**Paso 2: Crear la solución**
+
+```bash
+dotnet new sln --name MiPrimeraSolucion
+```
+
+**Paso 3: Crear el proyecto de consola**
+
+```bash
+dotnet new console --name MiPrimeraSolucion
+```
+
+> 📝 **Nota:** Esto crea una carpeta `MiPrimeraSolucion/` con un archivo `Program.cs` y un archivo `MiPrimeraSolucion.csproj`.
+
+**Paso 4: Añadir el proyecto a la solución**
+
+```bash
+dotnet sln add MiPrimeraSolucion/MiPrimeraSolucion.csproj
+```
+
+**Paso 5: Verificar la estructura**
+
+```bash
+# Ver qué hemos creado
+dir
+# Verás: MiPrimeraSolucion.slnx y carpeta MiPrimeraSolucion/
+```
+
+**Paso 6: Abrir Program.cs y escribir el código**
+
+Abre `MiPrimeraSolucion/Program.cs` en tu IDE y escribe:
+
+```csharp
+Console.WriteLine("¡Hola, mundo!");
+Console.WriteLine("Mi primer programa en C#");
+Console.WriteLine($"Hoy es {DateTime.Now:dd/MM/yyyy}");
+```
+
+**Paso 7: Compilar y ejecutar**
+
+```bash
+dotnet run
+```
+
+**Salida esperada:**
+
+```
+¡Hola, mundo!
+Mi primer programa en C#
+Hoy es 06/09/2026
+```
+
+> 🎉 **¡Enhorabuena!** Acaba de compilar y ejecutar tu primer programa en C#. El compilador Tomó tu `Program.cs`, lo tradujo a código intermedio (IL), y la CLR lo ejecutó en tu máquina.
+
+📌 **Ejemplo real:** Este es exactamente el mismo proceso que seguirás para crear aplicaciones reales. La diferencia es que las aplicaciones reales tienen más código, más archivos y más complejidad, pero la base es la misma.
+
 ### Diferencia entre .slnx y .csproj
 
 | Archivo | Función | Contenido |
@@ -412,7 +523,7 @@ dotnet sln list
 dotnet run
 ```
 
-## 4.8. Tabla de equivalencias: Pseudocódigo → C# → Java
+## 4.10. Tabla de equivalencias: Pseudocódigo → C# → Java
 
 Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 

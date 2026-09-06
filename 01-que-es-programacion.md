@@ -451,6 +451,30 @@ button.Click += (sender, args) =>
 
 📌 **Ejemplo real:** C# es multiparadigma. Netflix usa programación reactiva (eventos) para notificaciones, funcional (LINQ) para procesar datos, POO para modelar usuarios, y estructurado para la lógica de negocio.
 
+### Evolución de paradigmas a lo largo del curso
+
+A lo largo de este curso iremos visitando los paradigmas de forma progresiva. Cada uno aporta nuevas características, normas y posibilidades. No los aprendemos todos a la vez, sino que vamos construyendo sobre lo anterior:
+
+```mermaid
+graph LR
+    A[Imperativo<br/>Paso a paso] --> B[Estructurado<br/>if, for, while]
+    B --> C[Modular<br/>Funciones reutilizables]
+    C --> D[POO<br/>Clases y objetos]
+    D --> E[Funcional<br/>LINQ, lambdas]
+    E --> F[Declarativo<br/>SQL, LINQ]
+    F --> G[Eventos<br/>GUI, interaccion]
+
+    style A fill:#4CAF50,color:#fff
+    style B fill:#2196F3,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#9C27B0,color:#fff
+    style E fill:#f44336,color:#fff
+    style F fill:#607D8B,color:#fff
+    style G fill:#009688,color:#fff
+```
+
+> 📝 **Nota:** Empezamos con lo básico (imperativo, estructurado) y avanzamos hacia paradigmas más sofisticados. Cada paso nos da más herramientas para resolver problemas de forma más elegante y eficiente.
+
 ## 1.4. Lenguajes de programación
 
 Un **lenguaje de programación** es el "idioma" que usamos para comunicarnos con el ordenador.
@@ -482,7 +506,7 @@ string nombre = "Ana";    // ✅ Válido (sintaxis + semántica correctas)
 
 | Nivel | Descripción | Ejemplo |
 |-------|-------------|---------|
-| **Bajo nivel** | Casi sin traducir, cercano al硬件 | Lenguaje máquina (binario), Ensamblador |
+| **Bajo nivel** | Casi sin traducir, cercano al hardware (procesador) | Lenguaje máquina (binario), Ensamblador |
 | **Medio nivel** | Acceso al hardware + abstracciones | C |
 | **Alto nivel** | Cercano al lenguaje humano | C#, Python, Java, JavaScript |
 

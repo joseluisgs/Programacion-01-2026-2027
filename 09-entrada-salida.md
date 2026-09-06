@@ -188,7 +188,42 @@ WriteLine($"Hola, {nombre}!");
 
 Esto es especialmente útil en programas con mucha entrada/salida, donde repites `Console.` decenas de veces.
 
-> 💡 **Consejo:** En ejemplos y scripts cortos, `using static` ahorra mucho espacio. En proyectos grandes, Many developers prefer `Console.WriteLine` por claridad.
+### Poniendo `using static` en el `.csproj`
+
+Si usas `using static` en casi todos los archivos, puedes configurarlo en el `.csproj` para que se aplique automáticamente a todo el proyecto. Así no necesitas escribir `using static System.Console;` en cada archivo:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Global Usings: se aplican a TODOS los archivos del proyecto -->
+  <ItemGroup>
+    <Using Include="System.Console" Static="true" />
+    <Using Include="System.Math" Static="true" />
+  </ItemGroup>
+
+</Project>
+```
+
+Con esta configuración, en **todos los archivos** del proyecto puedes usar directamente:
+
+```csharp
+// No necesitas "using static System.Console;" aquí
+WriteLine("Hola desde cualquier archivo");
+WriteLine($"El máximo de 5 y 10 es: {Max(5, 10)}");
+```
+
+> 📝 **Nota:** `<Using Include="System.Console" Static="true" />` equivale a poner `using static System.Console;` en cada archivo. Es como un "importar global" que aplica a todo el proyecto.
+
+> 💡 **Consejo:** Para proyectos de aprendizaje y scripts, poner el `using static` en el `.csproj` ahorra mucho trabajo. Para proyectos grandes donde quieres más control, mejor ponerlo archivo por archivo.
+
+> ⚠️ **Advertencia:** Si pones `using static` global y algún archivo tiene un método llamado `WriteLine`, habrá un conflicto de nombres. Úsalo solo con clases que no tengan métodos con nombres genéricos.
 
 ---
 
