@@ -6,7 +6,8 @@
   - [4.5. Using static: comodidad en la escritura](#45-using-static-comodidad-en-la-escritura)
   - [4.6. El archivo .csproj](#46-el-archivo-csproj)
   - [4.7. El archivo .slnx](#47-el-archivo-slnx)
-  - [4.8. Resumen](#48-resumen)
+  - [4.8. Tabla de equivalencias: Pseudocódigo → C# → Java](#48-tabla-de-equivalencias-pseudocódigo--c--java)
+  - [4.9. Resumen](#49-resumen)
 
 
 # 4. Estructura de un Programa
@@ -412,7 +413,25 @@ dotnet sln list
 dotnet run
 ```
 
-## 4.8. Resumen
+## 4.8. Tabla de equivalencias: Pseudocódigo → C# → Java
+
+Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
+
+| Concepto | Pseudocódigo | C# | Java |
+|----------|-------------|-----|------|
+| **Punto de entrada** | `inicio` / `principal` | Top-Level Statements | `public static void main(String[] args)` |
+| **Salida** | `writeLine()` / `imprimir()` | `Console.WriteLine()` | `System.out.println()` |
+| **Entrada** | `readLine()` / `leer()` | `Console.ReadLine()` | `Scanner.nextLine()` |
+| **Constantes** | `constante IVA = 21` | `const double Iva = 21.0;` | `final double IVA = 21.0;` |
+| **Solo lectura** | `soloLectura` | `readonly` (en clases) | `final` |
+| **Inferencia de tipo** | `variable x = 5` | `var x = 5;` | `var x = 5;` (Java 10+) |
+| **Enumeración** | `enumerar DiasSemana` | `enum DiaSemana` | `enum DiaSemana` |
+| **Estructura** | `Clase` | `class` | `class` |
+| **Primitivos** | `entero`, `real`, `booleano` | `int`, `double`, `bool` | `int`, `double`, `boolean` |
+
+> 💡 **Consejo:** C# es más parecido a Java que a pseudocódigo. Si vienes de Java, notarás que C# es más conciso (Top-Level Statements) y tiene más azúcar sintáctico (`var`, `??`, `$""`, etc.).
+
+## 4.9. Resumen
 
 | Concepto | Descripción |
 |----------|-------------|

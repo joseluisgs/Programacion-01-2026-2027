@@ -93,4 +93,24 @@ Comprueba si dominas estos puntos antes de pasar a la siguiente unidad:
 
 > 💡 **Consejo para el examen:** Repasa el checklist. Si marcas todos los puntos, estás listo para el examen de esta unidad. Si falta alguno, revisa el tema correspondiente.
 
+### Preguntas tipo test para repasar
+
+Antes de ir al examen, asegúrate de poder responder **SÍ** a estas preguntas:
+
+| Pregunta | Tema |
+|----------|------|
+| ¿Entiendo que un programa es una solución a un problema y no solo código? | 1.1 |
+| ¿Sé la diferencia entre un algoritmo y un programa? | 1.5 |
+| ¿Recuerdo las 6 características de un algoritmo? | 1.2.1 |
+| ¿Sé explicar la diferencia entre compilado e interpretado? | 1.4 |
+| ¿Diferencio entre léxico, sintaxis y semántica? | 1.4 |
+| ¿Entiendo la diferencia entre `int` y `double` (y por qué no usar `int` para dinero)? | 5 |
+| ¿Tengo claro que `var` no significa que el tipo pueda cambiar luego? | 5 |
+| ¿Entiendo que `null` es un peligro y que `?` me ayuda a controlarlo? | 5 |
+| ¿Sé por qué `(5 + 2) * 3` no es lo mismo que `5 + 2 * 3`? | 7 |
+| ¿Recuerdo que `ReadLine()` siempre me da un `string` y debo convertirlo? | 9 |
+| ¿Sé usar `TryParse` en vez de `Parse` para entrada de usuario? | 9 |
+
+> 🔧 **Truco:** Si no puedes responder alguna pregunta, abre el tema correspondiente y repásalo. La clave es **entender**, no memorizar.
+
 > 🔧 **Truco:** La mejor forma de aprender programación es practicando. No leas solo los apuntes: abre el IDE y prueba cada ejemplo. Modifícalos, rompelos, arreglalos. Eso es como se aprende.

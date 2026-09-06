@@ -1,9 +1,11 @@
-- [6. Variables, Constantes y Literales](#6-variables-constantes-y-literales)
+- [6. Variables, Constantes, Literales y Enumeraciones](#6-variables-constantes-literales-y-enumeraciones)
   - [6.1. Variables](#61-variables)
   - [6.2. Constantes](#62-constantes)
   - [6.3. Literales](#63-literales)
   - [6.4. Diferencias entre variable, constante y literal](#64-diferencias-entre-variable-constante-y-literal)
-  - [6.5. Resumen](#65-resumen)
+  - [6.5. Enumeraciones](#65-enumeraciones)
+  - [6.6. Código autodocumentado](#66-código-autodocumentado)
+  - [6.7. Resumen](#67-resumen)
 
 
 # 6. Variables, Constantes y Literales
@@ -215,7 +217,85 @@ Edad = 30;              // ❌ Error: la constante no cambia
 
 > 💡 **Analogía:** Una variable es como una pizarra donde puedes borrar y escribir. Una constante es como una placa de metal: lo que está grabado, no cambia. Un literal es el dato en sí, como el número "25" escrito en un papel.
 
-## 6.5. Resumen
+## 6.5. Enumeraciones
+
+Una **enumeración** (`enum`) es un tipo de datos que define un conjunto de **valores con nombre**. Es como una lista de opciones fijas.
+
+> 💡 **Analogía:** Un enum es como un semáforo. Solo puede tener 3 estados: Rojo, Amarillo, Verde. No puede ser "azul" ni "morado". El enum fuerza a que solo se usen los valores definidos.
+
+```csharp
+// Declarar una enumeración
+enum DiaSemana
+{
+    Lunes,
+    Martes,
+    Miercoles,
+    Jueves,
+    Viernes,
+    Sabado,
+    Domingo
+}
+
+// Usar la enumeración
+DiaSemana hoy = DiaSemana.Miercoles;
+
+// Comparar
+if (hoy == DiaSemana.Sabado || hoy == DiaSemana.Domingo)
+{
+    Console.WriteLine("¡Es fin de semana!");
+}
+else
+{
+    Console.WriteLine("A trabajar");
+}
+
+// Imprimir el nombre del enum
+Console.WriteLine(hoy);  // Muestra: Miercoles
+```
+
+### Valores numéricos de los enums
+
+Por defecto, cada valor empieza en 0 y se incrementa. Pero puedes asignar valores manualmente:
+
+```csharp
+// Valores por defecto: Lunes=0, Martes=1, Miercoles=2...
+enum Mes
+{
+    Enero = 1,      // Asignamos 1 manualmente
+    Febrero,        // 2
+    Marzo,          // 3
+    Abril,          // 4
+    // ... y así sucesivamente
+}
+
+// Obtener el valor numérico
+int valorMes = (int)Mes.Marzo;  // 3
+```
+
+> 📝 **Nota:** Los enums son muy únicos para representar estados, opciones o categorías fijas. En C# se usan mucho con `switch` y con tipos de datos parametrizables.
+
+## 6.6. Código autodocumentado
+
+Un buen código se explica por sí mismo. El nombre de las variables debe describir qué contiene:
+
+```csharp
+// ❌ MALO: nombres poco descriptivos
+int d = 30;
+string n = "Ana";
+bool e = true;
+
+// ✅ BUENO: código autodocumentado
+int diasDelMes = 30;
+string nombre = "Ana";
+bool estaActivo = true;
+
+// ✅ BUENO: el código se entiende sin comentarios
+double precioConIva = precio * (1 + Iva / 100);
+```
+
+> 💡 **Consejo:** Un buen programador escribe código que se entiende solo. Si necesitas un comentario para explicar qué hace una línea, probablemente el nombre de la variable o método no es bueno.
+
+## 6.7. Resumen
 
 | Concepto | Descripción | Ejemplo |
 |----------|-------------|---------|
