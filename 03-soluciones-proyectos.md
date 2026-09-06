@@ -263,4 +263,4 @@ dotnet restore
 | **Roslyn** | Compilador de C# |
 | **CLR** | Máquina virtual que ejecuta el código |
 
-> 💡 **Consejo para el examen:** Recuerda la diferencia entre solución y proyecto, y la estructura de archivos. También saber para qué sirve cada archivo (.slnx, .csproj, Program.cs).
+En el siguiente punto veremos la estructura interna de un programa en C#: bloques, sentencias, expresiones, Top-Level Statements y namespaces.

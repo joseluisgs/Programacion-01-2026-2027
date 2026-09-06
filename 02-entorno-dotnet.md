@@ -288,4 +288,4 @@ Un **IDE (Integrated Development Environment)** es la herramienta visual donde e
 | **NuGet** | Gestor de paquetes (bibliotecas reutilizables) |
 | **IDE** | Entorno visual (Rider recomendado, VS Code alternativa) |
 
-> 💡 **Consejo para el examen:** Recuerda la diferencia entre SDK y runtime, y los comandos básicos de la CLI. También saber qué es NuGet y para qué sirve.
+En el siguiente punto veremos la estructura de soluciones y proyectos en .NET, la diferencia entre `.slnx` y `.csproj`, y cómo compilar y ejecutar nuestro código.

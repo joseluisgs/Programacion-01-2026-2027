@@ -448,4 +448,4 @@ Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 | **`dotnet build`** | Compila el proyecto |
 | **`dotnet run`** | Compila y ejecuta |
 
-> 💡 **Consejo para el examen:** Recuerda la diferencia entre `.slnx` y `.csproj`, para qué sirve cada uno. Sabe explicar Top-Level Statements y `using static`.
+En el siguiente punto veremos los tipos de datos en C#: enteros, decimales, texto, booleanos y la inferencia de tipos con `var`.

@@ -209,4 +209,4 @@ public class Persona
 | Documentación XML en públicos | Comentarios desactualizados |
 | Código limpio sin comentarios innecesarios | Código comentado (borrarlo) |
 
-> 💡 **Consejo para el examen:** Recuerda los tres tipos de comentarios y sabes cuándo usar cada uno. La regla de oro: comenta el "por qué", no el "qué".
+En el siguiente punto haremos un resumen de toda la unidad, consolidando todos los conceptos vistos.

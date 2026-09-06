@@ -221,4 +221,4 @@ double resultado = (double)a / b;  // 3.333...
 | **TryParse** | `tipo.TryParse(string, out resultado)` | Con datos de usuario (seguro) |
 | **Convert** | `Convert.ToTipo(valor)` | Conversión general, tolerante con null |
 
-> 💡 **Consejo para el examen:** Recuerda la diferencia entre conversión implícita y explícita. Sabe cuándo usar `Parse` vs `TryParse`, y por qué la división entre enteros trunca el resultado.
+En el siguiente punto veremos la entrada y salida de datos: WriteLine, ReadLine, interpolación de strings y concatenación.

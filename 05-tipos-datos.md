@@ -184,4 +184,4 @@ var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 | **`var`** | Inferencia de tipos: el compilador deduce el tipo |
 | **Memoria** | Cada tipo ocupa un tamaño fijo en bytes |
 
-> 💡 **Consejo para el examen:** Recuerda la tabla de tipos y sus tamaños. Sabe cuándo usar `int` vs `long`, `double` vs `decimal`, y cuándo usar `var`.
+En el siguiente punto veremos variables, constantes, literales y enumeraciones en C#.

@@ -305,4 +305,4 @@ double precioConIva = precio * (1 + Iva / 100);
 | **Scope** | Dónde es visible la variable | Dentro de su bloque |
 | **Lifetime** | Cuánto tiempo vive | Mientras se ejecuta el bloque |
 
-> 💡 **Consejo para el examen:** Recuerda la diferencia entre variable, constante y literal. Sabe cuándo usar `const` y por qué es buena práctica inicializar variables.
+En el siguiente punto veremos los operadores: aritméticos, relacionales, lógicos, de asignación, ternario y de coalescencia.

@@ -201,4 +201,4 @@ Esto es especialmente útil en programas con mucha entrada/salida, donde repites
 | **Interpolación** | `$""` | `$"Hola {nombre}"` |
 | **Entrada** | `Console.ReadLine()` | `string input = Console.ReadLine()` |
 
-> 💡 **Consejo para el examen:** Recuerda la diferencia entre `Write` y `WriteLine`, y domina la interpolación de strings con `$""`. Es la forma moderna y recomendada.
+En el siguiente punto veremos los comentarios y la documentación: comentarios de una línea, varias líneas y documentación XML.

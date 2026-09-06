@@ -308,4 +308,4 @@ Console.WriteLine(apellidoFinal);  // "García"
 | **Ternario** | `? :` | If-else abreviado |
 | **Coalescencia** | `??` | Valor por defecto si es null |
 
-> 💡 **Consejo para el examen:** Recuerda los operadores aritméticos (especialmente el módulo `%`), la diferencia entre `=` y `==`, cómo funcionan `&&` y `||`, y para qué sirven `? :` y `??`.
+En el siguiente punto veremos las conversiones de tipo: implícitas, explícitas, Parse, TryParse y Convert.

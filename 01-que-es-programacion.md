@@ -546,4 +546,4 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 | **Sintaxis** | Reglas de construcción |
 | **Semántica** | Signado de las construcciones |
 
-> 💡 **Consejo para el examen:** Recuerda las 6 características de un algoritmo con el ejemplo del café. Sabe explicar la diferencia entre algoritmo y programa, y los tres componentes de un lenguaje (léxico, sintaxis, semántica).
+En el siguiente punto veremos el entorno de desarrollo .NET, el SDK, la CLI y las herramientas que usaremos durante todo el curso.

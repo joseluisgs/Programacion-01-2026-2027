@@ -31,7 +31,7 @@ Hemos visto la teoría completa de Introducción a la Programación. Este punto 
 
 - Repasar los conceptos fundamentales de la unidad
 - Consolidar el vocabulario técnico
-- Tener una referencia rápida para el examen
+- Tener una referencia rápida de todos los temas
 
 ## 11.1. Mapa Conceptual de la Unidad
 
