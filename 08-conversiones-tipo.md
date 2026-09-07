@@ -4,6 +4,7 @@
   - [8.3. Conversiones explícitas (casting)](#83-conversiones-explícitas-casting)
   - [8.4. Métodos de conversión](#84-métodos-de-conversión)
   - [8.5. Errores comunes](#85-errores-comunes)
+    - [📋 Tabla de decisión: ¿Qué conversión usar?](#-tabla-de-deisión-qué-conversión-usar)
 
 
 # 8. Conversiones de Tipo
@@ -205,6 +206,44 @@ Console.WriteLine($"Tienes {puntos} puntos");  // ToString() implícito
 ```
 
 ## 8.5. Errores comunes
+
+### 📋 Tabla de decisión: ¿Qué conversión usar?
+
+Cuando no sepas qué método elegir, consulta esta tabla:
+
+| Situación | Método | Ejemplo | Nota |
+|-----------|--------|---------|------|
+| **string → número** | | | |
+| El string es siempre válido | `Parse()` | `int.Parse("42")` | Si falla → excepción |
+| El string viene del usuario | `TryParse()` | `int.TryParse(input, out var r)` | **Siempre seguro** |
+| El string puede ser null | `Convert.ToInt32()` | `Convert.ToInt32(null)` → 0 | Tolerante con null |
+| **número → número** | | | |
+| El destino es más grande | Implícita | `int x = 42; long y = x;` | Automática, segura |
+| El destino es más pequeño | Cast `(tipo)` | `double d = 3.14; int i = (int)d;` | Pierde datos |
+| **número → string** | | | |
+| Para mostrar en consola | `$""` interpolation | `$"Tengo {edad} años"` | Más legible |
+| Para almacenar | `ToString()` | `edad.ToString()` | Guarda como texto |
+
+> 💡 **Regla de oro:** Con datos de usuario → **siempre `TryParse`**. Nunca `Parse` en producción.
+
+```mermaid
+graph TD
+    A["¿Qué necesitas convertir?"] --> B{"¿De string a número?"}
+    B -->|"Sí, es válido"| C["Parse()"]
+    B -->|"Sí, puede fallar"| D["TryParse() ← SEGURO"]
+    B -->|"No, es null"| E["Convert.ToTipo()"]
+    A --> F{"¿De número a número?"}
+    F -->|"Destino más grande"| G["Implícita (automática)"]
+    F -->|"Destino más pequeño"| H["Cast explícito (tipo)"]
+    A --> I{"¿De número a string?"}
+    I --> J["$\"\" o ToString()"]
+
+    style A fill:#2196F3,color:#fff
+    style D fill:#4CAF50,color:#fff
+    style H fill:#f44336,color:#fff
+```
+
+### Errores comunes
 
 ```csharp
 // ❌ ERROR 1: Usar Parse sin validar

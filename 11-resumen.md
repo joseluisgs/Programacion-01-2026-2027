@@ -39,6 +39,7 @@ Hemos visto la teoría completa de Introducción a la Programación. Este punto 
 graph TD
     UD01[UD01: Introduccion a la Programacion] --> FUND[Fundamentos]
     UD01 --> ALG[Algoritmos]
+    UD01 --> FLUJO["Flujo E→P→S"]
     UD01 --> PAR[Paradigmas]
     UD01 --> LENG[Lenguajes]
     UD01 --> ENT[Entorno .NET]
@@ -49,6 +50,7 @@ graph TD
     UD01 --> CONV[Conversiones]
     UD01 --> IOS[Entrada y Salida]
     UD01 --> COM[Comentarios]
+    UD01 --> POK[Proyecto Pokedex]
 
     FUND --> F1[Que es programar]
     FUND --> F2[Algoritmo vs Programa]
@@ -105,6 +107,10 @@ graph TD
     COM --> CO1[// una linea]
     COM --> CO2[/* varias lineas]
     COM --> CO3[/// documentacion XML]
+
+    POK --> PK1[Nombre, Tipo, CP]
+    POK --> PK2[Nivel, IV, Leyenda]
+    POK --> PK3[Entrada → Proceso → Salida]
 ```
 
 ## 11.2. Conceptos Clave
@@ -114,6 +120,13 @@ graph TD
 - **Algoritmo:** Plan ordenado de pasos para resolver un problema, independiente del lenguaje
 - **Programa:** Implementación de un algoritmo en un lenguaje de programación concreto
 - **Algoritmo vs Programa:** El algoritmo es el plano, el programa es la casa construida
+- **Metáfora cocina:** Ingredientes (datos) → Receta (algoritmo) → Utensilios (operadores) → Plato (resultado)
+
+### Flujo de un programa
+- **Entrada → Proceso → Salida** (E→P→S): patrón universal de todo programa
+- **Entrada:** `Console.ReadLine()` recibe datos del usuario
+- **Proceso:** operaciones, cálculos, decisiones
+- **Salida:** `Console.WriteLine()` muestra resultados
 
 ### Algoritmos
 - **Finito:** Termina en algún momento (no es un bucle infinito)
@@ -186,8 +199,9 @@ graph TD
 - **Implícita:** Automática y segura (`int` → `double`)
 - **Explícita (casting):** Manual y peligrosa (`double` → `int`, pierde decimales)
 - **Parse:** Convierte string a tipo. Salta excepción si falla
-- **TryParse:** Convierte string a tipo. Devuelve `true/false` (el seguro)
-- **Convert:** Convierte entre tipos básicos
+- **TryParse:** Convierte string a tipo. Devuelve `true/false` (**el seguro**)
+- **Convert:** Convierte entre tipos básicos. Tolerante con null
+- **Tabla de decisión:** Con datos de usuario → **siempre TryParse**
 
 ### Entrada y Salida
 - **`Console.WriteLine()`:** Escribe texto y salta de línea
@@ -200,6 +214,15 @@ graph TD
 - **`//`**: Comentario de una línea
 - **`/* ... */`**: Comentario de varias líneas
 - **`///`**: Documentación XML (para generar documentación técnica)
+- **Trabajo en equipo:** Comentar el "por qué", no el "qué"
+- **Regla:** Código autoexplicativo + comentarios donde aportan valor
+
+### Proyecto Integrador: Pokédex
+- **Metáfora:** Cocina (ingredientes → receta → utensilios → plato)
+- **Flujo:** Entrada (datos usuario) → Proceso (cálculos) → Salida (mostrar)
+- **Tipos:** `string` (nombre), `int` (CP), `double` (nivel), `bool` (leyenda)
+- **Conversión:** `TryParse` para leer datos del usuario
+- **Resultado:** Programa completo que pide, calcula y muestra información de un Pokémon
 
 ## 11.3. Herramientas y Perfiles
 
@@ -239,6 +262,7 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 
 - [ ] ¿Entiendo que un programa es una solución a un problema y no solo código?
 - [ ] ¿Tengo claro que **siempre** hay que diseñar el algoritmo en papel ANTES de escribir código? (Análisis → Diseño → Codificación)
+- [ ] ¿Recuerdo la metáfora de la cocina? (ingredientes, receta, utensilios, plato)
 - [ ] ¿Sé la diferencia entre un algoritmo y un programa?
 - [ ] ¿Recuerdo las 6 características de un algoritmo?
 - [ ] ¿Sé explicar la diferencia entre compilado e interpretado?
@@ -247,18 +271,22 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 - [ ] ¿Sé crear una solución y un proyecto con la CLI?
 - [ ] ¿Entiendo la diferencia entre `.slnx` y `.csproj`?
 - [ ] ¿Sé usar Top-Level Statements en C# 14?
+- [ ] ¿Entiendo el flujo Entrada → Proceso → Salida?
 - [ ] ¿Conozco los tipos de datos: `int`, `long`, `float`, `double`, `decimal`, `bool`, `char`, `string`?
 - [ ] ¿Sé la diferencia entre enteros con signo y sin signo?
 - [ ] ¿Entiendo la diferencia entre `int` y `double` (y por qué no usar `int` para dinero)?
 - [ ] ¿Tengo claro que `var` no significa que el tipo pueda cambiar luego?
 - [ ] ¿Sé declarar variables y constantes?
 - [ ] ¿Conozco los operadores aritméticos, relacionales, lógicos, de asignación, ternario y de coalescencia?
+- [ ] ¿Entiendo la precedencia de operadores y por qué debo usar paréntesis cuando dude?
 - [ ] ¿Sé la diferencia entre conversión implícita y explícita?
+- [ ] ¿Conozco la tabla de decisión de conversiones? (Parse, TryParse, Convert, cast)
 - [ ] ¿Sé usar `Console.WriteLine` y `Console.ReadLine`?
 - [ ] ¿Conozco la interpolación de strings con `$""`?
 - [ ] ¿Sé escribir comentarios de una línea, varias líneas y documentación XML?
 - [ ] ¿Entiendo qué es `using static` y para qué sirve?
 - [ ] ¿Recuerdo que `ReadLine()` siempre me da un `string` y debo convertirlo?
 - [ ] ¿Sé usar `TryParse` en vez de `Parse` para entrada de usuario?
+- [ ] ¿He creado la Pokédex y entiendo cómo cada tema contribuye al proyecto?
 
 > 🔧 **Truco:** La mejor forma de aprender programación es practicando. No leas solo los apuntes: abre el IDE y prueba cada ejemplo. Modifícalos, rompelos, arreglalos. Eso es como se aprende.

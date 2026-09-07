@@ -7,17 +7,20 @@ Tema 01. Introducción a la Programación Software. 1DAW. Curso 2026-2027
 
 ## Contenidos
 
-1. [Qué es la Programación](01-que-es-programacion.md)
-2. [El Entorno .NET](02-entorno-dotnet.md)
-3. [Soluciones y Proyectos](03-soluciones-proyectos.md)
-4. [Estructura de un Programa](04-estructura-programa.md)
-5. [Tipos de Datos](05-tipos-datos.md)
-6. [Variables, Constantes y Literales](06-variables-constantes-literales.md)
-7. [Operadores y Expresiones](07-operadores-expresiones.md)
-8. [Conversiones de Tipo](08-conversiones-tipo.md)
-9. [Entrada y Salida de Datos](09-entrada-salida.md)
-10. [Comentarios y Documentación](10-comentarios-documentacion.md)
-11. [Resumen y Conclusiones](11-resumen.md)
+### Hilo conductor: Proyecto Pokédex
+A lo largo de esta unidad construiremos una **Pokédex** paso a paso. Cada tema aporta algo al proyecto.
+
+1. [Qué es la Programación](01-que-es-programacion.md) — Definimos el problema + metáfora cocina
+2. [El Entorno .NET](02-entorno-dotnet.md) — Configuramos el entorno
+3. [Soluciones y Proyectos](03-soluciones-proyectos.md) — Creamos la solución Pokédex
+4. [Estructura de un Programa](04-estructura-programa.md) — Flujo Entrada→Proceso→Salida
+5. [Tipos de Datos](05-tipos-datos.md) — Elegimos tipos (string, int, double, bool)
+6. [Variables, Constantes y Literales](06-variables-constantes-literales.md) — Declaramos variables
+7. [Operadores y Expresiones](07-operadores-expresiones.md) — Cálculos y precedencia
+8. [Conversiones de Tipo](08-conversiones-tipo.md) — Tabla de decisión de conversiones
+9. [Entrada y Salida de Datos](09-entrada-salida.md) — Pedimos y mostramos datos
+10. [Comentarios y Documentación](10-comentarios-documentacion.md) — Documentamos el código
+11. [Resumen y Conclusiones](11-resumen.md) — Checklist de supervivencia
 
 ## Prácticas
 
@@ -25,6 +28,15 @@ Tema 01. Introducción a la Programación Software. 1DAW. Curso 2026-2027
 2. [Cuestionario](practicas/02-cuestionario.md)
 3. [Comparativa de Lenguajes: Java, C#, Python y TypeScript](practicas/03-comparativa-lenguajes.md)
 4. [Ejercicios de Programación](practicas/04-ejercicios.md)
+
+## Mejoras conceptuales
+
+- **Metáfora unificadora (cocina):** Todos los temas conectan con una misma analogía
+- **Proyecto Pokédex:** Hilo conductor que crece a lo largo de los 11 temas
+- **Flujo E→P→S:** Visible desde el tema 4 como patrón universal
+- **Por qué importa:** Conexiones con aplicaciones reales en cada tema
+- **Tabla de decisiones:** Conversión de tipos simplificada (tema 8)
+- **Trabajo en equipo:** Comentarios conectados con desarrollo profesional (tema 10)
 
 ## Contenido en YouTube
 

@@ -28,6 +28,13 @@ Un **tipo de dato** define qué tipo de valor puede contener una variable y qué
 
 > 💡 **Analogía:** Los tipos de datos son como las cajas de una tienda. Tienes cajas pequeñas para anillos, cajas medianas para zapatos y cajas grandes para televisores. Cada tipo de dato tiene un "tamaño" (memoria) y un "contenido" (valores que puede guardar).
 
+> ⚠️ **¿Por qué importa elegir bien el tipo?** Elegir el tipo incorrecto puede causar errores graves en aplicaciones reales:
+> - Usar `int` para dinero → pierde decimales (imagina una facturación que redondea)
+> - Usar `byte` para una puntuación → desborda si el jugador saca más de 255 puntos
+> - Usar `double` para una contraseña → pierde caracteres especiales
+>
+> En esta unidad crearemos una **Pokédex** donde elegiremos `string` para nombre, `int` para CP, `double` para nivel y `bool` para leyenda.
+
 ## 5.2. Tipos de datos numéricos
 
 ### 5.2.1. Enteros con signo
@@ -102,6 +109,8 @@ decimal saldo = 1234.56m;
 ```
 
 > 💡 **Consejo:** Para dinero y cálculos financieros, **siempre** usa `decimal`. `float` y `double` pueden tener errores de precisión que acumulan diferencias.
+
+📌 **Ejemplo real:** En el año 1999, elCodeAtivo de la sonda Mars Climate Orbiter se perdió porque un equipo usó unidades imperiales y otro métricas. Aunque no es exactamente un error de tipos, ilustra lo que pasa cuando los datos no se representan correctamente. En programación, usar `double` para dinero puede causar diferencias como: `0.1 + 0.2 = 0.30000000000000004` en vez de `0.3`.
 
 > ⚠️ **Advertencia:** `float` y `double` no son exactos. Por ejemplo, `0.1 + 0.2` no da exactamente `0.3` en `double`. Para cálculos que requieren exactitud, usa `decimal`.
 

@@ -20,6 +20,8 @@
 
 En este tema aprenderás la diferencia entre solución y proyecto, cómo crearlos con la CLI y cómo se organizan los archivos.
 
+> 🎮 **Proyecto Pokédex:** Crearemos la solución `Pokedex` y el proyecto de consola que usaremos en toda la unidad.
+
 **Objetivos de aprendizaje:**
 
 - Diferenciar entre solución y proyecto

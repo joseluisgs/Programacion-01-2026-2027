@@ -1,5 +1,6 @@
 - [1. Qué es la Programación](#1-qué-es-la-programación)
   - [1.1. Definición y conceptos básicos](#11-definición-y-conceptos-básicos)
+    - [🍳 La cocina como metáfora unificadora](#-la-cocina-como-metáfora-unificadora)
   - [1.2. Algoritmos](#12-algoritmos)
     - [1.2.1. Características de un algoritmo](#121-características-de-un-algoritmo)
     - [1.2.2. Ejemplo cotidiano: Preparar un café](#122-ejemplo-cotidiano-preparar-un-café)
@@ -14,6 +15,7 @@
     - [1.3.7. Basado en eventos](#137-basado-en-eventos)
   - [1.4. Lenguajes de programación](#14-lenguajes-de-programación)
   - [1.5. Diferencia entre algoritmo y programa](#15-diferencia-entre-algoritmo-y-programa)
+  - [1.6. Proyecto integrador: Pokédex](#16-proyecto-integrador-pokédex)
 
 
 # 1. Qué es la Programación
@@ -21,6 +23,25 @@
 > 💡 **Punto de partida:** ¿Alguna vez has pensado cómo funciona Netflix cuando te recomienda una serie, o cómo Instagram decide qué posts ves primero? Todo eso es programación. Pero, ¿qué es exactamente programar?
 
 En este tema aprenderás qué es la programación, qué son los algoritmos y cómo se organizan los programas en paradigmas diferentes.
+
+### 🍳 La cocina como metáfora unificadora
+
+A lo largo de toda esta unidad usaremos **la cocina** como hilo conductor para conectar todos los conceptos:
+
+| Concepto de programación | Equivalente en la cocina |
+|--------------------------|--------------------------|
+| **Tipos de datos** | Ingredientes: harina, huevo, aceite... cada uno tiene propiedades |
+| **Variables** | Cazuelas yRecipientes: contienen ingredientes que pueden cambiar |
+| **Constantes** | Receta fija: la proporción de sal nunca cambia |
+| **Operadores** | Utensilios: cuchillo (cortar), batidora (mezclar), horno (transformar) |
+| **Entrada de datos** | Pedido del cliente: "quiero una tortilla de 3 huevos" |
+| **Proceso** | La cocción: transformar ingredientes crudos en un plato |
+| **Salida de datos** | El plato servido: el resultado final para el cliente |
+| **Algoritmo** | La receta: pasos ordenados para conseguir el resultado |
+| **Métodos/Funciones** | Técnicas reutilizables: "batir huevos", "calentar sartén" |
+| **Comentarios** | Notas del chef: "este paso es delicado, no quemes la salsa" |
+
+> 💡 **Analogía:** Programar es como montar un restaurante. Necesitas ingredientes (datos), una receta (algoritmo), utensilios (operadores) y saber qué pide el cliente (entrada). Si te falta alguno de estos, el plato (programa) no sale bien.
 
 **Objetivos de aprendizaje:**
 
@@ -208,6 +229,8 @@ Además de las 6 básicas, un buen algoritmo debe ser:
 ## 1.3. Paradigmas de programación
 
 Un **paradigma de programación** es un estilo o forma de programar. No es un lenguaje, sino una forma de pensar y organizar el código. C# es **multiparadigma**, lo que significa que soporta varios paradigmas.
+
+> 📝 **Nota:** Veremos cada paradigma en profundidad a lo largo del curso. Ahora solo necesitas saber que existen y qué los diferencia. No te preocupes si aún no entiendes todos los ejemplos — los iremos viendo poco a poco.
 
 ### Programación imperativa
 
@@ -556,6 +579,45 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 
 > 💡 **Analogía:** El algoritmo es el plano de una casa. El programa es la casa construida. Puedes tener un plano perfecto pero construir mal la casa, o construir una casa sin plano (que probablemente se caiga).
 
+## 1.6. Proyecto integrador: Pokédex
+
+A lo largo de esta unidad vamos a construir una **Pokédex** paso a paso. Cada tema que aprendamos se aplicará a este proyecto, de forma que al final tendrás un programa completo que habrá ido creciendo contigo.
+
+### Qué es una Pokédex
+
+La Pokédex es una enciclopedia electrónica del mundo Pokémon. Nuestra versión pedirá datos al usuario, los procesará y mostrará información útil:
+
+```
+╔══════════════════════════════════════╗
+║        🎮 MI POKÉDEX — UD01          ║
+╠══════════════════════════════════════╣
+║  Nombre:    Pikachu                  ║
+║  Tipo:      Eléctrico                ║
+║  CP:        452                      ║
+║  Nivel:     25                       ║
+║  IV:        87.5%                    ║
+║  ¿EsLegendario? No                   ║
+╚══════════════════════════════════════╝
+```
+
+### Cada tema, un paso del proyecto
+
+| Tema | Qué aporta a la Pokédex |
+|------|--------------------------|
+| **Tema 1** | Definimos el problema (algoritmo) |
+| **Tema 2** | Configuramos el entorno (.NET) |
+| **Tema 3** | Creamos la solución y el proyecto |
+| **Tema 4** | Escribimos la estructura del programa |
+| **Tema 5** | Elegimos los tipos de datos (string, int, double, bool) |
+| **Tema 6** | Declaramos variables y constantes |
+| **Tema 7** | Hacemos cálculos (CP, IV, nivel) |
+| **Tema 8** | Convertimos datos de entrada |
+| **Tema 9** | Pedimos datos y mostramos resultados |
+| **Tema 10** | Documentamos el código |
+| **Tema 11** | Resumen y checklist |
+
+> 💡 **Consejo:** No te limites a leer. **Abre el IDE y crea la Pokédex paso a paso** junto con los temas. Al final tendrás un programa funcional y habrás praticado cada concepto.
+
 ---
 
 **Resumen del punto:**
@@ -569,6 +631,8 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 | **Lenguaje** | Sistema de signos para escribir programas |
 | **Léxico** | Símbolos permitidos del lenguaje |
 | **Sintaxis** | Reglas de construcción |
-| **Semántica** | Signado de las construcciones |
+| **Semántica** | Significado de las construcciones |
+| **Metáfora cocina** | Ingredientes (datos), receta (algoritmo), utensilios (operadores) |
+| **Pokédex** | Proyecto integrador que construiremos a lo largo de la unidad |
 
 En el siguiente punto veremos el entorno de desarrollo .NET, el SDK, la CLI y las herramientas que usaremos durante todo el curso.

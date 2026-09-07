@@ -13,6 +13,8 @@
 
 En este tema aprenderás a crear y usar variables, constantes y literales en C#.
 
+> 🎮 **Proyecto Pokédex:** Declaramos las variables de un Pokémon: `string nombre`, `int cp`, `double nivel`, `bool esLegendario`. La constante `MaxCp` no cambia nunca.
+
 **Objetivos de aprendizaje:**
 
 - Declarar y asignar variables

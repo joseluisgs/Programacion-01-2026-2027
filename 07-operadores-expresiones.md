@@ -301,6 +301,22 @@ int resultado2 = (2 + 3) * 4;  // 20 (2+3=5, luego 5*4)
 
 > 💡 **Consejo:** Cuando dudes de la precedencia, usa paréntesis. Es más legible y evita errores.
 
+📌 **Ejemplo real de error por precedencia:** Imagina que estás calculando el precio con IVA y un descuento en una tienda online:
+
+```csharp
+// ❌ ERROR REAL: el programador pensó que primero se sumaba el IVA
+double precioFinal = precioBase + iva * (1 - descuento);
+// Si precioBase=100, iva=21, descuento=0.1:
+// El programa calcula: 100 + 21 * 0.9 = 100 + 18.9 = 118.9
+// El programador quería: (100 + 21) * 0.9 = 108.9
+
+// ✅ CORRECTO: con paréntesis explícitos
+double precioFinal = (precioBase + iva) * (1 - descuento);
+// Resultado: 108.9 ✅
+```
+
+> ⚠️ **Advertencia:** Este tipo de error **no produce error de compilación** — el código compila perfectamente, pero el resultado es incorrecto. Son los errores más peligrosos porque pasan desapercibidos.
+
 ### Operador ternario (`? :`)
 
 Es una forma abreviada de escribir un `if-else` en una sola línea:

@@ -1,5 +1,6 @@
 - [4. Estructura de un Programa](#4-estructura-de-un-programa)
   - [4.1. Bloques que componen un programa](#41-bloques-que-componen-un-programa)
+    - [El flujo fundamental: Entrada → Proceso → Salida](#el-flujo-fundamental-entrada--proceso--salida)
   - [4.2. Top-Level Statements (C# 14)](#42-top-level-statements-c-14)
   - [4.3. Estructura clásica vs moderna](#43-estructura-clásica-vs-moderna)
   - [4.4. Namespaces](#44-namespaces)
@@ -22,6 +23,40 @@ En este tema aprenderás cómo se estructura un programa en C#, qué son los blo
 - Usar `using static` para simplificar el código
 
 ## 4.1. Bloques que componen un programa
+
+Todo programa informático, sin importar su complejidad, sigue un flujo básico que se repite una y otra vez:
+
+### El flujo fundamental: Entrada → Proceso → Salida
+
+```mermaid
+graph LR
+    A["📥 Entrada\n(Datos)"] --> B["⚙️ Proceso\n(Cálculos)"]
+    B --> C["📤 Salida\n(Resultados)"]
+    C -->|"¿Necesito más datos?"| A
+
+    style A fill:#2196F3,color:#fff
+    style B fill:#FF9800,color:#fff
+    style C fill:#4CAF50,color:#fff
+```
+
+**Casi todo programa** sigue este patrón:
+
+| Fase | Qué hace | Ejemplo Pokédex |
+|------|----------|-----------------|
+| **📥 Entrada** | Recibe datos del usuario | `Console.ReadLine()` → "Pikachu" |
+| **⚙️ Proceso** | Transforma, calcula, decide | Calcular CP, nivel, IV |
+| **📤 Salida** | Muestra el resultado | `Console.WriteLine()` → resultado |
+
+> 💡 **Analogía de la cocina:** El cliente pide (entrada), el chef cocina (proceso), el camarero sirve el plato (salida). Si el cliente pide otro plato, el ciclo se repite.
+
+📌 **Ejemplo real:** Cuando haces login en una web:
+1. **Entrada** escribes usuario y contraseña
+2. **Proceso** el servidor verifica si coinciden con la base de datos
+3. **Salida** si son correctas, accedes al perfil; si no, ves un error
+
+Este flujo es tan fundamental que verás en él **todos los programas** que escribas, desde un script de 5 líneas hasta una aplicación completa.
+
+### Bloques que componen un programa
 
 Un programa informático se compone de varios bloques fundamentales:
 

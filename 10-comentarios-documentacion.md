@@ -2,6 +2,8 @@
   - [10.1. ¿Qué son los comentarios?](#101-qué-son-los-comentarios)
   - [10.2. Tipos de comentarios en C#](#102-tipos-de-comentarios-en-c)
   - [10.3. Cuándo usar comentarios](#103-cuándo-usar-comentarios)
+    - [Comentarios en equipo: el código es para otros programadores](#comentarios-en-equipo-el-código-es-para-otros-programadores)
+    - [Checklist de comentarios para trabajo en equipo](#checklist-de-comentarios-para-trabajo-en-equipo)
   - [10.4. Documentación XML](#104-documentación-xml)
 
 
@@ -10,6 +12,8 @@
 > 💡 **Punto de partida:** ¿Alguna vez has vuelto a leer algo que escribiste hace meses y no entendías qué querías decir? A los programadores nos pasa lo mismo con nuestro código. Los comentarios son las "notas al margen" que nos ayudan a recordar por qué hicimos algo de una manera determinada.
 
 En este tema aprenderás a documentar tu código con comentarios en C#.
+
+> 🎮 **Proyecto Pokédex:** Documentamos los métodos de la Pokédex con XML para que otros programadores (o tú mismo dentro de 3 meses) entiendan qué hace cada uno.
 
 **Objetivos de aprendizaje:**
 
@@ -73,6 +77,14 @@ int Sumar(int a, int b)
 
 ## 10.3. Cuándo usar comentarios
 
+### Comentarios en equipo: el código es para otros programadores
+
+> 📝 **Nota:** El **80% del tiempo** de un programador no es escribir código nuevo, sino **leer y mantener** código existente. Si tú escribes un código sin comentarios hoy, dentro de 3 meses no lo entenderás ni tú. Y si trabajas en equipo, tus compañeros tampoco.
+
+📌 **Ejemplo real:** En empresas como Google, Microsoft o Spotify, los programadores trabajan en equipos de 5-15 personas. El mismo código lo tocan 3-4 programadores diferentes. Si no hay comentarios, cada uno pierde tiempo intentando entender qué hace el código del otro. **Los comentarios ahorran tiempo y dinero.**
+
+> 💡 **Analogía:** Los comentarios son como las notas que dejas en una receta de cocina. Si mañana cocinas de nuevo, recordarás por qué pusiste "solo una pizca de sal" en vez de "una cucharada". Si alguien más cocina tu receta, entenderá tu decisión.
+
 ### ✅ BUENO: Comentar el "por qué"
 
 ```csharp
@@ -128,6 +140,20 @@ double iva = CalcularIva(producto.Tipo);
 ```
 
 > 💡 **Consejo:** Los comentarios son un mal necesario. El mejor comentario es código claro y autoexplicativo. Si tu código necesita muchos comentarios, probablemente necesite ser reescrito.
+
+### Checklist de comentarios para trabajo en equipo
+
+Antes de entregar código, asegúrate de:
+
+| ¿Lo tienes? | Por qué importa |
+|-------------|-----------------|
+| ✅ Comentario en cada método público | Otros programadores necesitan saber qué hace |
+| ✅ Comentarios en decisiones de negocio | "¿Por qué 1.21 en vez de 1.16? Por el IVA general" |
+| ✅ Código autoexplicativo | Nombres claros que se entienden sin leer comentarios |
+| ✅ Sin código comentado | Borrar lo que no se usa, no comentarlo |
+| ✅ Sin comentarios desactualizados | Si cambias el código, actualiza el comentario |
+
+> ⚠️ **Advertencia:** Un comentario desactualizado es **peor que no tener comentario**. Si el código dice `iva = 0.21` pero el comentario dice "IVA = 16%", tu compañero confiará en el comentario y se equivocará.
 
 ## 10.4. Documentación XML
 
