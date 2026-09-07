@@ -88,7 +88,7 @@ Crea un archivo `ej22.cs` que pida la temperatura del servidor (decimal). Si es 
 Crea un archivo `ej23.cs` que pida el precio base de una skin (decimal). Calcula el IVA (21%) y el precio final. Muestra: "Skin: {precio}€ + {iva}€ IVA = {precioFinal}€".
 
 **Ejercicio 24: Resumen de Compra en Steam**
-Crea un archivo `ej22.cs` que pida el precio de un juego y la cantidad de juegos. Calcula el subtotal, el descuento del 10% si se gastan más de 50€, y el total final. Muestra el desglose.
+Crea un archivo `ej24.cs` que pida el precio de un juego y la cantidad de juegos. Calcula el subtotal, el descuento del 10% si se gastan más de 50€, y el total final. Muestra el desglose.
 
 ---
 
@@ -120,10 +120,10 @@ Crea un archivo `ej30.cs` con `const double COMISION = 0.01;` (1%). Pide el mont
 Crea un archivo `ej31.cs` que declare `double precio = 19.99;` y lo convierta a `int` con `(int)precio`. Muestra ambos valores. Explica por qué pierdes los decimales y en qué situaciones podría ser útil (ej: mostrar solo la parte entera de un precio).
 
 **Ejercicio 32: Parse vs TryParse en un Login**
-Crea un archivo `ej32.cs` que pida al usuario su "ID de jugador" (número). Intenta convertirlo con `int.Parse()` en un bloque `try-catch`. Luego haz lo mismo con `int.TryParse()` sin `try-catch`. Compara ambos enfoques.
+Crea un archivo `ej32.cs` que pida al usuario su "ID de jugador" (número). Intenta convertirlo con `int.Parse()` directamente y muestra el resultado. Luego haz lo mismo con `int.TryParse()`, comprobando si el resultado es válido antes de usarlo. Compara ambos enfoques: ¿qué pasa si el usuario escribe "abc" en cada caso?
 
 **Ejercicio 33: Convert.ToInt32 vs int.Parse**
-Crea un archivo `ej33.cs` que demuestre la diferencia: `Convert.ToInt32("123")`, `int.Parse("123")`, `Convert.ToInt32("")` (lanza excepción), `int.TryParse("abc", out var res)` (devuelve false). Muestra el resultado de cada uno.
+Crea un archivo `ej33.cs` que demuestre la diferencia: `Convert.ToInt32("123")`, `int.Parse("123")`, `Convert.ToInt32(null)` (retorna 0), `int.TryParse("abc", out var res)` (devuelve false). Muestra el resultado de cada uno.
 
 **Ejercicio 34: Booleano a Texto para un Chat**
 Crea un archivo `ej34.cs` que declare `bool enLinea = true;` y lo convierta a `string` con `.ToString()`. Concatena con un mensaje: "{usuario} está {enLinea}". Luego muestra lo mismo con un ternario: "en línea" o "desconectado".

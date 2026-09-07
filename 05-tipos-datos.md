@@ -123,6 +123,24 @@ string nombre = "Ana García";    // Texto (múltiples caracteres)
 
 > 📝 **Nota:** `string` no es un tipo de valor como los demás. Es una referencia. Pero se usa tan frecuente que parece un tipo básico.
 
+### Tipos adicionales
+
+| Tipo | Descripción | Uso típico |
+|------|-------------|------------|
+| `nint` / `nuint` | Entero nativo de plataforma (32 o 64 bits según el SO) | Índices, punteros |
+| `Half` | Punto flotante de 16 bits (menor precisión que float) | Gráficos, IA, ahorro de memoria |
+| `DateTime` | Fecha y hora | `DateTime.Now`, `DateTime.Parse("2026-09-07")` |
+| `DateOnly` | Solo fecha (sin hora) | `DateOnly.FromDateTime(DateTime.Now)` |
+| `TimeOnly` | Solo hora (sin fecha) | `TimeOnly.FromDateTime(DateTime.Now)` |
+| `Guid` | Identificador único global | `Guid.NewGuid()` — identificadores únicos |
+
+```csharp
+DateTime ahora = DateTime.Now;              // 07/09/2026 12:34:56
+DateOnly hoy = DateOnly.FromDateTime(ahora); // 07/09/2026
+TimeOnly hora = TimeOnly.FromDateTime(ahora); // 12:34:56
+Guid id = Guid.NewGuid();                    // a1b2c3d4-e5f6-7890-abcd-ef1234567890
+```
+
 ## 5.4. Tabla resumen de tipos
 
 | Tipo | Signo | Tamaño | Rango aproximado | Uso típico |

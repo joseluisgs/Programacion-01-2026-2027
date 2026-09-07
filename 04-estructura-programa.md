@@ -4,25 +4,21 @@
   - [4.3. Estructura clásica vs moderna](#43-estructura-clásica-vs-moderna)
   - [4.4. Namespaces](#44-namespaces)
   - [4.5. Using static: comodidad en la escritura](#45-using-static-comodidad-en-la-escritura)
-  - [4.6. El archivo .csproj](#46-el-archivo-csproj)
-  - [4.7. El archivo .slnx](#47-el-archivo-slnx)
-  - [4.8. Scripting en C#: lo primero que aprenderás](#48-scripting-en-c-lo-primero-que-aprenderás)
-  - [4.9. Tu primer "Hola Mundo": paso a paso](#49-tu-primer-hola-mundo-paso-a-paso)
-  - [4.10. Tabla de equivalencias: Pseudocódigo → C# → Java](#410-tabla-de-equivalencias-pseudocódigo--c--java)
+  - [4.6. Tu primer "Hola Mundo": paso a paso](#46-tu-primer-hola-mundo-paso-a-paso)
+  - [4.7. Tabla de equivalencias: Pseudocódigo → C# → Java](#47-tabla-de-equivalencias-pseudocódigo--c--java)
 
 
 # 4. Estructura de un Programa
 
 > 💡 **Punto de partida:** ¿Alguna vez has visto un libro desordenado sin capítulos, sin índice, sin una estructura clara? Es difícil seguirlo. Lo mismo pasa con un programa sin estructura. Vamos a aprender a organizar nuestro código correctamente.
 
-En este tema aprenderás cómo se estructura un programa en C#, qué son los bloques fundamentales, cómo usar Top-Level Statements y la diferencia entre `.slnx` y `.csproj`.
+En este tema aprenderás cómo se estructura un programa en C#, qué son los bloques fundamentales y cómo usar Top-Level Statements.
 
 **Objetivos de aprendizaje:**
 
 - Identificar los bloques que componen un programa informático
 - Entender la estructura de un programa en C#
 - Usar Top-Level Statements correctamente
-- Comprender la diferencia entre `.slnx` y `.csproj`
 - Usar `using static` para simplificar el código
 
 ## 4.1. Bloques que componen un programa
@@ -302,13 +298,13 @@ WriteLine($"Tienes {edad} años");
 ### Usos más comunes de using static
 
 ```csharp
-// Console:Write y Console.WriteLine
+// Console.WriteLine y Console.Write
 using static System.Console;
 
-// Convert:ToInt32, Convert:ToDouble, etc.
+// Convert.ToInt32, Convert.ToDouble, etc.
 using static System.Convert;
 
-// Math:Max, Math:Min, Math:Sqrt, etc.
+// Math.Max, Math.Min, Math.Sqrt, etc.
 using static System.Math;
 
 WriteLine("Solo Write y WriteLine");
@@ -318,9 +314,9 @@ WriteLine($"La raíz cuadrada de 16 es: {Sqrt(16)}");
 
 > ⚠️ **Advertencia:** `using static` puede reducir la legibilidad si se abusa. Úsalo solo con clases que usas muy frecuentemente (como `Console`). No lo uses con clases que tengan nombres genéricos que puedan causar confusión.
 
-## 4.6. El archivo .csproj
+### Configurar `using static` global en el `.csproj`
 
-El `.csproj` es el archivo de configuración de un proyecto. Define qué framework usar, qué paquetes instalar y cómo compilar.
+Si usas `using static` en casi todos los archivos, puedes configurarlo en el `.csproj` para que se aplique automáticamente a todo el proyecto:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -330,154 +326,26 @@ El `.csproj` es el archivo de configuración de un proyecto. Define qué framewo
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>14</LangVersion>
   </PropertyGroup>
+
+  <!-- Global Usings: se aplican a TODOS los archivos del proyecto -->
+  <ItemGroup>
+    <Using Include="System.Console" Static="true" />
+    <Using Include="System.Math" Static="true" />
+  </ItemGroup>
 
 </Project>
 ```
 
-**Explicación de cada propiedad:**
+Con esta configuración, en **todos los archivos** del proyecto puedes usar directamente `WriteLine`, `ReadLine`, `Max`, `Min` sin escribir `Console.` o `Math.`.
 
-| Propiedad | Descripción | Valor |
-|-----------|-------------|-------|
-| `OutputType` | Tipo de salida | `Exe` (ejecutable) o `Library` (biblioteca) |
-| `TargetFramework` | Framework de destino | `net10.0` para .NET 10 |
-| `ImplicitUsings` | Imports automáticos | `enable` para namespaces comunes |
-| `Nullable` | Gestión estricta de nulos | `enable` (recomendado siempre) |
-| `TreatWarningsAsErrors` | Avisos como errores | `true` (obliga a código limpio) |
-| `LangVersion` | Versión del lenguaje C# | `14` para .NET 10, `15` para .NET 11 |
+> 📝 **Nota:** `<Using Include="System.Console" Static="true" />` equivale a poner `using static System.Console;` en cada archivo. Es como un "importar global" que aplica a todo el proyecto.
 
-> 📝 **Nota:** En .NET 10 usamos C# 14. En .NET 11 usaremos C# 15. La propiedad `LangVersion` controla qué features del lenguaje están disponibles.
+> 💡 **Consejo:** Para proyectos de aprendizaje y scripts, poner el `using static` en el `.csproj` ahorra mucho trabajo. Para proyectos grandes donde quieres más control, mejor ponerlo archivo por archivo.
 
-### Añadir paquetes NuGet al proyecto
+> ⚠️ **Advertencia:** Si pones `using static` global y algún archivo tiene un método llamado `WriteLine`, habrá un conflicto de nombres. Úsalo solo con clases que no tengan métodos con nombres genéricos.
 
-```bash
-# Desde la CLI
-dotnet add package Newtonsoft.Json
-```
-
-El `.csproj` se actualiza automáticamente:
-
-```xml
-<ItemGroup>
-  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-</ItemGroup>
-```
-
-## 4.7. El archivo .slnx
-
-El `.slnx` es el archivo de solución en el nuevo formato XML. Es más simple y legible que el antiguo `.sln`.
-
-```xml
-<Solution>
-  <Project Path="MiPrimeraSolucion/MiPrimeraSolucion.csproj" />
-</Solution>
-```
-
-**Con tests incluidos:**
-
-```xml
-<Solution>
-  <Project Path="MiPrimeraSolucion/MiPrimeraSolucion.csproj" />
-  <Project Path="MiPrimeraSolucion.Test/MiPrimeraSolucion.Test.csproj" />
-</Solution>
-```
-
-> 📝 **Nota:** El formato `.slnx` es el nuevo estándar de .NET. El antiguo formato `.sln` sigue funcionando pero es más complejo.
-
-## 4.8. Scripting en C# 14: lo primero que aprenderás
-
-Desde .NET 10 con C# 14, podemos escribir y ejecutar código C# directamente como un script, sin necesidad de crear un proyecto (.csproj). Solo necesitas un archivo `.cs`:
-
-```csharp
-// Archivo: hola.cs
-Console.WriteLine("¡Hola desde un script!");
-Console.WriteLine($"2 + 3 = {2 + 3}");
-```
-
-Para ejecutarlo, solo necesitas un comando:
-
-```bash
-dotnet run hola.cs
-```
-
-> 💡 **Analogía:** Scripting es como escribir una nota rápida en un papel. No necesitas preparar un documento formal, solo escribes y ejecutas. El compilador crea un proyecto temporal en caché, compila y ejecuta automáticamente.
-
-### Usar paquetes NuGet en scripts
-
-Si necesitas usar un paquete externo, lo indicas con `#:package`:
-
-```csharp
-#:package Newtonsoft.Json
-
-using Newtonsoft.Json;
-
-var persona = new { Nombre = "Ana", Edad = 25 };
-string json = JsonConvert.SerializeObject(persona);
-Console.WriteLine(json);
-```
-
-### Usar SDKs en scripts
-
-Para usar un SDK (como el web SDK para APIs mínimas), lo indicas con `#:sdk`:
-
-```csharp
-#:sdk Microsoft.NET.Sdk.Web
-
-var app = WebApplication.Create(args);
-app.MapGet("/", () => "Hola desde una API mínima");
-app.Run();
-```
-
-📌 **Ejemplo real:** Los scripts de C# son ideales para automatizar tareas del sistema, probar ideas rápidas o aprender. Muchos administradores de sistemas los usan para renombrar archivos, convertir datos o hacer copias de seguridad.
-
-### Diferencia entre script y proyecto
-
-| Característica | Script (`.cs`) | Proyecto (`.csproj`) |
-|----------------|-----------------|----------------------|
-| **Archivos** | Uno o varios `.cs` | `Program.cs` + `.csproj` |
-| **Compilación** | Automática en caché | Compila a ejecutable |
-| **Uso** | Pruebas rápidas, scripts | Aplicaciones reales |
-| **Rendimiento** | Más lento (compila cada vez) | Más rápido |
-| **Distribución** | Necesita dotnet install | Ejecutable independiente |
-
-> 📝 **Nota:** Más información sobre scripting en [C# Moves to Scripting (NetMentor)](https://www.netmentor.es/entrada/csharp-scripting).
-
-## 4.9. Formato .slnx: el nuevo estándar
-
-En .NET 10, el formato de solución por defecto es `.slnx` (XML-based), no el antiguo `.sln`. El nuevo formato es más simple y legible:
-
-**Antes (.sln - formato antiguo):**
-```
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
-...
-```
-
-**Ahora (.slnx - nuevo formato):**
-```xml
-<Solution>
-  <Project Path="MiProyecto/MiProyecto.csproj" />
-</Solution>
-```
-
-### Migrar de .sln a .slnx
-
-Si tienes un proyecto antiguo con `.sln`, puedes migrar con un solo comando:
-
-```bash
-dotnet sln migrate
-```
-
-Esto genera un archivo `.slnx` a partir del `.sln` existente.
-
-> ⚠️ **Advertencia:** Si tienes ambos archivos (`.sln` y `.slnx`) en la misma carpeta, debes especificar cuál usar: `dotnet build MiSolucion.slnx`. Si no, el compilador no sabe cuál elegir.
-
-> 📝 **Nota:** Más información en [Introducing support for SLNX (Microsoft DevBlog)](https://devblogs.microsoft.com/dotnet/introducing-slnx-support-dotnet-cli/).
-
-## 4.10. Tu primer "Hola Mundo": paso a paso
+## 4.6. Tu primer "Hola Mundo": paso a paso
 
 > 💡 **Punto de partida:** ¿Recuerdas la regla de oro? **Primero el papel, luego el código.** Antes de escribir este programa, ya deberías haber pensado qué quieres hacer: mostrar un mensaje, la fecha y el nombre. Eso es análisis y diseño. Ahora solo falta la codificación, que es lo que vamos a hacer aquí.
 
@@ -580,7 +448,7 @@ dotnet sln list
 dotnet run
 ```
 
-## 4.10. Tabla de equivalencias: Pseudocódigo → C# → Java
+## 4.7. Tabla de equivalencias: Pseudocódigo → C# → Java
 
 Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 

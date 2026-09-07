@@ -172,58 +172,20 @@ Console.WriteLine($"{nombre}, {edad} años, vive en {ciudad}");
 
 > 💡 **Consejo:** Cuando pidas datos numéricos, muestra un mensaje claro indicando qué tipo de dato esperas. Por ejemplo: "Introduce tu edad (número):".
 
-## 9.3. Usar using static para simplificar
-
-Como vimos en el tema 4, puedes usar `using static` para no escribir `Console.` siempre:
+### Otros métodos útiles de Console
 
 ```csharp
-using static System.Console;
+// Console.ReadKey: lee una tecla sin necesidad de Enter
+Console.Write("Pulsa cualquier tecla para continuar...");
+ConsoleKeyInfo tecla = Console.ReadKey();  // Espera una tecla
+Console.WriteLine();  // Salto de línea después
 
-// Sin Console:WriteLine → solo WriteLine
-WriteLine("Hola");
-Write("¿Nombre? ");
-string nombre = ReadLine();
-WriteLine($"Hola, {nombre}!");
+// Environment.NewLine: salto de línea multiplataforma
+string mensaje = "Primera línea" + Environment.NewLine + "Segunda línea";
+Console.WriteLine(mensaje);
 ```
 
-Esto es especialmente útil en programas con mucha entrada/salida, donde repites `Console.` decenas de veces.
-
-### Poniendo `using static` en el `.csproj`
-
-Si usas `using static` en casi todos los archivos, puedes configurarlo en el `.csproj` para que se aplique automáticamente a todo el proyecto. Así no necesitas escribir `using static System.Console;` en cada archivo:
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <!-- Global Usings: se aplican a TODOS los archivos del proyecto -->
-  <ItemGroup>
-    <Using Include="System.Console" Static="true" />
-    <Using Include="System.Math" Static="true" />
-  </ItemGroup>
-
-</Project>
-```
-
-Con esta configuración, en **todos los archivos** del proyecto puedes usar directamente:
-
-```csharp
-// No necesitas "using static System.Console;" aquí
-WriteLine("Hola desde cualquier archivo");
-WriteLine($"El máximo de 5 y 10 es: {Max(5, 10)}");
-```
-
-> 📝 **Nota:** `<Using Include="System.Console" Static="true" />` equivale a poner `using static System.Console;` en cada archivo. Es como un "importar global" que aplica a todo el proyecto.
-
-> 💡 **Consejo:** Para proyectos de aprendizaje y scripts, poner el `using static` en el `.csproj` ahorra mucho trabajo. Para proyectos grandes donde quieres más control, mejor ponerlo archivo por archivo.
-
-> ⚠️ **Advertencia:** Si pones `using static` global y algún archivo tiene un método llamado `WriteLine`, habrá un conflicto de nombres. Úsalo solo con clases que no tengan métodos con nombres genéricos.
+> 📝 **Nota:** `Environment.NewLine` es útil cuando construyes strings con saltos de línea fuera de `Console.WriteLine`. En Windows produce `\r\n`, en Linux `\n`.
 
 ---
 

@@ -154,6 +154,40 @@ double precioDouble = Convert.ToDouble(precio);  // 19.99
 
 > 📝 **Nota:** `Convert` es más tolerante que `Parse`. Por ejemplo, `Convert.ToInt32(null)` retorna `0`, mientras que `int.Parse(null)` lanza excepción.
 
+### Conversión con ChangeType
+
+`Convert.ChangeType` permite convertir entre tipos de forma genérica (cuando no sabes el tipo en tiempo de compilación):
+
+```csharp
+object valor = "42";
+int entero = Convert.ToInt32(valor);     // 42
+double doble = Convert.ToDouble(valor);  // 42.0
+
+// Útil con tipos dinámicos
+Type tipoDestino = typeof(double);
+object resultado = Convert.ChangeType(valor, tipoDestino);  // 42.0
+```
+
+### Conversión con el operador `as`
+
+El operador `as` intenta convertir un tipo a otro. Si falla, retorna `null` en vez de lanzar excepción:
+
+```csharp
+object texto = "Hola";
+string cadena = texto as string;  // "Hola" — funciona
+
+object entero = 42;
+string falla = entero as string;  // null — no compila, pero no lanza excepción
+
+// Uso típico: comprobar antes de usar
+if (texto is string mensaje)
+{
+    Console.WriteLine(mensaje);  // "Hola"
+}
+```
+
+> 💡 **Consejo:** `as` solo funciona con tipos de referencia o nullable. Para tipos de valor, usa `is` con pattern matching o un cast explícito.
+
 ### Conversión con expresiones
 
 ```csharp

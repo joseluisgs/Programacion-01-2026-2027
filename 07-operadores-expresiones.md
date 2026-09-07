@@ -236,7 +236,7 @@ bool simplificado1 = !a || !b;  // true (a es false O b es true)
 
 // Ley 2: Negación de un OR
 bool original2 = !(a || b);     // false (al menos uno es true)
-bool simplificado2 = !a && !b;  // false (a no es false Y b no es false)
+bool simplificado2 = !a && !b;  // false (a no es true Y b no es true)
 ```
 
 > 💡 **Consejo:** Las Leyes de De Morgan son muy útiles para simplificar condiciones complejas y hacer el código más legible.
@@ -247,11 +247,34 @@ Los operadores `&&` y `||` usan **cortocircuito**: si el resultado final ya est�
 
 ```csharp
 // Si x es 0, NO evalúa la división (evita error)
-if (x != 0 && (10 / x > 2))
+if (x != 0 && 10 / x > 2)
 {
     // Solo llega aquí si x no es 0
 }
 ```
+
+### Asignación nula condicional (??=)
+
+El operador `??=` asigna un valor **solo si la variable es null**. Es útil para inicializar variables de forma condicional:
+
+```csharp
+string? nombre = null;
+
+// Sin ??=
+if (nombre == null)
+{
+    nombre = "Anónimo";
+}
+
+// Con ??= (mucho más conciso)
+nombre ??= "Anónimo";  // Solo asigna si es null
+
+// Otro ejemplo: inicializar una lista solo si es null
+List<string>? items = null;
+items ??= new List<string>();  // Crea la lista solo si no existía
+```
+
+> 💡 **Consejo:** `??=` es especialmente útil en constructores y métodos de inicialización donde quieres establecer un valor por defecto solo si nadie lo ha establecido antes.
 
 ## 7.6. Precedencia de operadores
 

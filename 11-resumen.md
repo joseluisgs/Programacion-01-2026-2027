@@ -121,7 +121,7 @@ graph TD
 - **Preciso:** Instrucciones exactas (no "más o menos")
 - **Entrada:** Tiene datos de entrada (parámetros)
 - **Salida:** Produce un resultado
-- **Efectividad:** Cada paso es realizables
+- **Efectividad:** Cada paso es realizable
 - **Representación:** Diagramas de flujo, pseudocódigo, lenguaje natural
 
 ### Paradigmas de Programación

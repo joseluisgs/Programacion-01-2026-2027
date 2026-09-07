@@ -493,7 +493,7 @@ Un **lenguaje de programación** es el "idioma" que usamos para comunicarnos con
 |----------|-------------|---------------|
 | **Léxico (Alfabeto)** | Símbolos permitidos | `+`, `-`, `*`, `/`, `=`, `;`, `{}`, `()` |
 | **Sintaxis** | Reglas de construcción | `int numero = 10;` es válido, `int = 10 numero;` no |
-| **Semántica** | Significado de las construcciones | `int x = "hola";` es sintácticamente válido pero semánticamente incorrecto |
+| **Semántica** | Significado de las construcciones | `int x = 10;` es correcto (texto en número) → semántica válida. Pero en C#, `int x = "hola";` directamente no compila: el compilador detecta el error de tipos antes de que exista un programa ejecutable. |
 
 ```csharp
 // Los tres componentes del lenguaje en acción

@@ -10,6 +10,32 @@ En esta actividad, realizarás una investigación comparativa sobre cómo un pro
 
 **Tareas a Realizar:**
 
+0. **Hola Mundo en los 4 lenguajes:** Escribe y ejecuta un "Hola Mundo" en cada lenguaje para ver las diferencias de sintaxis:
+
+```java
+// Java
+public class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println("Hola Mundo");
+    }
+}
+```
+
+```csharp
+// C# (con Top-Level Statements)
+Console.WriteLine("Hola Mundo");
+```
+
+```python
+# Python
+print("Hola Mundo")
+```
+
+```typescript
+// TypeScript (se transpila a JavaScript)
+console.log("Hola Mundo");
+```
+
 1. **Del Código Fuente al Ejecutable:**
    - Investiga y crea un diagrama de flujo o un esquema detallado que ilustre, paso a paso, el proceso completo para cada lenguaje:
      - **Java:** Desde el archivo `.java` hasta la ejecución por la JVM. Identifica el **Bytecode**.
