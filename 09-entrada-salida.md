@@ -104,6 +104,47 @@ Console.WriteLine($"Porcentaje: {0.85:P0}");   // 85%
 Console.WriteLine($"Número con separadores: {1000000:N0}");  // 1.000.000
 ```
 
+### Alineación de strings
+
+La interpolación permite **alinear** el texto dentro de un ancho fijo. La sintaxis es:
+
+```csharp
+{variable,ancho}
+{variable,-ancho}   // negativo = alinear a la izquierda
+{variable,ancho}    // positivo = alinear a la derecha
+```
+
+```csharp
+string nombre = "Ana";
+Console.WriteLine($"|{nombre,-10}|");  // |Ana       |  ← izquierda, 10 chars
+Console.WriteLine($"|{nombre,10}|");   // |       Ana|  ← derecha, 10 chars
+Console.WriteLine($"|{nombre,-20}|");  // |Ana                 |  ← más ancho
+```
+
+**¿Para qué sirve?** Para crear tablas alineadas en consola:
+
+```csharp
+string p1 = "Pikachu";
+string p2 = "Charizard";
+int cp1 = 2500;
+int cp2 = 1200;
+
+Console.WriteLine($"|{"Pokemon",-15} | {"CP",6} |");  // Cabecera
+Console.WriteLine($"|{"───────────────",-15} | {"──────",6} |");
+Console.WriteLine($"|{p1,-15} | {cp1,6} |");           // Pikachu alineado a izquierda
+Console.WriteLine($"|{p2,-15} | {cp2,6} |");           // Charizard alineado a izquierda
+```
+
+Salida:
+```
+|Pokemon         |     CP |
+|─────────────── | ------ |
+|Pikachu         |   2500 |
+|Charizard       |   1200 |
+```
+
+> 💡 **Consejo:** Usa negativo (`-15`) para texto (izquierda) y positivo (`6`) para números (derecha). Así las columnas quedan alineadas perfectamente.
+
 > 💡 **Analogía:** La interpolación es como rellenar un formulario con campos predefinidos. En vez de escribir "Hola" + nombre + ", tienes" + edad + " años", escribes `$"Hola {nombre}, tienes {edad} años"`. Mucho más claro.
 
 **Comparativa:**
