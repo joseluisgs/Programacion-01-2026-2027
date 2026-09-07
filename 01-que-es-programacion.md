@@ -15,7 +15,6 @@
     - [1.3.7. Basado en eventos](#137-basado-en-eventos)
   - [1.4. Lenguajes de programación](#14-lenguajes-de-programación)
   - [1.5. Diferencia entre algoritmo y programa](#15-diferencia-entre-algoritmo-y-programa)
-  - [1.6. Proyecto integrador: Pokédex](#16-proyecto-integrador-pokédex)
 
 
 # 1. Qué es la Programación
@@ -579,45 +578,6 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 
 > 💡 **Analogía:** El algoritmo es el plano de una casa. El programa es la casa construida. Puedes tener un plano perfecto pero construir mal la casa, o construir una casa sin plano (que probablemente se caiga).
 
-## 1.6. Proyecto integrador: Pokédex
-
-A lo largo de esta unidad vamos a construir una **Pokédex** paso a paso. Cada tema que aprendamos se aplicará a este proyecto, de forma que al final tendrás un programa completo que habrá ido creciendo contigo.
-
-### Qué es una Pokédex
-
-La Pokédex es una enciclopedia electrónica del mundo Pokémon. Nuestra versión pedirá datos al usuario, los procesará y mostrará información útil:
-
-```
-╔══════════════════════════════════════╗
-║        🎮 MI POKÉDEX — UD01          ║
-╠══════════════════════════════════════╣
-║  Nombre:    Pikachu                  ║
-║  Tipo:      Eléctrico                ║
-║  CP:        452                      ║
-║  Nivel:     25                       ║
-║  IV:        87.5%                    ║
-║  ¿EsLegendario? No                   ║
-╚══════════════════════════════════════╝
-```
-
-### Cada tema, un paso del proyecto
-
-| Tema | Qué aporta a la Pokédex |
-|------|--------------------------|
-| **Tema 1** | Definimos el problema (algoritmo) |
-| **Tema 2** | Configuramos el entorno (.NET) |
-| **Tema 3** | Creamos la solución y el proyecto |
-| **Tema 4** | Escribimos la estructura del programa |
-| **Tema 5** | Elegimos los tipos de datos (string, int, double, bool) |
-| **Tema 6** | Declaramos variables y constantes |
-| **Tema 7** | Hacemos cálculos (CP, IV, nivel) |
-| **Tema 8** | Convertimos datos de entrada |
-| **Tema 9** | Pedimos datos y mostramos resultados |
-| **Tema 10** | Documentamos el código |
-| **Tema 11** | Resumen y checklist |
-
-> 💡 **Consejo:** No te limites a leer. **Abre el IDE y crea la Pokédex paso a paso** junto con los temas. Al final tendrás un programa funcional y habrás praticado cada concepto.
-
 ---
 
 **Resumen del punto:**
@@ -633,6 +593,5 @@ La Pokédex es una enciclopedia electrónica del mundo Pokémon. Nuestra versió
 | **Sintaxis** | Reglas de construcción |
 | **Semántica** | Significado de las construcciones |
 | **Metáfora cocina** | Ingredientes (datos), receta (algoritmo), utensilios (operadores) |
-| **Pokédex** | Proyecto integrador que construiremos a lo largo de la unidad |
 
 En el siguiente punto veremos el entorno de desarrollo .NET, el SDK, la CLI y las herramientas que usaremos durante todo el curso.
