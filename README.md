@@ -40,10 +40,9 @@ A lo largo de esta unidad construiremos una **Pokédex** paso a paso. Cada tema 
 
 ## Contenido en YouTube
 
-- [Resumen]()
-- [Tipos de Datos]()
-- [NULL: El error millonario]()
-- [Lenguaje C#: Primeros Pasos]()
+- [Resumen](https://youtu.be/sRnQadFz_gE)
+- [Tipos de Datos, Variables y Operaciones](https://youtu.be/S7oEx_VtF90)
+- [Entrada, Salida y Conversiones de Tipo](https://youtu.be/jSi1oujIhWs)
 - [Lista de Reproducción](https://www.youtube.com/playlist?list=PLK1PMlIrqj3c)
 
 ## Resultados de Aprendizaje y Criterios de Evaluación
