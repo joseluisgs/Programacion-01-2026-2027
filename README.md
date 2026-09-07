@@ -19,21 +19,6 @@ Tema 01. Introducción a la Programación Software. 1DAW. Curso 2026-2027
 10. [Comentarios y Documentación](10-comentarios-documentacion.md)
 11. [Resumen y Conclusiones](11-resumen.md)
 
-## Prácticas
-
-1. [Test de Conocimientos](practicas/01-test.md)
-2. [Cuestionario](practicas/02-cuestionario.md)
-3. [Comparativa de Lenguajes: Java, C#, Python y TypeScript](practicas/03-comparativa-lenguajes.md)
-4. [Ejercicios de Programación](practicas/04-ejercicios.md)
-
-## Contenido en YouTube
-
-- [Resumen]()
-- [Tipos de Datos]()
-- [NULL: El error millonario]()
-- [Lenguaje C#: Primeros Pasos]()
-- [Lista de Reproducción](https://www.youtube.com/playlist?list=PLK1PMlIrqj3c)
-
 ## Resultados de Aprendizaje y Criterios de Evaluación
 
 - RA1: Reconoce la estructura de un programa informático, identificando y relacionando los elementos propios del lenguaje de programación utilizado.
