@@ -22,13 +22,6 @@ A lo largo de esta unidad construiremos una **Pokédex** paso a paso. Cada tema 
 10. [Comentarios y Documentación](10-comentarios-documentacion.md) — Documentamos el código
 11. [Resumen y Conclusiones](11-resumen.md) — Checklist de supervivencia
 
-## Prácticas
-
-1. [Test de Conocimientos](practicas/01-test.md)
-2. [Cuestionario](practicas/02-cuestionario.md)
-3. [Comparativa de Lenguajes: Java, C#, Python y TypeScript](practicas/03-comparativa-lenguajes.md)
-4. [Ejercicios de Programación](practicas/04-ejercicios.md)
-
 ## Mejoras conceptuales
 
 - **Metáfora unificadora (cocina):** Todos los temas conectan con una misma analogía
