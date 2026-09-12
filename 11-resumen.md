@@ -79,7 +79,7 @@ graph TD
 
     EST --> ES1[Top-Level Statements]
     EST --> ES2[Namespaces]
-    EST --> ES3[.slnx vs .csproj]
+    EST --> ES3[slnx vs csproj]
 
     TD --> T1[Enteros: sbyte, short, int, long]
     TD --> T2[Decimales: float, double, decimal]
@@ -95,8 +95,8 @@ graph TD
     OP --> O2[Relacionales]
     OP --> O3[Logicos]
     OP --> O4[Asignacion]
-    OP --> O5[Ternario ?:]
-    OP --> O6[Coalescencia ??]
+    OP --> O5[Ternario]
+    OP --> O6[Coalescencia]
 
     CONV --> C1[Implicita: automatica, segura]
     CONV --> C2[Explicita: casting, peligrosa]
@@ -104,12 +104,27 @@ graph TD
 
     IOS --> IO1[WriteLine, Write]
     IOS --> IO2[ReadLine]
-    IOS --> IO3[Interpolacion $""]
-    IOS --> IO4[Concatenacion +]
+    IOS --> IO3[Interpolacion]
+    IOS --> IO4[Concatenacion]
 
     COM --> CO1[Una linea]
     COM --> CO2[Varias lineas]
     COM --> CO3[Documentacion XML]
+
+    style UD01 fill:#2196F3,color:#fff
+    style FUND fill:#4CAF50,color:#fff
+    style ALG fill:#4CAF50,color:#fff
+    style FLUJO fill:#FF9800,color:#fff
+    style PAR fill:#9C27B0,color:#fff
+    style LENG fill:#2196F3,color:#fff
+    style ENT fill:#2196F3,color:#fff
+    style EST fill:#2196F3,color:#fff
+    style TD fill:#FF9800,color:#fff
+    style VAR fill:#FF9800,color:#fff
+    style OP fill:#FF9800,color:#fff
+    style CONV fill:#FF9800,color:#fff
+    style IOS fill:#4CAF50,color:#fff
+    style COM fill:#607D8B,color:#fff
 ```
 
 ## 11.2. Conceptos Clave
