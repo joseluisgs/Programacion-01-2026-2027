@@ -21,7 +21,7 @@
   - [11.5. Checklist de Supervivencia](#115-checklist-de-supervivencia)
   - [11.6. Glosario de Términos](#116-glosario-de-términos)
   - [11.7. Ejercicios de Repaso](#117-ejercicios-de-repaso)
-  - [11.8. Mapa de Conexiones entre Puntos](#118-mapa-de-conexiones-entre-puntos)
+  - [11.8. Mapa de Conexiones entre Temas](#118-mapa-de-conexiones-entre-temas)
   - [11.9. ¿Qué viene después?](#119-qué-viene-después)
 
 
@@ -349,7 +349,7 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
    int resultado = (precio * 1.21) - descuento;
    ```
 
-## 11.8. Mapa de Conexiones entre Puntos
+## 11.8. Mapa de Conexiones entre Temas
 
 ```mermaid
 graph LR
