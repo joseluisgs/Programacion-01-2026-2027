@@ -353,33 +353,35 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 
 ```mermaid
 graph LR
-    P01[P01: Que es programar] --> P02[P02: Entorno .NET]
-    P02 --> P03[P03: Soluciones y Proyectos]
-    P03 --> P04[P04: Estructura del Programa]
-    P04 --> P05[P05: Tipos de Datos]
-    P05 --> P06[P06: Variables y Constantes]
-    P06 --> P07[P07: Operadores]
-    P07 --> P08[P08: Conversiones]
-    P08 --> P09[P09: Entrada y Salida]
-    P09 --> P10[P10: Comentarios]
-    P10 --> P11[P11: Resumen]
+    UD01[UD01: Introduccion] --> UD02[UD02: Estr. Modular]
+    UD02 --> UD03[UD03: Almacenamiento Estatico]
+    UD03 --> UD04[UD04: POO]
+    UD04 --> UD05[UD05: POO Avanzada]
+    UD05 --> UD06[UD06: Generica y Funcional]
+    UD06 --> UD07[UD07: Colecciones]
+    UD07 --> UD08[UD08: Ficheros]
+    UD08 --> UD09[UD09: BD Relacionales]
+    UD09 --> UD10[UD10: BD Orientadas a Objetos]
+    UD10 --> UD11[UD11: Interfaces Graficas]
 
-    P01 -.->|define| P04
-    P05 -.->|se usan en| P06
-    P06 -.->|se operan con| P07
-    P07 -.->|requieren| P08
-    P08 -.->|para leer/escribir| P09
-    P09 -.->|se documentan con| P10
+    UD01 -.->|aplica| UD02
+    UD02 -.->|organiza| UD04
+    UD04 -.->|extends| UD05
+    UD05 -.->|usa| UD06
+    UD06 -.->|manipula| UD07
+    UD07 -.->|persiste en| UD08
+    UD08 -.->|guarda en| UD09
+    UD09 -.->|migra a| UD10
 
-    style P01 fill:#4CAF50,color:#fff
-    style P04 fill:#2196F3,color:#fff
-    style P05 fill:#FF9800,color:#fff
-    style P09 fill:#9C27B0,color:#fff
-    style P11 fill:#f44336,color:#fff
+    style UD01 fill:#4CAF50,color:#fff
+    style UD02 fill:#2196F3,color:#fff
+    style UD04 fill:#FF9800,color:#fff
+    style UD07 fill:#9C27B0,color:#fff
+    style UD11 fill:#f44336,color:#fff
 ```
 
-> 📝 **Nota:** Todos los puntos están interconectados. No son puntos sueltos: son piezas de un mismo puzzle. La Programación es un todo donde cada concepto alimenta a los demás.
+> 📝 **Nota:** Todas las UD están interconectadas. No son temas sueltos: son piezas de un mismo puzzle. La Programación es un todo donde cada UD alimenta a las siguientes.
 
 ## 11.9. ¿Qué viene después?
 
-En la **UD02: Entornos de Desarrollo** profundizaremos en las herramientas concretas que usarás como desarrollador: cómo configurar tu entorno de trabajo, dominar el IDE, y gestionar proyectos con Git. Pasaremos de la teoría a la práctica real del día a día.
+En la **UD02: Programación estructurada y modular** aprenderemos a organizar nuestro código con estructuras de control (if, for, while) y a dividirlo en funciones reutilizables. Todo lo que hemos visto aquí sobre tipos, variables y operadores será la base para escribir programas más complejos y organizados.
