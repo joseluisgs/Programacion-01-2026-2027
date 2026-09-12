@@ -43,7 +43,7 @@ Hemos visto la teoría completa de Introducción a la Programación. Este punto 
 graph TD
     UD01[UD01: Introduccion a la Programacion] --> FUND[Fundamentos]
     UD01 --> ALG[Algoritmos]
-    UD01 --> FLUJO["Flujo E→P→S"]
+    UD01 --> FLUJO[Flujo E-P-S]
     UD01 --> PAR[Paradigmas]
     UD01 --> LENG[Lenguajes]
     UD01 --> ENT[Entorno .NET]
@@ -54,7 +54,6 @@ graph TD
     UD01 --> CONV[Conversiones]
     UD01 --> IOS[Entrada y Salida]
     UD01 --> COM[Comentarios]
-    UD01 --> POK[Proyecto Pokedex]
 
     FUND --> F1[Que es programar]
     FUND --> F2[Algoritmo vs Programa]
@@ -108,13 +107,9 @@ graph TD
     IOS --> IO3[Interpolacion $""]
     IOS --> IO4[Concatenacion +]
 
-    COM --> CO1[// una linea]
-    COM --> CO2[varias lineas]
-    COM --> CO3[/// documentacion XML]
-
-    POK --> PK1[Nombre, Tipo, CP]
-    POK --> PK2[Nivel, IV, Leyenda]
-    POK --> PK3[Entrada → Proceso → Salida]
+    COM --> CO1[Una linea]
+    COM --> CO2[Varias lineas]
+    COM --> CO3[Documentacion XML]
 ```
 
 ## 11.2. Conceptos Clave
