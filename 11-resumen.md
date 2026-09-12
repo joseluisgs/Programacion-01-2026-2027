@@ -393,5 +393,3 @@ graph LR
     style UD07 fill:#9C27B0,color:#fff
     style UD11 fill:#f44336,color:#fff
 ```
-
-> 📝 **Nota:** Todas las UD están interconectadas. No son temas sueltos: son piezas de un mismo puzzle. La Programación es un todo donde cada UD alimenta a las siguientes.
