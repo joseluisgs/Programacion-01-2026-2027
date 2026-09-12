@@ -19,6 +19,10 @@
     - [IDE](#ide)
   - [11.4. Errores Comunes a Evitar](#114-errores-comunes-a-evitar)
   - [11.5. Checklist de Supervivencia](#115-checklist-de-supervivencia)
+  - [11.6. Glosario de Términos](#116-glosario-de-términos)
+  - [11.7. Ejercicios de Repaso](#117-ejercicios-de-repaso)
+  - [11.8. Mapa de Conexiones entre Puntos](#118-mapa-de-conexiones-entre-puntos)
+  - [11.9. ¿Qué viene después?](#119-qué-viene-después)
 
 
 # 11. Resumen y Conclusiones
@@ -290,3 +294,92 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 - [ ] ¿He creado la Pokédex y entiendo cómo cada tema contribuye al proyecto?
 
 > 🔧 **Truco:** La mejor forma de aprender programación es practicando. No leas solo los apuntes: abre el IDE y prueba cada ejemplo. Modifícalos, rompelos, arreglalos. Eso es como se aprende.
+
+## 11.6. Glosario de Términos
+
+| Término | Definición |
+|---------|------------|
+| **Programar** | Escribir instrucciones que el ordenador pueda ejecutar |
+| **Algoritmo** | Secuencia finita, ordenada y definida de pasos para resolver un problema |
+| **Programa** | Implementación de un algoritmo en un lenguaje de programación |
+| **Paradigma** | Estilo o forma de programar (imperativo, POO, funcional...) |
+| **Sintaxis** | Reglas de construcción del código |
+| **Semántica** | Significado de las construcciones del código |
+| **SDK** | Software Development Kit: kit de desarrollo completo |
+| **CLI** | Command Line Interface: línea de comandos |
+| **NuGet** | Gestor de paquetes del ecosistema .NET |
+| **IDE** | Entorno de Desarrollo Integrado (editor + compilador + depurador) |
+| **Top-Level Statements** | Código sin `class` ni `Main` (C# 9+) |
+| **Namespace** | Espacio de nombres que agrupa código relacionado |
+| **Variable** | Contenedor con nombre que almacena un dato que puede cambiar |
+| **Constante** | Contenedor que NO puede cambiar su valor (`const`) |
+| **Literal** | Valor fijo en el código (`42`, `"Hola"`, `true`) |
+| **Enum** | Conjunto de valores con nombre (`enum DiaSemana`) |
+| **Expresión** | Código que produce un valor |
+| **Sentencia** | Instrucción que realiza una acción (termina en `;`) |
+| **Método** | Bloque de código reutilizable que realiza una tarea |
+| **Interpolación** | Sustitución de variables en strings con `$""` |
+| **Parse** | Convierte string a tipo (lanza excepción si falla) |
+| **TryParse** | Convierte string a tipo (retorna `true/false`, seguro) |
+| **Casting** | Conversión explícita de un tipo a otro (`(int)pi`) |
+| **Precedencia** | Orden en que se evalúan los operadores en una expresión |
+| **Scope** | Ámbito donde es visible una variable |
+| **De Morgan** | Leyes lógicas para simplificar negaciones |
+
+## 11.7. Ejercicios de Repaso
+
+1. **Algoritmos:** Escribe en pseudocódigo un algoritmo que pida 2 números al usuario y muestre la suma, resta, multiplicación y división.
+
+2. **Tipos de datos:** Clasifica `int`, `double`, `decimal`, `string`, `bool`, `char`, `byte` según: tamaño, uso típico y si tiene signo.
+
+3. **Variables y constantes:** Declara las variables necesarias para modelar un alumno (nombre, edad, nota media, aprobado). Crea una constante para el número total de alumnos.
+
+4. **Operadores:** Sin ejecutar, predice el resultado de cada expresión:
+   - `10 / 3`
+   - `10.0 / 3`
+   - `17 % 5`
+   - `true || false && !true`
+
+5. **Conversiones:** Escribe un programa que pida la temperatura en Fahrenheit y la convierta a Celsius usando la fórmula: `C = (F - 32) * 5 / 9`.
+
+6. **Entrada y salida:** Crea un programa que pida nombre, apellidos y edad, y muestre: "Hola, [nombre] [apellidos]. Tienes [edad] años. Tendrás [edad+10] en 10 años."
+
+7. **Comentarios:** Comenta el siguiente código explicando el "por qué", no el "qué":
+   ```csharp
+   int resultado = (precio * 1.21) - descuento;
+   ```
+
+## 11.8. Mapa de Conexiones entre Puntos
+
+```mermaid
+graph LR
+    P01[P01: Que es programar] --> P02[P02: Entorno .NET]
+    P02 --> P03[P03: Soluciones y Proyectos]
+    P03 --> P04[P04: Estructura del Programa]
+    P04 --> P05[P05: Tipos de Datos]
+    P05 --> P06[P06: Variables y Constantes]
+    P06 --> P07[P07: Operadores]
+    P07 --> P08[P08: Conversiones]
+    P08 --> P09[P09: Entrada y Salida]
+    P09 --> P10[P10: Comentarios]
+    P10 --> P11[P11: Resumen]
+
+    P01 -.->|define| P04
+    P05 -.->|se usan en| P06
+    P06 -.->|se operan con| P07
+    P07 -.->|requieren| P08
+    P08 -.->|para leer/escribir| P09
+    P09 -.->|se documentan con| P10
+
+    style P01 fill:#4CAF50,color:#fff
+    style P04 fill:#2196F3,color:#fff
+    style P05 fill:#FF9800,color:#fff
+    style P09 fill:#9C27B0,color:#fff
+    style P11 fill:#f44336,color:#fff
+```
+
+> 📝 **Nota:** Todos los puntos están interconectados. No son puntos sueltos: son piezas de un mismo puzzle. La Programación es un todo donde cada concepto alimenta a los demás.
+
+## 11.9. ¿Qué viene después?
+
+En la **UD02: Entornos de Desarrollo** profundizaremos en las herramientas concretas que usarás como desarrollador: cómo configurar tu entorno de trabajo, dominar el IDE, y gestionar proyectos con Git. Pasaremos de la teoría a la práctica real del día a día.
