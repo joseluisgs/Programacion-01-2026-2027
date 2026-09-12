@@ -109,7 +109,7 @@ graph TD
     IOS --> IO4[Concatenacion +]
 
     COM --> CO1[// una linea]
-    COM --> CO2[/* varias lineas]
+    COM --> CO2[varias lineas]
     COM --> CO3[/// documentacion XML]
 
     POK --> PK1[Nombre, Tipo, CP]
