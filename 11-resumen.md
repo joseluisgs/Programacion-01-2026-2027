@@ -21,8 +21,8 @@
   - [11.5. Checklist de Supervivencia](#115-checklist-de-supervivencia)
   - [11.6. Glosario de Términos](#116-glosario-de-términos)
   - [11.7. Ejercicios de Repaso](#117-ejercicios-de-repaso)
-  - [11.8. Mapa de Conexiones entre Temas](#118-mapa-de-conexiones-entre-temas)
-  - [11.9. ¿Qué viene después?](#119-qué-viene-después)
+  - [11.8. ¿Qué viene después?](#118-qué-viene-después)
+  - [11.9. Mapa de Conexiones entre Temas](#119-mapa-de-conexiones-entre-temas)
 
 
 # 11. Resumen y Conclusiones
@@ -349,7 +349,11 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
    int resultado = (precio * 1.21) - descuento;
    ```
 
-## 11.8. Mapa de Conexiones entre Temas
+## 11.8. ¿Qué viene después?
+
+En la **UD02: Programación estructurada y modular** aprenderemos a organizar nuestro código con estructuras de control (if, for, while) y a dividirlo en funciones reutilizables. Todo lo que hemos visto aquí sobre tipos, variables y operadores será la base para escribir programas más complejos y organizados.
+
+## 11.9. Mapa de Conexiones entre Temas
 
 ```mermaid
 graph LR
@@ -381,7 +385,3 @@ graph LR
 ```
 
 > 📝 **Nota:** Todas las UD están interconectadas. No son temas sueltos: son piezas de un mismo puzzle. La Programación es un todo donde cada UD alimenta a las siguientes.
-
-## 11.9. ¿Qué viene después?
-
-En la **UD02: Programación estructurada y modular** aprenderemos a organizar nuestro código con estructuras de control (if, for, while) y a dividirlo en funciones reutilizables. Todo lo que hemos visto aquí sobre tipos, variables y operadores será la base para escribir programas más complejos y organizados.
