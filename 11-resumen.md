@@ -368,7 +368,7 @@ En la **UD02: Programación estructurada y modular** aprenderemos a organizar nu
 ```mermaid
 graph LR
     UD01[UD01: Introduccion] --> UD02[UD02: Estr. Modular]
-    UD02 --> UD03[UD03: Almacenamiento Est. y Cadenas]
+    UD02 --> UD03[UD03: Almacenamiento Estático y Cadenas]
     UD03 --> UD04[UD04: POO]
     UD04 --> UD05[UD05: POO Avanzada]
     UD05 --> UD06[UD06: Generica y Funcional]
