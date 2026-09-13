@@ -1,5 +1,8 @@
 - [6. Variables, Constantes, Literales y Enumeraciones](#6-variables-constantes-literales-y-enumeraciones)
   - [6.1. Variables](#61-variables)
+    - [El valor null: el error de un billón de dólares](#el-valor-null-el-error-de-un-billón-de-dólares)
+    - [¿Por qué existen los tipos nullable?](#por-qué-existen-los-tipos-nullable)
+    - [Operador `is`: comprobación segura de null](#operador-is-comprobación-segura-de-null)
   - [6.2. Constantes](#62-constantes)
   - [6.3. Literales](#63-literales)
   - [6.4. Diferencias entre variable, constante y literal](#64-diferencias-entre-variable-constante-y-literal)
@@ -197,7 +200,59 @@ if (nombre != null)
 }
 ```
 
+### ¿Por qué existen los tipos nullable?
+
+Los tipos de valor (`int`, `bool`, `double`) **no pueden ser null** por defecto. Un `int` siempre tiene un valor (0, 5, -3...). Esto es seguro, pero a veces necesitas representar "ausencia de valor": ¿qué nota tiene un alumno que aún no ha examinado? ¿Qué email tiene un usuario que no lo ha proporcionado?
+
+El operador `?` convierte un tipo en un **contenedor flexible** que puede tener un valor **o** null:
+
+```csharp
+int nota = 0;           // Siempre tiene valor (0 por defecto)
+int? notaAlumno = null;  // Puede ser null (examen no realizado)
+
+string email = "";           // Siempre tiene valor (string vacío)
+string? emailUsuario = null;  // Puede ser null (no proporcionado)
+```
+
+> 💡 **Analogía:** Un `int` es una caja cerrada que siempre tiene algo dentro. Un `int?` es una caja con tapa transparente: puedes ver si tiene algo o si está vacía (`null`).
+
+**¿Qué aportan los nullable?**
+
+| Sin nullable | Con nullable |
+|-------------|-------------|
+| `int nota = 0` → ¿Es 0 o no se ha evaluado? | `int? nota = null` → null = no evaluado, 0 = nota cero |
+| `string email = ""` → ¿Está vacío o no se dio? | `string? email = null` → null = no proporcionado |
+
 > 📝 **Nota:** En C# con `<Nullable>enable</Nullable>` en el `.csproj`, el compilador te avisa cuando intentas usar un valor que podría ser null. Esto reduce enormemente los bugs.
+
+### Operador `is`: comprobación segura de null
+
+El operador `is` permite verificar el tipo y **extraer el valor** en una sola operación. Es más limpio que `!= null` + casting:
+
+```csharp
+object dato = "Hola";
+
+// Forma clásica (verbosa)
+if (dato != null && dato is string)
+{
+    string texto = (string)dato;  // Casting explícito
+    Console.WriteLine(texto);
+}
+
+// Con is + pattern matching (limpio)
+if (dato is string texto)
+{
+    Console.WriteLine(texto);  // "Hola" — sin casting, ya extraído
+}
+
+// Verificar si no es null
+if (dato is not null)
+{
+    Console.WriteLine($"Dato tiene valor: {dato}");
+}
+```
+
+> 💡 **Consejo:** `is` combina comprobación de nulidad + tipo + extracción en una sola línea. Es la forma moderna y segura de trabajar con nulls en C#.
 
 ## 6.2. Constantes
 
