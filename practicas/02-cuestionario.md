@@ -16,22 +16,26 @@ Describe brevemente el paradigma de Programación Imperativa/Estructurada y la P
 **4. Elección de Lenguaje según Nivel de Abstracción para Hardware Específico**
 Un equipo de ingenieros necesita desarrollar un software para controlar un nuevo prototipo de robot que requiere interactuar directamente con registros de hardware y direcciones de memoria específicas para maximizar el rendimiento. Basándote en la clasificación de lenguajes según su cercanía al lenguaje humano (Nivel de Abstracción), ¿qué tipo de lenguaje de programación recomendarías para esta tarea y por qué? Menciona al menos dos desventajas significativas de tu elección para un proyecto de gran envergadura.
 
-**5. Ventajas de los Lenguajes Mixtos en la Traducción**
-Explica la diferencia fundamental entre un lenguaje compilado y un lenguaje interpretado en términos de su proceso de traducción y ejecución. Posteriormente, argumenta por qué un lenguaje mixto o intermedio, como se describe en las fuentes (ej. compilación a bytecode y ejecución en Máquina Virtual), ofrece ventajas significativas en términos de portabilidad y flexibilidad que los lenguajes puramente compilados o interpretados no poseen por sí solos.
-
-**6. El Impacto del Sistema de Tipos en la Calidad del Software**
+**5. El Impacto del Sistema de Tipos en la Calidad del Software**
 Un desarrollador inexperto te pregunta si es importante el "sistema de tipos" de un lenguaje. Explícale la relevancia de que un lenguaje sea de "Tipado Fuerte" y "Tipado Estático". Justifica cómo estas características pueden prevenir errores, mejorar el rendimiento y aumentar la seguridad y robustez del software, en comparación con un lenguaje de tipado débil y dinámico.
 
-**7. Implicaciones del Uso de Tipos de Datos Incorrectos**
+**6. Implicaciones del Uso de Tipos de Datos Incorrectos**
 Un programa en C# necesita almacenar la edad de una persona (ej., "25 años") y la distancia entre dos ciudades (ej., "150.75 km"). Si un programador decide usar un tipo `string` para la edad y un `int` para la distancia, ¿qué problemas de almacenamiento de valores y operaciones podría encontrar en cada caso?. Sugiere el tipo de dato más adecuado para cada situación en C#, justificando tu elección.
 
-**8. Diferenciando Variables y Constantes en C#**
+**7. Diferenciando Variables y Constantes en C#**
 En C#, describe la finalidad de las "variables" y las "constantes". Proporciona un ejemplo en C# de la declaración e inicialización de una variable que pueda cambiar y de una constante que no pueda cambiar, explicando por qué se utilizaría una `const` para un valor específico (ej., `const double PI = 3.14159;`) en lugar de una variable.
 
-**9. Evaluación de Expresiones y Uso de Paréntesis**
+**8. Evaluación de Expresiones y Uso de Paréntesis**
 Dada la siguiente expresión en C#: `var resultado = 20 - 4 * 2 + 15 / 3;`.
 1.  Calcula el valor de `resultado` siguiendo las reglas de precedencia de operadores. Muestra el orden de las operaciones.
 2.  Si el programador deseara que la resta `(20 - 4)` se realizara antes que la multiplicación, ¿cómo modificaría la expresión y por qué crees que es una buena práctica de programación usar paréntesis incluso cuando la precedencia natural no lo exige?.
 
-**10. El Valor Incalculable de los Comentarios en el Código**
+**9. El Valor Incalculable de los Comentarios en el Código**
 Las fuentes indican que los comentarios son "esenciales para la legibilidad, el desarrollo y el mantenimiento colaborativo" de un programa. Razona con tus propias palabras la importancia de esta afirmación, especialmente en un escenario donde múltiples programadores trabajan en el mismo proyecto a lo largo del tiempo. ¿Qué ventajas prácticas aportan los comentarios y qué problemas podrían surgir si un código carece de ellos o son escasos?.
+
+**10. Manejo de Nulos y Seguridad en el Código**
+El concepto de null representa la ausencia de valor. Sin embargo, C# con `<Nullable>enable</Nullable>` establece que es una práctica no recomendada evitar el uso de null en la medida de lo posible.
+Basándote en las especificaciones de C# sobre valores nulos, contesta y justifica lo siguiente:
+1. Riesgo Principal de null: Explica por qué se debe evitar el uso de valores nulos, detallando el principal riesgo que introduce esta práctica en el código y la complejidad que genera en el mantenimiento.
+2. Alternativas y Seguridad: ¿Qué estrategias ofrece C# para garantizar que las variables estén siempre en un estado predecible y seguro, evitando la necesidad de null?
+3. Caso de Uso Justificado: Proporciona un escenario específico en el que el uso de null (declarado con el operador `?`) está justificado o es útil, y explica la diferencia que representa ese null frente a un valor por defecto (como 0 o "").
