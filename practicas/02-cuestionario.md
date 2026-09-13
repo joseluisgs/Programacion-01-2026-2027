@@ -35,10 +35,3 @@ Dada la siguiente expresión en C#: `var resultado = 20 - 4 * 2 + 15 / 3;`.
 
 **10. El Valor Incalculable de los Comentarios en el Código**
 Las fuentes indican que los comentarios son "esenciales para la legibilidad, el desarrollo y el mantenimiento colaborativo" de un programa. Razona con tus propias palabras la importancia de esta afirmación, especialmente en un escenario donde múltiples programadores trabajan en el mismo proyecto a lo largo del tiempo. ¿Qué ventajas prácticas aportan los comentarios y qué problemas podrían surgir si un código carece de ellos o son escasos?.
-
-**11. Manejo de Nulos y Seguridad en el Código**
-El concepto de null representa la ausencia de valor. Sin embargo, C# con `<Nullable>enable</Nullable>` establece que es una práctica no recomendada evitar el uso de null en la medida de lo posible.
-Basándote en las especificaciones de C# sobre valores nulos, contesta y justifica lo siguiente:
-1. Riesgo Principal de null: Explica por qué se debe evitar el uso de valores nulos, detallando el principal riesgo que introduce esta práctica en el código y la complejidad que genera en el mantenimiento.
-2. Alternativas y Seguridad: ¿Qué estrategias ofrece C# para garantizar que las variables estén siempre en un estado predecible y seguro, evitando la necesidad de null? 
-3. Caso de Uso Justificado: Proporciona un escenario específico en el que el uso de null (declarado con el operador `?`) está justificado o es útil, y explica la diferencia que representa ese null frente a un valor por defecto (como 0 o "").
