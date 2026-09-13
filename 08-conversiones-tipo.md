@@ -137,6 +137,40 @@ int valor = int.TryParse(input, out int r) ? r : 0;  // valor = 0
 
 > 💡 **Consejo:** Usa `TryParse` siempre que recibas datos de usuario. Es más seguro que `Parse` porque no provoca excepciones.
 
+#### ¿Cómo funciona `out` con TryParse?
+
+`out` es un parámetro de salida: el método **siempre** asigna un valor a la variable. Si la conversión tiene éxito, `out` almacena el número convertido. Si falla, `out` almacena el **valor por defecto** del tipo (`0` para `int`, `false` para `bool`, `null` para `string`, etc.).
+
+```csharp
+int resultado;
+
+// ✅ Conversión exitosa: out almacena el número
+int.TryParse("42", out resultado);   // resultado = 42
+
+// ❌ Conversión fallida: out almacena 0 (valor por defecto de int)
+int.TryParse("abc", out resultado);  // resultado = 0
+```
+
+| Entrada | `TryParse` | `out valor` | ¿Aceptable? |
+|---------|-----------|-------------|-------------|
+| `"42"` | `true` | `42` | ✅ |
+| `"abc"` | `false` | `0` | ❌ |
+| `"0"` | `true` | `0` | ⚠️ Depende |
+| `"-5"` | `true` | `-5` | ⚠️ Depende |
+
+> ⚠️ **Cuidado:** Si el `0` no es un valor válido en tu programa (ej: una edad, una cantidad), necesitas comprobarlo **después** del `TryParse`:
+
+```csharp
+string input = Console.ReadLine();
+int edad;
+string resultado = int.TryParse(input, out edad) && edad > 0
+    ? $"Edad válida: {edad}"
+    : "Error: introduce un número positivo";
+Console.WriteLine(resultado);
+```
+
+> 📝 **Nota:** `out` se verá en detalle en la UD02 (parámetros de salida). Por ahora, solo recuerda: **si TryParse devuelve `true`, el valor está en la variable; si devuelve `false`, tiene el valor por defecto del tipo.**
+
 ### Convert
 
 La clase `Convert` ofrece métodos para convertir entre tipos:

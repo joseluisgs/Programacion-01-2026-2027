@@ -41,12 +41,12 @@ Un **tipo de dato** define qué tipo de valor puede contener una variable y qué
 
 Los enteros con signo pueden guardar números **positivos y negativos**. El signo ocupa 1 bit, por lo que el rango se reduce a la mitad.
 
-| Tipo | Tamaño | Rango | Memoria |
-|------|--------|-------|---------|
-| `sbyte` | 8 bits | -128 a 127 | 1 byte |
-| `short` | 16 bits | -32.768 a 32.767 | 2 bytes |
-| `int` | 32 bits | -2.147.483.648 a 2.147.483.647 | 4 bytes |
-| `long` | 64 bits | -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807 | 8 bytes |
+| Tipo | Tamaño | Rango | Memoria | Valor por defecto |
+|------|--------|-------|---------|-----------------|
+| `sbyte` | 8 bits | -128 a 127 | 1 byte | `0` |
+| `short` | 16 bits | -32.768 a 32.767 | 2 bytes | `0` |
+| `int` | 32 bits | -2.147.483.648 a 2.147.483.647 | 4 bytes | `0` |
+| `long` | 64 bits | -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807 | 8 bytes | `0` |
 
 **Ejemplos de uso:**
 
@@ -65,12 +65,12 @@ long kilometrosEstelares = 9_000_000_000_000L; // Números enormes
 
 Los enteros sin signo solo guardan números **positivos y cero**. Al no necesitar el bit de signo, el rango se duplica.
 
-| Tipo | Tamaño | Rango | Memoria |
-|------|--------|-------|---------|
-| `byte` | 8 bits | 0 a 255 | 1 byte |
-| `ushort` | 16 bits | 0 a 65.535 | 2 bytes |
-| `uint` | 32 bits | 0 a 4.294.967.295 | 4 bytes |
-| `ulong` | 64 bits | 0 a 18.446.744.073.709.551.615 | 8 bytes |
+| Tipo | Tamaño | Rango | Memoria | Valor por defecto |
+|------|--------|-------|---------|-----------------|
+| `byte` | 8 bits | 0 a 255 | 1 byte | `0` |
+| `ushort` | 16 bits | 0 a 65.535 | 2 bytes | `0` |
+| `uint` | 32 bits | 0 a 4.294.967.295 | 4 bytes | `0` |
+| `ulong` | 64 bits | 0 a 18.446.744.073.709.551.615 | 8 bytes | `0` |
 
 **Ejemplos de uso:**
 
@@ -89,11 +89,11 @@ ulong visitasWeb = 3_000_000_000UL; // Contador de visitas
 
 Para números con decimales (parte fraccionaria), tenemos varios tipos:
 
-| Tipo | Precisión | Tamaño | Memoria |
-|------|-----------|--------|---------|
-| `float` | ~6-9 dígitos | 32 bits | 4 bytes |
-| `double` | ~15-17 dígitos | 64 bits | 8 bytes |
-| `decimal` | ~28-29 dígitos | 128 bits | 16 bytes |
+| Tipo | Precisión | Tamaño | Memoria | Valor por defecto |
+|------|-----------|--------|---------|-----------------|
+| `float` | ~6-9 dígitos | 32 bits | 4 bytes | `0` |
+| `double` | ~15-17 dígitos | 64 bits | 8 bytes | `0` |
+| `decimal` | ~28-29 dígitos | 128 bits | 16 bytes | `0` |
 
 **Diferencias importantes:**
 
@@ -116,11 +116,11 @@ decimal saldo = 1234.56m;
 
 ## 5.3. Otros tipos de datos
 
-| Tipo | Tamaño | Valores | Memoria |
-|------|--------|---------|---------|
-| `bool` | 1 bit | `true` o `false` | 1 byte |
-| `char` | 16 bits | Un carácter Unicode | 2 bytes |
-| `string` | Variable | Texto (secuencia de caracteres) | Variable |
+| Tipo | Tamaño | Valores | Memoria | Valor por defecto |
+|------|--------|---------|---------|-----------------|
+| `bool` | 1 bit | `true` o `false` | 1 byte | `false` |
+| `char` | 16 bits | Un carácter Unicode | 2 bytes | `'\0'` (nulo) |
+| `string` | Variable | Texto (secuencia de caracteres) | Variable | `null` |
 
 **Ejemplos:**
 
@@ -152,22 +152,24 @@ Guid id = Guid.NewGuid();                    // a1b2c3d4-e5f6-7890-abcd-ef123456
 
 ## 5.4. Tabla resumen de tipos
 
-| Tipo | Signo | Tamaño | Rango aproximado | Uso típico |
-|------|-------|--------|------------------|------------|
-| `byte` | No | 1 byte | 0 a 255 | Colores, datos binarios |
-| `sbyte` | Sí | 1 byte | -128 a 127 | Enteros pequeños con signo |
-| `short` | Sí | 2 bytes | -32K a 32K | Poblaciones, cantidades |
-| `ushort` | No | 2 bytes | 0 a 65K | Edades, índices |
-| `int` | Sí | 4 bytes | ±2.147M | **Uso general (por defecto)** |
-| `uint` | No | 4 bytes | 0 a 4.294M | Contadores grandes |
-| `long` | Sí | 8 bytes | ±9.22E | Números muy grandes |
-| `ulong` | No | 8 bytes | 0 a 18.4E | Contadores masivos |
-| `float` | - | 4 bytes | ~6-9 dígitos | Gráficos, física |
-| `double` | - | 8 bytes | ~15-17 dígitos | **Decimales (por defecto)** |
-| `decimal` | - | 16 bytes | ~28-29 dígitos | **Dinero, finanzas** |
-| `bool` | - | 1 byte | `true`/`false` | Condiciones, banderas |
-| `char` | - | 2 bytes | Un carácter | Letras, símbolos |
-| `string` | - | Variable | Texto | Nombres, mensajes |
+| Tipo | Signo | Tamaño | Rango aproximado | Uso típico | Defecto |
+|------|-------|--------|------------------|------------|---------|
+| `byte` | No | 1 byte | 0 a 255 | Colores, datos binarios | `0` |
+| `sbyte` | Sí | 1 byte | -128 a 127 | Enteros pequeños con signo | `0` |
+| `short` | Sí | 2 bytes | -32K a 32K | Poblaciones, cantidades | `0` |
+| `ushort` | No | 2 bytes | 0 a 65K | Edades, índices | `0` |
+| `int` | Sí | 4 bytes | ±2.147M | **Uso general (por defecto)** | `0` |
+| `uint` | No | 4 bytes | 0 a 4.294M | Contadores grandes | `0` |
+| `long` | Sí | 8 bytes | ±9.22E | Números muy grandes | `0` |
+| `ulong` | No | 8 bytes | 0 a 18.4E | Contadores masivos | `0` |
+| `float` | - | 4 bytes | ~6-9 dígitos | Gráficos, física | `0` |
+| `double` | - | 8 bytes | ~15-17 dígitos | **Decimales (por defecto)** | `0` |
+| `decimal` | - | 16 bytes | ~28-29 dígitos | **Dinero, finanzas** | `0` |
+| `bool` | - | 1 byte | `true`/`false` | Condiciones, banderas | `false` |
+| `char` | - | 2 bytes | Un carácter | Letras, símbolos | `'\0'` |
+| `string` | - | Variable | Texto | Nombres, mensajes | `null` |
+
+> 📝 **Nota:** Los **valores por defecto** son los que C# asigna automáticamente a una variable cuando no se inicializa. Los numéricos valen `0`, `bool` vale `false`, `char` vale `'\0'` (carácter nulo) y `string` (al ser una referencia) vale `null`. Esto es importante cuando usas `TryParse`: si la conversión falla, la variable `out` toma este valor por defecto.
 
 ## 5.5. El tipo var y la inferencia
 
