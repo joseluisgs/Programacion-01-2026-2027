@@ -281,17 +281,23 @@ Un **IDE (Integrated Development Environment)** es la herramienta visual donde e
 ### Visual Studio Code (alternativa)
 
 - Editor ligero y gratuito de Microsoft
-- Con la extensión **C# Dev Kit** se convierte en un IDE completo
 - Multiplataforma (Windows, macOS, Linux)
 - Más ligero pero requiere configuración
 
-> 💡 **Consejo:** Si puedes, usa Rider. Si prefieres algo gratuito, VS Code con la extensión C# Dev Kit es una excelente opción.
+**Extensiones recomendadas:**
+
+| Extensión | Descripción | ¿Por qué? |
+|-----------|-------------|------------|
+| **ReSharper** (JetBrains) | Análisis de código, refactorizaciones, IntelliSense mejorado | **Recomendada:** tenemos licencia educativa. Gratuita para uso no comercial |
+| **C# Dev Kit** (Microsoft) | IDE completo para C# en VS Code | Alternativa si no se usa ReSharper |
+
+> 💡 **Consejo:** Usa **ReSharper** de JetBrains como extensión principal. Tenemos licencia educativa y ofrece refactorizaciones, análisis de código en tiempo real y sugerencias de mejora. Si prefieres algo gratuito sin licencia, C# Dev Kit es una buena alternativa.
 
 **Configuración mínima en VS Code:**
 
 1. Instala VS Code
-2. Instala la extensión **C# Dev Kit** (de Microsoft)
-3. Instala la extensión **.NET Install Tool**
+2. Instala la extensión **ReSharper** (JetBrains) — recomendada, tenemos licencia
+3. Instala la extensión **C# Dev Kit** (Microsoft) — complemento
 
 ---
 
