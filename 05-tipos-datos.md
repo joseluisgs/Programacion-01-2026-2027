@@ -142,6 +142,7 @@ string nombre = "Ana García";    // Texto (múltiples caracteres)
 | `DateOnly` | Solo fecha (sin hora) | `DateOnly.FromDateTime(DateTime.Now)` |
 | `TimeOnly` | Solo hora (sin fecha) | `TimeOnly.FromDateTime(DateTime.Now)` |
 | `Guid` | Identificador único global | `Guid.NewGuid()` — identificadores únicos |
+| `(Tipo1, Tipo2)` | **Tupla** — agrupa varios valores en uno | Devolver varios resultados de una función |
 
 ```csharp
 DateTime ahora = DateTime.Now;              // 07/09/2026 12:34:56
@@ -149,6 +150,26 @@ DateOnly hoy = DateOnly.FromDateTime(ahora); // 07/09/2026
 TimeOnly hora = TimeOnly.FromDateTime(ahora); // 12:34:56
 Guid id = Guid.NewGuid();                    // a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
+
+### Tuplas: agrupar datos de diferentes tipos
+
+Una **tupla** te permite agrupar varios valores en una sola variable, sin necesidad de crear una clase. Es como un "paquete" de datos.
+
+```csharp
+// Tupla con tipos inferidos
+var persona = ("Ana", 25);
+Console.WriteLine(persona.Item1);  // "Ana"
+Console.WriteLine(persona.Item2);  // 25
+
+// Tupla con nombres (más legible)
+(string nombre, int edad) persona2 = ("Luis", 30);
+Console.WriteLine(persona2.nombre);  // "Luis"
+Console.WriteLine(persona2.edad);    // 30
+```
+
+> 💡 **Analogía:** Una tupla es como una **caja de zapatos** donde metes cosas de diferentes tipos: unos zapatos, unas llaves y un billete. Todo va junto en un solo paquete, pero cada cosa mantiene su tipo.
+
+> 📝 **Nota:** Las tuplas se verán en profundidad en la UD02 cuando estudiemos funciones. Ahora solo necesitas saber que existen como mecanismo para agrupar datos.
 
 ## 5.4. Tabla resumen de tipos
 
