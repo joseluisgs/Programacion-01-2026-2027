@@ -436,7 +436,8 @@ Console.WriteLine($"Hoy es {DateTime.Now:dd/MM/yyyy}");
 **Paso 7: Compilar y ejecutar**
 
 ```bash
-dotnet run
+# Desde la carpeta solución, indica el proyecto con --project
+dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
 **Salida esperada:**
@@ -447,7 +448,7 @@ Mi primer programa en C#
 Hoy es 06/09/2026
 ```
 
-> 🎉 **¡Enhorabuena!** Acaba de compilar y ejecutar tu primer programa en C#. El compilador Tomó tu `Program.cs`, lo tradujo a código intermedio (IL), y la CLR lo ejecutó en tu máquina.
+> **¡Enhorabuena!** Acaba de compilar y ejecutar tu primer programa en C#. El compilador Tomó tu `Program.cs`, lo tradujo a código intermedio (IL), y la CLR lo ejecutó en tu máquina.
 
 📌 **Ejemplo real:** Este es exactamente el mismo proceso que seguirás para crear aplicaciones reales. La diferencia es que las aplicaciones reales tienen más código, más archivos y más complejidad, pero la base es la misma.
 
@@ -480,7 +481,7 @@ dotnet sln add MiPrimeraSolucion/MiPrimeraSolucion.csproj
 dotnet sln list
 
 # 6. Compilar y ejecutar
-dotnet run
+dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
 ## 4.7. Tabla de equivalencias: Pseudocódigo → C# → Java

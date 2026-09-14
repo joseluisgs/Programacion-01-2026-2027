@@ -12,7 +12,7 @@
 
 En este tema aprenderás a mostrar información por pantalla y a leer datos del teclado en C#.
 
-> 🎮 **Proyecto Pokédex:** Pedimos al usuario el nombre, tipo y CP del Pokémon, y mostramos la información formateada con interpolación.
+> **Proyecto Pokédex:** Pedimos al usuario el nombre, tipo y CP del Pokémon, y mostramos la información formateada con interpolación.
 
 **Objetivos de aprendizaje:**
 

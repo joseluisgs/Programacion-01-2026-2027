@@ -1,6 +1,6 @@
 - [1. Qué es la Programación](#1-qué-es-la-programación)
   - [1.1. Definición y conceptos básicos](#11-definición-y-conceptos-básicos)
-    - [🍳 La cocina como metáfora unificadora](#-la-cocina-como-metáfora-unificadora)
+    - [La cocina como metáfora unificadora](#la-cocina-como-metáfora-unificadora)
   - [1.2. Algoritmos](#12-algoritmos)
     - [1.2.1. Características de un algoritmo](#121-características-de-un-algoritmo)
     - [1.2.2. Ejemplo cotidiano: Preparar un café](#122-ejemplo-cotidiano-preparar-un-café)
@@ -23,7 +23,7 @@
 
 En este tema aprenderás qué es la programación, qué son los algoritmos y cómo se organizan los programas en paradigmas diferentes.
 
-### 🍳 La cocina como metáfora unificadora
+### La cocina como metáfora unificadora
 
 A lo largo de toda esta unidad usaremos **la cocina** como hilo conductor para conectar todos los conceptos:
 

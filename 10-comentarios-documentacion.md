@@ -13,7 +13,7 @@
 
 En este tema aprenderás a documentar tu código con comentarios en C#.
 
-> 🎮 **Proyecto Pokédex:** Documentamos los métodos de la Pokédex con XML para que otros programadores (o tú mismo dentro de 3 meses) entiendan qué hace cada uno.
+> **Proyecto Pokédex:** Documentamos los métodos de la Pokédex con XML para que otros programadores (o tú mismo dentro de 3 meses) entiendan qué hace cada uno.
 
 **Objetivos de aprendizaje:**
 

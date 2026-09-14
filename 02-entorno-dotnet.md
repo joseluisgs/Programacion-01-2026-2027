@@ -24,7 +24,7 @@
 
 En este tema aprenderás a configurar tu entorno de desarrollo con .NET, a usar la línea de comandos, a instalar paquetes con NuGet y a escribir scripts de C# sin necesidad de crear un proyecto completo.
 
-> 🎮 **Proyecto Pokédex:** En este tema configuraremos el entorno para crear nuestra Pokédex. Necesitamos el SDK de .NET y saber usar la CLI.
+> **Proyecto Pokédex:** En este tema configuraremos el entorno para crear nuestra Pokédex. Necesitamos el SDK de .NET y saber usar la CLI.
 
 **Objetivos de aprendizaje:**
 

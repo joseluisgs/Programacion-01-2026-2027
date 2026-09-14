@@ -20,7 +20,7 @@
 
 En este tema aprenderás la diferencia entre solución y proyecto, cómo crearlos con la CLI y cómo se organizan los archivos.
 
-> 🎮 **Proyecto Pokédex:** Crearemos la solución `Pokedex` y el proyecto de consola que usaremos en toda la unidad.
+> **Proyecto Pokédex:** Crearemos la solución `Pokedex` y el proyecto de consola que usaremos en toda la unidad.
 
 **Objetivos de aprendizaje:**
 
@@ -112,8 +112,8 @@ dotnet sln list
 # 6. Compilar
 dotnet build
 
-# 7. Ejecutar
-dotnet run
+# 7. Ejecutar (desde la carpeta solución, hay que indicar el proyecto)
+dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
 ### Resultado de `dotnet sln list`:
@@ -238,7 +238,11 @@ dotnet build
 # Compilar en modo Release (optimizado)
 dotnet build --configuration Release
 
-# Ejecutar
+# Ejecutar (desde la solución, indica el proyecto)
+dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
+
+# O bien, entra en la carpeta del proyecto y ejecuta directamente
+cd MiPrimeraSolucion
 dotnet run
 
 # Limpiar archivos de compilación
@@ -262,7 +266,8 @@ dotnet restore
 | **`.slnx`** | Referencia a los proyectos de la solución |
 | **`dotnet new`** | Crea proyectos y soluciones |
 | **`dotnet build`** | Compila el proyecto |
-| **`dotnet run`** | Compila y ejecuta |
+| **`dotnet run`** | Compila y ejecuta (desde carpeta proyecto) |
+| **`dotnet run --project X/X.csproj`** | Compila y ejecuta (desde carpeta solución) |
 | **Roslyn** | Compilador de C# |
 | **CLR** | Máquina virtual que ejecuta el código |
 

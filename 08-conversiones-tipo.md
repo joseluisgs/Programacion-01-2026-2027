@@ -4,7 +4,7 @@
   - [8.3. Conversiones explícitas (casting)](#83-conversiones-explícitas-casting)
   - [8.4. Métodos de conversión](#84-métodos-de-conversión)
   - [8.5. Errores comunes](#85-errores-comunes)
-    - [📋 Tabla de decisión: ¿Qué conversión usar?](#-tabla-de-deisión-qué-conversión-usar)
+    - [Tabla de decisión: ¿Qué conversión usar?](#tabla-de-deisión-qué-conversión-usar)
 
 
 # 8. Conversiones de Tipo
