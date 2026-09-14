@@ -153,10 +153,10 @@ Guid id = Guid.NewGuid();                    // a1b2c3d4-e5f6-7890-abcd-ef123456
 
 ### Tuplas: agrupar datos de diferentes tipos
 
-Una **tupla** te permite agrupar varios valores en una sola variable, sin necesidad de crear una clase. Es como un "paquete" de datos.
+Una **tupla** te permite agrupar varios valores en una sola variable, sin necesidad de crear una clase o struct. Es como un "paquete" de datos.
 
 ```csharp
-// Tupla con tipos inferidos
+// Tupla con tipos inferidos (usando Item1, Item2)
 var persona = ("Ana", 25);
 Console.WriteLine(persona.Item1);  // "Ana"
 Console.WriteLine(persona.Item2);  // 25
@@ -166,14 +166,41 @@ Console.WriteLine(persona.Item2);  // 25
 Console.WriteLine(persona2.nombre);  // "Luis"
 Console.WriteLine(persona2.edad);    // 30
 
-// Descarte con _ (ignorar un valor)
+// Tupla con 3 elementos
+var jugador = ("Carlos", 42, 9800);
+Console.WriteLine($"{ jugador.Item1 } - Nivel { jugador.Item2 } - { jugador.Item3 } pts");
+```
+
+### Desestructurar tuplas
+
+Puedes extraer los valores de una tupla en variables individuales:
+
+```csharp
+// Desestructuración completa
+(string nombre, int edad, double nota) = ("Ana", 25, 8.5);
+Console.WriteLine($"{ nombre } tiene { edad } años y nota { nota }");
+
+// Descarte con _ (ignorar un valor que no necesitas)
 var (nombre, _) = ("Ana", 25);  // Solo nos importa el nombre
 Console.WriteLine(nombre);  // "Ana"
 ```
 
+### Igualdad de tuplas
+
+Las tuplas comparan **por valores**, no por referencias:
+
+```csharp
+var a = (1, 2);
+var b = (1, 2);
+Console.WriteLine(a == b);  // True (mismos valores)
+
+var c = (1, 3);
+Console.WriteLine(a == c);  // False (distinto segundo valor)
+```
+
 > 💡 **Analogía:** Una tupla es como una **caja de zapatos** donde metes cosas de diferentes tipos: unos zapatos, unas llaves y un billete. Todo va junto en un solo paquete, pero cada cosa mantiene su tipo.
 
-> 📝 **Nota:** Las tuplas se verán en profundidad en la UD02 cuando estudiemos funciones. Ahora solo necesitas saber que existen como mecanismo para agrupar datos.
+> 💡 **¿Cuándo usar tupla vs variable suelta?** Cuando necesitas agrupar 2-3 valores relacionados y no quieres crear un tipo nuevo. Ejemplo: `(string nombre, int edad)` es más limpio que tener `string nombre` y `int edad` por separado.
 
 ## 5.4. Tabla resumen de tipos
 
