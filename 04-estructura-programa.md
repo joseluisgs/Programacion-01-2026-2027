@@ -1,7 +1,7 @@
 - [4. Estructura de un Programa](#4-estructura-de-un-programa)
   - [4.1. Bloques que componen un programa](#41-bloques-que-componen-un-programa)
     - [El flujo fundamental: Entrada → Proceso → Salida](#el-flujo-fundamental-entrada--proceso--salida)
-  - [4.2. Top-Level Statements (C# 14)](#42-top-level-statements-c-14)
+  - [4.2. Top-Level Statements](#42-top-level-statements)
   - [4.3. Estructura clásica vs moderna](#43-estructura-clásica-vs-moderna)
   - [4.4. Namespaces](#44-namespaces)
   - [4.5. Using static: comodidad en la escritura](#45-using-static-comodidad-en-la-escritura)
@@ -148,7 +148,7 @@ Un **bloque** es un conjunto de sentencias encerradas entre llaves `{}`.
 // x, y y suma ya no existen aquí
 ```
 
-## 4.2. Top-Level Statements (C# 14)
+## 4.2. Top-Level Statements
 
 **Top-Level Statements** es una característica introducida en C# 9 que permite escribir código sin la estructura tradicional de clases y métodos. Es la forma moderna y recomendada para empezar.
 
