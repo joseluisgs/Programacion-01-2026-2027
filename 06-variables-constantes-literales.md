@@ -1,4 +1,4 @@
-- [6. Variables, Constantes, Literales y Enumeraciones](#6-variables-constantes-literales-y-enumeraciones)
+- [6. Variables, Constantes, Literales, Enumeraciones y Structs](#6-variables-constantes-literales-enumeraciones-y-structs)
   - [6.1. Variables](#61-variables)
     - [El valor null: el error de un billón de dólares](#el-valor-null-el-error-de-un-billón-de-dólares)
     - [¿Por qué existen los tipos nullable?](#por-qué-existen-los-tipos-nullable)
@@ -7,7 +7,8 @@
   - [6.3. Literales](#63-literales)
   - [6.4. Diferencias entre variable, constante y literal](#64-diferencias-entre-variable-constante-y-literal)
   - [6.5. Enumeraciones](#65-enumeraciones)
-  - [6.6. Código autodocumentado](#66-código-autodocumentado)
+  - [6.6. Structs: tipos de valor compuestos](#66-structs-tipos-de-valor-compuestos)
+  - [6.7. Código autodocumentado](#67-código-autodocumentado)
 
 
 # 6. Variables, Constantes y Literales
@@ -435,9 +436,65 @@ enum Mes
 int valorMes = (int)Mes.Marzo;  // 3
 ```
 
-> 📝 **Nota:** Los enums son muy únicos para representar estados, opciones o categorías fijas. En C# se usan mucho con `switch` y con tipos de datos parametrizables.
+> 📝 **Nota:** Los enums son muy útiles para representar estados, opciones o categorías fijas. En C# se usan mucho con `switch` y con tipos de datos parametrizables.
 
-## 6.6. Código autodocumentado
+## 6.6. Structs: tipos de valor compuestos
+
+Un **struct** es un tipo de dato que permite **agrupar varios campos bajo un mismo nombre**, como una mini-cajita con etiquetas. Es similar a una tupla, pero con nombre y campos con nombre.
+
+> 💡 **Analogía:** Un struct es como una **ficha de usuario**: tiene campos como nombre, edad y correo. Todo junto bajo un mismo nombre, pero sin la complejidad de una clase.
+
+```csharp
+// Definir un struct
+struct Punto
+{
+    public int X;
+    public int Y;
+}
+
+// Crear una instancia
+Punto origen;
+origen.X = 0;
+origen.Y = 0;
+
+// O con inicialización
+Punto destino = new() { X = 10, Y = 20 };
+
+Console.WriteLine($"Origen: ({origen.X}, {origen.Y})");   // (0, 0)
+Console.WriteLine($"Destino: ({destino.X}, {destino.Y})"); // (10, 20)
+```
+
+### Structs vs Tuplas
+
+| Característica | Tupla | Struct |
+| :--- | :--- | :--- |
+| **Nombre** | No tiene (solo `Item1`, `Item2`) | Tiene nombre (`Punto`, `Jugador`) |
+| **Campos** | Genéricos (`Item1`, `Item2`) | Descriptivos (`X`, `Y`, `Nombre`) |
+| **Cuándo usar** | Datos temporales, return rápido | Modelos con significado |
+| **Legibilidad** | Baja | Alta |
+
+```csharp
+// Tupla: rápida pero poco descriptiva
+var jugador = ("Ana", 25, 1500);
+Console.WriteLine(jugador.Item1);  // ¿Qué es Item1?
+
+// Struct: más claro
+struct Jugador
+{
+    public string Nombre;
+    public int Nivel;
+    public int Puntos;
+}
+
+Jugador ana = new() { Nombre = "Ana", Nivel = 25, Puntos = 1500 };
+Console.WriteLine(ana.Nombre);  // Mucho más claro
+```
+
+> 📝 **Nota:** Los structs son tipos de **valor** (como `int` o `bool`), no de referencia. Cuando asignas un struct a otra variable, se **copia** todo el contenido. En la UD04 (POO) veremos structs, clases y records en profundidad.
+
+> 💡 **Regla práctica:** Si necesitas agrupar 2-3 valores y no te importa el nombre, usa una **tupla**. Si el modelo tiene sentido propio (un punto, un jugador, un color), usa un **struct**.
+
+## 6.7. Código autodocumentado
 
 Un buen código se explica por sí mismo. El nombre de las variables debe describir qué contiene:
 
@@ -467,6 +524,8 @@ double precioConIva = precio * (1 + Iva / 100);
 | **Variable** | Contenedor que puede cambiar | `int edad = 25;` |
 | **Constante** | Contenedor que NO puede cambiar | `const double Iva = 21.0;` |
 | **Literal** | Valor fijo en el código | `25`, `"Hola"`, `true` |
+| **Enum** | Conjunto de valores con nombre | `enum DiaSemana { Lunes, ... }` |
+| **Struct** | Tipo de valor compuesto con campos | `struct Punto { int X; int Y; }` |
 | **Scope** | Dónde es visible la variable | Dentro de su bloque |
 | **Lifetime** | Cuánto tiempo vive | Mientras se ejecuta el bloque |
 

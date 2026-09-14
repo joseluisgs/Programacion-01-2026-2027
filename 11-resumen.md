@@ -196,6 +196,7 @@ graph TD
 - **Constante:** Contenedor que NO puede cambiar. Se declara con `const`. `PascalCase`
 - **Literal:** Valor fijo en el código (`42`, `"Hola"`, `true`)
 - **Enum:** Conjunto de valores con nombre (`enum DiaSemana`)
+- **Struct:** Tipo de valor compuesto con campos (`struct Punto { int X; int Y; }`)
 - **Scope:** Dónde es visible la variable
 - **Lifetime:** Cuánto tiempo vive (mientras se ejecuta su bloque)
 - **Código autodocumentado:** Nombres descriptivos que se entienden sin comentarios
@@ -325,6 +326,7 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 | **Constante** | Contenedor que NO puede cambiar su valor (`const`) |
 | **Literal** | Valor fijo en el código (`42`, `"Hola"`, `true`) |
 | **Enum** | Conjunto de valores con nombre (`enum DiaSemana`) |
+| **Struct** | Tipo de valor compuesto con campos (`struct Punto { int X; int Y; }`) |
 | **Expresión** | Código que produce un valor |
 | **Sentencia** | Instrucción que realiza una acción (termina en `;`) |
 | **Método** | Bloque de código reutilizable que realiza una tarea |
