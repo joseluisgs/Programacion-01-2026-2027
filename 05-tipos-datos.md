@@ -7,6 +7,7 @@
   - [5.3. Otros tipos de datos](#53-otros-tipos-de-datos)
   - [5.4. Tabla resumen de tipos](#54-tabla-resumen-de-tipos)
   - [5.5. El tipo var y la inferencia](#55-el-tipo-var-y-la-inferencia)
+  - [5.6. Tipos por Valor y Tipos por Referencia](#56-tipos-por-valor-y-tipos-por-referencia)
 
 
 # 5. Tipos de Datos
@@ -253,6 +254,101 @@ var precio = 19.99m;         // Claramente un decimal (sufijo m)
 var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 ```
 
+## 5.6. Tipos por Valor y Tipos por Referencia
+
+Este concepto es **fundamental**. Explica por qué `==` se comporta de forma diferente según el tipo y por qué `null` solo aparece en ciertos tipos.
+
+### ¿Qué son los tipos por valor?
+
+Los tipos por valor almacenan el **dato directamente** en la variable. Cuando asignas uno a otro, se **copia el contenido completo**.
+
+```csharp
+// Tipos por valor: int, double, bool, char, struct, enum
+int a = 5;
+int b = a;    // b es una COPIA de a
+b = 10;
+Console.WriteLine(a);  // 5 — a NO cambia
+```
+
+### ¿Qué son los tipos por referencia?
+
+Los tipos por referencia almacenan una **dirección de memoria** (una referencia). Cuando asignas uno a otra variable, ambas apuntan al **mismo sitio**.
+
+```csharp
+// Tipos por referencia: string, arrays, clases
+int[] array1 = { 1, 2, 3 };
+int[] array2 = array1;    // array2 es un ALIAS de array1
+array2[0] = 999;
+Console.WriteLine(array1[0]);  // 999 — ¡array1 también cambió!
+```
+
+### Diagrama: ¿Cómo se almacenan en memoria?
+
+```mermaid
+graph LR
+    subgraph "TIPOS POR VALOR"
+        A["int a = 5"] --> MEM_A["Memoria: 5"]
+        B["int b = a"] --> MEM_B["Memoria: 5 (copia)"]
+    end
+    subgraph "TIPOS POR REFERENCIA"
+        C["int[] x = {1,2,3}"] --> MEM_C["Memoria: {1,2,3}"]
+        D["int[] y = x"] -.-> MEM_C
+    end
+    style A fill:#4CAF50,color:#fff
+    style B fill:#4CAF50,color:#fff
+    style C fill:#2196F3,color:#fff
+    style D fill:#2196F3,color:#fff
+    style MEM_A fill:#607D8B,color:#fff
+    style MEM_B fill:#607D8B,color:#fff
+    style MEM_C fill:#607D8B,color:#fff
+```
+
+### Tabla resumen
+
+| Categoría | Tipos | ¿Dónde se almacenan? | Al copiar... |
+| :--- | :--- | :--- | :--- |
+| **Por valor** | `int`, `double`, `bool`, `char`, `struct`, `enum` | Directamente en la variable | Se copia el **contenido** |
+| **Por referencia** | `string`, `array`, `clase`, `record` | En el montón (heap), variable guarda dirección | Se copia la **referencia** (alias) |
+
+### El problema de `null`
+
+`null` significa **"no apunta a ningún objeto"**. Solo aparece en tipos por referencia (y en tipos valor con `?`).
+
+```csharp
+// Tipos por referencia: pueden ser null
+string nombre = null;      // ✅ Válido
+int[] numeros = null;      // ✅ Válido
+
+// Tipos por valor: NO pueden ser null (por defecto)
+int edad = null;           // ❌ Error de compilación
+
+// Pero con ? sí (nullable)
+int? nota = null;          // ✅ Válido
+```
+
+> ⚠️ **Advertencia:** Intentar usar un valor `null` causa `NullReferenceException`. Es el error más común en programación.
+
+### El problema de `==` con tipos por referencia
+
+```csharp
+// ✅ Tipos por valor: == compara CONTENIDO
+int a = 5, b = 5;
+Console.WriteLine(a == b);  // True — mismos valores
+
+// ❌ Tipos por referencia: == compara REFERENCIA (¿son el mismo objeto?)
+int[] x = { 1, 2, 3 };
+int[] y = { 1, 2, 3 };
+Console.WriteLine(x == y);  // False — son objetos DIFERENTES (en distintas posiciones de memoria)
+
+// Esto SÍ es True (son el mismo objeto)
+int[] z = x;
+Console.WriteLine(x == z);  // True — apuntan al mismo sitio
+```
+
+> 💡 **Analogía:** `==` con tipos por valor es como preguntar "¿tienen el mismo contenido?". Con tipos por referencia es como preguntar "¿son la misma persona?" (la misma dirección de memoria).
+
+> 📝 **Nota:** Los strings son un caso especial. Aunque son tipos por referencia, C# los trata de forma especial con **interning** (reutiliza strings idénticos). Por eso `"Hola" == "Hola"` es `True`. Pero no confíes: siempre usa `.Equals()` para comparar strings en producción.
+
 ---
 
 **Resumen del punto:**
@@ -264,6 +360,8 @@ var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 | **Sin signo** | Solo positivos (`byte`, `ushort`, `uint`, `ulong`) |
 | **Decimales** | `float` (baja), `double` (media), `decimal` (alta precisión) |
 | **`var`** | Inferencia de tipos: el compilador deduce el tipo |
-| **Memoria** | Cada tipo ocupa un tamaño fijo en bytes |
+| **Por valor** | `int`, `bool`, `struct`, `enum` — se copia el contenido |
+| **Por referencia** | `string`, `array`, `clase` — se copia la referencia (alias) |
+| **`null`** | "No apunta a ningún objeto" — solo en tipos por referencia |
 
 En el siguiente punto veremos variables, constantes, literales y enumeraciones en C#.
