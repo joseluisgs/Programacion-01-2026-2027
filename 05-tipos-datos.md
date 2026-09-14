@@ -165,6 +165,10 @@ Console.WriteLine(persona.Item2);  // 25
 (string nombre, int edad) persona2 = ("Luis", 30);
 Console.WriteLine(persona2.nombre);  // "Luis"
 Console.WriteLine(persona2.edad);    // 30
+
+// Descarte con _ (ignorar un valor)
+var (nombre, _) = ("Ana", 25);  // Solo nos importa el nombre
+Console.WriteLine(nombre);  // "Ana"
 ```
 
 > 💡 **Analogía:** Una tupla es como una **caja de zapatos** donde metes cosas de diferentes tipos: unos zapatos, unas llaves y un billete. Todo va junto en un solo paquete, pero cada cosa mantiene su tipo.
