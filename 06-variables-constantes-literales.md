@@ -1,15 +1,13 @@
 - [6. Variables, Constantes, Literales, Enumeraciones y Structs](#6-variables-constantes-literales-enumeraciones-y-structs)
   - [6.1. Variables](#61-variables)
-    - [El valor null: el error de un billón de dólares](#el-valor-null-el-error-de-un-billón-de-dólares)
-    - [¿Por qué existen los tipos nullable?](#por-qué-existen-los-tipos-nullable)
-    - [Operador `is`: comprobación segura de null](#operador-is-comprobación-segura-de-null)
-  - [6.2. Constantes](#62-constantes)
-  - [6.3. Literales](#63-literales)
-  - [6.4. Diferencias entre variable, constante y literal](#64-diferencias-entre-variable-constante-y-literal)
-  - [6.5. Enumeraciones](#65-enumeraciones)
-  - [6.6. Structs: tipos de valor compuestos](#66-structs-tipos-de-valor-compuestos)
-  - [6.7. Tuplas: agrupar datos de diferentes tipos](#67-tuplas-agrupar-datos-de-diferentes-tipos)
-  - [6.8. Código autodocumentado](#68-código-autodocumentado)
+  - [6.2. Null y Tipos Nullable](#62-null-y-tipos-nullable)
+  - [6.3. Constantes](#63-constantes)
+  - [6.4. Literales](#64-literales)
+  - [6.5. Diferencias entre variable, constante y literal](#65-diferencias-entre-variable-constante-y-literal)
+  - [6.6. Enumeraciones](#66-enumeraciones)
+  - [6.7. Structs: tipos de valor compuestos](#67-structs-tipos-de-valor-compuestos)
+  - [6.8. Tuplas: agrupar datos de diferentes tipos](#68-tuplas-agrupar-datos-de-diferentes-tipos)
+  - [6.9. Código autodocumentado](#69-código-autodocumentado)
 
 
 # 6. Variables, Constantes y Literales
@@ -163,9 +161,13 @@ void Contar()
 }
 ```
 
-### El valor null: el error de un billón de dólares
+## 6.2. Null y Tipos Nullable
 
-Las variables de tipos **referencia** (`string`, arrays, clases) pueden tener un valor especial llamado `null`. Significa que **la variable no apunta a ningún objeto** — está vacía, como un teléfono sin número asignado.
+En el punto anterior vimos que los tipos por referencia pueden tener el valor `null`. Ahora profundizamos: qué es `null`, por qué existe, y cómo protegernos de él.
+
+### ¿Qué es `null`?
+
+`null` significa **"no apunta a ningún objeto"**. Es como tener una entrada en tu agenda de teléfonos que dice "María" pero no tiene número asignado. Si intentas llamar, no puedes. Peor aún, si intentas preguntarle algo a María, no hay María a quien preguntar.
 
 ```csharp
 string nombre = null;  // nombre no apunta a ningún string
@@ -175,36 +177,33 @@ int[] numeros = null;  // numeros no apunta a ningún array
 Console.WriteLine(nombre.Length);  // ❌ NullReferenceException
 ```
 
-> ⚠️ **Advertencia:** `null` es una de las fuentes más comunes de errores en programación. Si intentas usar una variable que es `null` (como llamar a un método o acceder a una propiedad), el programa falla.
-
 **La historia del "error de un billón de dólares":**
 
 En 2009, Tony Hoare, el científico que inventó `null` en 1965, se disculpó públicamente llamándolo su "error de un billón de dólares". Lo creó para representar "ausencia de valor" en el lenguaje ALGOL W, pero no previo las consecuencias: miles de millones de bugs en todo el mundo causados por intentar usar `null` sin querer.
 
-> 💡 **Analogía:** `null` es como tener una entrada en tu agenda de teléfonos que dice "María" pero no tiene número. Si intentas llamar, no puedes. Peor aún, si intentas preguntarle algo a María, no hay María a quien preguntar.
-
-**Cómo protegerse de null en C#:**
-
-```csharp
-// Los tipos pueden ser "nullables" con ?
-string? nombre = null;  // Puede ser null
-
-// Operador de coalescencia: si es null, usa otro valor
-string nombreSeguro = nombre ?? "Desconocido";
-
-// Operador condicional: accede solo si no es null
-int? longitud = nombre?.Length;  // Si nombre es null, longitud será null
-
-// Verificar antes de usar
-if (nombre != null)
-{
-    Console.WriteLine(nombre.Length);
-}
+```mermaid
+graph LR
+    subgraph VARIABLE ["Variable string nombre"]
+        A["nombre = 'Ana'"]
+        B["nombre = null"]
+    end
+    subgraph HEAP ["Heap (memoria)"]
+        C["Objeto string<br/>'Ana'"]
+        D["No hay objeto"]
+    end
+    A -->|"apunta a"| C
+    B -.->|"no apunta a nada"| D
+    style VARIABLE fill:#607D8B,color:#fff
+    style HEAP fill:#2196F3,color:#fff
+    style A fill:#4CAF50,color:#fff
+    style B fill:#f44336,color:#fff
+    style C fill:#1565C0,color:#fff
+    style D fill:#f44336,color:#fff
 ```
 
 ### ¿Por qué existen los tipos nullable?
 
-Los tipos de valor (`int`, `bool`, `double`) **no pueden ser null** por defecto. Un `int` siempre tiene un valor (0, 5, -3...). Esto es seguro, pero a veces necesitas representar "ausencia de valor": ¿qué nota tiene un alumno que aún no ha examinado? ¿Qué email tiene un usuario que no lo ha proporcionado?
+Los tipos por valor (`int`, `bool`, `double`) **no pueden ser null** por defecto. Un `int` siempre tiene un valor (0, 5, -3...). Esto es seguro, pero a veces necesitas representar "ausencia de valor": ¿qué nota tiene un alumno que aún no ha examinado? ¿Qué email tiene un usuario que no lo ha proporcionado?
 
 El operador `?` convierte un tipo en un **contenedor flexible** que puede tener un valor **o** null:
 
@@ -218,14 +217,29 @@ string? emailUsuario = null;  // Puede ser null (no proporcionado)
 
 > 💡 **Analogía:** Un `int` es una caja cerrada que siempre tiene algo dentro. Un `int?` es una caja con tapa transparente: puedes ver si tiene algo o si está vacía (`null`).
 
-**¿Qué aportan los nullable?**
-
 | Sin nullable | Con nullable |
 |-------------|-------------|
 | `int nota = 0` → ¿Es 0 o no se ha evaluado? | `int? nota = null` → null = no evaluado, 0 = nota cero |
 | `string email = ""` → ¿Está vacío o no se dio? | `string? email = null` → null = no proporcionado |
 
 > 📝 **Nota:** En C# con `<Nullable>enable</Nullable>` en el `.csproj`, el compilador te avisa cuando intentas usar un valor que podría ser null. Esto reduce enormemente los bugs.
+
+### Cómo protegernos de null
+
+```csharp
+// Operador de coalescencia: si es null, usa otro valor
+string? nombre = null;
+string nombreSeguro = nombre ?? "Desconocido";  // "Desconocido"
+
+// Operador condicional: accede solo si no es null
+int? longitud = nombre?.Length;  // Si nombre es null, longitud será null
+
+// Verificar antes de usar
+if (nombre != null)
+{
+    Console.WriteLine(nombre.Length);
+}
+```
 
 ### Operador `is`: comprobación segura de null
 
@@ -256,7 +270,7 @@ if (dato is not null)
 
 > 💡 **Consejo:** `is` combina comprobación de nulidad + tipo + extracción en una sola línea. Es la forma moderna y segura de trabajar con nulls en C#.
 
-## 6.2. Constantes
+## 6.3. Constantes
 
 Una **constante** es un valor que **no puede cambiar** una vez asignado. Se declara con `const`.
 
@@ -326,7 +340,7 @@ public MiClase()
 
 > 📝 **Nota:** En esta unidad solo usaremos `const`. `readonly` lo veremos cuando estudiemos clases.
 
-## 6.3. Literales
+## 6.4. Literales
 
 Un **literal** es un valor fijo escrito directamente en el código. No es una variable ni una constante — es el valor en sí.
 
@@ -362,7 +376,7 @@ string interpolado = $"Tengo {edad} años";  // string interpolation
 
 > 💡 **Truco:** Los guiones bajos en números (`1_000_000`) son solo visuales. El compilador los ignora. Facilita mucho la lectura de números grandes.
 
-## 6.4. Diferencias entre variable, constante y literal
+## 6.5. Diferencias entre variable, constante y literal
 
 | Característica | Variable | Constante | Literal |
 |----------------|----------|-----------|---------|
@@ -382,7 +396,7 @@ Edad = 30;              // ❌ Error: la constante no cambia
 
 > 💡 **Analogía:** Una variable es como una pizarra donde puedes borrar y escribir. Una constante es como una placa de metal: lo que está grabado, no cambia. Un literal es el dato en sí, como el número "25" escrito en un papel.
 
-## 6.5. Enumeraciones
+## 6.6. Enumeraciones
 
 Una **enumeración** (`enum`) es un tipo de datos que define un conjunto de **valores con nombre**. Es como una lista de opciones fijas.
 
@@ -439,7 +453,7 @@ int valorMes = (int)Mes.Marzo;  // 3
 
 > 📝 **Nota:** Los enums son muy útiles para representar estados, opciones o categorías fijas. En C# se usan mucho con `switch` y con tipos de datos parametrizables.
 
-## 6.6. Structs: tipos de valor compuestos
+## 6.7. Structs: tipos de valor compuestos
 
 Un **struct** es un tipo de dato que permite **agrupar varios campos bajo un mismo nombre**, como una mini-cajita con etiquetas. Es similar a una tupla, pero con nombre y campos con nombre.
 
@@ -495,7 +509,7 @@ Console.WriteLine(ana.Nombre);  // Mucho más claro
 
 > 💡 **Regla práctica:** Si necesitas agrupar 2-3 valores y no te importa el nombre, usa una **tupla**. Si el modelo tiene sentido propio (un punto, un jugador, un color), usa un **struct**.
 
-## 6.7. Tuplas: agrupar datos de diferentes tipos
+## 6.8. Tuplas: agrupar datos de diferentes tipos
 
 Una **tupla** te permite agrupar varios valores en una sola variable, sin necesidad de crear una clase o struct. Es como un "paquete" de datos.
 
@@ -531,7 +545,7 @@ Console.WriteLine(nombre);  // "Ana"
 
 ### Igualdad de tuplas
 
-Las tuplas comparan **por valores**, no por referencias:
+Las tuplas comparan **por valores**, no por referencias (como todos los tipos por valor):
 
 ```csharp
 var a = (1, 2);
@@ -546,7 +560,9 @@ Console.WriteLine(a == c);  // False (distinto segundo valor)
 
 > 💡 **¿Cuándo usar tupla vs variable suelta?** Cuando necesitas agrupar 2-3 valores relacionados y no quieres crear un tipo nuevo. Ejemplo: `(string nombre, int edad)` es más limpio que tener `string nombre` y `int edad` por separado.
 
-## 6.8. Código autodocumentado
+> 📝 **Nota:** Las tuplas son tipos por valor (como vimos en§5.6), por lo que comparan por contenido, no por referencia. `(1, 2) == (1, 2)` es `True`.
+
+## 6.9. Código autodocumentado
 
 Un buen código se explica por sí mismo. El nombre de las variables debe describir qué contiene:
 

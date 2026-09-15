@@ -304,11 +304,47 @@ var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 
 ## 5.6. Tipos por Valor y Tipos por Referencia
 
-Este concepto es **fundamental**. Explica por qué `==` se comporta de forma diferente según el tipo y por qué `null` solo aparece en ciertos tipos.
+Este concepto es **fundamental**. Explica por qué los tipos se comportan de forma diferente en memoria.
 
-### ¿Qué son los tipos por valor?
+### ¿Dónde se almacenan? Stack y Heap
 
-Los tipos por valor almacenan el **dato directamente** en la variable. Cuando asignas uno a otro, se **copia el contenido completo**.
+El ordenador tiene dos zonas de memoria principales para las variables:
+
+- **Stack (pila):** Memoria rápida y ordenada. Almacena los tipos por valor con un tamaño fijo. Es como una pila de platos: lo último que pones, lo primero que sacas.
+- **Heap (montón):** Memoria flexible y más lenta. Almacena los objetos grandes o de tamaño variable (strings, arrays, objetos). Es como un almacén grande donde guardas cajas de cualquier tamaño.
+
+```mermaid
+graph TB
+    subgraph STACK ["STACK (pila) — Rápido, tamaño fijo"]
+        direction LR
+        A["int edad = 25<br/>4 bytes"]
+        B["double precio = 9.99<br/>8 bytes"]
+        C["bool activo = true<br/>1 byte"]
+        D["string nombre →<br/>(referencia)"]
+    end
+    subgraph HEAP ["HEAP (montón) — Flexible, tamaño variable"]
+        direction LR
+        E["Objeto string<br/>'Pepe'<br/>(4 bytes)"]
+        F["Objeto string<br/>'María Angustias Fernández Gutiérrez'<br/>(48 bytes)"]
+        G["Array int[3]<br/>{1, 2, 3}<br/>(12 bytes)"]
+    end
+    D -->|"apunta a"| E
+    style STACK fill:#4CAF50,color:#fff
+    style HEAP fill:#2196F3,color:#fff
+    style A fill:#2E7D32,color:#fff
+    style B fill:#2E7D32,color:#fff
+    style C fill:#2E7D32,color:#fff
+    style D fill:#2E7D32,color:#fff
+    style E fill:#1565C0,color:#fff
+    style F fill:#1565C0,color:#fff
+    style G fill:#1565C0,color:#fff
+```
+
+> 💡 **Analogía:** El **stack** es como la encimera de tu cocina: tienes espacio limitado, pones los platos encima y sacas el de arriba primero. El **heap** es como el armario de la despensa: puedes meter cajas de cualquier tamaño, pero tardas más en encontrar lo que buscas.
+
+### Tipos por Valor
+
+Los tipos por valor almacenan el **dato directamente en el Stack**. Ocupan un tamaño fijo en memoria. Cuando asignas uno a otra variable, se **copia el contenido completo**.
 
 ```csharp
 // Tipos por valor: int, double, bool, char, struct, enum
@@ -318,84 +354,72 @@ b = 10;
 Console.WriteLine(a);  // 5 — a NO cambia
 ```
 
-### ¿Qué son los tipos por referencia?
+**¿Por qué?** Porque cada variable tiene su propio "cajón" en el Stack con su propia copia del dato.
 
-Los tipos por referencia almacenan una **dirección de memoria** (una referencia). Cuando asignas uno a otra variable, ambas apuntan al **mismo sitio**.
+### Tipos por Referencia
+
+Los tipos por referencia almacenan una **referencia (puntero) en el Stack**, pero el dato real está en el **Heap**. Cuando asignas uno a otra variable, ambas apuntan al **mismo objeto** en el Heap.
 
 ```csharp
-// Tipos por referencia: string, arrays, clases
+// Tipos por referencia: string, array, clases
 int[] array1 = { 1, 2, 3 };
 int[] array2 = array1;    // array2 es un ALIAS de array1
 array2[0] = 999;
 Console.WriteLine(array1[0]);  // 999 — ¡array1 también cambió!
 ```
 
-### Diagrama: ¿Cómo se almacenan en memoria?
+**¿Por qué?** Porque la referencia es un "dirección postal" al objeto en el Heap. Si dos variables tienen la misma dirección, están hablando del mismo objeto.
+
+> 📝 **Nota:** Un `string` es un tipo por referencia, pero C# lo trata de forma especial con **inmutabilidad**: una vez creado, no se puede modificar. Por eso parece un tipo por valor, pero no lo es.
+
+### ¿Por qué importa el tamaño?
+
+Un tipo por valor tiene un tamaño **fijo**. Un `int` siempre ocupa 4 bytes, da igual si guardas el `1` o el `2.000.000.000`.
+
+Un tipo por referencia tiene un tamaño **variable**. Un `string` puede ser `"Pepe"` (4 bytes) o `"María Angustias Fernández Gutiérrez"` (48 bytes). Por eso no puede estar en el Stack: el compilador no sabe cuánto espacio reservar.
 
 ```mermaid
 graph LR
-    subgraph "TIPOS POR VALOR"
-        A["int a = 5"] --> MEM_A["Memoria: 5"]
-        B["int b = a"] --> MEM_B["Memoria: 5 (copia)"]
+    subgraph VALOR ["Tipo por valor: tamaño FIJO"]
+        A["int<br/>Siempre 4 bytes"] --> B["Stack"]
     end
-    subgraph "TIPOS POR REFERENCIA"
-        C["int[] x = {1,2,3}"] --> MEM_C["Memoria: {1,2,3}"]
-        D["int[] y = x"] -.-> MEM_C
+    subgraph REFERENCIA ["Tipo por referencia: tamaño VARIABLE"]
+        C["string<br/>4 bytes? 48 bytes?"] --> D["Heap"]
+        E["Referencia<br/>Siempre 8 bytes"] --> F["Stack"]
+        E --> D
     end
-    style A fill:#4CAF50,color:#fff
-    style B fill:#4CAF50,color:#fff
-    style C fill:#2196F3,color:#fff
-    style D fill:#2196F3,color:#fff
-    style MEM_A fill:#607D8B,color:#fff
-    style MEM_B fill:#607D8B,color:#fff
-    style MEM_C fill:#607D8B,color:#fff
+    style VALOR fill:#4CAF50,color:#fff
+    style REFERENCIA fill:#2196F3,color:#fff
+    style A fill:#2E7D32,color:#fff
+    style B fill:#2E7D32,color:#fff
+    style C fill:#1565C0,color:#fff
+    style D fill:#1565C0,color:#fff
+    style E fill:#1565C0,color:#fff
+    style F fill:#1565C0,color:#fff
 ```
+
+### Valores por defecto
+
+Cada tipo tiene un valor por defecto que C# asigna automáticamente si no inicializas la variable:
+
+| Categoría | Tipos | Valor por defecto |
+| :--- | :--- | :--- |
+| **Por valor** | `int`, `short`, `long`... | `0` |
+| **Por valor** | `float`, `double`, `decimal` | `0.0` |
+| **Por valor** | `bool` | `false` |
+| **Por valor** | `char` | `'\0'` (carácter nulo) |
+| **Por referencia** | `string`, `array`, `clase` | **`null`** |
+
+> 📝 **Nota:** `null` significa "no apunta a ningún objeto". Solo aparece en tipos por referencia (y en tipos por valor con `?`). Veremos más sobre null en el siguiente punto.
 
 ### Tabla resumen
 
 | Categoría | Tipos | ¿Dónde se almacenan? | Al copiar... |
 | :--- | :--- | :--- | :--- |
-| **Por valor** | `int`, `double`, `bool`, `char`, `struct`, `enum` | Directamente en la variable | Se copia el **contenido** |
-| **Por referencia** | `string`, `array`, `clase`, `record` | En el montón (heap), variable guarda dirección | Se copia la **referencia** (alias) |
+| **Por valor** | `int`, `double`, `bool`, `char`, `struct`, `enum` | Directamente en el **Stack** | Se copia el **contenido** |
+| **Por referencia** | `string`, `array`, `clase`, `record` | Dato en el **Heap**, referencia en el Stack | Se copia la **referencia** (alias) |
 
-### El problema de `null`
-
-`null` significa **"no apunta a ningún objeto"**. Solo aparece en tipos por referencia (y en tipos valor con `?`).
-
-```csharp
-// Tipos por referencia: pueden ser null
-string nombre = null;      // ✅ Válido
-int[] numeros = null;      // ✅ Válido
-
-// Tipos por valor: NO pueden ser null (por defecto)
-int edad = null;           // ❌ Error de compilación
-
-// Pero con ? sí (nullable)
-int? nota = null;          // ✅ Válido
-```
-
-> ⚠️ **Advertencia:** Intentar usar un valor `null` causa `NullReferenceException`. Es el error más común en programación.
-
-### El problema de `==` con tipos por referencia
-
-```csharp
-// ✅ Tipos por valor: == compara CONTENIDO
-int a = 5, b = 5;
-Console.WriteLine(a == b);  // True — mismos valores
-
-// ❌ Tipos por referencia: == compara REFERENCIA (¿son el mismo objeto?)
-int[] x = { 1, 2, 3 };
-int[] y = { 1, 2, 3 };
-Console.WriteLine(x == y);  // False — son objetos DIFERENTES (en distintas posiciones de memoria)
-
-// Esto SÍ es True (son el mismo objeto)
-int[] z = x;
-Console.WriteLine(x == z);  // True — apuntan al mismo sitio
-```
-
-> 💡 **Analogía:** `==` con tipos por valor es como preguntar "¿tienen el mismo contenido?". Con tipos por referencia es como preguntar "¿son la misma persona?" (la misma dirección de memoria).
-
-> 📝 **Nota:** Los strings son un caso especial. Aunque son tipos por referencia, C# los trata de forma especial con **interning** (reutiliza strings idénticos). Por eso `"Hola" == "Hola"` es `True`. Pero no confíes: siempre usa `.Equals()` para comparar strings en producción.
+> ⚠️ **Advertencia:** Intentar usar un valor `null` como si tuviera un objeto causa `NullReferenceException`. Es el error más común en programación. Veremos cómo protegernos en el siguiente punto.
 
 ---
 
