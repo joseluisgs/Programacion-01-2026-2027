@@ -281,6 +281,30 @@ Las Leyes de De Morgan permiten simplificar expresiones lógicas negando por sep
 | **Ley 1** | `!(A && B)` | `!A \|\| !B` |
 | **Ley 2** | `!(A \|\| B)` | `!A && !B` |
 
+**¿Por qué son equivalentes?** Veámoslo con tablas de verdad. Si compruebas columna por columna, los resultados son **idénticos**:
+
+#### Ley 1: `!(A && B)` es lo mismo que `!A || !B`
+
+| A | B | A && B | **!(A && B)** | !A | !B | **!A \|\| !B** |
+|:---:|:---:|:------:|:-------------:|:---:|:---:|:--------------:|
+| true | true | true | **false** | false | false | **false** |
+| true | false | false | **true** | false | true | **true** |
+| false | true | false | **true** | true | false | **true** |
+| false | false | false | **true** | true | true | **true** |
+
+> Las columnas en negrita son **idénticas**: `!(A && B)` y `!A || !B` siempre dan el mismo resultado.
+
+#### Ley 2: `!(A || B)` es lo mismo que `!A && !B`
+
+| A | B | A \|\| B | **!(A \|\| B)** | !A | !B | **!A && !B** |
+|:---:|:---:|:-------:|:---------------:|:---:|:---:|:------------:|
+| true | true | true | **false** | false | false | **false** |
+| true | false | true | **false** | false | true | **false** |
+| false | true | true | **false** | true | false | **false** |
+| false | false | false | **true** | true | true | **true** |
+
+> Las columnas en negrita son **idénticas**: `!(A || B)` y `!A && !B` siempre dan el mismo resultado.
+
 ```csharp
 // Ley 1: Negación de un AND
 bool a = true;
