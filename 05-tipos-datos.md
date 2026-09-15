@@ -310,93 +310,118 @@ Este concepto es **fundamental**. Explica por qué los tipos se comportan de for
 
 El ordenador tiene dos zonas de memoria principales para las variables:
 
-- **Stack (pila):** Memoria rápida y ordenada. Almacena los tipos por valor con un tamaño fijo. Es como una pila de platos: lo último que pones, lo primero que sacas.
-- **Heap (montón):** Memoria flexible y más lenta. Almacena los objetos grandes o de tamaño variable (strings, arrays, objetos). Es como un almacén grande donde guardas cajas de cualquier tamaño.
-
-```mermaid
-graph TB
-    subgraph STACK ["STACK (pila) — Rápido, tamaño fijo"]
-        direction LR
-        A["int edad = 25<br/>4 bytes"]
-        B["double precio = 9.99<br/>8 bytes"]
-        C["bool activo = true<br/>1 byte"]
-        D["string nombre →<br/>(referencia)"]
-    end
-    subgraph HEAP ["HEAP (montón) — Flexible, tamaño variable"]
-        direction LR
-        E["Objeto string<br/>'Pepe'<br/>(4 bytes)"]
-        F["Objeto string<br/>'María Angustias Fernández Gutiérrez'<br/>(48 bytes)"]
-        G["Array int[3]<br/>{1, 2, 3}<br/>(12 bytes)"]
-    end
-    D -->|"apunta a"| E
-    style STACK fill:#4CAF50,color:#fff
-    style HEAP fill:#2196F3,color:#fff
-    style A fill:#2E7D32,color:#fff
-    style B fill:#2E7D32,color:#fff
-    style C fill:#2E7D32,color:#fff
-    style D fill:#2E7D32,color:#fff
-    style E fill:#1565C0,color:#fff
-    style F fill:#1565C0,color:#fff
-    style G fill:#1565C0,color:#fff
-```
+- **Stack (pila):** Memoria rápida y ordenada. Almacena los tipos por valor con un tamaño fijo. El compilador **sabe exactamente cuánto espacio** ocupar porque el tipo lo indica (`int` = 4 bytes, `bool` = 1 byte...). Es como una pila de platos: lo último que pones, lo primero que sacas.
+- **Heap (montón):** Memoria flexible y más lenta. Almacena los objetos de **tamaño variable** (strings, arrays, objetos). El compilador **no sabe cuánto espacio** ocupará un `string` hasta que se ejecute: ¿"Pepe" (4 bytes) o "María Angustias Fernández Gutiérrez" (48 bytes)? Por eso no puede estar en el Stack.
 
 > 💡 **Analogía:** El **stack** es como la encimera de tu cocina: tienes espacio limitado, pones los platos encima y sacas el de arriba primero. El **heap** es como el armario de la despensa: puedes meter cajas de cualquier tamaño, pero tardas más en encontrar lo que buscas.
 
-### Tipos por Valor
+### Ejemplo 1: Tipo por valor — `int edad`
 
-Los tipos por valor almacenan el **dato directamente en el Stack**. Ocupan un tamaño fijo en memoria. Cuando asignas uno a otra variable, se **copia el contenido completo**.
-
-```csharp
-// Tipos por valor: int, double, bool, char, struct, enum
-int a = 5;
-int b = a;    // b es una COPIA de a
-b = 10;
-Console.WriteLine(a);  // 5 — a NO cambia
-```
-
-**¿Por qué?** Porque cada variable tiene su propio "cajón" en el Stack con su propia copia del dato.
-
-### Tipos por Referencia
-
-Los tipos por referencia almacenan una **referencia (puntero) en el Stack**, pero el dato real está en el **Heap**. Cuando asignas uno a otra variable, ambas apuntan al **mismo objeto** en el Heap.
+Cuando escribes `int edad = 25;`, el compilador reserva **4 bytes en el Stack** y guarda el valor `25` directamente ahí. No hay referencias, no hay Heap: el dato está **dentro** de la variable.
 
 ```csharp
-// Tipos por referencia: string, array, clases
-int[] array1 = { 1, 2, 3 };
-int[] array2 = array1;    // array2 es un ALIAS de array1
-array2[0] = 999;
-Console.WriteLine(array1[0]);  // 999 — ¡array1 también cambió!
+int edad = 25;
+edad = 30;  // Se sobrescribe el valor directamente en el Stack
 ```
-
-**¿Por qué?** Porque la referencia es un "dirección postal" al objeto en el Heap. Si dos variables tienen la misma dirección, están hablando del mismo objeto.
-
-> 📝 **Nota:** Un `string` es un tipo por referencia, pero C# lo trata de forma especial con **inmutabilidad**: una vez creado, no se puede modificar. Por eso parece un tipo por valor, pero no lo es.
-
-### ¿Por qué importa el tamaño?
-
-Un tipo por valor tiene un tamaño **fijo**. Un `int` siempre ocupa 4 bytes, da igual si guardas el `1` o el `2.000.000.000`.
-
-Un tipo por referencia tiene un tamaño **variable**. Un `string` puede ser `"Pepe"` (4 bytes) o `"María Angustias Fernández Gutiérrez"` (48 bytes). Por eso no puede estar en el Stack: el compilador no sabe cuánto espacio reservar.
 
 ```mermaid
 graph LR
-    subgraph VALOR ["Tipo por valor: tamaño FIJO"]
-        A["int<br/>Siempre 4 bytes"] --> B["Stack"]
+    subgraph STACK_1 ["Paso 1: int edad = 25"]
+        A1["edad<br/>Dirección: 0x100<br/>4 bytes"] -->|"contiene"| V1["25"]
     end
-    subgraph REFERENCIA ["Tipo por referencia: tamaño VARIABLE"]
-        C["string<br/>4 bytes? 48 bytes?"] --> D["Heap"]
-        E["Referencia<br/>Siempre 8 bytes"] --> F["Stack"]
-        E --> D
+    subgraph STACK_2 ["Paso 2: edad = 30"]
+        A2["edad<br/>Dirección: 0x100<br/>4 bytes"] -->|"contiene"| V2["30"]
     end
-    style VALOR fill:#4CAF50,color:#fff
-    style REFERENCIA fill:#2196F3,color:#fff
-    style A fill:#2E7D32,color:#fff
-    style B fill:#2E7D32,color:#fff
-    style C fill:#1565C0,color:#fff
-    style D fill:#1565C0,color:#fff
-    style E fill:#1565C0,color:#fff
-    style F fill:#1565C0,color:#fff
+    STACK_1 -->|"reasignar"| STACK_2
+    style STACK_1 fill:#4CAF50,color:#fff
+    style STACK_2 fill:#4CAF50,color:#fff
+    style A1 fill:#2E7D32,color:#fff
+    style A2 fill:#2E7D32,color:#fff
+    style V1 fill:#FF9800,color:#fff
+    style V2 fill:#FF9800,color:#fff
 ```
+
+**¿Por qué funciona así?** Porque el tipo `int` tiene un tamaño **fijo** (4 bytes). El compilador sabe exactamente cuánto reservar. Por eso puedes reasignar: simplemente cambias el contenido de esos 4 bytes.
+
+### Ejemplo 2: Tipo por referencia — `string nombre`
+
+Cuando escribes `string nombre = "Pepe";`, pasan **dos cosas**:
+
+1. En el **Stack** se reserva un espacio (8 bytes) para la **referencia** (una dirección de memoria)
+2. En el **Heap** se crea el objeto `"Pepe"` con su contenido real
+3. La referencia en el Stack **apunta** a la dirección del objeto en el Heap
+
+```csharp
+string nombre = "Pepe";
+nombre = "María Angustias Fernández Gutiérrez";
+```
+
+```mermaid
+graph TB
+    subgraph STACK ["STACK — Referencias"]
+        direction TB
+        EDAD["edad<br/>0x100<br/>int (4 bytes)"]
+        NOMBRE["nombre<br/>0x108<br/>string ref (8 bytes)"]
+    end
+    subgraph HEAP ["HEAP — Objetos"]
+        direction TB
+        OBJ1["0x2000<br/>'Pepe'<br/>(4 bytes)"]
+        OBJ2["0x3000<br/>'María Angustias Fernández Gutiérrez'<br/>(48 bytes)"]
+    end
+    EDAD -->|"contiene: 25"| EDAD
+    NOMBRE -->|"0x2000"| OBJ1
+    style STACK fill:#4CAF50,color:#fff
+    style HEAP fill:#2196F3,color:#fff
+    style EDAD fill:#2E7D32,color:#fff
+    style NOMBRE fill:#2E7D32,color:#fff
+    style OBJ1 fill:#1565C0,color:#fff
+    style OBJ2 fill:#1565C0,color:#fff
+```
+
+**Paso 1:** `nombre` apunta a `"Pepe"` en el Heap (dirección `0x2000`).
+
+**Paso 2:** Al hacer `nombre = "María Angustias..."`, **no se modifica "Pepe"**. Se crea un **nuevo objeto** en el Heap (`0x3000`) y se cambia la referencia en el Stack para que apunte al nuevo objeto:
+
+```mermaid
+graph TB
+    subgraph STACK ["STACK — Después de reasignar"]
+        direction TB
+        EDAD["edad<br/>0x100<br/>int (4 bytes)"]
+        NOMBRE["nombre<br/>0x108<br/>string ref (8 bytes)"]
+    end
+    subgraph HEAP ["HEAP — Después de reasignar"]
+        direction TB
+        OBJ1["0x2000<br/>'Pepe'<br/>(4 bytes)<br/>⚠️ SIN REFERENCIA"]
+        OBJ2["0x3000<br/>'María Angustias Fernández Gutiérrez'<br/>(48 bytes)"]
+    end
+    EDAD -->|"contiene: 25"| EDAD
+    NOMBRE -->|"0x3000"| OBJ2
+    OBJ1 -.->|"♻️ Recolector de Basura"| OBJ1
+    style STACK fill:#4CAF50,color:#fff
+    style HEAP fill:#2196F3,color:#fff
+    style EDAD fill:#2E7D32,color:#fff
+    style NOMBRE fill:#2E7D32,color:#fff
+    style OBJ1 fill:#f44336,color:#fff
+    style OBJ2 fill:#1565C0,color:#fff
+```
+
+> 📝 **Nota:** El objeto `"Pepe"` ahora **no tiene ninguna referencia** que apunte a él. El **Recolector de Basura** (Garbage Collector) se encargará de eliminarlo automáticamente para liberar memoria. No tienes que preocuparte por ello.
+
+### ¿Por qué el Heap y no meter todo en el Stack?
+
+La respuesta es el **tamaño variable**:
+
+| Tipo | Ejemplo | Tamaño | ¿Dónde? |
+| :--- | :--- | :--- | :--- |
+| `int` | `edad = 25` | **Siempre 4 bytes** | Stack ✅ |
+| `string` | `nombre = "Pepe"` | 4 bytes | Heap |
+| `string` | `nombre = "María Angustias F.G."` | 48 bytes | Heap |
+
+Un `int` siempre ocupa 4 bytes, da igual si guardas el `1` o el `2.000.000.000`. Por eso el compilador puede reservar el espacio **antes** de ejecutar el programa.
+
+Un `string` puede ocupar 4 bytes o 48 bytes. El compilador **no sabe cuánto reservar** hasta que ejecutas el programa y asignas el valor. Por eso usa el Heap: un espacio flexible donde caben objetos de cualquier tamaño.
+
+> ⚠️ **Advertencia:** Por eso `string nombre = null;` es válido pero `int edad = null;` no. El `string` en el Stack solo almacena una referencia (8 bytes fijos), y esa referencia puede ser `null` (no apuntar a ningún sitio). El `int` almacena el dato directamente, y un `int` no puede ser "ausencia de valor".
 
 ### Valores por defecto
 
