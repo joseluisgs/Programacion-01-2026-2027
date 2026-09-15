@@ -207,21 +207,18 @@ bool esMenor = edad < 18;           // false
 bool esIgual = edad == 25;          // true
 bool esDistinto = edad != 30;       // true
 
-// Usando en una condición
-if (edad >= 18)
-{
-    Console.WriteLine("Eres mayor de edad");
-}
+// El resultado se guarda en un bool
+Console.WriteLine(esMayorDeEdad);   // True
 ```
 
 > ⚠️ **Advertencia:** `==` (comparación) no es lo mismo que `=` (asignación). Es un error muy común confundirlos:
 
 ```csharp
 // ❌ MALO: esto asigna, no compara
-if (x = 5) { }  // Error de compilación
+bool resultado = (x = 5);  // Error de compilación
 
 // ✅ BUENO: esto compara
-if (x == 5) { }
+bool resultado = (x == 5);  // Funciona correctamente
 ```
 
 ## 7.5. Operadores lógicos
@@ -334,11 +331,11 @@ bool simplificado2 = !a && !b;  // false (a no es true Y b no es true)
 Los operadores `&&` y `||` usan **cortocircuito**: si el resultado final ya está determinado por el primer operando, no evalúa el segundo.
 
 ```csharp
-// Si x es 0, NO evalúa la división (evita error)
-if (x != 0 && 10 / x > 2)
-{
-    // Solo llega aquí si x no es 0
-}
+int x = 0;
+
+// Si x es 0, NO evalúa 10 / x (evita división entre cero)
+bool resultado = (x != 0) && (10 / x > 2);
+Console.WriteLine(resultado);  // false — no intenta dividir
 ```
 
 ### Asignación nula condicional (??=)
@@ -348,14 +345,12 @@ El operador `??=` asigna un valor **solo si la variable es null**. Es útil para
 ```csharp
 string? nombre = null;
 
-// Sin ??=
-if (nombre == null)
-{
-    nombre = "Anónimo";
-}
+// Sin ??= (necesitarías if)
+// if (nombre == null) { nombre = "Anónimo"; }
 
 // Con ??= (mucho más conciso)
 nombre ??= "Anónimo";  // Solo asigna si es null
+Console.WriteLine(nombre);  // "Anónimo"
 
 // Otro ejemplo: inicializar una lista solo si es null
 List<string>? items = null;

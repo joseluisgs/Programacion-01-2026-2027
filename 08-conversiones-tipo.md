@@ -214,11 +214,9 @@ string cadena = texto as string;  // "Hola" — funciona
 object entero = 42;
 string falla = entero as string;  // null — no compila, pero no lanza excepción
 
-// Uso típico: comprobar antes de usar
-if (texto is string mensaje)
-{
-    Console.WriteLine(mensaje);  // "Hola"
-}
+// Si no es null, funciona; si es null, da null
+string resultado = (texto as string) ?? "No era un string";
+Console.WriteLine(resultado);  // "Hola"
 ```
 
 > 💡 **Consejo:** `as` solo funciona con tipos de referencia o nullable. Para tipos de valor, usa `is` con pattern matching o un cast explícito.

@@ -234,28 +234,18 @@ string nombreSeguro = nombre ?? "Desconocido";  // "Desconocido"
 // Operador condicional: accede solo si no es null
 int? longitud = nombre?.Length;  // Si nombre es null, longitud será null
 
-// Verificar antes de usar
-if (nombre != null)
-{
-    Console.WriteLine(nombre.Length);
-}
+// Si nombre no es null, muestra la longitud; si es null, muestra 0
+Console.WriteLine(nombre?.Length ?? 0);  // 0
 ```
 
 ### Operador `is`: comprobación segura de null
 
-El operador `is` permite verificar el tipo y **extraer el valor** en una sola operación. Es más limpio que `!= null` + casting:
+El operador `is` permite verificar el tipo y **extraer el valor** en una sola operación:
 
 ```csharp
 object dato = "Hola";
 
-// Forma clásica (verbosa)
-if (dato != null && dato is string)
-{
-    string texto = (string)dato;  // Casting explícito
-    Console.WriteLine(texto);
-}
-
-// Con is + pattern matching (limpio)
+// Con is + pattern matching: verifica tipo y extrae en una línea
 if (dato is string texto)
 {
     Console.WriteLine(texto);  // "Hola" — sin casting, ya extraído
@@ -418,15 +408,9 @@ enum DiaSemana
 // Usar la enumeración
 DiaSemana hoy = DiaSemana.Miercoles;
 
-// Comparar
-if (hoy == DiaSemana.Sabado || hoy == DiaSemana.Domingo)
-{
-    Console.WriteLine("¡Es fin de semana!");
-}
-else
-{
-    Console.WriteLine("A trabajar");
-}
+// Comparar con un valor del enum
+bool esFinDeSemana = (hoy == DiaSemana.Sabado || hoy == DiaSemana.Domingo);
+Console.WriteLine($"¿Es fin de semana? {esFinDeSemana}");  // False
 
 // Imprimir el nombre del enum
 Console.WriteLine(hoy);  // Muestra: Miercoles
