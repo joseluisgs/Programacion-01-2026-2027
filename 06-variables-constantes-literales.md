@@ -8,7 +8,8 @@
   - [6.4. Diferencias entre variable, constante y literal](#64-diferencias-entre-variable-constante-y-literal)
   - [6.5. Enumeraciones](#65-enumeraciones)
   - [6.6. Structs: tipos de valor compuestos](#66-structs-tipos-de-valor-compuestos)
-  - [6.7. Código autodocumentado](#67-código-autodocumentado)
+  - [6.7. Tuplas: agrupar datos de diferentes tipos](#67-tuplas-agrupar-datos-de-diferentes-tipos)
+  - [6.8. Código autodocumentado](#68-código-autodocumentado)
 
 
 # 6. Variables, Constantes y Literales
@@ -494,7 +495,58 @@ Console.WriteLine(ana.Nombre);  // Mucho más claro
 
 > 💡 **Regla práctica:** Si necesitas agrupar 2-3 valores y no te importa el nombre, usa una **tupla**. Si el modelo tiene sentido propio (un punto, un jugador, un color), usa un **struct**.
 
-## 6.7. Código autodocumentado
+## 6.7. Tuplas: agrupar datos de diferentes tipos
+
+Una **tupla** te permite agrupar varios valores en una sola variable, sin necesidad de crear una clase o struct. Es como un "paquete" de datos.
+
+```csharp
+// Tupla con tipos inferidos (usando Item1, Item2)
+var persona = ("Ana", 25);
+Console.WriteLine(persona.Item1);  // "Ana"
+Console.WriteLine(persona.Item2);  // 25
+
+// Tupla con nombres (más legible)
+(string nombre, int edad) persona2 = ("Luis", 30);
+Console.WriteLine(persona2.nombre);  // "Luis"
+Console.WriteLine(persona2.edad);    // 30
+
+// Tupla con 3 elementos
+var jugador = ("Carlos", 42, 9800);
+Console.WriteLine($"{ jugador.Item1 } - Nivel { jugador.Item2 } - { jugador.Item3 } pts");
+```
+
+### Desestructurar tuplas
+
+Puedes extraer los valores de una tupla en variables individuales:
+
+```csharp
+// Desestructuración completa
+(string nombre, int edad, double nota) = ("Ana", 25, 8.5);
+Console.WriteLine($"{ nombre } tiene { edad } años y nota { nota }");
+
+// Descarte con _ (ignorar un valor que no necesitas)
+var (nombre, _) = ("Ana", 25);  // Solo nos importa el nombre
+Console.WriteLine(nombre);  // "Ana"
+```
+
+### Igualdad de tuplas
+
+Las tuplas comparan **por valores**, no por referencias:
+
+```csharp
+var a = (1, 2);
+var b = (1, 2);
+Console.WriteLine(a == b);  // True (mismos valores)
+
+var c = (1, 3);
+Console.WriteLine(a == c);  // False (distinto segundo valor)
+```
+
+> 💡 **Analogía:** Una tupla es como una **caja de zapatos** donde metes cosas de diferentes tipos: unos zapatos, unas llaves y un billete. Todo va junto en un solo paquete, pero cada cosa mantiene su tipo.
+
+> 💡 **¿Cuándo usar tupla vs variable suelta?** Cuando necesitas agrupar 2-3 valores relacionados y no quieres crear un tipo nuevo. Ejemplo: `(string nombre, int edad)` es más limpio que tener `string nombre` y `int edad` por separado.
+
+## 6.8. Código autodocumentado
 
 Un buen código se explica por sí mismo. El nombre de las variables debe describir qué contiene:
 
