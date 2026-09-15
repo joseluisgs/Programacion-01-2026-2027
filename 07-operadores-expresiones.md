@@ -37,6 +37,61 @@ edad > 18       // Resultado: true o false
 
 > 💡 **Analogía:** Una expresión es como una receta de cocina. Los ingredientes son los valores/variables, y los operadores son las instrucciones (mezclar, calentar, cortar). El resultado es el plato final.
 
+### Anatomía de una expresión
+
+Toda expresión se compone de **operandos** y **operadores**:
+
+- **Operando:** Es el dato sobre el que se opera (un número, una variable, un valor)
+- **Operador:** Es la instrucción que se aplica sobre los operandos (`+`, `-`, `>`, `&&`...)
+- **Expresión:** Es el resultado de combinar operandos con operadores
+
+```mermaid
+graph LR
+    subgraph EXPRESION ["5 + 3"]
+        O1["Operando<br/>5"]
+        OP["Operador<br/>+"]
+        O2["Operando<br/>3"]
+    end
+    EXPRESION -->|"produce"| R1["Resultado<br/>8"]
+
+    subgraph EXPRESION2 ["edad > 18"]
+        O3["Operando<br/>edad"]
+        OP2["Operador<br/>>"]
+        O4["Operando<br/>18"]
+    end
+    EXPRESION2 -->|"produce"| R2["Resultado<br/>true o false"]
+
+    subgraph EXPRESION3 ["precio * (1 + iva)"]
+        O5["Operandos<br/>precio, 1, iva"]
+        OP3["Operadores<br/>, *, +, ()"]
+    end
+    EXPRESION3 -->|"produce"| R3["Resultado<br/>un número"]
+
+    style EXPRESION fill:#2196F3,color:#fff
+    style EXPRESION2 fill:#4CAF50,color:#fff
+    style EXPRESION3 fill:#FF9800,color:#fff
+    style O1 fill:#1565C0,color:#fff
+    style O2 fill:#1565C0,color:#fff
+    style OP fill:#f44336,color:#fff
+    style O3 fill:#2E7D32,color:#fff
+    style O4 fill:#2E7D32,color:#fff
+    style OP2 fill:#f44336,color:#fff
+    style O5 fill:#E65100,color:#fff
+    style OP3 fill:#f44336,color:#fff
+    style R1 fill:#607D8B,color:#fff
+    style R2 fill:#607D8B,color:#fff
+    style R3 fill:#607D8B,color:#fff
+```
+
+| Parte | ¿Qué es? | Ejemplo en `5 + 3` |
+| :--- | :--- | :--- |
+| **Operando** | El dato sobre el que se opera | `5` y `3` |
+| **Operador** | La instrucción que se aplica | `+` |
+| **Expresión** | La combinación completa | `5 + 3` |
+| **Resultado** | Lo que produce la expresión | `8` |
+
+> 📝 **Nota:** Una expresión puede tener muchos operandos y operadores: `precio * (1 + iva) / descuento` tiene 3 operandos (`precio`, `1`, `iva`, `descuento`) y 4 operadores (`*`, `+`, `(`, `)`, `/`). Pero siempre produce **un solo resultado**.
+
 ## 7.2. Operadores aritméticos
 
 | Operador | Nombre | Ejemplo | Resultado |
