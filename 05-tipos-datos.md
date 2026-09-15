@@ -25,9 +25,66 @@ En este tema aprenderás qué tipos de datos existen en C#, cuánta memoria ocup
 
 ## 5.1. ¿Qué es un tipo de dato?
 
-Un **tipo de dato** define qué tipo de valor puede contener una variable y qué operaciones se pueden hacer con él. Es como elegir el contenedor adecuado: no metes agua en una bolsa de papel.
+Un **tipo de dato** define dos cosas fundamentales:
 
-> 💡 **Analogía:** Los tipos de datos son como las cajas de una tienda. Tienes cajas pequeñas para anillos, cajas medianas para zapatos y cajas grandes para televisores. Cada tipo de dato tiene un "tamaño" (memoria) y un "contenido" (valores que puede guardar).
+1. **Qué tipo de valores** puede contener una variable (números, texto, verdadero/falso...)
+2. **Cuánta memoria** ocupa en el ordenador (1 byte, 4 bytes, 8 bytes...)
+
+Elegir el tipo correcto es como elegir el contenedor adecuado: no metes agua en una bolsa de papel, y no necesitas un camión para llevar una carta.
+
+> 💡 **Analogía:** Los tipos de datos son como las cajas de una tienda. Tienes cajas pequeñas para anillos (1 byte), cajas medianas para zapatos (4 bytes) y cajas grandes para televisores (8 bytes). Cada tipo de dato tiene un "tamaño" fijo en memoria y un "contenido" (valores que puede guardar).
+
+### Diagrama de tipos y tamaños
+
+```mermaid
+graph TB
+    subgraph ENTEROS_CON_SIGNO ["Enteros con signo (sbyte, short, int, long)"]
+        direction LR
+        SBYTE["sbyte<br/>1 byte<br/>-128 a 127"]
+        SHORT["short<br/>2 bytes<br/>-32.768 a 32.767"]
+        INT["int<br/>4 bytes<br/>-2.147M a 2.147M"]
+        LONG["long<br/>8 bytes<br/>Enorme"]
+    end
+    subgraph ENTEROS_SIN_SIGNO ["Enteros sin signo (byte, ushort, uint, ulong)"]
+        direction LR
+        BYTE["byte<br/>1 byte<br/>0 a 255"]
+        USHORT["ushort<br/>2 bytes<br/>0 a 65.535"]
+        UINT["uint<br/>4 bytes<br/>0 a 4.294M"]
+        ULONG["ulong<br/>8 bytes<br/>Enorme"]
+    end
+    subgraph DECIMALES ["Decimales (float, double, decimal)"]
+        direction LR
+        FLOAT["float<br/>4 bytes<br/>~6-9 dígitos"]
+        DOUBLE["double<br/>8 bytes<br/>~15-17 dígitos"]
+        DECIMAL["decimal<br/>16 bytes<br/>~28-29 dígitos"]
+    end
+    subgraph OTROS ["Otros tipos"]
+        direction LR
+        BOOL["bool<br/>1 byte<br/>true / false"]
+        CHAR["char<br/>2 bytes<br/>Un carácter"]
+        STRING["string<br/>Variable<br/>Texto"]
+    end
+    style ENTEROS_CON_SIGNO fill:#2196F3,color:#fff
+    style ENTEROS_SIN_SIGNO fill:#4CAF50,color:#fff
+    style DECIMALES fill:#FF9800,color:#fff
+    style OTROS fill:#607D8B,color:#fff
+    style SBYTE fill:#1565C0,color:#fff
+    style SHORT fill:#1565C0,color:#fff
+    style INT fill:#1565C0,color:#fff
+    style LONG fill:#1565C0,color:#fff
+    style BYTE fill:#2E7D32,color:#fff
+    style USHORT fill:#2E7D32,color:#fff
+    style UINT fill:#2E7D32,color:#fff
+    style ULONG fill:#2E7D32,color:#fff
+    style FLOAT fill:#E65100,color:#fff
+    style DOUBLE fill:#E65100,color:#fff
+    style DECIMAL fill:#E65100,color:#fff
+    style BOOL fill:#37474F,color:#fff
+    style CHAR fill:#37474F,color:#fff
+    style STRING fill:#37474F,color:#fff
+```
+
+> 📝 **Nota:** Cada tipo tiene un tamaño **fijo**. Un `int` siempre ocupa 4 bytes, no importa si guardas el número 1 o el número 2.000.000.000. El tipo **no cambia** según el valor: lo que cambia es si el valor cabe o no en ese tipo.
 
 > ⚠️ **¿Por qué importa elegir bien el tipo?** Elegir el tipo incorrecto puede causar errores graves en aplicaciones reales:
 > - Usar `int` para dinero → pierde decimales (imagina una facturación que redondea)
