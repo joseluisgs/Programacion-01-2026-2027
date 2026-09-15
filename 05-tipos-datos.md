@@ -25,14 +25,56 @@ En este tema aprenderás qué tipos de datos existen en C#, cuánta memoria ocup
 
 ## 5.1. ¿Qué es un tipo de dato?
 
+Cuando escribes `int distancia = 1_500_000;` estás haciendo tres cosas a la vez:
+
+1. **Creamos un cajón** en memoria para guardar un valor (eso es una **variable**)
+2. **Decidimos el tamaño** del cajón (eso es el **tipo**: `int` = 4 bytes)
+3. **Ponemos un nombre** al cajón para encontrarlo después (`distancia`)
+
+El nombre `distancia` en realidad es una **dirección de memoria**: un número que indica dónde está el cajón en la RAM. Tú no necesitas saber la dirección exacta, el compilador se encarga de ello.
+
+```mermaid
+graph LR
+    subgraph MEMORIA ["Memoria RAM"]
+        direction TB
+        DIR_1000["Dirección 1000<br/>int (4 bytes)"]
+        DIR_1004["Dirección 1004<br/>short (2 bytes)"]
+        DIR_1006["Dirección 1006<br/>byte (1 byte)"]
+        DIR_1007["Dirección 1007<br/>int (4 bytes)"]
+    end
+    NOMBRE_1["distancia"] -->|"apunta a"| DIR_1000
+    NOMBRE_2["poblacion"] -->|"apunta a"| DIR_1004
+    NOMBRE_3["porcentaje"] -->|"apunta a"| DIR_1006
+    NOMBRE_4["año"] -->|"apunta a"| DIR_1007
+    DIR_1000 --- VALOR_1["1_500_000"]
+    DIR_1004 --- VALOR_2["35000"]
+    DIR_1006 --- VALOR_3["85"]
+    DIR_1007 --- VALOR_4["2026"]
+    style MEMORIA fill:#2196F3,color:#fff
+    style DIR_1000 fill:#1565C0,color:#fff
+    style DIR_1004 fill:#1565C0,color:#fff
+    style DIR_1006 fill:#1565C0,color:#fff
+    style DIR_1007 fill:#1565C0,color:#fff
+    style NOMBRE_1 fill:#4CAF50,color:#fff
+    style NOMBRE_2 fill:#4CAF50,color:#fff
+    style NOMBRE_3 fill:#4CAF50,color:#fff
+    style NOMBRE_4 fill:#4CAF50,color:#fff
+    style VALOR_1 fill:#FF9800,color:#fff
+    style VALOR_2 fill:#FF9800,color:#fff
+    style VALOR_3 fill:#FF9800,color:#fff
+    style VALOR_4 fill:#FF9800,color:#fff
+```
+
+> 💡 **Analogía:** Una variable es como un **cajón con etiqueta**. La etiqueta es el nombre (`distancia`), el tamaño del cajón es el tipo (`int` = 4 bytes), y lo que metes dentro es el valor (`1_500_000`). La dirección de memoria es como la dirección postal del cajón en la estantería de la RAM.
+
+### ¿Qué es un tipo de dato?
+
 Un **tipo de dato** define dos cosas fundamentales:
 
-1. **Qué tipo de valores** puede contener una variable (números, texto, verdadero/falso...)
-2. **Cuánta memoria** ocupa en el ordenador (1 byte, 4 bytes, 8 bytes...)
+1. **Qué tipo de valores** puede contener la variable (números, texto, verdadero/falso...)
+2. **Cuánta memoria** ocupa el cajón en el ordenador (1 byte, 4 bytes, 8 bytes...)
 
 Elegir el tipo correcto es como elegir el contenedor adecuado: no metes agua en una bolsa de papel, y no necesitas un camión para llevar una carta.
-
-> 💡 **Analogía:** Los tipos de datos son como las cajas de una tienda. Tienes cajas pequeñas para anillos (1 byte), cajas medianas para zapatos (4 bytes) y cajas grandes para televisores (8 bytes). Cada tipo de dato tiene un "tamaño" fijo en memoria y un "contenido" (valores que puede guardar).
 
 ### Diagrama de tipos y tamaños
 
