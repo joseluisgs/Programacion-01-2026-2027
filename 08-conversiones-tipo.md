@@ -262,18 +262,77 @@ Cuando no sepas qué método elegir, consulta esta tabla:
 graph TD
     A["¿Qué necesitas convertir?"] --> B{"¿De string a número?"}
     B -->|"Sí, es válido"| C["Parse()"]
-    B -->|"Sí, puede fallar"| D["TryParse() ← SEGURO"]
+    B -->|"Sí, puede fallar"| D["TryParse()"]
     B -->|"No, es null"| E["Convert.ToTipo()"]
     A --> F{"¿De número a número?"}
-    F -->|"Destino más grande"| G["Implícita (automática)"]
-    F -->|"Destino más pequeño"| H["Cast explícito (tipo)"]
+    F -->|"Destino más grande"| G["Implícita"]
+    F -->|"Destino más pequeño"| H["Cast explícito"]
     A --> I{"¿De número a string?"}
-    I --> J["$\"\" o ToString()"]
+    I --> J["Interpolación o ToString"]
 
     style A fill:#2196F3,color:#fff
     style D fill:#4CAF50,color:#fff
     style H fill:#f44336,color:#fff
 ```
+
+### Conversiones implícitas: la caja que entra en otra
+
+Una conversión implícita es cuando un tipo **pequeño** entra automáticamente en un tipo **grande**, sin perder datos. Es como meter una caja pequeña dentro de una caja grande: sobra espacio, pero no se rompe nada.
+
+```mermaid
+graph LR
+    subgraph CAJA_PEQ ["Caja pequeña: int (4 bytes)"]
+        A1["int edad = 25"]
+    end
+    subgraph CAJA_GRAN ["Caja grande: double (8 bytes)"]
+        B1["double distancia = 25.0"]
+    end
+    CAJA_PEQ -->|"entra automáticamente"| CAJA_GRAN
+
+    style CAJA_PEQ fill:#4CAF50,color:#fff
+    style CAJA_GRAN fill:#2196F3,color:#fff
+    style A1 fill:#2E7D32,color:#fff
+    style B1 fill:#1565C0,color:#fff
+```
+
+```csharp
+int edad = 25;
+double distancia = edad;  // ✅ Implícita: int (4 bytes) → double (8 bytes)
+```
+
+### Conversiones explícitas: la caja que NO entra
+
+Una conversión explícita (casting) es cuando intentas meter un tipo **grande** en un tipo **pequeño**. El compilador te avisa porque puedes **perder datos**. Es como intentar meter una caja grande en una caja pequeña: algo se va a romper.
+
+```mermaid
+graph LR
+    subgraph CAJA_GRAN ["Caja grande: double (8 bytes)"]
+        A1["double distancia = 25.99"]
+    end
+    subgraph CAJA_PEQ ["Caja pequeña: int (4 bytes)"]
+        B1["int edad = 25"]
+    end
+    CAJA_GRAN -->|"¿cabe?"| CAJA_PEQ
+    CAJA_GRAN -.->|"pierde decimal"| B1
+
+    style CAJA_GRAN fill:#2196F3,color:#fff
+    style CAJA_PEQ fill:#f44336,color:#fff
+    style A1 fill:#1565C0,color:#fff
+    style B1 fill:#f44336,color:#fff
+```
+
+```csharp
+double distancia = 25.99;
+int edad = (int)distancia;  // ⚠️ Explícita: double (8 bytes) → int (4 bytes)
+                             // Resultado: 25 (pierde el .99)
+```
+
+> 💡 **Analogía:** Piensa en las cajas de un tienda. Una caja pequeña de zapatillas (int, 4 bytes) **sí cabe** dentro de una caja grande de televisor (double, 8 bytes). Pero una caja grande de televisor **no cabe** dentro de una caja pequeña de zapatillas. Si la fuerzas, se rompe (pierdes datos).
+
+| Conversión | Tipo | ¿Pierde datos? | Ejemplo |
+| :--- | :--- | :--- | :--- |
+| **Implícita** (pequeño → grande) | Automática | No | `int` → `double` |
+| **Explícita** (grande → pequeño) | Casting `(tipo)` | Sí | `double` → `int` |
 
 ### Errores comunes
 
