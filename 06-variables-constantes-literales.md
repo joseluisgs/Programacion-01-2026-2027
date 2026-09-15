@@ -231,11 +231,15 @@ string? emailUsuario = null;  // Puede ser null (no proporcionado)
 string? nombre = null;
 string nombreSeguro = nombre ?? "Desconocido";  // "Desconocido"
 
-// Operador condicional: accede solo si no es null
-int? longitud = nombre?.Length;  // Si nombre es null, longitud será null
+string? apellido = "García";
+string apellidoSeguro = apellido ?? "Desconocido";  // "García"
 
-// Si nombre no es null, muestra la longitud; si es null, muestra 0
-Console.WriteLine(nombre?.Length ?? 0);  // 0
+// Otro ejemplo con números
+int? nota = null;
+int notaFinal = nota ?? 0;  // 0 si no hay nota
+
+int? puntos = 150;
+int puntosFinales = puntos ?? 0;  // 150 (no es null, usa el valor)
 ```
 
 ### Operador `is`: comprobación segura de null
