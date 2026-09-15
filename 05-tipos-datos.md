@@ -315,69 +315,9 @@ El ordenador tiene dos zonas de memoria principales para las variables:
 
 > 💡 **Analogía:** El **stack** es como la encimera de tu cocina: tienes espacio limitado, pones los platos encima y sacas el de arriba primero. El **heap** es como el armario de la despensa: puedes meter cajas de cualquier tamaño, pero tardas más en encontrar lo que buscas.
 
-### Diagrama completo: Stack y Heap juntos
-
-Imagina que en tu programa tienes una variable `int edad` y un `string nombre`. Esto es lo que pasa en memoria:
-
-```mermaid
-graph TB
-    subgraph STACK ["STACK (pila)"]
-        direction TB
-        EDAD["edad<br/>Dir: 0x100<br/>Tipo: int<br/>Tamaño: 4 bytes<br/>Valor: 25"]
-        NOMBRE["nombre<br/>Dir: 0x108<br/>Tipo: string<br/>Tamaño: 8 bytes (solo la referencia)"]
-    end
-    subgraph HEAP ["HEAP (montón)"]
-        direction TB
-        OBJ_STR["Dir: 0x2000<br/>Objeto string<br/>Contenido: 'Pepe'<br/>Tamaño: 4 bytes"]
-    end
-    NOMBRE -->|"apunta a 0x2000"| OBJ_STR
-    style STACK fill:#4CAF50,color:#fff
-    style HEAP fill:#2196F3,color:#fff
-    style EDAD fill:#2E7D32,color:#fff
-    style NOMBRE fill:#2E7D32,color:#fff
-    style OBJ_STR fill:#1565C0,color:#fff
-```
-
-Fíjate en la diferencia:
-
-- `edad` (tipo por valor): el **25 está DENTRO** del Stack. La variable `edad` **es** el dato.
-- `nombre` (tipo por referencia): el Stack solo tiene una **flecha** (la dirección `0x2000`). El dato real (`"Pepe"`) está en el Heap. La variable `nombre` **apunta al** dato.
-
-Ahora cambiamos `nombre = "María Angustias Fernández Gutiérrez"`:
-
-```mermaid
-graph TB
-    subgraph STACK ["STACK (pila)"]
-        direction TB
-        EDAD["edad<br/>Dir: 0x100<br/>Tipo: int<br/>Tamaño: 4 bytes<br/>Valor: 25"]
-        NOMBRE["nombre<br/>Dir: 0x108<br/>Tipo: string<br/>Tamaño: 8 bytes (solo la referencia)"]
-    end
-    subgraph HEAP ["HEAP (montón)"]
-        direction TB
-        OBJ_OLD["Dir: 0x2000<br/>'Pepe'<br/>(4 bytes)<br/>SIN REFERENCIA"]
-        OBJ_NEW["Dir: 0x3000<br/>'María Angustias Fernández Gutiérrez'<br/>(48 bytes)"]
-    end
-    NOMBRE -->|"ahora apunta a 0x3000"| OBJ_NEW
-    OBJ_OLD -.->|"Recolector de Basura la eliminará"| OBJ_OLD
-    style STACK fill:#4CAF50,color:#fff
-    style HEAP fill:#2196F3,color:#fff
-    style EDAD fill:#2E7D32,color:#fff
-    style NOMBRE fill:#2E7D32,color:#fff
-    style OBJ_OLD fill:#f44336,color:#fff
-    style OBJ_NEW fill:#1565C0,color:#fff
-```
-
-**¿Qué pasó?**
-
-1. `edad` sigue igual: el `25` está directamente en el Stack (dirección `0x100`). No cambia nada.
-2. `nombre` ahora apunta a `0x3000` (la nueva dirección). El objeto `"Pepe"` en `0x2000` **ya no tiene ninguna flecha** que apunte a él.
-3. El **Recolector de Basura** se dará cuenta de que `"Pepe"` no tiene referencias y lo eliminará automáticamente.
-
-> 📝 **Nota:** Fíjate que `edad` y `nombre` están en el Stack, pero `nombre` solo ocupa 8 bytes (una dirección de memoria), no el tamaño del string. El string real está en el Heap. Por eso el tipo `string` puede contener textos de cualquier longitud: el Stack siempre reserva lo mismo (8 bytes para la referencia), y el Heap se adapta al tamaño real del dato.
-
 ### Ejemplo 1: Tipo por valor — `int edad`
 
-Cuando escribes `int edad = 25;`, el compilador sabe que un `int` **siempre ocupa 4 bytes**. Reserva exactamente 4 bytes en el Stack y guarda el valor `25` directamente ahí. No hay referencias, no hay Heap: el dato está **dentro** de la variable.
+Cuando escribes `int edad = 25;`, el compilador reserva **4 bytes en el Stack** y guarda el valor `25` directamente ahí. No hay referencias, no hay Heap: el dato está **dentro** de la variable.
 
 ```csharp
 int edad = 25;
@@ -387,10 +327,10 @@ edad = 30;  // Se sobrescribe el valor directamente en el Stack
 ```mermaid
 graph LR
     subgraph STACK_1 ["Paso 1: int edad = 25"]
-        A1["edad<br/>Dir: 0x100<br/>4 bytes"] -->|"contiene"| V1["25"]
+        A1["edad<br/>Dirección: 0x100<br/>4 bytes"] -->|"contiene"| V1["25"]
     end
     subgraph STACK_2 ["Paso 2: edad = 30"]
-        A2["edad<br/>Dir: 0x100<br/>4 bytes"] -->|"contiene"| V2["30"]
+        A2["edad<br/>Dirección: 0x100<br/>4 bytes"] -->|"contiene"| V2["30"]
     end
     STACK_1 -->|"reasignar"| STACK_2
     style STACK_1 fill:#4CAF50,color:#fff
@@ -401,7 +341,7 @@ graph LR
     style V2 fill:#FF9800,color:#fff
 ```
 
-**¿Por qué funciona así?** Porque el tipo `int` tiene un tamaño **fijo** (4 bytes). El compilador sabe exactamente cuánto reservar. Por eso puedes reasignar: simplemente cambias el contenido de esos 4 bytes. El viejo valor se sobrescribe, no queda nada "colgando" en memoria.
+**¿Por qué funciona así?** Porque el tipo `int` tiene un tamaño **fijo** (4 bytes). El compilador sabe exactamente cuánto reservar. Por eso puedes reasignar: simplemente cambias el contenido de esos 4 bytes.
 
 ### Ejemplo 2: Tipo por referencia — `string nombre`
 
