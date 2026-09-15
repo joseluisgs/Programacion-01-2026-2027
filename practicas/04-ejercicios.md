@@ -171,20 +171,16 @@ Crea un archivo `ej45.cs` con `string? mensajeError = null;`. Usa `?? "Sin error
 
 ---
 
-### Bloque IX: Enums Avanzados y Lógica (Ejercicios 46-48)
+### Bloque IX: Enums, Structs y Tuplas (Ejercicios 46-50)
 
-**Ejercicio 46: Tipo de Pokémon con Método**
-Crea un archivo `ej46.cs` que defina `enum TipoPokemon { Fuego, Agua, Planta, Electrico }`. Escribe una función que reciba un `TipoPokemon` y devuelva un string: "Fuego es débil contra Agua, fuerte contra Planta". Declara una variable y muestra la descripción.
+**Ejercicio 46: Tipo de Pokémon con Enum**
+Crea un archivo `ej46.cs` que defina `enum TipoPokemon { Fuego, Agua, Planta, Electrico }`. Declara una variable, asígnale `TipoPokemon.Fuego` y muestra su nombre y valor numérico. Usa un ternario para mostrar: "Fuego es fuerte contra Planta, débil contra Agua".
 
-**Ejercicio 47: Validación de Partida**
-Crea un archivo `ej47.cs` con `double ping = 45.0;` `int jugadores = 8;` `bool servidorActivo = true;`. Una partida es "válida" si: ping < 100 Y jugadores >= 2 Y servidorActivo es true. Muestra el resultado.
+**Ejercicio 47: Struct de un Pokémon**
+Crea un archivo `ej47.cs` que defina un struct `Pokemon` con campos: `string Nombre`, `int Nivel`, `int CP`, `TipoPokemon Tipo` (reutiliza el enum del ejercicio anterior). Crea dos instancias, cópia una en otra, modifica la copia y muestra que la original NO cambia.
 
-**Ejercicio 48: Nota Media de un Módulo**
-Crea un archivo `ej48.cs` con `const double PESO_TEORIA = 0.40, PESO_PRACTICA = 0.60;`. Pide las notas de teoría y práctica. Calcula la nota media ponderada. Muestra si ha aprobado (>=5).
-
----
-
-### Bloque X: De Morgan y Desafíos Finales (Ejercicios 49-50)
+**Ejercicio 48: Tupla de Estadísticas**
+Crea un archivo `ej48.cs` que declare una tupla `(string nombre, int nivel, int puntos)` con los datos de un jugador. Muestra los valores con `Item1`, `Item2`, `Item3` y también con nombres. Desestructura la tupla en variables individuales y muestra el resultado.
 
 **Ejercicio 49: De Morgan en un Ranking**
 Crea un archivo `ej49.cs` con `int nivel = 150;` `int oro = 5000;`. Un jugador está en "Top 100" si `nivel > 200 && oro > 10000`. Expresa la condición de que NO está en Top 100 usando De Morgan: `!(A && B) == !A || !B`. Muestra ambos resultados.
