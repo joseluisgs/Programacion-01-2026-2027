@@ -252,6 +252,15 @@ Los operadores lógicos combinan expresiones booleanas.
 | false | true | true |
 | false | false | false |
 
+**Tabla de verdad del NOT (`!`):**
+
+| A | !A |
+|---|-----|
+| true | false |
+| false | true |
+
+> 📝 **Nota:** El NOT solo tiene **un operando**. Simplemente invierte el valor: lo que era `true` se convierte en `false` y viceversa.
+
 **Ejemplos:**
 
 ```csharp
