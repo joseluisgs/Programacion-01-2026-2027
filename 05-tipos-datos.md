@@ -191,9 +191,9 @@ Para números con decimales (parte fraccionaria), tenemos varios tipos:
 
 | Tipo | Precisión | Tamaño | Memoria | Valor por defecto |
 |------|-----------|--------|---------|-----------------|
-| `float` | ~6-9 dígitos | 32 bits | 4 bytes | `0` |
-| `double` | ~15-17 dígitos | 64 bits | 8 bytes | `0` |
-| `decimal` | ~28-29 dígitos | 128 bits | 16 bytes | `0` |
+| `float` | ~6-9 dígitos | 32 bits | 4 bytes | `0.0` |
+| `double` | ~15-17 dígitos | 64 bits | 8 bytes | `0.0` |
+| `decimal` | ~28-29 dígitos | 128 bits | 16 bytes | `0.0` |
 
 **Diferencias importantes:**
 
@@ -314,9 +314,9 @@ Console.WriteLine(a == c);  // False (distinto segundo valor)
 | `uint` | No | 4 bytes | 0 a 4.294M | Contadores grandes | `0` |
 | `long` | Sí | 8 bytes | ±9.22E | Números muy grandes | `0` |
 | `ulong` | No | 8 bytes | 0 a 18.4E | Contadores masivos | `0` |
-| `float` | - | 4 bytes | ~6-9 dígitos | Gráficos, física | `0` |
-| `double` | - | 8 bytes | ~15-17 dígitos | **Decimales (por defecto)** | `0` |
-| `decimal` | - | 16 bytes | ~28-29 dígitos | **Dinero, finanzas** | `0` |
+| `float` | - | 4 bytes | ~6-9 dígitos | Gráficos, física | `0.0` |
+| `double` | - | 8 bytes | ~15-17 dígitos | **Decimales (por defecto)** | `0.0` |
+| `decimal` | - | 16 bytes | ~28-29 dígitos | **Dinero, finanzas** | `0.0` |
 | `bool` | - | 1 byte | `true`/`false` | Condiciones, banderas | `false` |
 | `char` | - | 2 bytes | Un carácter | Letras, símbolos | `'\0'` |
 | `string` | - | Variable | Texto | Nombres, mensajes | `null` |
