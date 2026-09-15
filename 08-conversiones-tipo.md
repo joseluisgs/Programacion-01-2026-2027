@@ -121,14 +121,9 @@ int error = int.Parse("hola");  // Excepción
 string texto = "42";
 bool exito = int.TryParse(texto, out int resultado);
 
-if (exito)
-{
-    Console.WriteLine($"El número es: {resultado}");
-}
-else
-{
-    Console.WriteLine("No es un número válido");
-}
+// Con ternario: mostrar el resultado o un mensaje de error
+string mensaje = exito ? $"El número es: {resultado}" : "No es un número válido";
+Console.WriteLine(mensaje);
 
 // Con valor por defecto si falla
 string input = "abc";
@@ -343,14 +338,10 @@ int numero = int.Parse(input);      // Excepción si no es número
 
 // ✅ SOLUCIÓN: Usar TryParse
 string input = Console.ReadLine();
-if (int.TryParse(input, out int numero))
-{
-    Console.WriteLine($"Número: {numero}");
-}
-else
-{
-    Console.WriteLine("No es un número válido");
-}
+string resultado = int.TryParse(input, out int numero)
+    ? $"Número: {numero}"
+    : "No es un número válido";
+Console.WriteLine(resultado);
 ```
 
 ```csharp
