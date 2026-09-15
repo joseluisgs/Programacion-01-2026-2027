@@ -407,45 +407,56 @@ double precioFinal = (precioBase + iva) * (1 - descuento);
 
 ### Operador ternario (`? :`)
 
-Es una forma abreviada de escribir un `if-else` en una sola línea:
+El operador ternario elige **uno de dos valores** dependiendo de una condición. Es como una pregunta con dos posibles respuestas:
+
+```
+(condición) ? valor_si_true : valor_si_false
+```
 
 ```csharp
 int edad = 20;
 
-// Forma larga (if-else)
-string mensaje;
-if (edad >= 18)
-{
-    mensaje = "Eres mayor de edad";
-}
-else
-{
-    mensaje = "Eres menor de edad";
-}
+// Si edad >= 18, elige "Mayor de edad". Si no, elige "Menor de edad"
+string mensaje = (edad >= 18) ? "Mayor de edad" : "Menor de edad";
 
-// Forma corta (ternario)
-string mensaje2 = (edad >= 18) ? "Mayor de edad" : "Menor de edad";
-
-Console.WriteLine(mensaje2);  // "Mayor de edad"
+Console.WriteLine(mensaje);  // "Mayor de edad"
 ```
 
-> 💡 **Analogía:** El ternario es como una pregunta con dos respuestas posibles: "¿Tienes 18 o más? → Sí: mayor, No: menor".
+```mermaid
+graph LR
+    A{"edad >= 18?"} -->|"Sí"| B["Mayor de edad"]
+    A -->|"No"| C["Menor de edad"]
+    style A fill:#FF9800,color:#fff
+    style B fill:#4CAF50,color:#fff
+    style C fill:#f44336,color:#fff
+```
+
+> 💡 **Analogía:** Es como un semáforo: si está en verde, vas. Si está en rojo, paras. Una condición, dos caminos posibles.
 
 ### Operador de coalescencia nula (`??`)
 
-Retorna el valor de la izquierda si no es `null`, sino el de la derecha:
+El operador `??` mira si un valor es `null`. Si **no es null**, usa ese valor. Si **es null**, usa el valor de la derecha como alternativa:
 
 ```csharp
 string? nombre = null;
 string nombreFinal = nombre ?? "Desconocido";
-Console.WriteLine(nombreFinal);  // "Desconocido"
+Console.WriteLine(nombreFinal);  // "Desconocido" (porque nombre era null)
 
 string? apellido = "García";
 string apellidoFinal = apellido ?? "Desconocido";
-Console.WriteLine(apellidoFinal);  // "García"
+Console.WriteLine(apellidoFinal);  // "García" (porque apellido NO era null)
 ```
 
-> 📝 **Nota:** `??` es muy útil para asignar valores por defecto cuando una variable puede ser `null`.
+```mermaid
+graph LR
+    A{"nombre es null?"} -->|"Sí"| B["Usa 'Desconocido'"]
+    A -->|"No"| C["Usa el valor de nombre"]
+    style A fill:#FF9800,color:#fff
+    style B fill:#f44336,color:#fff
+    style C fill:#4CAF50,color:#fff
+```
+
+> 📝 **Nota:** `??` es muy útil para asignar valores por defecto cuando una variable puede ser `null`. Verás más sobre `null` en el punto anterior (§6.2).
 
 ---
 
