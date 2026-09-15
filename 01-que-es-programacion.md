@@ -239,13 +239,14 @@ El programador dice al ordenador **cómo** hacer las cosas, paso a paso. Es el p
 
 ```csharp
 // Imperativo: le digo al ordenador CÓMO hacer cada paso
-int[] numeros = { 3, 1, 4, 1, 5, 9 };
+int a = 3;
+int b = 1;
+int c = 4;
+int d = 1;
+int e = 5;
+int f = 9;
 int suma = 0;
-
-for (int i = 0; i < numeros.Length; i++)
-{
-    suma = suma + numeros[i];
-}
+suma = a + b + c + d + e + f;
 
 Console.WriteLine($"La suma es: {suma}");  // 23
 ```
@@ -262,24 +263,17 @@ Es una evolución del imperativo. Introduce **estructuras de control** para orga
 > 💡 **Analogía:** En vez de decir "anda hasta allá, luego vuelve, luego ve a la otra parte", organizas las instrucciones en bloques claros: "si necesitas esto, haz esto; si no, haz lo otro; repite esto 5 veces".
 
 ```csharp
-// Estructurado: uso de if, for, while (sin goto)
+// Estructurado: organizo el código en bloques claros
 int edad = 25;
+bool esMayorDeEdad = edad >= 18;  // true
 
-// Selección
-if (edad >= 18)
-{
-    Console.WriteLine("Eres mayor de edad");
-}
-else
-{
-    Console.WriteLine("Eres menor de edad");
-}
-
-// Repetición
-for (int i = 1; i <= 5; i++)
-{
-    Console.WriteLine($"Iteración {i}");
-}
+// Repetición: hacer algo varias veces
+int suma = 0;
+suma = suma + 1;  // 1
+suma = suma + 2;  // 3
+suma = suma + 3;  // 6
+suma = suma + 4;  // 10
+suma = suma + 5;  // 15
 ```
 
 **Estructuras de control:**

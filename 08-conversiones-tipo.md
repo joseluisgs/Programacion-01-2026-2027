@@ -85,19 +85,11 @@ int pequeno = (int)grande;  // ⚠️ Overflow: resultado inesperado
 
 ### Casting seguro con checked
 
-Para detectar overflows, puedes usar `checked`:
+Para detectar overflows, puedes usar `checked`. Si el valor no cabe en el tipo, se lanza un error en tiempo de ejecución:
 
 ```csharp
 long grande = 3_000_000_000L;
-
-try
-{
-    int pequeno = checked((int)grande);  // Lanza OverflowException
-}
-catch (OverflowException)
-{
-    Console.WriteLine("El valor es demasiado grande para un int");
-}
+int pequeno = checked((int)grande);  // Error: el valor no cabe en int
 ```
 
 ## 8.4. Métodos de conversión

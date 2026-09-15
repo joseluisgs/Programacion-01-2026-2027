@@ -150,15 +150,11 @@ Console.WriteLine(local);  // ❌ Error: local no existe aquí
 Una variable local existe mientras se está ejecutando el bloque donde se declaró. Cuando el bloque termina, la variable desaparece.
 
 ```csharp
-void Contar()
 {
-    for (int i = 0; i < 5; i++)
-    {
-        int temporal = i * 2;
-        Console.WriteLine(temporal);
-    }
-    // i y temporal ya no existen aquí
+    int temporal = 10;
+    Console.WriteLine(temporal);  // 10 — temporal existe aquí
 }
+// Console.WriteLine(temporal);  // ❌ Error: temporal ya no existe aquí
 ```
 
 ## 6.2. Null y Tipos Nullable

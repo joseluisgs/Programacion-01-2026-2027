@@ -88,17 +88,14 @@ int Sumar(int a, int b)
 ### ✅ BUENO: Comentar el "por qué"
 
 ```csharp
-// Multiplicamos por 1.21 porque el IVA del 21% debe incluirse
-// en el precio final para cumplir con la normativa fiscal
+// El IVA del 21% se aplica al precio base para calcular el precio final
 double precioConIva = precioBase * 1.21;
 ```
 
 ```csharp
-// Saltamos el primer elemento porque es la cabecera del CSV
-for (int i = 1; i < lineas.Length; i++)
-{
-    ProcesarLinea(lineas[i]);
-}
+// Multiplicamos por 1.21 porque el IVA del 21% debe incluirse
+// en el precio final para cumplir con la normativa fiscal
+double precioConIva = precioBase * 1.21;
 ```
 
 ### ❌ MALO: Comentar el "qué"
