@@ -6,8 +6,9 @@
     - [5.2.3. Decimales](#523-decimales)
   - [5.3. Otros tipos de datos](#53-otros-tipos-de-datos)
   - [5.4. Tabla resumen de tipos](#54-tabla-resumen-de-tipos)
-  - [5.5. El tipo var y la inferencia](#55-el-tipo-var-y-la-inferencia)
-  - [5.6. Tipos por Valor y Tipos por Referencia](#56-tipos-por-valor-y-tipos-por-referencia)
+  - [5.5. Promoción de tipos en operaciones](#55-promoción-de-tipos-en-operaciones)
+  - [5.6. El tipo var y la inferencia](#56-el-tipo-var-y-la-inferencia)
+  - [5.7. Tipos por Valor y Tipos por Referencia](#57-tipos-por-valor-y-tipos-por-referencia)
 
 
 # 5. Tipos de Datos
@@ -272,7 +273,212 @@ Guid id = Guid.NewGuid();                    // a1b2c3d4-e5f6-7890-abcd-ef123456
 
 > 📝 **Nota:** Los **valores por defecto** son los que C# asigna automáticamente a una variable cuando no se inicializa. Los numéricos valen `0`, `bool` vale `false`, `char` vale `'\0'` (carácter nulo) y `string` (al ser una referencia) vale `null`. Esto es importante cuando usas `TryParse`: si la conversión falla, la variable `out` toma este valor por defecto.
 
-## 5.5. El tipo var y la inferencia
+## 5.5. Promoción de tipos en operaciones
+
+> 💡 **Punto de partida:** ¿Alguna vez has intentado sumar un `byte` con un `int` y te ha dado un resultado que no esperabás? Esto ocurre porque C# **promociona** automáticamente los tipos en las operaciones aritméticas.
+
+Cuando realizas una operación con dos tipos diferentes, C# **eleva** el tipo más pequeño al más grande antes de calcular. Esto se llama **promoción de tipos**.
+
+### Regla fundamental
+
+> ⚠️ **Regla de oro:** Toda operación aritmética con enteros promociona el resultado a **mínimo `int`**, sin importar los tipos de los operandos.
+
+Esto significa que `byte + byte`, `byte * short` o `ushort * ushort` siempre dan como resultado un `int`.
+
+```csharp
+byte a = 10;
+byte b = 20;
+var c = a + b;  // tipo de c: int (¡no byte!)
+```
+
+📌 **Ejemplo real:** Es como una calculadora que solo acepta números grandes. Si le metes dos números pequeños, ella internamente los convierte a grandes antes de operar, y el resultado sale grande.
+
+### Tabla de promoción completa
+
+Cuando mezclas dos tipos en una operación, C# aplica estas reglas **en orden de prioridad** (de mayor a menor):
+
+#### Prioridad 1: `decimal` gana siempre
+
+Si **cualquier** operando es `decimal`, el otro se convierte a `decimal`:
+
+| Operación | Resultado | Ejemplo |
+|-----------|-----------|---------|
+| `decimal` ○ `byte` | `decimal` | `1.5m + 2` → `decimal` |
+| `decimal` ○ `int` | `decimal` | `1.5m + 42` → `decimal` |
+| `decimal` ○ `long` | `decimal` | `1.5m + 100L` → `decimal` |
+| `decimal` ○ `float` | ❌ **Error** | No hay conversión implícita |
+| `decimal` ○ `double` | ❌ **Error** | No hay conversión implícita |
+
+> ⚠️ **Advertencia:** `decimal` y `float`/`double` **no son compatibles** entre sí. Debes convertir explícitamente.
+
+#### Prioridad 2: `double` gana sobre enteros y float
+
+Si **cualquier** operando es `double` (y no hay `decimal`), el otro se convierte a `double`:
+
+| Operación | Resultado | Ejemplo |
+|-----------|-----------|---------|
+| `double` ○ `byte` | `double` | `2.5 + 10` → `double` |
+| `double` ○ `int` | `double` | `2.5 + 42` → `double` |
+| `double` ○ `long` | `double` | `2.5 + 100L` → `double` |
+| `double` ○ `float` | `double` | `2.5 + 1.5f` → `double` |
+
+#### Prioridad 3: `float` gana sobre enteros
+
+Si **cualquier** operando es `float` (y no hay `decimal` ni `double`), el otro se convierte a `float`:
+
+| Operación | Resultado | Ejemplo |
+|-----------|-----------|---------|
+| `float` ○ `byte` | `float` | `1.5f + 10` → `float` |
+| `float` ○ `int` | `float` | `1.5f + 42` → `float` |
+| `float` ○ `long` | `float` | `1.5f + 100L` → `float` |
+
+#### Prioridad 4: `ulong` solo con otros unsigned
+
+Si **cualquier** operando es `ulong` (y no hay `decimal`, `float` ni `double`), el otro debe ser unsigned:
+
+| Operación | Resultado | Nota |
+|-----------|-----------|------|
+| `ulong` ○ `byte` | `ulong` | ✅ |
+| `ulong` ○ `ushort` | `ulong` | ✅ |
+| `ulong` ○ `uint` | `ulong` | ✅ |
+| `ulong` ○ `ulong` | `ulong` | ✅ |
+| `ulong` ○ `int` | ❌ **Error** | No hay conversión implícita |
+| `ulong` ○ `long` | ❌ **Error** | No hay conversión implícita |
+
+> ⚠️ **Advertencia:** `ulong` y `int`/`long` **no son compatibles**. Necesitas cast explícito.
+
+#### Prioridad 5: `long` gana sobre enteros menores
+
+Si **cualquier** operando es `long` (y no hay `decimal`, `float`, `double` ni `ulong`), el otro se convierte a `long`:
+
+| Operación | Resultado | Ejemplo |
+|-----------|-----------|---------|
+| `long` ○ `byte` | `long` | `100L + 10` → `long` |
+| `long` ○ `int` | `long` | `100L + 42` → `long` |
+| `long` ○ `long` | `long` | `100L + 200L` → `long` |
+
+#### Prioridad 6: `uint` promociona a `long` con signed
+
+Si **cualquier** operando es `uint` (y no hay `decimal`, `float`, `double`, `ulong` ni `long`):
+
+| Operación | Resultado | Nota |
+|-----------|-----------|------|
+| `uint` ○ `uint` | `uint` | ✅ Mismos tipos |
+| `uint` ○ `byte` | `long` | El byte → uint, luego uint+uint → uint... NO: ambos a long |
+| `uint` ○ `ushort` | `long` | Igual |
+| `uint` ○ `int` | `long` | ⚠️ ¡Cuidado! No da `int` |
+| `uint` ○ `long` | `long` | ✅ |
+
+> 📝 **Nota:** La combinación `uint` + `int` da `long`, **no `int`**. Esto sorprende a muchos programadores.
+
+#### Prioridad 7: Todo lo demás → `int`
+
+Si no se cumple ninguna de las anteriores, **todos los enteros menores que `int`** se promocionan a `int`:
+
+| Operación | Resultado | Ejemplo |
+|-----------|-----------|---------|
+| `byte` ○ `byte` | `int` | `10 + 20` → `int` |
+| `byte` ○ `short` | `int` | `10 + 20` → `int` |
+| `byte` ○ `int` | `int` | `10 + 42` → `int` |
+| `short` ○ `short` | `int` | `10 + 20` → `int` |
+| `short` ○ `int` | `int` | `10 + 42` → `int` |
+| `int` ○ `int` | `int` | `42 + 10` → `int` |
+
+> 💡 **Regla de oro:** `byte`, `sbyte`, `ushort`, `short` y `char` **siempre** se promocionan a `int` en operaciones aritméticas, sin importar con qué se combinen (excepto con `decimal`, `float`, `double`, `ulong` o `long`).
+
+### El error clásico: byte × 365
+
+Este es un error muy común cuando se empieza a programar:
+
+```csharp
+byte edad = 25;
+ushort dias = edad * 365;  // ❌ Error de compilación
+```
+
+**¿Por qué falla?** Porque:
+
+1. `edad` es `byte` (1 byte)
+2. `365` es un literal `int` (4 bytes) — **todos los literales numéricos sin sufijo son `int` por defecto**
+3. C# promociona `byte × int` → el resultado es `int`
+4. `int` no se puede asignar a `ushort` (conversión implícita no permitida: grande → pequeño)
+
+**Solución 1:** Cast explícito
+
+```csharp
+byte edad = 25;
+ushort dias = (ushort)(edad * 365);  // ✅ Cast explícito: asumes la responsabilidad
+```
+
+**Solución 2:** Usar `ushort` desde el inicio
+
+```csharp
+ushort edad = 25;
+ushort dias = (ushort)(edad * 365);  // ✅ Aún necesitas cast porque ushort × int = int
+```
+
+**Solución 3:** Usar `int` para todo (la más fácil)
+
+```csharp
+int edad = 25;
+int dias = edad * 365;  // ✅ int × int = int, todo encaja
+```
+
+> 💡 **Consejo:** Si no necesitas optimizar memoria, usa `int` para todo. Es el tipo entero por defecto y evita estos problemas de promoción. Solo usa `byte`, `ushort` o `short` cuando realmente necesites ahorrar espacio o trabajar con APIs que lo requieran.
+
+### Literales numéricos: todos son `int` por defecto
+
+Un detalle importante: cuando escribes un número "suelto" en el código, C# lo considera `int` automáticamente:
+
+```csharp
+var a = 10;        // tipo: int (no byte, no short)
+var b = 1000;      // tipo: int
+var c = 100_000;   // tipo: int
+
+// Para forzar otro tipo, usa sufijos:
+var d = 10L;       // tipo: long
+var e = 10f;       // tipo: float
+var g = 10m;       // tipo: decimal
+var h = 10u;       // tipo: uint
+```
+
+Por eso `byte × 365` promociona a `int`: el `365` ya es `int` antes de empezar.
+
+### Resumen de promoción
+
+```mermaid
+graph TD
+    A["¿Qué tipos hay en la operación?"] --> B{"¿Algún decimal?"}
+    B -->|"Sí"| C["Resultado: decimal"]
+    B -->|"No"| D{"¿Algún double?"}
+    D -->|"Sí"| E["Resultado: double"]
+    D -->|"No"| F{"¿Algún float?"}
+    F -->|"Sí"| G["Resultado: float"]
+    F -->|"No"| H{"¿Algún ulong?"}
+    H -->|"Sí"| I{"¿El otro es int/long?"}
+    I -->|"Sí"| J["❌ Error de compilación"]
+    I -->|"No"| K["Resultado: ulong"]
+    H -->|"No"| L{"¿Algún long?"}
+    L -->|"Sí"| M["Resultado: long"]
+    L -->|"No"| N{"¿Algún uint?"}
+    N -->|"Sí"| O{"¿El otro es uint?"}
+    O -->|"Sí"| P["Resultado: uint"]
+    O -->|"No"| Q["Resultado: long"]
+    N -->|"No"| R["Resultado: int"]
+    style A fill:#2196F3,color:#fff
+    style C fill:#4CAF50,color:#fff
+    style E fill:#4CAF50,color:#fff
+    style G fill:#4CAF50,color:#fff
+    style K fill:#4CAF50,color:#fff
+    style M fill:#4CAF50,color:#fff
+    style P fill:#4CAF50,color:#fff
+    style Q fill:#FF9800,color:#fff
+    style R fill:#4CAF50,color:#fff
+    style J fill:#f44336,color:#fff
+```
+
+> ⚠️ **Advertencia:** La promoción **no** funciona al revés. Si el resultado es `int` y lo metes en un `ushort`, necesitas cast explícito porque estás metiendo una caja grande en una caja pequeña.
+
+## 5.6. El tipo var y la inferencia
 
 En C# puedes dejar que el compilador **infiera** el tipo de una variable. Usas `var` y el compilador deduce el tipo por el valor asignado.
 
@@ -302,7 +508,7 @@ var precio = 19.99m;         // Claramente un decimal (sufijo m)
 var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 ```
 
-## 5.6. Tipos por Valor y Tipos por Referencia
+## 5.7. Tipos por Valor y Tipos por Referencia
 
 Este concepto es **fundamental**. Explica por qué los tipos se comportan de forma diferente en memoria.
 
