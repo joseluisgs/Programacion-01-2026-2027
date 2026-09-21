@@ -428,6 +428,121 @@ graph LR
 
 > 💡 **Analogía:** Es como un semáforo: si está en verde, vas. Si está en rojo, paras. Una condición, dos caminos posibles.
 
+#### Ternario anidado: construir lógica compleja
+
+El ternario devuelve un **valor**, no una instrucción. Como devuelve un valor, ese valor puede usarse **en cualquier sitio donde se espere un valor**. Y uno de esos sitios es **dentro de otro ternario**.
+
+¿Por qué? Porque cuando escribes:
+
+```
+condicion1 ? valor1 : condicion2 ? valor2 : valor3
+```
+
+Lo que realmente está pasando es:
+
+```
+condicion1 ? valor1 : (condicion2 ? valor2 : valor3)
+```
+
+El segundo ternario **ES** el valor del "si no". Es como muñecas rusas: cada `:` abre una muñeca nueva dentro. No es nada mágico — simplemente el ternario de la derecha se evalúa **después** si la primera condición falla.
+
+> 💡 **Analogía:** Es como preguntar "¿Tienes hambre?". Si la respuesta es no, la pregunta completa es: "¿Tienes sed?". Y si tampoco, tal vez "¿Tienes ganas de merendar?". Cada respuesta puede ser otra pregunta encadenada.
+
+La estructura general es:
+
+```mermaid
+graph TD
+    A{"¿Condición 1?"} -->|"Sí"| B["Valor 1"]
+    A -->|"No"| C{"¿Condición 2?"}
+    C -->|"Sí"| D["Valor 2"]
+    C -->|"No"| E["Valor 3"]
+    style A fill:#FF9800,color:#fff
+    style B fill:#4CAF50,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#4CAF50,color:#fff
+    style E fill:#f44336,color:#fff
+```
+
+📌 **Ejemplo real:** Netflix usa ternarios anidados cuando clasifica contenido: si la edad es menor de 7 → "Para toda la familia"; si es menor de 13 → "Supervisado por un adulto"; si es menor de 18 → "Restringido"; si no → "Para adultos".
+
+```csharp
+TipoPokemon pokemon = TipoPokemon.Electrico;
+
+string descripcion = pokemon == TipoPokemon.Fuego   ? "🔥 Fuerte contra Planta"
+                   : pokemon == TipoPokemon.Agua    ? "💧 Fuerte contra Fuego"
+                   : pokemon == TipoPokemon.Planta  ? "🌿 Fuerte contra Agua"
+                   : pokemon == TipoPokemon.Electrico ? "⚡ Fuerte contra Agua"
+                   : "⚪ Sin ventajas";
+```
+
+¿Cómo se lee? De izquierda a derecha: "Si es Fuego → Fuego. Si no, ¿es Agua? → Agua. Si no, ¿es Planta? → Planta. Si no, ¿es Eléctrico? → Eléctrico. Si no, nada."
+
+```mermaid
+graph TD
+    A{"¿pokemon == Fuego?"} -->|"Sí"| B["🔥 Fuerte contra Planta"]
+    A -->|"No"| C{"¿pokemon == Agua?"}
+    C -->|"Sí"| D["💧 Fuerte contra Fuego"]
+    C -->|"No"| E{"¿pokemon == Planta?"}
+    E -->|"Sí"| F["🌿 Fuerte contra Agua"]
+    E -->|"No"| G{"¿pokemon == Eléctrico?"}
+    G -->|"Sí"| H["⚡ Fuerte contra Agua"]
+    G -->|"No"| I["⚪ Sin ventajas"]
+    style A fill:#FF9800,color:#fff
+    style B fill:#4CAF50,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#4CAF50,color:#fff
+    style E fill:#FF9800,color:#fff
+    style F fill:#4CAF50,color:#fff
+    style G fill:#FF9800,color:#fff
+    style H fill:#4CAF50,color:#fff
+    style I fill:#607D8B,color:#fff
+```
+
+📌 **Ejemplo real:** YouTube clasifica vídeos por duración: si dura menos de 1 minuto → "Short"; si dura menos de 20 minutos → "Vídeo normal"; si dura menos de 60 minutos → "Vídeo largo"; si no → "Película/Serie".
+
+```csharp
+double valoracion = 7.5;
+
+string nota = valoracion < 4  ? "Malo"
+            : valoracion < 7  ? "Regular"
+            : valoracion < 9  ? "Bueno"
+            : "Excelente";
+```
+
+¿Cómo se lee? "Si es menor que 4 → Malo. Si no, ¿es menor que 7? → Regular. Si no, ¿es menor que 9? → Bueno. Si no → Excelente."
+
+```mermaid
+graph TD
+    A{"¿valoracion < 4?"} -->|"Sí"| B["Malo"]
+    A -->|"No"| C{"¿valoracion < 7?"}
+    C -->|"Sí"| D["Regular"]
+    C -->|"No"| E{"¿valoracion < 9?"}
+    E -->|"Sí"| F["Bueno"]
+    E -->|"No"| G["Excelente"]
+    style A fill:#FF9800,color:#fff
+    style B fill:#f44336,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#FF9800,color:#fff
+    style E fill:#FF9800,color:#fff
+    style F fill:#4CAF50,color:#fff
+    style G fill:#4CAF50,color:#fff
+```
+
+📌 **Ejemplo real:** Spotify clasifica canciones por reproducciones: menos de 1000 → "Emergente"; menos de 10000 → "En auge"; menos de 100000 → "Popular"; si no → "Éxito global".
+
+```csharp
+int cp = 750;
+
+string estado = cp >= 1000 ? "MÁXIMO"
+              : cp >= 500  ? "ALTO"
+              : cp >= 200  ? "MEDIO"
+              : "BAJO";
+```
+
+> 💡 **Consejo:** Para que sea legible, escribe **un ternario por línea** y alinea los `?` y `:` verticalmente. Así el código se lee como una tabla de decisiones.
+
+> ⚠️ **Advertencia:** No anides más de **3 niveles**. Si necesitas 4 o más, el código se vuelve confuso y difícil de mantener. Cuando aprendas otras estructuras (más adelante), las usarás en su lugar.
+
 ### Operador de coalescencia nula (`??`)
 
 El operador `??` mira si un valor es `null`. Si **no es null**, usa ese valor. Si **es null**, usa el valor de la derecha como alternativa:
@@ -463,7 +578,7 @@ graph LR
 | **Asignación** | `=`, `+=`, `-=`, `*=`, `/=`, `%=` | Asignar valores |
 | **Relacionales** | `==`, `!=`, `>`, `<`, `>=`, `<=` | Comparar valores |
 | **Lógicos** | `&&`, `\|\|`, `!` | Combinar condiciones |
-| **Ternario** | `? :` | If-else abreviado |
+| **Ternario** | `? :` | Elegir entre dos valores según una condición (anidable) |
 | **Coalescencia** | `??` | Valor por defecto si es null |
 
 En el siguiente punto veremos las conversiones de tipo: implícitas, explícitas, Parse, TryParse y Convert.

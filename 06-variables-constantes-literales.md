@@ -392,6 +392,8 @@ Una **enumeración** (`enum`) es un tipo de datos que define un conjunto de **va
 
 > 💡 **Analogía:** Un enum es como un semáforo. Solo puede tener 3 estados: Rojo, Amarillo, Verde. No puede ser "azul" ni "morado". El enum fuerza a que solo se usen los valores definidos.
 
+> 💡 **¿Por qué existe el enum?** Porque sin él, tendrías que usar strings como `"Fuego"` o números como `0` para representar opciones. Eso es peligroso: un error de tipeo ("fuegO") pasa desapercibido. El enum **fuerza** a que solo se usen los valores válidos.
+
 ```csharp
 // Declarar una enumeración
 enum DiaSemana
@@ -415,6 +417,27 @@ Console.WriteLine($"¿Es fin de semana? {esFinDeSemana}");  // False
 // Imprimir el nombre del enum
 Console.WriteLine(hoy);  // Muestra: Miercoles
 ```
+
+```mermaid
+graph LR
+    A["enum DiaSemana"] --> B["Lunes = 0"]
+    A --> C["Martes = 1"]
+    A --> D["Miércoles = 2"]
+    A --> E["Jueves = 3"]
+    A --> F["Viernes = 4"]
+    A --> G["Sábado = 5"]
+    A --> H["Domingo = 6"]
+    style A fill:#9C27B0,color:#fff
+    style B fill:#607D8B,color:#fff
+    style C fill:#607D8B,color:#fff
+    style D fill:#2196F3,color:#fff
+    style E fill:#607D8B,color:#fff
+    style F fill:#607D8B,color:#fff
+    style G fill:#4CAF50,color:#fff
+    style H fill:#4CAF50,color:#fff
+```
+
+📌 **Ejemplo real:** Netflix define `enum TipoSuscripcion { Basica, Estandar, Premium }`. Si usaran strings, alguien podría escribir "Premiun" y el programa no detectaría el error. Con enum, el compilador lo advierte.
 
 ### Valores numéricos de los enums
 
@@ -443,6 +466,8 @@ Un **struct** es un tipo de dato que permite **agrupar varios campos bajo un mis
 
 > 💡 **Analogía:** Un struct es como una **ficha de usuario**: tiene campos como nombre, edad y correo. Todo junto bajo un mismo nombre, pero sin la complejidad de una clase.
 
+> 💡 **¿Por qué existe el struct?** Porque a veces necesitas agrupar datos que **significan algo juntos**. Un punto tiene X e Y. Un jugador tiene nombre, nivel y puntos. Un struct da **nombre** a esos campos y los mantiene unidos. Además, al ser tipo por valor, se **copia completo** cuando lo asignas a otra variable.
+
 ```csharp
 // Definir un struct
 struct Punto
@@ -462,6 +487,17 @@ Punto destino = new() { X = 10, Y = 20 };
 Console.WriteLine($"Origen: ({origen.X}, {origen.Y})");   // (0, 0)
 Console.WriteLine($"Destino: ({destino.X}, {destino.Y})"); // (10, 20)
 ```
+
+```mermaid
+graph TD
+    A["struct Punto"] --> B["int X"]
+    A --> C["int Y"]
+    style A fill:#9C27B0,color:#fff
+    style B fill:#2196F3,color:#fff
+    style C fill:#2196F3,color:#fff
+```
+
+📌 **Ejemplo real:** Spotify usa structs internamente para representar canciones: `struct Cancion { string Titulo; string Artista; int DuracionSegundos; }`. Cada canción es un paquete completo de datos.
 
 ### Structs vs Tuplas
 
@@ -497,6 +533,8 @@ Console.WriteLine(ana.Nombre);  // Mucho más claro
 
 Una **tupla** te permite agrupar varios valores en una sola variable, sin necesidad de crear una clase o struct. Es como un "paquete" de datos.
 
+> 💡 **¿Por qué existe la tupla?** Porque a veces necesitas devolver **varios valores** de una operación sin crear un tipo nuevo. Es como un sobre rápido: metes los datos, los usas y los tiras. No tiene nombre, no tiene significado propio, solo agrupa temporalmente.
+
 ```csharp
 // Tupla con tipos inferidos (usando Item1, Item2)
 var persona = ("Ana", 25);
@@ -512,6 +550,19 @@ Console.WriteLine(persona2.edad);    // 30
 var jugador = ("Carlos", 42, 9800);
 Console.WriteLine($"{ jugador.Item1 } - Nivel { jugador.Item2 } - { jugador.Item3 } pts");
 ```
+
+```mermaid
+graph LR
+    A["(string, int, int)"] --> B["Item1: 'Ana'"]
+    A --> C["Item2: 25"]
+    A --> D["Item3: 1500"]
+    style A fill:#9C27B0,color:#fff
+    style B fill:#2196F3,color:#fff
+    style C fill:#4CAF50,color:#fff
+    style D fill:#FF9800,color:#fff
+```
+
+📌 **Ejemplo real:** Steam calcula el resumen de una compra y devuelve `(string juego, decimal precio, int cantidad)` como tupla. Es rápido, temporal y no necesita un tipo completo.
 
 ### Desestructurar tuplas
 
@@ -546,6 +597,42 @@ Console.WriteLine(a == c);  // False (distinto segundo valor)
 
 > 📝 **Nota:** Las tuplas son tipos por valor (como vimos en§5.6), por lo que comparan por contenido, no por referencia. `(1, 2) == (1, 2)` es `True`.
 
+### ¿Cuándo elegir cada uno?
+
+| Característica | Enum | Struct | Tupla |
+|----------------|------|--------|-------|
+| **Para qué sirve** | Definir opciones fijas | Modelar entidades | Agrupar temporalmente |
+| **Tiene nombre** | Sí (el enum) | Sí (el struct) | No (solo Item1, Item2) |
+| **Campos con nombre** | No (los valores) | Sí | No |
+| **Valores posibles** | Solo los definidos | Cualquiera | Cualquiera |
+| **Copia por valor** | Sí | Sí | Sí |
+| **Cuándo usarlo** | Estados, categorías, opciones | Modelos con significado | Datos temporales, returns rápidos |
+| **Ejemplo** | `TipoPokemon`, `Rango` | `Jugador`, `Punto`, `Cancion` | `(string, int, int)` |
+
+```mermaid
+graph TD
+    A["¿Necesitas definir opciones fijas?"] -->|"Sí"| B["Usa ENUM"]
+    A -->|"No"| C["¿Los datos tienen significado propio?"]
+    C -->|"Sí"| D["Usa STRUCT"]
+    C -->|"No"| E["¿Es temporal/return rápido?"]
+    E -->|"Sí"| F["Usa TUPLA"]
+    E -->|"No"| G["Crea un record o clase (UD04)"]
+    style A fill:#FF9800,color:#fff
+    style B fill:#4CAF50,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#4CAF50,color:#fff
+    style E fill:#FF9800,color:#fff
+    style F fill:#4CAF50,color:#fff
+    style G fill:#607D8B,color:#fff
+```
+
+> 💡 **Analogía completa:** El **enum** es como un semáforo: solo puede estar en rojo, amarillo o verde. El **struct** es como una ficha de usuario: tiene campos con nombre que significan algo. La **tupla** es como un sobre rápido: metes datos, los usas y los tiras.
+
+📌 **Ejemplo real:** En un videojuego:
+- `enum TipoPersonaje { Guerrero, Mago, Arquero }` → opciones fijas, no puede haber un tipo que no sea estos tres
+- `struct Personaje { string Nombre; int Nivel; int Vida; }` → entidad con significado, agrupa datos que van juntos
+- `var resultado = ("Victory", 1500, 3)` → return temporal de una función que calcula resultado de una batalla
+
 ## 6.9. Código autodocumentado
 
 Un buen código se explica por sí mismo. El nombre de las variables debe describir qué contiene:
@@ -578,6 +665,7 @@ double precioConIva = precio * (1 + Iva / 100);
 | **Literal** | Valor fijo en el código | `25`, `"Hola"`, `true` |
 | **Enum** | Conjunto de valores con nombre | `enum DiaSemana { Lunes, ... }` |
 | **Struct** | Tipo de valor compuesto con campos | `struct Punto { int X; int Y; }` |
+| **Tupla** | Agrupación temporal de valores | `(string, int, int)` |
 | **Scope** | Dónde es visible la variable | Dentro de su bloque |
 | **Lifetime** | Cuánto tiempo vive | Mientras se ejecuta el bloque |
 
