@@ -588,4 +588,13 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 | **Semántica** | Significado de las construcciones |
 | **Metáfora cocina** | Ingredientes (datos), receta (algoritmo), utensilios (operadores) |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos el entorno de desarrollo .NET, el SDK, la CLI y las herramientas que usaremos durante todo el curso.
+
+### Buenas Prácticas
+
+- [ ] Diseñar el algoritmo en papel ANTES de escribir código (Análisis → Diseño → Codificación)
+- [ ] Usar pseudocódigo o diagramas de flujo para representar algoritmos
+- [ ] Elegir el paradigma adecuado según el problema (no todos sirven para todo)
+- [ ] Comprender la diferencia entre algoritmo (plano) y programa (casa construida)

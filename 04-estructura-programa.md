@@ -26,12 +26,12 @@ En este tema aprenderás cómo se estructura un programa en C#, qué son los blo
 
 Todo programa informático, sin importar su complejidad, sigue un flujo básico que se repite una y otra vez:
 
-### El flujo fundamental: Entrada → Proceso → Salida
+### El flujo fundamental: Entrada -> Proceso -> Salida
 
 ```mermaid
 graph LR
-    A["📥 Entrada\n(Datos)"] --> B["⚙️ Proceso\n(Cálculos)"]
-    B --> C["📤 Salida\n(Resultados)"]
+    A["Entrada\n(Datos)"] --> B["Proceso\n(Cálculos)"]
+    B --> C["Salida\n(Resultados)"]
     C -->|"¿Necesito más datos?"| A
 
     style A fill:#2196F3,color:#fff
@@ -484,7 +484,7 @@ dotnet sln list
 dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
-## 4.7. Tabla de equivalencias: Pseudocódigo → C# → Java
+## 4.7. Tabla de equivalencias: Pseudocodigo -> C# -> Java
 
 Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 
@@ -521,4 +521,13 @@ Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 | **`dotnet build`** | Compila el proyecto |
 | **`dotnet run`** | Compila y ejecuta |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos los tipos de datos en C#: enteros, decimales, texto, booleanos y la inferencia de tipos con `var`.
+
+### Buenas Prácticas
+
+- [ ] Empezar siempre con Top-Level Statements en proyectos de aprendizaje
+- [ ] Definir métodos con nombres descriptivos que expliquen qué hacen
+- [ ] Usar `using static` solo con clases muy frecuentes (como `Console`)
+- [ ] No olvidar que el archivo principal SIEMPRE se llama `Program.cs`

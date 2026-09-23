@@ -271,4 +271,15 @@ dotnet restore
 | **Roslyn** | Compilador de C# |
 | **CLR** | Máquina virtual que ejecuta el código |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos la estructura interna de un programa en C#: bloques, sentencias, expresiones, Top-Level Statements y namespaces.
+
+> 📌 **Ejemplo real:** Cuando creas un proyecto en Visual Studio o Rider, internamente se genera un `.slnx` (solución) y un `.csproj` (proyecto). Apps como Netflix o Spotify tienen cientos de proyectos en una sola solución: uno para la interfaz, otro para la lógica de negocio, otro para tests, etc.
+
+### Buenas Prácticas
+
+- [ ] Crear primero la solución y luego los proyectos dentro
+- [ ] Mantener la carpeta de la solución y la del proyecto con el mismo nombre
+- [ ] No subir las carpetas `bin/` y `obj/` a Git (usar `.gitignore`)
+- [ ] Usar `dotnet sln list` para verificar la estructura de la solución

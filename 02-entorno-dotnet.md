@@ -312,4 +312,13 @@ Un **IDE (Integrated Development Environment)** es la herramienta visual donde e
 | **NuGet** | Gestor de paquetes (bibliotecas reutilizables) |
 | **IDE** | Entorno visual (Rider recomendado, VS Code alternativa) |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos la estructura de soluciones y proyectos en .NET, la diferencia entre `.slnx` y `.csproj`, y cómo compilar y ejecutar nuestro código.
+
+### Buenas Prácticas
+
+- [ ] Verificar siempre la instalación del SDK antes de empezar un proyecto
+- [ ] Usar scripts de C# 14 para prototipos rápidos y pruebas
+- [ ] Consultar la documentación de NuGet antes de instalar un paquete
+- [ ] Usar JetBrains Rider como IDE principal (tenemos licencia educativa)

@@ -70,13 +70,13 @@ graph LR
     style EXPRESION fill:#2196F3,color:#fff
     style EXPRESION2 fill:#4CAF50,color:#fff
     style EXPRESION3 fill:#FF9800,color:#fff
-    style O1 fill:#1565C0,color:#fff
-    style O2 fill:#1565C0,color:#fff
+style O1 fill:#2196F3,color:#fff
+  style O2 fill:#2196F3,color:#fff
     style OP fill:#f44336,color:#fff
-    style O3 fill:#2E7D32,color:#fff
-    style O4 fill:#2E7D32,color:#fff
+style O3 fill:#4CAF50,color:#fff
+  style O4 fill:#4CAF50,color:#fff
     style OP2 fill:#f44336,color:#fff
-    style O5 fill:#E65100,color:#fff
+    style O5 fill:#FF9800,color:#fff
     style OP3 fill:#f44336,color:#fff
     style R1 fill:#607D8B,color:#fff
     style R2 fill:#607D8B,color:#fff
@@ -160,7 +160,7 @@ total %= 10;    // total = 5
 
 > 💡 **Consejo:** Los operadores de asignación compuesta (`+=`, `-=`, etc.) son más legibles y concisos que escribir `x = x + 3`.
 
-### ⚠️ Cuidado: `+=` no es lo mismo que `=+`
+### Cuidado: `+=` no es lo mismo que `=+`
 
 Este es un error muy común de principiantes. Aunque parecen iguales, significan cosas completamente diferentes:
 
@@ -581,4 +581,13 @@ graph LR
 | **Ternario** | `? :` | Elegir entre dos valores según una condición (anidable) |
 | **Coalescencia** | `??` | Valor por defecto si es null |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos las conversiones de tipo: implícitas, explícitas, Parse, TryParse y Convert.
+
+### Buenas Prácticas
+
+- [ ] Usar paréntesis cuando haya duda sobre la precedencia de operadores
+- [ ] No anidar más de 3 niveles de ternario (usar `if/else` si es necesario)
+- [ ] Recordar que `+=` es diferente de `=+` (suma y asigna vs. asigna positivo)
+- [ ] Usar el operador `??` para asignar valores por defecto cuando haya nulls

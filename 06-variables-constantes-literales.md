@@ -193,7 +193,7 @@ graph LR
     style HEAP fill:#2196F3,color:#fff
     style A fill:#4CAF50,color:#fff
     style B fill:#f44336,color:#fff
-    style C fill:#1565C0,color:#fff
+    style C fill:#2196F3,color:#fff
     style D fill:#f44336,color:#fff
 ```
 
@@ -669,4 +669,13 @@ double precioConIva = precio * (1 + Iva / 100);
 | **Scope** | Dónde es visible la variable | Dentro de su bloque |
 | **Lifetime** | Cuánto tiempo vive | Mientras se ejecuta el bloque |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos los operadores: aritméticos, relacionales, lógicos, de asignación, ternario y de coalescencia.
+
+### Buenas Prácticas
+
+- [ ] Usar `camelCase` para variables y `PascalCase` para constantes
+- [ ] Inicializar siempre las variables al declararlas
+- [ ] Usar `const` para valores que NUNCA cambian
+- [ ] Elegir `enum` cuando las opciones son fijas (evita strings mágicos)

@@ -365,6 +365,15 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 
 En la **UD02: Programación estructurada y modular** aprenderemos a organizar nuestro código con estructuras de control (if, for, while) y a dividirlo en funciones reutilizables. Todo lo que hemos visto aquí sobre tipos, variables y operadores será la base para escribir programas más complejos y organizados.
 
+> 📌 **Ejemplo real:** Cada app que usas diariamente Aplica todos estos conceptos: Netflix usa enums para suscripciones, Spotify usa TryParse para formularios, Instagram usa Top-Level Statements para scripts de procesamiento de imágenes, y todos usan comentarios y documentación XML para mantener su código entre los miles de programadores que lo desarrollan.
+
+### Buenas Prácticas
+
+- [ ] Recordar que **siempre** hay que diseñar el algoritmo antes de escribir código
+- [ ] Usar `TryParse` nunca `Parse` con datos de usuario
+- [ ] Elegir `decimal` para dinero, `int` para enteros generales
+- [ ] Comentar el "por qué", no el "qué", y documentar con XML en públicos
+
 ## 11.9. Mapa de Conexiones entre Temas
 
 ```mermaid

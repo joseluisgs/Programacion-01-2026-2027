@@ -242,4 +242,13 @@ Console.WriteLine(mensaje);
 | **Interpolación** | `$""` | `$"Hola {nombre}"` |
 | **Entrada** | `Console.ReadLine()` | `string input = Console.ReadLine()` |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos los comentarios y la documentación: comentarios de una línea, varias líneas y documentación XML.
+
+### Buenas Prácticas
+
+- [ ] Usar interpolación (`$""`) en vez de concatenación (`+`) para mayor legibilidad
+- [ ] Mostrar mensajes claros al pedir datos numéricos al usuario
+- [ ] Usar `Write` para pedir datos y `WriteLine` para mostrar resultados
+- [ ] Alinear tablas en consola usando interpolación con ancho fijo

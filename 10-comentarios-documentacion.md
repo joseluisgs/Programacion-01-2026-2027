@@ -85,7 +85,7 @@ int Sumar(int a, int b)
 
 > 💡 **Analogía:** Los comentarios son como las notas que dejas en una receta de cocina. Si mañana cocinas de nuevo, recordarás por qué pusiste "solo una pizca de sal" en vez de "una cucharada". Si alguien más cocina tu receta, entenderá tu decisión.
 
-### ✅ BUENO: Comentar el "por qué"
+### BUENO: Comentar el "por qué"
 
 ```csharp
 // El IVA del 21% se aplica al precio base para calcular el precio final
@@ -98,7 +98,7 @@ double precioConIva = precioBase * 1.21;
 double precioConIva = precioBase * 1.21;
 ```
 
-### ❌ MALO: Comentar el "qué"
+### MALO: Comentar el "qué"
 
 ```csharp
 // Sumar a y b
@@ -233,4 +233,13 @@ public class Persona
 | Documentación XML en públicos | Comentarios desactualizados |
 | Código limpio sin comentarios innecesarios | Código comentado (borrarlo) |
 
+### ¿Qué viene después?
+
 En el siguiente punto haremos un resumen de toda la unidad, consolidando todos los conceptos vistos.
+
+### Buenas Prácticas
+
+- [ ] Comentar el "por qué", no el "qué" (el código debe ser autoexplicativo)
+- [ ] Documentar con XML todas las clases públicas, interfaces y métodos públicos
+- [ ] Borrar código comentado en vez de dejarlo "por si acaso"
+- [ ] Actualizar los comentarios cuando se cambia el código relacionado

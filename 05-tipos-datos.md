@@ -52,10 +52,10 @@ graph LR
     DIR_1006 --- VALOR_3["85"]
     DIR_1007 --- VALOR_4["2026"]
     style MEMORIA fill:#2196F3,color:#fff
-    style DIR_1000 fill:#1565C0,color:#fff
-    style DIR_1004 fill:#1565C0,color:#fff
-    style DIR_1006 fill:#1565C0,color:#fff
-    style DIR_1007 fill:#1565C0,color:#fff
+style DIR_1000 fill:#2196F3,color:#fff
+  style DIR_1004 fill:#2196F3,color:#fff
+  style DIR_1006 fill:#2196F3,color:#fff
+  style DIR_1007 fill:#2196F3,color:#fff
     style NOMBRE_1 fill:#4CAF50,color:#fff
     style NOMBRE_2 fill:#4CAF50,color:#fff
     style NOMBRE_3 fill:#4CAF50,color:#fff
@@ -111,17 +111,17 @@ graph TB
     style ENTEROS_SIN_SIGNO fill:#4CAF50,color:#fff
     style DECIMALES fill:#FF9800,color:#fff
     style OTROS fill:#607D8B,color:#fff
-    style SBYTE fill:#1565C0,color:#fff
-    style SHORT fill:#1565C0,color:#fff
-    style INT fill:#1565C0,color:#fff
-    style LONG fill:#1565C0,color:#fff
-    style BYTE fill:#2E7D32,color:#fff
-    style USHORT fill:#2E7D32,color:#fff
-    style UINT fill:#2E7D32,color:#fff
-    style ULONG fill:#2E7D32,color:#fff
-    style FLOAT fill:#E65100,color:#fff
-    style DOUBLE fill:#E65100,color:#fff
-    style DECIMAL fill:#E65100,color:#fff
+style SBYTE fill:#2196F3,color:#fff
+  style SHORT fill:#2196F3,color:#fff
+  style INT fill:#2196F3,color:#fff
+  style LONG fill:#2196F3,color:#fff
+  style BYTE fill:#4CAF50,color:#fff
+  style USHORT fill:#4CAF50,color:#fff
+  style UINT fill:#4CAF50,color:#fff
+  style ULONG fill:#4CAF50,color:#fff
+  style FLOAT fill:#FF9800,color:#fff
+  style DOUBLE fill:#FF9800,color:#fff
+  style DECIMAL fill:#FF9800,color:#fff
     style BOOL fill:#37474F,color:#fff
     style CHAR fill:#37474F,color:#fff
     style STRING fill:#37474F,color:#fff
@@ -541,8 +541,8 @@ graph LR
     STACK_1 -->|"reasignar"| STACK_2
     style STACK_1 fill:#4CAF50,color:#fff
     style STACK_2 fill:#4CAF50,color:#fff
-    style A1 fill:#2E7D32,color:#fff
-    style A2 fill:#2E7D32,color:#fff
+style A1 fill:#4CAF50,color:#fff
+  style A2 fill:#4CAF50,color:#fff
     style V1 fill:#FF9800,color:#fff
     style V2 fill:#FF9800,color:#fff
 ```
@@ -578,10 +578,10 @@ graph TB
     NOMBRE -->|"0x2000"| OBJ1
     style STACK fill:#4CAF50,color:#fff
     style HEAP fill:#2196F3,color:#fff
-    style EDAD fill:#2E7D32,color:#fff
-    style NOMBRE fill:#2E7D32,color:#fff
-    style OBJ1 fill:#1565C0,color:#fff
-    style OBJ2 fill:#1565C0,color:#fff
+style EDAD fill:#4CAF50,color:#fff
+  style NOMBRE fill:#4CAF50,color:#fff
+  style OBJ1 fill:#2196F3,color:#fff
+  style OBJ2 fill:#2196F3,color:#fff
 ```
 
 **Paso 1:** `nombre` apunta a `"Pepe"` en el Heap (dirección `0x2000`).
@@ -605,10 +605,10 @@ graph TB
     OBJ1 -.->|"♻️ Recolector de Basura"| OBJ1
     style STACK fill:#4CAF50,color:#fff
     style HEAP fill:#2196F3,color:#fff
-    style EDAD fill:#2E7D32,color:#fff
-    style NOMBRE fill:#2E7D32,color:#fff
+style EDAD fill:#4CAF50,color:#fff
+  style NOMBRE fill:#4CAF50,color:#fff
     style OBJ1 fill:#f44336,color:#fff
-    style OBJ2 fill:#1565C0,color:#fff
+    style OBJ2 fill:#2196F3,color:#fff
 ```
 
 > 📝 **Nota:** El objeto `"Pepe"` ahora **no tiene ninguna referencia** que apunte a él. El **Recolector de Basura** (Garbage Collector) se encargará de eliminarlo automáticamente para liberar memoria. No tienes que preocuparte por ello.
@@ -667,4 +667,13 @@ Cada tipo tiene un valor por defecto que C# asigna automáticamente si no inicia
 | **Por referencia** | `string`, `array`, `clase` — se copia la referencia (alias) |
 | **`null`** | "No apunta a ningún objeto" — solo en tipos por referencia |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos variables, constantes, literales y enumeraciones en C#.
+
+### Buenas Prácticas
+
+- [ ] Usar `int` por defecto para enteros (evita problemas de promoción)
+- [ ] Usar `decimal` para dinero y cálculos financieros (nunca `double`)
+- [ ] Usar `var` cuando el tipo es evidente por el contexto
+- [ ] Conocer la diferencia entre tipos por valor y por referencia

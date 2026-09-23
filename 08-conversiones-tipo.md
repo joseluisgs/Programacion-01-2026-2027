@@ -278,8 +278,8 @@ graph LR
 
     style CAJA_PEQ fill:#4CAF50,color:#fff
     style CAJA_GRAN fill:#2196F3,color:#fff
-    style A1 fill:#2E7D32,color:#fff
-    style B1 fill:#1565C0,color:#fff
+style A1 fill:#4CAF50,color:#fff
+  style B1 fill:#2196F3,color:#fff
 ```
 
 ```csharp
@@ -304,7 +304,7 @@ graph LR
 
     style CAJA_GRAN fill:#2196F3,color:#fff
     style CAJA_PEQ fill:#f44336,color:#fff
-    style A1 fill:#1565C0,color:#fff
+    style A1 fill:#2196F3,color:#fff
     style B1 fill:#f44336,color:#fff
 ```
 
@@ -369,4 +369,15 @@ double resultado = (double)a / b;  // 3.333...
 | **TryParse** | `tipo.TryParse(string, out resultado)` | Con datos de usuario (seguro) |
 | **Convert** | `Convert.ToTipo(valor)` | Conversión general, tolerante con null |
 
+### ¿Qué viene después?
+
 En el siguiente punto veremos la entrada y salida de datos: WriteLine, ReadLine, interpolación de strings y concatenación.
+
+> 📌 **Ejemplo real:** Cuando un formulario web pide tu código postal y lo convierte a número, internamente usa TryParse. Si escribes "abc" en vez de un número, el sistema detecta el error sin romperse. Si usara Parse directamente, la aplicación se caería con una excepción.
+
+### Buenas Prácticas
+
+- [ ] Usar `TryParse` SIEMPRE con datos de usuario (nunca `Parse` en producción)
+- [ ] Recordar que `string` a `int` necesita conversión explícita
+- [ ] Usar `checked` cuando quieras detectar overflows en casting
+- [ ] Conocer la tabla de decisión: TryParse es el seguro, Parse es el peligroso
