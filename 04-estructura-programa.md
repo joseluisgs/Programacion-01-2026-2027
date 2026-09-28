@@ -308,7 +308,7 @@ string nombre = Console.ReadLine();
 Console.WriteLine($"Hola, {nombre}!");
 Console.WriteLine("Introduce tu edad: ");
 string texto = Console.ReadLine();
-int edad = int.Parse(texto);
+int.TryParse(texto, out int edad);
 Console.WriteLine($"Tienes {edad} años");
 ```
 

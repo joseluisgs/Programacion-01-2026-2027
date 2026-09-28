@@ -177,7 +177,7 @@ Console.WriteLine($"Hola, {nombre}!");
 // Leer un número (necesita conversión)
 Console.Write("¿Cuántos años tienes? ");
 string texto = Console.ReadLine();
-int edad = int.Parse(texto);
+int.TryParse(texto, out int edad);
 Console.WriteLine($"Tienes {edad} años");
 ```
 
@@ -203,7 +203,7 @@ Console.Write("Nombre: ");
 string nombre = Console.ReadLine();
 
 Console.Write("Edad: ");
-int edad = int.Parse(Console.ReadLine());
+int.TryParse(Console.ReadLine(), out int edad);
 
 Console.Write("Ciudad: ");
 string ciudad = Console.ReadLine();
