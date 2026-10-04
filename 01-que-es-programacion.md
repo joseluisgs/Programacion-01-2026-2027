@@ -1,9 +1,9 @@
-- [1. Qué es la Programación](#1-qué-es-la-programación)
+- [1. Qué es la programación](#1-qué-es-la-programación)
   - [1.1. Definición y conceptos básicos](#11-definición-y-conceptos-básicos)
     - [La cocina como metáfora unificadora](#la-cocina-como-metáfora-unificadora)
   - [1.2. Algoritmos](#12-algoritmos)
     - [1.2.1. Características de un algoritmo](#121-características-de-un-algoritmo)
-    - [1.2.2. Ejemplo cotidiano: Preparar un café](#122-ejemplo-cotidiano-preparar-un-café)
+    - [1.2.2. Ejemplo cotidiano: preparar un café](#122-ejemplo-cotidiano-preparar-un-café)
     - [1.2.3. Representación de algoritmos](#123-representación-de-algoritmos)
   - [1.3. Paradigmas de programación](#13-paradigmas-de-programación)
     - [1.3.1. Imperativo](#131-imperativo)
@@ -17,7 +17,7 @@
   - [1.5. Diferencia entre algoritmo y programa](#15-diferencia-entre-algoritmo-y-programa)
 
 
-# 1. Qué es la Programación
+# 1. Qué es la programación
 
 > 💡 **Punto de partida:** ¿Alguna vez has pensado cómo funciona Netflix cuando te recomienda una serie, o cómo Instagram decide qué posts ves primero? Todo eso es programación. Pero, ¿qué es exactamente programar?
 
@@ -90,7 +90,7 @@ Todo algoritmo debe cumplir **6 características fundamentales**:
 
 > 💡 **Analogía:** Un algoritmo es como una receta de cocina. Sin importar si la preparas en una estufa de gas, eléctrica o de leña, el resultado es el mismo porque la receta (el algoritmo) es independiente de la herramienta.
 
-### 1.2.2. Ejemplo cotidiano: Preparar un café
+### 1.2.2. Ejemplo cotidiano: preparar un café
 
 Veamos las 6 características aplicadas a algo que todos conocemos:
 
@@ -592,7 +592,7 @@ y = "hola";    // ✅ Funciona (pero puede dar problemas)
 
 En el siguiente punto veremos el entorno de desarrollo .NET, el SDK, la CLI y las herramientas que usaremos durante todo el curso.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Diseñar el algoritmo en papel ANTES de escribir código (Análisis → Diseño → Codificación)
 - [ ] Usar pseudocódigo o diagramas de flujo para representar algoritmos

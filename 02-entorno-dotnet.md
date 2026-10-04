@@ -1,4 +1,4 @@
-- [2. El Entorno .NET](#2-el-entorno-net)
+- [2. El entorno .NET](#2-el-entorno-net)
   - [2.1. ¿Qué es .NET?](#21-qué-es-net)
   - [2.2. Instalación y verificación](#22-instalación-y-verificación)
   - [2.3. La línea de comandos (CLI)](#23-la-línea-de-comandos-cli)
@@ -18,7 +18,7 @@
     - [Visual Studio Code (alternativa)](#visual-studio-code-alternativa)
 
 
-# 2. El Entorno .NET
+# 2. El entorno .NET
 
 > 💡 **Punto de partida:** Para programar necesitas una "cocina" donde preparar tu código. En nuestro caso, esa cocina es la plataforma .NET. Sin configurar el entorno, no puedes empezar a cocinar.
 
@@ -316,7 +316,7 @@ Un **IDE (Integrated Development Environment)** es la herramienta visual donde e
 
 En el siguiente punto veremos la estructura de soluciones y proyectos en .NET, la diferencia entre `.slnx` y `.csproj`, y cómo compilar y ejecutar nuestro código.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Verificar siempre la instalación del SDK antes de empezar un proyecto
 - [ ] Usar scripts de C# 14 para prototipos rápidos y pruebas

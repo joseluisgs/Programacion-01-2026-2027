@@ -1,4 +1,4 @@
-- [8. Conversiones de Tipo](#8-conversiones-de-tipo)
+- [8. Conversiones de tipo](#8-conversiones-de-tipo)
   - [8.1. ¿Qué es una conversión de tipo?](#81-qué-es-una-conversión-de-tipo)
   - [8.2. Conversiones implícitas](#82-conversiones-implícitas)
   - [8.3. Conversiones explícitas (casting)](#83-conversiones-explícitas-casting)
@@ -7,7 +7,7 @@
     - [Tabla de decisión: ¿Qué conversión usar?](#tabla-de-deisión-qué-conversión-usar)
 
 
-# 8. Conversiones de Tipo
+# 8. Conversiones de tipo
 
 > 💡 **Punto de partida:** Imagina que tienes una botella grande llena de agua y intentas verterla en un vaso pequeño. Alguno se derrama. Las conversiones de tipo son similares: a veces puedes convertir un tipo en otro sin problemas, y a veces pierdes datos o el compilador te lo prohíbe.
 
@@ -375,7 +375,7 @@ En el siguiente punto veremos la entrada y salida de datos: WriteLine, ReadLine,
 
 > 📌 **Ejemplo real:** Cuando un formulario web pide tu código postal y lo convierte a número, internamente usa TryParse. Si escribes "abc" en vez de un número, el sistema detecta el error sin romperse. Si usara Parse directamente, la aplicación se caería con una excepción.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Usar `TryParse` SIEMPRE con datos de usuario (nunca `Parse` en producción)
 - [ ] Recordar que `string` a `int` necesita conversión explícita

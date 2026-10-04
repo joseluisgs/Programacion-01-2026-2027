@@ -1,10 +1,10 @@
-# Batería de Ejercicios: Fundamentos de Programación con C# 14
+# Batería de ejercicios: fundamentos de programación con C# 14
 
 **Instrucciones:** Para cada ejercicio, escribe el código completo en C# usando Top-Level Statements dentro de un archivo `.cs`. Ejecuta cada ejercicio con `dotnet run tu_ejercicio.cs`. Recuerda: **primero el diseño en papel, luego la codificación**.
 
 ---
 
-### Bloque I: Primeros Contactos y Estructura del Programa (Ejercicios 1-5)
+### Bloque I: Primeros contactos y estructura del programa (ejercicios 1-5)
 
 **Ejercicio 1: Tu Carta de Presentación**
 Crea un archivo `ej01.cs` que muestre en la consola tu carta de presentación: nombre, edad, ciudad y tu lenguaje de programación favorito (aunque sea mentira, esto es C#). Incluye al inicio un comentario multilínea con tu nombre y un `//` con el propósito del programa.
@@ -23,7 +23,7 @@ Crea un archivo `ej05.cs` que pida al usuario su edad en años. Calcula y muestr
 
 ---
 
-### Bloque II: Variables y Tipos de Datos (Ejercicios 6-12)
+### Bloque II: Variables y tipos de datos (ejercicios 6-12)
 
 **Ejercicio 6: Ficha de un Pokémon**
 Crea un archivo `ej06.cs`. Un Pokémon tiene esta información: `id` (int, 25), `nombre` (string, "Pikachu"), `peso` (double, 6.0), `ataque` (int, 55), `esLegendario` (bool, false). Declara las variables, asígnalas y muestra la ficha completa con interpolación.
@@ -48,7 +48,7 @@ Crea un archivo `ej12.cs` que genere un `Guid` aleatorio con `Guid.NewGuid()` co
 
 ---
 
-### Bloque III: Constantes y Enumeraciones (Ejercicios 13-17)
+### Bloque III: Constantes y enumeraciones (ejercicios 13-17)
 
 **Ejercicio 13: Configuración de un Juego**
 Crea un archivo `ej13.cs` con constantes del juego: `const int VIDAS_MAXIMAS = 3;` `const double VELOCIDAD_BASE = 1.5;` `const string NIVEL_INICIAL = "Bosque Oscuro";`. Muestra la configuración. Intenta modificar `VIDAS_MAXIMAS` dentro del código y comenta qué error da.
@@ -67,7 +67,7 @@ Crea un archivo `ej17.cs` que defina `enum EstadoPartida { Esperando, EnCurso, P
 
 ---
 
-### Bloque IV: Entrada y Salida de Datos (Ejercicios 18-24)
+### Bloque IV: Entrada y salida de datos (ejercicios 18-24)
 
 **Ejercicio 18: Creando tu Personaje**
 Crea un archivo `ej18.cs` que pida al usuario el nombre de su personaje y su clase (guerrero, mago, arquero). Muestra: "¡{nombre}, el {clase}, ha entrado al mundo de Azeroth!".
@@ -92,7 +92,7 @@ Crea un archivo `ej24.cs` que pida el precio de un juego y la cantidad de juegos
 
 ---
 
-### Bloque V: Operadores Aritméticos y Asignación (Ejercicios 25-30)
+### Bloque V: Operadores aritméticos y asignación (ejercicios 25-30)
 
 **Ejercicio 25: Estadísticas de un Streamer**
 Crea un archivo `ej25.cs` con `var seguidoresTwitch = 150000;` `var seguidoresYouTube = 850000;` `var ratio = (double)seguidoresYouTube / seguidoresTwitch;`. Calcula y muestra la suma de seguidores y el ratio entre plataformas.
@@ -114,7 +114,7 @@ Crea un archivo `ej30.cs` con `const double COMISION = 0.01;` (1%). Pide el mont
 
 ---
 
-### Bloque VI: Conversiones de Tipo (Ejercicios 31-35)
+### Bloque VI: Conversiones de tipo (ejercicios 31-35)
 
 **Ejercicio 31: Conversión con Pérdida de Datos**
 Crea un archivo `ej31.cs` que declare `double precio = 19.99;` y lo convierta a `int` con `(int)precio`. Muestra ambos valores. Explica por qué pierdes los decimales y en qué situaciones podría ser útil (ej: mostrar solo la parte entera de un precio).
@@ -133,7 +133,7 @@ Crea un archivo `ej35.cs` que pida al usuario el precio de una compra. Usa `deci
 
 ---
 
-### Bloque VII: Operadores Lógicos y Ternario (Ejercicios 36-42)
+### Bloque VII: Operadores lógicos y ternario (ejercicios 36-42)
 
 **Ejercicio 36: ¿Puede Entrar al Premium?**
 Crea un archivo `ej36.cs` con `bool esSuscriptor = true;` `bool tieneEdad = true;`. El usuario puede acceder al contenido premium SOLO si es suscriptor Y tiene edad suficiente. Usa `&&` y muestra el resultado.
@@ -158,7 +158,7 @@ Crea un archivo `ej42.cs` que evalúe `!(true && false) || (true || false)`. Des
 
 ---
 
-### Bloque VIII: Manejo de Nulos y Coalescencia (Ejercicios 43-45)
+### Bloque VIII: Manejo de nulos y coalescencia (ejercicios 43-45)
 
 **Ejercicio 43: Avatar por Defecto**
 Crea un archivo `ej43.cs` con `string? avatar = null;`. Si el usuario no tiene avatar asignado, usa `?? "avatar_predeterminado.png"` para asignar uno por defecto. Muestra el resultado.
@@ -171,7 +171,7 @@ Crea un archivo `ej45.cs` con `string? mensajeError = null;`. Usa `?? "Sin error
 
 ---
 
-### Bloque IX: Enums, Structs y Tuplas (Ejercicios 46-50)
+### Bloque IX: Enums, structs y tuplas (ejercicios 46-50)
 
 **Ejercicio 46: Tipo de Pokémon con Enum**
 Crea un archivo `ej46.cs` que defina `enum TipoPokemon { Fuego, Agua, Planta, Electrico }`. Declara una variable, asígnale `TipoPokemon.Fuego` y muestra su nombre y valor numérico. Usa un ternario para mostrar: "Fuego es fuerte contra Planta, débil contra Agua".

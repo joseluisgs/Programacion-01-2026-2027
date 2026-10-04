@@ -1,4 +1,4 @@
-- [5. Tipos de Datos](#5-tipos-de-datos)
+- [5. Tipos de datos](#5-tipos-de-datos)
   - [5.1. ¿Qué es un tipo de dato?](#51-qué-es-un-tipo-de-dato)
   - [5.2. Tipos de datos numéricos](#52-tipos-de-datos-numéricos)
     - [5.2.1. Enteros con signo](#521-enteros-con-signo)
@@ -8,10 +8,10 @@
   - [5.4. Tabla resumen de tipos](#54-tabla-resumen-de-tipos)
   - [5.5. Promoción de tipos en operaciones](#55-promoción-de-tipos-en-operaciones)
   - [5.6. El tipo var y la inferencia](#56-el-tipo-var-y-la-inferencia)
-  - [5.7. Tipos por Valor y Tipos por Referencia](#57-tipos-por-valor-y-tipos-por-referencia)
+  - [5.7. Tipos por valor y tipos por referencia](#57-tipos-por-valor-y-tipos-por-referencia)
 
 
-# 5. Tipos de Datos
+# 5. Tipos de datos
 
 > 💡 **Punto de partida:** ¿Alguna vez has intentado meter una frase en una calculadora? No funciona, porque la calculadora espera números. Los tipos de datos son las "etiquetas" que le dicen al ordenador qué tipo de información está manejando.
 
@@ -508,7 +508,7 @@ var precio = 19.99m;         // Claramente un decimal (sufijo m)
 var resultado = ObtenerResultado();  // ¿Qué tipo retorna?
 ```
 
-## 5.7. Tipos por Valor y Tipos por Referencia
+## 5.7. Tipos por valor y tipos por referencia
 
 Este concepto es **fundamental**. Explica por qué los tipos se comportan de forma diferente en memoria.
 
@@ -671,7 +671,7 @@ Cada tipo tiene un valor por defecto que C# asigna automáticamente si no inicia
 
 En el siguiente punto veremos variables, constantes, literales y enumeraciones en C#.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Usar `int` por defecto para enteros (evita problemas de promoción)
 - [ ] Usar `decimal` para dinero y cálculos financieros (nunca `double`)

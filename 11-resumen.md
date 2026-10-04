@@ -1,31 +1,31 @@
-- [11. Resumen y Conclusiones](#11-resumen-y-conclusiones)
-  - [11.1. Mapa Conceptual de la Unidad](#111-mapa-conceptual-de-la-unidad)
-  - [11.2. Conceptos Clave](#112-conceptos-clave)
-    - [Fundamentos de la Programación](#fundamentos-de-la-programación)
+- [11. Resumen y conclusiones](#11-resumen-y-conclusiones)
+  - [11.1. Mapa conceptual de la unidad](#111-mapa-conceptual-de-la-unidad)
+  - [11.2. Conceptos clave](#112-conceptos-clave)
+    - [Fundamentos de la programación](#fundamentos-de-la-programación)
     - [Algoritmos](#algoritmos)
-    - [Paradigmas de Programación](#paradigmas-de-programación)
-    - [Lenguajes de Programación](#lenguajes-de-programación)
+    - [Paradigmas de programación](#paradigmas-de-programación)
+    - [Lenguajes de programación](#lenguajes-de-programación)
     - [Entorno .NET](#entorno-net)
-    - [Estructura de un Programa](#estructura-de-un-programa)
-    - [Tipos de Datos](#tipos-de-datos)
-    - [Variables, Constantes y Literales](#variables-constantes-y-literales)
-    - [Operadores y Expresiones](#operadores-y-expresiones)
-    - [Conversiones de Tipo](#conversiones-de-tipo)
-    - [Entrada y Salida](#entrada-y-salida)
-    - [Comentarios y Documentación](#comentarios-y-documentación)
-  - [11.3. Herramientas y Perfiles](#113-herramientas-y-perfiles)
+    - [Estructura de un programa](#estructura-de-un-programa)
+    - [Tipos de datos](#tipos-de-datos)
+    - [Variables, constantes y literales](#variables-constantes-y-literales)
+    - [Operadores y expresiones](#operadores-y-expresiones)
+    - [Conversiones de tipo](#conversiones-de-tipo)
+    - [Entrada y salida](#entrada-y-salida)
+    - [Comentarios y documentación](#comentarios-y-documentación)
+  - [11.3. Herramientas y perfiles](#113-herramientas-y-perfiles)
     - [SDK y CLI](#sdk-y-cli)
     - [NuGet](#nuget)
     - [IDE](#ide)
-  - [11.4. Errores Comunes a Evitar](#114-errores-comunes-a-evitar)
-  - [11.5. Checklist de Supervivencia](#115-checklist-de-supervivencia)
-  - [11.6. Glosario de Términos](#116-glosario-de-términos)
-  - [11.7. Ejercicios de Repaso](#117-ejercicios-de-repaso)
+  - [11.4. Errores comunes a evitar](#114-errores-comunes-a-evitar)
+  - [11.5. Checklist de supervivencia](#115-checklist-de-supervivencia)
+  - [11.6. Glosario de términos](#116-glosario-de-términos)
+  - [11.7. Ejercicios de repaso](#117-ejercicios-de-repaso)
   - [11.8. ¿Qué viene después?](#118-qué-viene-después)
-  - [11.9. Mapa de Conexiones entre Temas](#119-mapa-de-conexiones-entre-temas)
+  - [11.9. Mapa de conexiones entre temas](#119-mapa-de-conexiones-entre-temas)
 
 
-# 11. Resumen y Conclusiones
+# 11. Resumen y conclusiones
 
 > 💡 **Punto de partida:** Hemos recorrido todo el camino desde qué es programar hasta escribir nuestro primer programa en C#. Este resumen consolida todo lo aprendido.
 
@@ -37,7 +37,7 @@ Hemos visto la teoría completa de Introducción a la Programación. Este punto 
 - Consolidar el vocabulario técnico
 - Tener una referencia rápida de todos los temas
 
-## 11.1. Mapa Conceptual de la Unidad
+## 11.1. Mapa conceptual de la unidad
 
 ```mermaid
 graph TD
@@ -127,9 +127,9 @@ graph TD
     style COM fill:#607D8B,color:#fff
 ```
 
-## 11.2. Conceptos Clave
+## 11.2. Conceptos clave
 
-### Fundamentos de la Programación
+### Fundamentos de la programación
 - **Programar:** Escribir instrucciones que el ordenador pueda ejecutar para resolver un problema
 - **Algoritmo:** Plan ordenado de pasos para resolver un problema, independiente del lenguaje
 - **Programa:** Implementación de un algoritmo en un lenguaje de programación concreto
@@ -151,7 +151,7 @@ graph TD
 - **Efectividad:** Cada paso es realizable
 - **Representación:** Diagramas de flujo, pseudocódigo, lenguaje natural
 
-### Paradigmas de Programación
+### Paradigmas de programación
 - **Imperativo:** Paso a paso, cómo hacer las cosas (`for`, `while`)
 - **Estructurado:** Organizado con `if`, `switch`, `for`, `while` (sin `goto`)
 - **Modular:** Dividido en funciones reutilizables
@@ -161,7 +161,7 @@ graph TD
 - **Eventos:** El código responde a acciones del usuario (`Click +=`)
 - **C# es multiparadigma:** Combina varios paradigmas
 
-### Lenguajes de Programación
+### Lenguajes de programación
 - **Por nivel:** Bajo (máquina, ensamblador), Medio (C), Alto (C#, Python, Java)
 - **Por traducción:** Compilados (C++), Interpretados (Python), Mixtos (C# → IL → CLR)
 - **Por tipado:** Estático (C#) vs Dinámico (JavaScript), Fuerte (C#) vs Débil (JavaScript)
@@ -175,7 +175,7 @@ graph TD
 - **.slnx:** Solución (agrupa varios proyectos)
 - **.csproj:** Proyecto (configura uno: framework, paquetes, opciones)
 
-### Estructura de un Programa
+### Estructura de un programa
 - **Top-Level Statements:** Código directo sin `class` ni `Main` (C# 9+)
 - **Namespaces:** Agrupan código, evitan conflictos de nombres
 - **using static:** Permite usar miembros estáticos sin nombre de clase
@@ -183,7 +183,7 @@ graph TD
 - **Expresión:** Código que produce un valor
 - **Método:** Bloque de código reutilizable
 
-### Tipos de Datos
+### Tipos de datos
 - **Enteros con signo:** `sbyte` (1B), `short` (2B), `int` (4B), `long` (8B)
 - **Enteros sin signo:** `byte`, `ushort`, `uint`, `ulong`
 - **Decimales:** `float` (7 cifras), `double` (15-16 cifras), `decimal` (28-29 cifras)
@@ -191,7 +191,7 @@ graph TD
 - **Booleano:** `bool` (`true` o `false`)
 - **`var`:** Inferencia de tipo (el compilador deduce el tipo, no lo cambia después)
 
-### Variables, Constantes y Literales
+### Variables, constantes y literales
 - **Variable:** Contenedor que puede cambiar. Se declara con tipo + nombre. `camelCase`
 - **Constante:** Contenedor que NO puede cambiar. Se declara con `const`. `PascalCase`
 - **Literal:** Valor fijo en el código (`42`, `"Hola"`, `true`)
@@ -201,7 +201,7 @@ graph TD
 - **Lifetime:** Cuánto tiempo vive (mientras se ejecuta su bloque)
 - **Código autodocumentado:** Nombres descriptivos que se entienden sin comentarios
 
-### Operadores y Expresiones
+### Operadores y expresiones
 - **Aritméticos:** `+`, `-`, `*`, `/`, `%` (módulo)
 - **Relacionales:** `==`, `!=`, `<`, `>`, `<=`, `>=`
 - **Lógicos:** `&&` (Y), `||` (O), `!` (NO)
@@ -210,7 +210,7 @@ graph TD
 - **Coalescencia:** `valor ?? valorPorDefecto` (si es null, usa el defecto)
 - **Precedencia:** Paréntesis `()` antes que todo
 
-### Conversiones de Tipo
+### Conversiones de tipo
 - **Implícita:** Automática y segura (`int` → `double`)
 - **Explícita (casting):** Manual y peligrosa (`double` → `int`, pierde decimales)
 - **Parse:** Convierte string a tipo. Salta excepción si falla
@@ -218,28 +218,28 @@ graph TD
 - **Convert:** Convierte entre tipos básicos. Tolerante con null
 - **Tabla de decisión:** Con datos de usuario → **siempre TryParse**
 
-### Entrada y Salida
+### Entrada y salida
 - **`Console.WriteLine()`:** Escribe texto y salta de línea
 - **`Console.Write()`:** Escribe texto sin salto
 - **`Console.ReadLine()`:** Lee una línea del teclado (devuelve `string`)
 - **Interpolación:** `$"Tengo {edad} años"` (sustituye variables en strings)
 - **Concatenación:** `"Tengo " + edad + " años"` (más verboso)
 
-### Comentarios y Documentación
+### Comentarios y documentación
 - **`//`**: Comentario de una línea
 - **`/* ... */`**: Comentario de varias líneas
 - **`///`**: Documentación XML (para generar documentación técnica)
 - **Trabajo en equipo:** Comentar el "por qué", no el "qué"
 - **Regla:** Código autoexplicativo + comentarios donde aportan valor
 
-### Proyecto Integrador: Pokédex
+### Proyecto integrador: Pokédex
 - **Metáfora:** Cocina (ingredientes → receta → utensilios → plato)
 - **Flujo:** Entrada (datos usuario) → Proceso (cálculos) → Salida (mostrar)
 - **Tipos:** `string` (nombre), `int` (CP), `double` (nivel), `bool` (leyenda)
 - **Conversión:** `TryParse` para leer datos del usuario
 - **Resultado:** Programa completo que pide, calcula y muestra información de un Pokémon
 
-## 11.3. Herramientas y Perfiles
+## 11.3. Herramientas y perfiles
 
 ### SDK y CLI
 - **`dotnet new sln`**: Crea una solución
@@ -259,7 +259,7 @@ graph TD
 - **Visual Studio Code:** Editor ligero, multiplataforma, gratuito
 - **Visual Studio:** IDE completo de Microsoft (versión Community gratuita)
 
-## 11.4. Errores Comunes a Evitar
+## 11.4. Errores comunes a evitar
 
 | Error | Por qué está mal | Cómo evitarlo |
 |-------|------------------|---------------|
@@ -271,7 +271,7 @@ graph TD
 | Confundir `Write` y `WriteLine` | `Write` no salta de línea | `WriteLine` para nueva línea |
 | Usar `int` para dinero | Pierde decimales (`10/3 = 3`) | Usar `decimal` para dinero |
 
-## 11.5. Checklist de Supervivencia
+## 11.5. Checklist de supervivencia
 
 Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas preguntas:
 
@@ -306,7 +306,7 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 
 > 🔧 **Truco:** La mejor forma de aprender programación es practicando. No leas solo los apuntes: abre el IDE y prueba cada ejemplo. Modifícalos, rompelos, arreglalos. Eso es como se aprende.
 
-## 11.6. Glosario de Términos
+## 11.6. Glosario de términos
 
 | Término | Definición |
 |---------|------------|
@@ -338,7 +338,7 @@ Antes de dar por cerrado el tema, asegúrate de poder responder **SÍ** a estas 
 | **Scope** | Ámbito donde es visible una variable |
 | **De Morgan** | Leyes lógicas para simplificar negaciones |
 
-## 11.7. Ejercicios de Repaso
+## 11.7. Ejercicios de repaso
 
 1. **Algoritmos:** Escribe en pseudocódigo un algoritmo que pida 2 números al usuario y muestre la suma, resta, multiplicación y división.
 
@@ -367,14 +367,14 @@ En la **UD02: Programación estructurada y modular** aprenderemos a organizar nu
 
 > 📌 **Ejemplo real:** Cada app que usas diariamente Aplica todos estos conceptos: Netflix usa enums para suscripciones, Spotify usa TryParse para formularios, Instagram usa Top-Level Statements para scripts de procesamiento de imágenes, y todos usan comentarios y documentación XML para mantener su código entre los miles de programadores que lo desarrollan.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Recordar que **siempre** hay que diseñar el algoritmo antes de escribir código
 - [ ] Usar `TryParse` nunca `Parse` con datos de usuario
 - [ ] Elegir `decimal` para dinero, `int` para enteros generales
 - [ ] Comentar el "por qué", no el "qué", y documentar con XML en públicos
 
-## 11.9. Mapa de Conexiones entre Temas
+## 11.9. Mapa de conexiones entre temas
 
 ```mermaid
 graph LR

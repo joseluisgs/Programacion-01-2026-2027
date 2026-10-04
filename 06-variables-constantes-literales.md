@@ -1,6 +1,6 @@
-- [6. Variables, Constantes, Literales, Enumeraciones y Structs](#6-variables-constantes-literales-enumeraciones-y-structs)
+- [6. Variables, constantes, literales, enumeraciones y structs](#6-variables-constantes-literales-enumeraciones-y-structs)
   - [6.1. Variables](#61-variables)
-  - [6.2. Null y Tipos Nullable](#62-null-y-tipos-nullable)
+  - [6.2. Null y tipos Nullable](#62-null-y-tipos-nullable)
   - [6.3. Constantes](#63-constantes)
   - [6.4. Literales](#64-literales)
   - [6.5. Diferencias entre variable, constante y literal](#65-diferencias-entre-variable-constante-y-literal)
@@ -10,7 +10,7 @@
   - [6.9. Código autodocumentado](#69-código-autodocumentado)
 
 
-# 6. Variables, Constantes y Literales
+# 6. Variables, constantes y literales
 
 > 💡 **Punto de partida:** Cuando vas al supermercado, llevas una lista de la compra. Cada artículo es como una variable: tiene un nombre y un valor. Las constantes son cosas que no cambian (como el precio del IVA). Los literales son los valores concretos que escribes.
 
@@ -157,7 +157,7 @@ Una variable local existe mientras se está ejecutando el bloque donde se declar
 // Console.WriteLine(temporal);  // ❌ Error: temporal ya no existe aquí
 ```
 
-## 6.2. Null y Tipos Nullable
+## 6.2. Null y tipos Nullable
 
 En el punto anterior vimos que los tipos por referencia pueden tener el valor `null`. Ahora profundizamos: qué es `null`, por qué existe, y cómo protegernos de él.
 
@@ -499,7 +499,7 @@ graph TD
 
 📌 **Ejemplo real:** Spotify usa structs internamente para representar canciones: `struct Cancion { string Titulo; string Artista; int DuracionSegundos; }`. Cada canción es un paquete completo de datos.
 
-### Structs vs Tuplas
+### Structs vs tuplas
 
 | Característica | Tupla | Struct |
 | :--- | :--- | :--- |
@@ -673,7 +673,7 @@ double precioConIva = precio * (1 + Iva / 100);
 
 En el siguiente punto veremos los operadores: aritméticos, relacionales, lógicos, de asignación, ternario y de coalescencia.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Usar `camelCase` para variables y `PascalCase` para constantes
 - [ ] Inicializar siempre las variables al declararlas

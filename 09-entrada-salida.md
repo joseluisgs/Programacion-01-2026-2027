@@ -1,4 +1,4 @@
-- [9. Entrada y Salida de Datos](#9-entrada-y-salida-de-datos)
+- [9. Entrada y salida de datos](#9-entrada-y-salida-de-datos)
   - [9.1. Salida de datos](#91-salida-de-datos)
     - [9.1.1. Console.Write y Console.WriteLine](#911-consolewrite-y-consolewriteline)
     - [9.1.2. Concatenación](#912-concatenación)
@@ -6,7 +6,7 @@
   - [9.2. Entrada de datos](#92-entrada-de-datos)
 
 
-# 9. Entrada y Salida de Datos
+# 9. Entrada y salida de datos
 
 > 💡 **Punto de partida:** Un programa sin entrada ni salida es como un teléfono sin pantalla ni altavoz: no puedes interactuar con él. La entrada y salida son los canales de comunicación entre el programa y el usuario.
 
@@ -246,7 +246,7 @@ Console.WriteLine(mensaje);
 
 En el siguiente punto veremos los comentarios y la documentación: comentarios de una línea, varias líneas y documentación XML.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Usar interpolación (`$""`) en vez de concatenación (`+`) para mayor legibilidad
 - [ ] Mostrar mensajes claros al pedir datos numéricos al usuario

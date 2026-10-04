@@ -1,4 +1,4 @@
-- [10. Comentarios y Documentación](#10-comentarios-y-documentación)
+- [10. Comentarios y documentación](#10-comentarios-y-documentación)
   - [10.1. ¿Qué son los comentarios?](#101-qué-son-los-comentarios)
   - [10.2. Tipos de comentarios en C#](#102-tipos-de-comentarios-en-c)
   - [10.3. Cuándo usar comentarios](#103-cuándo-usar-comentarios)
@@ -7,7 +7,7 @@
   - [10.4. Documentación XML](#104-documentación-xml)
 
 
-# 10. Comentarios y Documentación
+# 10. Comentarios y documentación
 
 > 💡 **Punto de partida:** ¿Alguna vez has vuelto a leer algo que escribiste hace meses y no entendías qué querías decir? A los programadores nos pasa lo mismo con nuestro código. Los comentarios son las "notas al margen" que nos ayudan a recordar por qué hicimos algo de una manera determinada.
 
@@ -85,7 +85,7 @@ int Sumar(int a, int b)
 
 > 💡 **Analogía:** Los comentarios son como las notas que dejas en una receta de cocina. Si mañana cocinas de nuevo, recordarás por qué pusiste "solo una pizca de sal" en vez de "una cucharada". Si alguien más cocina tu receta, entenderá tu decisión.
 
-### BUENO: Comentar el "por qué"
+### BUENO: comentar el "por qué"
 
 ```csharp
 // El IVA del 21% se aplica al precio base para calcular el precio final
@@ -98,7 +98,7 @@ double precioConIva = precioBase * 1.21;
 double precioConIva = precioBase * 1.21;
 ```
 
-### MALO: Comentar el "qué"
+### MALO: comentar el "qué"
 
 ```csharp
 // Sumar a y b
@@ -237,7 +237,7 @@ public class Persona
 
 En el siguiente punto haremos un resumen de toda la unidad, consolidando todos los conceptos vistos.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Comentar el "por qué", no el "qué" (el código debe ser autoexplicativo)
 - [ ] Documentar con XML todas las clases públicas, interfaces y métodos públicos

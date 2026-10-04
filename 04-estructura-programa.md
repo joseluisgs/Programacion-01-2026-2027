@@ -1,15 +1,15 @@
-- [4. Estructura de un Programa](#4-estructura-de-un-programa)
+- [4. Estructura de un programa](#4-estructura-de-un-programa)
   - [4.1. Bloques que componen un programa](#41-bloques-que-componen-un-programa)
-    - [El flujo fundamental: Entrada → Proceso → Salida](#el-flujo-fundamental-entrada--proceso--salida)
+    - [El flujo fundamental: entrada → proceso → salida](#el-flujo-fundamental-entrada--proceso--salida)
   - [4.2. Top-Level Statements](#42-top-level-statements)
   - [4.3. Estructura clásica vs moderna](#43-estructura-clásica-vs-moderna)
   - [4.4. Namespaces](#44-namespaces)
   - [4.5. Using static: comodidad en la escritura](#45-using-static-comodidad-en-la-escritura)
   - [4.6. Tu primer "Hola Mundo": paso a paso](#46-tu-primer-hola-mundo-paso-a-paso)
-  - [4.7. Tabla de equivalencias: Pseudocódigo → C# → Java](#47-tabla-de-equivalencias-pseudocódigo--c--java)
+  - [4.7. Tabla de equivalencias: pseudocódigo → C# → Java](#47-tabla-de-equivalencias-pseudocódigo--c--java)
 
 
-# 4. Estructura de un Programa
+# 4. Estructura de un programa
 
 > 💡 **Punto de partida:** ¿Alguna vez has visto un libro desordenado sin capítulos, sin índice, sin una estructura clara? Es difícil seguirlo. Lo mismo pasa con un programa sin estructura. Vamos a aprender a organizar nuestro código correctamente.
 
@@ -26,7 +26,7 @@ En este tema aprenderás cómo se estructura un programa en C#, qué son los blo
 
 Todo programa informático, sin importar su complejidad, sigue un flujo básico que se repite una y otra vez:
 
-### El flujo fundamental: Entrada -> Proceso -> Salida
+### El flujo fundamental: entrada -> proceso -> salida
 
 ```mermaid
 graph LR
@@ -484,7 +484,7 @@ dotnet sln list
 dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
-## 4.7. Tabla de equivalencias: Pseudocodigo -> C# -> Java
+## 4.7. Tabla de equivalencias: pseudocódigo -> C# -> Java
 
 Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 
@@ -525,7 +525,7 @@ Si vienes de pseudocódigo o has visto Java, esta tabla te ayudará:
 
 En el siguiente punto veremos los tipos de datos en C#: enteros, decimales, texto, booleanos y la inferencia de tipos con `var`.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Empezar siempre con Top-Level Statements en proyectos de aprendizaje
 - [ ] Definir métodos con nombres descriptivos que expliquen qué hacen

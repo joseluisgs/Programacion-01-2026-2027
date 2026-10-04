@@ -1,4 +1,4 @@
-- [7. Operadores y Expresiones](#7-operadores-y-expresiones)
+- [7. Operadores y expresiones](#7-operadores-y-expresiones)
   - [7.1. ¿Qué es una expresión?](#71-qué-es-una-expresión)
   - [7.2. Operadores aritméticos](#72-operadores-aritméticos)
   - [7.3. Operadores de asignación](#73-operadores-de-asignación)
@@ -7,7 +7,7 @@
   - [7.6. Precedencia de operadores](#76-precedencia-de-operadores)
 
 
-# 7. Operadores y Expresiones
+# 7. Operadores y expresiones
 
 > 💡 **Punto de partida:** ¿Alguna vez has usado una calculadora? Estás usando operadores: + para sumar, - para restar, * para multiplicar. En programación, los operadores son las herramientas que transforman datos. Sin ellos, las variables serían solo datos estáticos sin vida.
 
@@ -585,7 +585,7 @@ graph LR
 
 En el siguiente punto veremos las conversiones de tipo: implícitas, explícitas, Parse, TryParse y Convert.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Usar paréntesis cuando haya duda sobre la precedencia de operadores
 - [ ] No anidar más de 3 niveles de ternario (usar `if/else` si es necesario)

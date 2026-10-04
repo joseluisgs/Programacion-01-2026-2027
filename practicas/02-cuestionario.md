@@ -1,4 +1,4 @@
-### **Cuestionario: Razonamiento sobre Introducción a la Programación de Software**
+### **Cuestionario: razonamiento sobre introducción a la programación de software**
 
 **Instrucciones:** Lee cada pregunta con atención y proporciona una respuesta detallada, justificando tus afirmaciones con los conceptos aprendidos.
 

@@ -1,4 +1,4 @@
-- [3. Soluciones y Proyectos](#3-soluciones-y-proyectos)
+- [3. Soluciones y proyectos](#3-soluciones-y-proyectos)
   - [3.1. ¿Qué es una solución?](#31-qué-es-una-solución)
   - [3.2. ¿Qué es un proyecto?](#32-qué-es-un-proyecto)
   - [3.3. Estructura de archivos](#33-estructura-de-archivos)
@@ -14,7 +14,7 @@
     - [Comandos de compilación](#comandos-de-compilación)
 
 
-# 3. Soluciones y Proyectos
+# 3. Soluciones y proyectos
 
 > 💡 **Punto de partida:** ¿Alguna vez has organizado tus apuntes en carpetas y subcarpetas? En programación hacemos lo mismo: agrupamos el código en soluciones y proyectos para mantenerlo ordenado. Sin esta organización, trabajar en un proyecto real sería un caos.
 
@@ -277,7 +277,7 @@ En el siguiente punto veremos la estructura interna de un programa en C#: bloque
 
 > 📌 **Ejemplo real:** Cuando creas un proyecto en Visual Studio o Rider, internamente se genera un `.slnx` (solución) y un `.csproj` (proyecto). Apps como Netflix o Spotify tienen cientos de proyectos en una sola solución: uno para la interfaz, otro para la lógica de negocio, otro para tests, etc.
 
-### Buenas Prácticas
+### Buenas prácticas
 
 - [ ] Crear primero la solución y luego los proyectos dentro
 - [ ] Mantener la carpeta de la solución y la del proyecto con el mismo nombre

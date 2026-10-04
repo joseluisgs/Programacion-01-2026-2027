@@ -1,19 +1,19 @@
-- [Práctica 1: Test de Conocimientos](#práctica-1-test-de-conocimientos)
-  - [Bloque 1: Fundamentos de la Programación (Preguntas 1-8)](#bloque-1-fundamentos-de-la-programación-preguntas-1-8)
-  - [Bloque 2: Algoritmos y Paradigmas (Preguntas 9-16)](#bloque-2-algoritmos-y-paradigmas-preguntas-9-16)
-  - [Bloque 3: Lenguajes de Programación (Preguntas 17-24)](#bloque-3-lenguajes-de-programación-preguntas-17-24)
-  - [Bloque 4: Entorno .NET y Estructura (Preguntas 25-32)](#bloque-4-entorno-net-y-estructura-preguntas-25-32)
-  - [Bloque 5: Tipos de Datos y Variables (Preguntas 33-40)](#bloque-5-tipos-de-datos-y-variables-preguntas-33-40)
-  - [Bloque 6: Operadores, Conversiones y E/S (Preguntas 41-50)](#bloque-6-operadores-conversiones-y-es-preguntas-41-50)
+- [Práctica 1: Test de conocimientos](#práctica-1-test-de-conocimientos)
+  - [Bloque 1: Fundamentos de la programación (preguntas 1-8)](#bloque-1-fundamentos-de-la-programación-preguntas-1-8)
+  - [Bloque 2: Algoritmos y paradigmas (preguntas 9-16)](#bloque-2-algoritmos-y-paradigmas-preguntas-9-16)
+  - [Bloque 3: Lenguajes de programación (preguntas 17-24)](#bloque-3-lenguajes-de-programación-preguntas-17-24)
+  - [Bloque 4: Entorno .NET y estructura (preguntas 25-32)](#bloque-4-entorno-net-y-estructura-preguntas-25-32)
+  - [Bloque 5: Tipos de datos y variables (preguntas 33-40)](#bloque-5-tipos-de-datos-y-variables-preguntas-33-40)
+  - [Bloque 6: Operadores, conversiones y E/S (preguntas 41-50)](#bloque-6-operadores-conversiones-y-es-preguntas-41-50)
 
 
-# Práctica 1: Test de Conocimientos
+# Práctica 1: Test de conocimientos
 
 **Instrucciones:** Lee atentamente cada pregunta y selecciona la opción que consideres correcta.
 
 ---
 
-### Bloque 1: Fundamentos de la Programación (Preguntas 1-8)
+### Bloque 1: Fundamentos de la programación (preguntas 1-8)
 
 1.  **Según las fuentes del tema, ¿qué es un algoritmo?**
     a) El código fuente de un programa informático escrito en un lenguaje de programación concreto.
@@ -65,7 +65,7 @@
 
 ---
 
-### Bloque 2: Algoritmos y Paradigmas (Preguntas 9-16)
+### Bloque 2: Algoritmos y paradigmas (preguntas 9-16)
 
 9.  **¿Qué paradigma de programación se caracteriza por indicar al ordenador CÓMO realizar las cosas, mediante una secuencia de instrucciones paso a paso?**
     a) Declarativo.
@@ -117,7 +117,7 @@
 
 ---
 
-### Bloque 3: Lenguajes de Programación (Preguntas 17-24)
+### Bloque 3: Lenguajes de programación (preguntas 17-24)
 
 17. **¿Cómo se denomina el conjunto de símbolos y palabras especiales que constituyen el vocabulario de un lenguaje de programación?**
     a) Sintaxis.
@@ -169,7 +169,7 @@
 
 ---
 
-### Bloque 4: Entorno .NET y Estructura (Preguntas 25-32)
+### Bloque 4: Entorno .NET y estructura (preguntas 25-32)
 
 25. **¿Qué es el SDK de .NET según las fuentes del tema?**
     a) Un lenguaje de programación compilado a código intermedio.
@@ -221,7 +221,7 @@
 
 ---
 
-### Bloque 5: Tipos de Datos y Variables (Preguntas 33-40)
+### Bloque 5: Tipos de datos y variables (preguntas 33-40)
 
 33. **¿Qué tipo de dato de C# se utiliza para almacenar valores monetarios o decimales con alta precisión, evitando los errores de redondeo propios de los tipos de punto flotante?**
     a) `int`.
@@ -273,7 +273,7 @@
 
 ---
 
-### Bloque 6: Operadores, Conversiones y E/S (Preguntas 41-50)
+### Bloque 6: Operadores, conversiones y E/S (preguntas 41-50)
 
 41. **Si se ejecuta la expresión `21 / 4` en C# donde ambos operandos son de tipo `int`, ¿cuál es el resultado?**
     a) `5.25`.
