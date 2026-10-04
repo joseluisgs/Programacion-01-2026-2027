@@ -7,24 +7,24 @@ UD01.  Introducción a la Programación Software. 1DAW. Curso 2026-2027
 
 ## Contenidos
 
-1. [Qué es la Programación](01-que-es-programacion.md)
-2. [El Entorno .NET](02-entorno-dotnet.md)
-3. [Soluciones y Proyectos](03-soluciones-proyectos.md)
-4. [Estructura de un Programa](04-estructura-programa.md)
-5. [Tipos de Datos](05-tipos-datos.md)
-6. [Variables, Constantes y Literales](06-variables-constantes-literales.md)
-7. [Operadores y Expresiones](07-operadores-expresiones.md)
-8. [Conversiones de Tipo](08-conversiones-tipo.md)
-9. [Entrada y Salida de Datos](09-entrada-salida.md)
-10. [Comentarios y Documentación](10-comentarios-documentacion.md)
-11. [Resumen y Conclusiones](11-resumen.md)
+1. [Qué es la programación](01-que-es-programacion.md)
+2. [El entorno .NET](02-entorno-dotnet.md)
+3. [Soluciones y proyectos](03-soluciones-proyectos.md)
+4. [Estructura de un programa](04-estructura-programa.md)
+5. [Tipos de datos](05-tipos-datos.md)
+6. [Variables, constantes y literales](06-variables-constantes-literales.md)
+7. [Operadores y expresiones](07-operadores-expresiones.md)
+8. [Conversiones de tipo](08-conversiones-tipo.md)
+9. [Entrada y salida de datos](09-entrada-salida.md)
+10. [Comentarios y documentación](10-comentarios-documentacion.md)
+11. [Resumen y conclusiones](11-resumen.md)
 
 ## Contenido en YouTube
 
 - [Resumen](https://youtu.be/sRnQadFz_gE)
-- [Tipos de Datos, Variables y Operaciones](https://youtu.be/S7oEx_VtF90)
-- [Entrada, Salida y Conversiones de Tipo](https://youtu.be/jSi1oujIhWs)
-- [Lista de Reproducción](https://www.youtube.com/playlist?list=PLK1PMlIrqj3c)
+- [Tipos de datos, variables y operaciones](https://youtu.be/S7oEx_VtF90)
+- [Entrada, salida y conversiones de tipo](https://youtu.be/jSi1oujIhWs)
+- [Lista de reproducción](https://www.youtube.com/playlist?list=PLK1PMlIrqj3c)
 
 ## Resultados de aprendizaje y criterios de evaluación
 
