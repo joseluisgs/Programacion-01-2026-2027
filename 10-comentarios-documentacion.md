@@ -87,6 +87,8 @@ int Sumar(int a, int b)
 
 ### BUENO: comentar el "por qué"
 
+Un buen comentario explica la decisión que el código solo no cuenta. Estos dos ejemplos hacen lo correcto:
+
 ```csharp
 // El IVA del 21% se aplica al precio base para calcular el precio final
 double precioConIva = precioBase * 1.21;
@@ -99,6 +101,8 @@ double precioConIva = precioBase * 1.21;
 ```
 
 ### MALO: comentar el "qué"
+
+Si el comentario solo repite lo que la línea ya dice, sobra. Estos son los casos típicos:
 
 ```csharp
 // Sumar a y b
@@ -118,6 +122,8 @@ using (var file = File.OpenRead("datos.txt"))
 > ⚠️ **Advertencia:** Si necesitas un comentario para explicar QUÉ hace el código, es probable que el código no sea suficientemente claro. En ese caso, refactoriza el código en vez de añadir un comentario.
 
 ### Malas prácticas
+
+Más allá del "qué" contra el "por qué", hay tres trampas en las que caemos todos al principio:
 
 ```csharp
 // ❌ Comentarios obvios (no aportan nada)
@@ -158,6 +164,8 @@ La documentación XML se usa para generar documentación automática del código
 
 ### Etiquetas más comunes
 
+Los comentarios XML usan un puñado de etiquetas; estas son las que verás en cualquier proyecto:
+
 ```csharp
 /// <summary>
 /// Descripción general del método o clase.
@@ -173,6 +181,8 @@ La documentación XML se usa para generar documentación automática del código
 ```
 
 ### Ejemplo completo
+
+Y así queda una clase entera documentada de arriba abajo:
 
 ```csharp
 /// <summary>

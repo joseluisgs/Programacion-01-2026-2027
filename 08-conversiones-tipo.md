@@ -98,6 +98,8 @@ Además del casting, C# ofrece métodos para convertir entre tipos, especialment
 
 ### Parse y TryParse
 
+Para pasar de `string` a otro tipo hay dos caminos: `Parse`, que revienta si el texto no es válido, y `TryParse`, que te devuelve true o false sin lanzar nada:
+
 ```csharp
 // Parse: convierte string a otro tipo (lanza excepción si falla)
 string texto = "42";
@@ -209,6 +211,8 @@ Console.WriteLine(resultado);  // "Hola"
 > 💡 **Consejo:** `as` solo funciona con tipos de referencia o nullable. Para tipos de valor, usa `is` con pattern matching o un cast explícito.
 
 ### Conversión con expresiones
+
+El casting `(tipo)` también funciona sobre la marcha, tanto con variables como con literales, y la interpolación de strings ya convierte por ti:
 
 ```csharp
 // Usando variables
@@ -322,6 +326,8 @@ int edad = (int)distancia;  // ⚠️ Explícita: double (8 bytes) → int (4 by
 | **Explícita** (grande → pequeño) | Casting `(tipo)` | Sí | `double` → `int` |
 
 ### Errores comunes
+
+Estos son los dos tropiezos clásicos con las conversiones, con el error y su solución lado a lado:
 
 ```csharp
 // ❌ ERROR 1: Usar Parse sin validar

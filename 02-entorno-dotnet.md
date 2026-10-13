@@ -136,6 +136,8 @@ La CLI de .NET te permite crear, compilar y ejecutar proyectos desde la terminal
 
 ### Crear un proyecto paso a paso
 
+El camino completo desde una carpeta vacía hasta un programa en ejecución: crear el proyecto, ver qué ha generado la CLI, compilarlo y ejecutarlo.
+
 ```bash
 # 1. Crear una carpeta para tu proyecto
 mkdir MiPrimerProyecto
@@ -158,6 +160,8 @@ dotnet run
 
 ### Listar plantillas disponibles
 
+La CLI trae decenas de plantillas de proyecto (consola, web, test...); con este comando ves cuáles tienes disponibles en tu instalación.
+
 ```bash
 dotnet new list
 ```
@@ -169,6 +173,8 @@ Esto muestra todas las plantillas que puedes usar: `console`, `webapi`, `classli
 Una de las novedades de C# 14 y .NET 10 es la posibilidad de ejecutar código C# como un script, sin necesidad de crear un proyecto completo. Solo necesitas un archivo `.cs`.
 
 ### Crear y ejecutar un script
+
+Con el scripting de C# 14 basta un archivo `.cs`: lo creas con un comando y lo ejecutas directamente, sin montar ningún proyecto.
 
 ```bash
 # 1. Crear un archivo .cs
@@ -245,6 +251,8 @@ Su contenido típico es:
 > 📝 **Nota:** `nuget.org` es el repositorio oficial, similar a npm para JavaScript o pip para Python. Contiene más de 350.000 paquetes.
 
 ### Instalar un paquete
+
+Los paquetes se añaden, fijan de versión o eliminan desde la CLI sin abrir el `.csproj` a mano: la propia herramienta lo edita por ti.
 
 ```bash
 # Usando la CLI

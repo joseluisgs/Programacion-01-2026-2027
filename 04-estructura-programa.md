@@ -154,6 +154,8 @@ Un **bloque** es un conjunto de sentencias encerradas entre llaves `{}`.
 
 ### Sin Top-Level Statements (antes)
 
+Antes de C# 9, un programa mínimo obligaba a montar toda la ceremonia: namespace, clase y método `Main`. Así se veía el "Hola, mundo" de toda la vida:
+
 ```csharp
 using System;
 
@@ -170,6 +172,8 @@ namespace MiPrograma
 ```
 
 ### Con Top-Level Statements (ahora)
+
+El mismo programa escrito con la forma moderna. Compáralo con el anterior y cuenta las líneas que ahorras:
 
 ```csharp
 Console.WriteLine("¡Hola, mundo!");
@@ -267,6 +271,8 @@ namespace Tienda.Productos
 
 ### Usar namespaces
 
+Declarar y usar namespaces se reduce a dos líneas; desde C# 10 la forma declarativa es la sintaxis file-scoped:
+
 ```csharp
 // Declarar un namespace (file-scoped en C# 10+)
 namespace MiProyecto.Models;
@@ -301,6 +307,8 @@ El `using static` te permite usar los miembros estáticos de una clase **sin esc
 
 ### Sin using static (siempre escribiendo Console)
 
+Sin el `using static`, cada llamada lleva el prefijo de la clase. Funciona, pero es repetitivo:
+
 ```csharp
 Console.WriteLine("Hola");
 Console.Write("¿Cómo te llamas? ");
@@ -313,6 +321,8 @@ Console.WriteLine($"Tienes {edad} años");
 ```
 
 ### Con using static (mucho más limpio)
+
+Con el `using static` encima, el mismo programa pierde todos esos `Console.` y `Convert.` de la izquierda:
 
 ```csharp
 using static System.Console;
@@ -331,6 +341,8 @@ WriteLine($"Tienes {edad} años");
 > 💡 **Analogía:** `using static` es como si en tu casa pudieras decir "enciende" en vez de "enciende la luz de la cocina". Es más corto, pero solo funciona si todos saben de qué luz hablas.
 
 ### Usos más comunes de using static
+
+Estos son los imports estáticos que más se usan en el día a día, con un ejemplo de cada uno:
 
 ```csharp
 // Console.WriteLine y Console.Write
@@ -462,6 +474,8 @@ Hoy es 06/09/2026
 > 💡 **Analogía:** La solución (`.slnx`) es como el plan de estudios de un ciclo. El proyecto (`.csproj`) es como la programación didáctica de una asignatura. La solución agrupa varios proyectos relacionados.
 
 ### Crear soluciones y proyectos con la CLI
+
+El mismo flujo del apartado 2, pero empezando por la solución: crear la carpeta, generar el `.slnx`, crear el proyecto dentro y añadirlo a la solución:
 
 ```bash
 # 1. Crear carpeta para la solución

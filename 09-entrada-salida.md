@@ -217,6 +217,8 @@ Console.WriteLine($"{nombre}, {edad} años, vive en {ciudad}");
 
 ### Otros métodos útiles de Console
 
+Además de leer y escribir líneas, `Console` trae algunos métodos que te harán la vida más fácil:
+
 ```csharp
 // Console.ReadKey: lee una tecla sin necesidad de Enter
 Console.Write("Pulsa cualquier tecla para continuar...");

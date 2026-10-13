@@ -118,6 +118,8 @@ dotnet run --project MiPrimeraSolucion/MiPrimeraSolucion.csproj
 
 ### Resultado de `dotnet sln list`:
 
+Para ver qué proyectos contiene la solución en cualquier momento, este es el comando que lo lista; la salida se ve así:
+
 ```
 Proyectos en la solución MiPrimeraSolucion:
   MiPrimeraSolucion/MiPrimeraSolucion.csproj
@@ -126,6 +128,8 @@ Proyectos en la solución MiPrimeraSolucion:
 > 💡 **Consejo:** Siempre crea primero la solución y luego los proyectos dentro. Esto mantiene todo organizado desde el principio.
 
 ### Comandos útiles de `dotnet sln`
+
+Más allá de crear la solución, estos son los comandos con los que la mantienes al día: listar, añadir y quitar proyectos.
 
 ```bash
 # Listar proyectos en la solución
@@ -171,6 +175,8 @@ El `.csproj` es el archivo de configuración de un proyecto. Define qué framewo
 > 📝 **Nota:** En .NET 10 usamos C# 14. En .NET 11 usaremos C# 15. La propiedad `LangVersion` controla qué características del lenguaje están disponibles.
 
 ### Añadir paquetes NuGet al proyecto
+
+Añadir un paquete NuGet es un solo comando desde la carpeta del proyecto; la herramienta se encarga de escribir la referencia en el `.csproj` por ti.
 
 ```bash
 # Desde la CLI
@@ -230,6 +236,8 @@ graph LR
 ```
 
 ### Comandos de compilación
+
+Estos son los comandos del día a día con la solución montada: compilar en Debug o Release, ejecutar indicando el proyecto y limpiar los archivos generados.
 
 ```bash
 # Compilar (genera archivos en bin/)

@@ -31,6 +31,8 @@ Una **variable** es un contenedor con nombre que almacena un dato que **puede ca
 
 ### Declaración y asignación
 
+Crear una variable, darle un valor y hacer las dos cosas de una sola vez: aquí tienes las tres formas.
+
 ```csharp
 // Declaración: crear la variable
 string nombre;
@@ -47,6 +49,8 @@ x = 1; y = 2; z = 3;
 ```
 
 ### Reglas para nombres de variables
+
+El compilador impone unas reglas mínimas para los nombres; aquí tienes de un vistazo lo que acepta y lo que rechaza:
 
 ```csharp
 // ✅ VÁLIDO
@@ -222,6 +226,8 @@ string? emailUsuario = null;  // Puede ser null (no proporcionado)
 
 ### Cómo protegernos de null
 
+Cuando un valor puede ser `null`, el operador `??` (coalescencia) te devuelve un valor por defecto en lugar de reventar:
+
 ```csharp
 // Operador de coalescencia: si es null, usa otro valor
 string? nombre = null;
@@ -344,6 +350,8 @@ bool booleano = true;         // Literal booleano
 ```
 
 ### Formatos de literales numéricos
+
+Los números se pueden escribir en varias bases y con sufijos según el tipo; esta es la carta completa:
 
 ```csharp
 // Enteros
