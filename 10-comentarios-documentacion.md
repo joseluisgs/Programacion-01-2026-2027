@@ -162,6 +162,8 @@ Antes de entregar código, asegúrate de:
 
 La documentación XML se usa para generar documentación automática del código. Es especialmente útil en bibliotecas y proyectos grandes.
 
+> ⚠️ **Advertencia:** Los comentarios `///` solo van sobre **declaraciones**: clases, métodos, propiedades. Dentro de un `Program.cs` con Top-Level Statements no hay dónde ponerlos — sobre una sentencia o una función local el compilador lanza el **error CS1587** ("El comentario XML no está situado en un elemento válido") en cuanto el proyecto genera documentación (`GenerateDocumentationFile`); si no la genera, el `///` se ignora en silencio. Por eso el XMLDoc es adecuado cuando escribimos en **métodos de objetos** —clases con sus métodos—, como en el ejemplo de abajo. Con detalle se estudia en la UD de Documentación de **Entornos de Desarrollo** y, más adelante en **Programación**, cuando trabemos con clases y proyectos.
+
 ### Etiquetas más comunes
 
 Los comentarios XML usan un puñado de etiquetas; estas son las que verás en cualquier proyecto:
