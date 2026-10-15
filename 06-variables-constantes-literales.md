@@ -193,8 +193,6 @@ graph LR
     end
     A -->|"apunta a"| C
     B -.->|"no apunta a nada"| D
-    style VARIABLE fill:#607D8B,color:#fff
-    style HEAP fill:#2196F3,color:#fff
     style A fill:#4CAF50,color:#fff
     style B fill:#f44336,color:#fff
     style C fill:#2196F3,color:#fff

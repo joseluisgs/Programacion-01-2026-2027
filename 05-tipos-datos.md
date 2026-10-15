@@ -51,7 +51,6 @@ graph LR
     DIR_1004 --- VALOR_2["35000"]
     DIR_1006 --- VALOR_3["85"]
     DIR_1007 --- VALOR_4["2026"]
-    style MEMORIA fill:#2196F3,color:#fff
 style DIR_1000 fill:#2196F3,color:#fff
   style DIR_1004 fill:#2196F3,color:#fff
   style DIR_1006 fill:#2196F3,color:#fff
@@ -107,10 +106,6 @@ graph TB
         CHAR["char<br/>2 bytes<br/>Un carácter"]
         STRING["string<br/>Variable<br/>Texto"]
     end
-    style ENTEROS_CON_SIGNO fill:#2196F3,color:#fff
-    style ENTEROS_SIN_SIGNO fill:#4CAF50,color:#fff
-    style DECIMALES fill:#FF9800,color:#fff
-    style OTROS fill:#607D8B,color:#fff
 style SBYTE fill:#2196F3,color:#fff
   style SHORT fill:#2196F3,color:#fff
   style INT fill:#2196F3,color:#fff
@@ -539,8 +534,6 @@ graph LR
         A2["edad<br/>Dirección: 0x100<br/>4 bytes"] -->|"contiene"| V2["30"]
     end
     STACK_1 -->|"reasignar"| STACK_2
-    style STACK_1 fill:#4CAF50,color:#fff
-    style STACK_2 fill:#4CAF50,color:#fff
 style A1 fill:#4CAF50,color:#fff
   style A2 fill:#4CAF50,color:#fff
     style V1 fill:#FF9800,color:#fff
@@ -576,8 +569,6 @@ graph TB
     end
     EDAD -->|"contiene: 25"| EDAD
     NOMBRE -->|"0x2000"| OBJ1
-    style STACK fill:#4CAF50,color:#fff
-    style HEAP fill:#2196F3,color:#fff
 style EDAD fill:#4CAF50,color:#fff
   style NOMBRE fill:#4CAF50,color:#fff
   style OBJ1 fill:#2196F3,color:#fff
@@ -603,8 +594,6 @@ graph TB
     EDAD -->|"contiene: 25"| EDAD
     NOMBRE -->|"0x3000"| OBJ2
     OBJ1 -.->|"♻️ Recolector de Basura"| OBJ1
-    style STACK fill:#4CAF50,color:#fff
-    style HEAP fill:#2196F3,color:#fff
 style EDAD fill:#4CAF50,color:#fff
   style NOMBRE fill:#4CAF50,color:#fff
     style OBJ1 fill:#f44336,color:#fff

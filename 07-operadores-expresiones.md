@@ -67,9 +67,6 @@ graph LR
     end
     EXPRESION3 -->|"produce"| R3["Resultado<br/>un número"]
 
-    style EXPRESION fill:#2196F3,color:#fff
-    style EXPRESION2 fill:#4CAF50,color:#fff
-    style EXPRESION3 fill:#FF9800,color:#fff
 style O1 fill:#2196F3,color:#fff
   style O2 fill:#2196F3,color:#fff
     style OP fill:#f44336,color:#fff

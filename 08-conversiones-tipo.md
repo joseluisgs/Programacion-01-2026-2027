@@ -280,8 +280,6 @@ graph LR
     end
     CAJA_PEQ -->|"entra automáticamente"| CAJA_GRAN
 
-    style CAJA_PEQ fill:#4CAF50,color:#fff
-    style CAJA_GRAN fill:#2196F3,color:#fff
 style A1 fill:#4CAF50,color:#fff
   style B1 fill:#2196F3,color:#fff
 ```
@@ -306,8 +304,6 @@ graph LR
     CAJA_GRAN -->|"¿cabe?"| CAJA_PEQ
     CAJA_GRAN -.->|"pierde decimal"| B1
 
-    style CAJA_GRAN fill:#2196F3,color:#fff
-    style CAJA_PEQ fill:#f44336,color:#fff
     style A1 fill:#2196F3,color:#fff
     style B1 fill:#f44336,color:#fff
 ```
