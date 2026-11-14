@@ -30,6 +30,16 @@ artifacts/
 publish/
 TestResults/
 
+# Node / Slidev (npm)
+node_modules/
+.slidev/
+dist/
+*.local
+.npm/
+
+# Agentes (configuración, nunca se sube)
+AGENTS.md
+
 # Multimedia y docs (no se suben)
 multimedia/
 docs/
