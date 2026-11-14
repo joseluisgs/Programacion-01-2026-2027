@@ -1,0 +1,395 @@
+/* ============================================================
+   UD01 · Presentación Slidev
+   Sistema de diseño basado en la paleta de joseluisgs.dev
+   (VuePress Theme Hope: accent #7289da, fondos #fff / #1b1b1f)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  /* --- Fondos --- */
+  --ud-bg: #ffffff;
+  --ud-bg-alt: #f6f6f7;
+  --ud-bg-elv: #ffffff;
+  --ud-bg-soft: rgba(255, 255, 255, 0.9);
+
+  /* --- Texto --- */
+  --ud-text: #3c3c43;
+  --ud-text-mute: rgba(60, 60, 67, 0.78);
+  --ud-text-subtle: rgba(60, 60, 67, 0.56);
+
+  /* --- Líneas --- */
+  --ud-divider: #e2e2e3;
+
+  /* --- Acento principal (blurple de la web) --- */
+  --ud-accent: #7289da;
+  --ud-accent-strong: #4967cf;
+  --ud-accent-soft: rgba(114, 137, 218, 0.14);
+  --ud-on-accent: #ffffff;
+
+  /* --- Semánticos (claro) --- */
+  --ud-green: #30a46c;
+  --ud-green-text: #18794e;
+  --ud-green-soft: rgba(48, 164, 108, 0.12);
+  --ud-red: #e0575b;
+  --ud-red-text: #b8272c;
+  --ud-red-soft: rgba(224, 87, 91, 0.12);
+  --ud-yellow: #c28100;
+  --ud-yellow-text: #915930;
+  --ud-yellow-soft: rgba(194, 129, 0, 0.12);
+  --ud-blue: #2fa1c5;
+  --ud-blue-text: #2888a7;
+  --ud-blue-soft: rgba(47, 161, 197, 0.12);
+  --ud-purple: #8e5cd9;
+  --ud-purple-text: #6f42c1;
+  --ud-purple-soft: rgba(142, 92, 217, 0.12);
+
+  /* --- Tipografía --- */
+  --ud-font: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+  --ud-font-mono: Consolas, 'Cascadia Mono', 'JetBrains Mono', monospace;
+  /* Solo para código: Fira Code Nerd Font con ligaduras (=>, !=, ->...) */
+  --ud-font-code: 'FiraCode Nerd Font Mono', 'FiraCode Nerd Font', 'Fira Code', 'Cascadia Mono', Consolas, monospace;
+
+  /* --- Radios y sombras --- */
+  --ud-radius: 12px;
+  --ud-shadow: 0 2px 12px rgba(60, 60, 67, 0.08);
+  --ud-shadow-lg: 0 8px 32px rgba(60, 60, 67, 0.12);
+}
+
+/* ============================================================
+   Modo oscuro (mismos tokens que la web: #1b1b1f / #161618 / #202127)
+   ============================================================ */
+html.dark {
+  --ud-bg: #1b1b1f;
+  --ud-bg-alt: #161618;
+  --ud-bg-elv: #202127;
+  --ud-bg-soft: rgba(32, 33, 39, 0.9);
+
+  --ud-text: #ebebf5;
+  --ud-text-mute: rgba(235, 235, 245, 0.6);
+  --ud-text-subtle: rgba(235, 235, 245, 0.38);
+
+  --ud-divider: #2e2e32;
+
+  --ud-accent-soft: rgba(114, 137, 218, 0.18);
+  --ud-on-accent: #ffffff;
+
+  --ud-green: #298459;
+  --ud-green-text: #3dd68c;
+  --ud-green-soft: rgba(61, 214, 140, 0.12);
+  --ud-red: #b62a3c;
+  --ud-red-text: #f66f81;
+  --ud-red-soft: rgba(246, 111, 129, 0.12);
+  --ud-yellow: #a46a0a;
+  --ud-yellow-text: #f9b44e;
+  --ud-yellow-soft: rgba(249, 180, 78, 0.12);
+  --ud-blue: #2785a3;
+  --ud-blue-text: #c9e8f2;
+  --ud-blue-soft: rgba(201, 232, 242, 0.1);
+  --ud-purple: #7e4cc9;
+  --ud-purple-text: #c8abfa;
+  --ud-purple-soft: rgba(200, 171, 250, 0.12);
+
+  --ud-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --ud-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+.slidev-layout {
+  font-family: var(--ud-font);
+  color: var(--ud-text);
+  background-color: var(--ud-bg);
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: var(--ud-font);
+  font-weight: 700;
+  color: var(--ud-text);
+}
+
+.slidev-layout h1 {
+  background: linear-gradient(120deg, var(--ud-accent-strong) 0%, var(--ud-accent) 60%, var(--ud-blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html.dark .slidev-layout h1 {
+  background: linear-gradient(120deg, #a3b1ee 0%, var(--ud-accent) 55%, #6fc3e0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.slidev-layout a {
+  color: var(--ud-accent-strong);
+}
+
+html.dark .slidev-layout a {
+  color: #a3b1ee;
+}
+
+.slidev-layout p {
+  color: var(--ud-text-mute);
+}
+
+.slidev-layout strong {
+  color: var(--ud-text);
+}
+
+/* ============================================================
+   Bloques de código
+   ============================================================ */
+.slidev-layout code {
+  font-family: var(--ud-font-code);
+  font-variant-ligatures: contextual;
+  font-feature-settings: 'calt' 1, 'liga' 1;
+}
+
+.slidev-layout pre {
+  border-radius: var(--ud-radius);
+  border: 1px solid var(--ud-divider);
+  box-shadow: var(--ud-shadow);
+}
+
+.slidev-layout pre code {
+  font-family: var(--ud-font-code);
+  font-variant-ligatures: contextual;
+  font-feature-settings: 'calt' 1, 'liga' 1;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Tablas
+   ============================================================ */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8em;
+}
+
+.slidev-layout th {
+  background: var(--ud-accent-soft);
+  color: var(--ud-text);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.4em 0.7em;
+  border-bottom: 2px solid var(--ud-accent);
+}
+
+.slidev-layout td {
+  padding: 0.32em 0.7em;
+  border-bottom: 1px solid var(--ud-divider);
+  color: var(--ud-text-mute);
+}
+
+.slidev-layout tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   Utilidades de marca
+   ============================================================ */
+.ud-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.2em 0.8em;
+  border-radius: 999px;
+  background: var(--ud-accent-soft);
+  color: var(--ud-accent-strong);
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--ud-accent);
+  text-decoration: none;
+}
+
+/* Redes sociales en el cierre: pill clicable con aire entre ellos */
+.ud-pill-link {
+  margin: 0.4em 0.8em;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.ud-pill-link:hover {
+  transform: translateY(-2px);
+  background: var(--ud-accent);
+  color: var(--ud-on-accent);
+}
+
+html.dark .ud-pill {
+  color: #a3b1ee;
+}
+
+.ud-card {
+  background: var(--ud-bg-elv);
+  border: 1px solid var(--ud-divider);
+  border-radius: var(--ud-radius);
+  padding: 0.9em 1.1em;
+  box-shadow: var(--ud-shadow);
+}
+
+.ud-card-accent {
+  border-left: 4px solid var(--ud-accent);
+}
+
+.ud-quote {
+  border-left: 4px solid var(--ud-accent);
+  background: var(--ud-accent-soft);
+  border-radius: 0 var(--ud-radius) var(--ud-radius) 0;
+  padding: 0.7em 1em;
+  color: var(--ud-text);
+  font-style: italic;
+}
+
+/* ============================================================
+   Portada y secciones
+   ============================================================ */
+.ud-cover-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% -10%, rgba(114, 137, 218, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 110%, rgba(47, 161, 197, 0.25) 0%, transparent 60%),
+    var(--ud-bg);
+}
+
+.ud-section-number {
+  font-size: 9rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(160deg, var(--ud-accent) 0%, var(--ud-blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.95;
+}
+
+/* Pie de diapositiva: separador superior */
+.ud-footer {
+  border-top: 1px solid var(--ud-divider);
+  color: var(--ud-text-subtle);
+  font-size: 0.7em;
+}
+
+/* ============================================================
+   Overrides de Slidev (variables del cliente + utilidades UnoCSS)
+   ============================================================ */
+:root {
+  --slidev-theme-primary: #7289da;
+  --slidev-code-background: #f6f6f7;
+  --slidev-code-foreground: #3c3c43;
+}
+
+html.dark {
+  --slidev-theme-primary: #8fa2e8;
+  --slidev-code-background: #161618;
+  --slidev-code-foreground: #ebebf5;
+}
+
+/* Utilidades `bg-main` / `text-main` del cliente: llevadas a nuestra paleta */
+.bg-main {
+  background-color: var(--ud-bg) !important;
+}
+
+html.dark .bg-main {
+  background-color: var(--ud-bg) !important;
+}
+
+.text-main {
+  color: var(--ud-text) !important;
+}
+
+html.dark .text-main {
+  color: var(--ud-text) !important;
+}
+
+/* Blockquotes del tema: mismo estilo que las notas del material */
+.slidev-layout blockquote {
+  background: var(--ud-accent-soft);
+  color: var(--ud-text-mute);
+  border-left: 4px solid var(--ud-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.55em 0.9em;
+  font-size: 0.88em;
+}
+
+.slidev-layout blockquote > * {
+  margin: 0.2em 0;
+}
+
+/* Listas con viñeta cuadrada del tema → redondeadas de marca */
+.slidev-layout ul {
+  list-style: none;
+  padding-left: 0.2em;
+}
+
+.slidev-layout ul li::before {
+  content: '▹';
+  color: var(--ud-accent);
+  font-weight: 700;
+  margin-right: 0.5em;
+}
+
+/* ============================================================
+   Ritmo vertical: separación entre título y contenido,
+   y entre bloques apilados (nada pegado)
+   ============================================================ */
+.slidev-layout h2 {
+  margin-bottom: 0.85em;
+}
+
+.slidev-layout .ud-tip:not(:first-child),
+.slidev-layout .ud-card:not(:first-child),
+.slidev-layout .ud-quote:not(:first-child) {
+  margin-top: 0.65em;
+}
+
+/* ============================================================
+   Emoji dentro de un h1 con gradiente: no debe teñirse
+   ============================================================ */
+.slidev-layout h1 .ud-emoji {
+  color: var(--ud-text);
+  -webkit-text-fill-color: var(--ud-text);
+}
+
+/* Frase remarcada dentro de una tarjeta */
+.ud-highlight {
+  color: var(--ud-accent-strong);
+  background: var(--ud-accent-soft);
+  padding: 0.05em 0.4em;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+html.dark .ud-highlight {
+  color: #a3b1ee;
+}
+
+/* ============================================================
+   Diagramas Mermaid: a ancho completo y sin salirse
+   El SVG vive en un shadow root, así que solo podemos actuar
+   sobre el contenedor (el host) y sobre la config de Mermaid
+   (setup/mermaid.ts → useMaxWidth).
+   ============================================================ */
+.slidev-layout .mermaid {
+  display: block;
+  width: 100%;
+  /* Un poco menos de ancho = diagrama más bajo y texto más legible */
+  max-width: 780px;
+  max-height: 320px;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+/* Separación entre bloques apilados dentro de la misma columna */
+.slidev-layout .ud-window:not(:first-child),
+.slidev-layout .ud-real:not(:first-child),
+.slidev-layout .ud-tip + .ud-window,
+.slidev-layout .ud-tip + .ud-real {
+  margin-top: 0.85em;
+}
