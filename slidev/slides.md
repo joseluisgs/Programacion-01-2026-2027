@@ -3372,7 +3372,7 @@ layout: center
 
 <PacMan :size="64" />
 
-# ¡A desarrollar! <span class="ud-emoji">🚀</span>
+# ¡Hasta el próximo deploy! <span class="ud-emoji">👋</span>
 
 <b class="text-lg">Tema 01: Introducción a la Programación Software</b>
 
