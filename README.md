@@ -28,7 +28,7 @@ UD01.  Introducción a la Programación Software. 1DAW. Curso 2026-2027
 
 ## Presentaciones
 
-- Presentación PDF ([tema claro, para imprimir](presentaciones/ud01-introduccion-claro.pdf), [tema oscuro, para pantalla](presentaciones/ud01-introduccion-oscuro.pdf))
+- Presentación PDF ([tema claro](presentaciones/ud01-introduccion-claro.pdf), [tema oscuro](presentaciones/ud01-introduccion-oscuro.pdf))
 
 ## Resultados de aprendizaje y criterios de evaluación
 
