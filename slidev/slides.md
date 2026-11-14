@@ -119,7 +119,7 @@ layout: section
 
 # Qué es la programación
 
-<div class="opacity-70">Punto 1 del tema · Algoritmos, paradigmas y lenguajes</div>
+<div class="opacity-70">Algoritmos, paradigmas y lenguajes</div>
 
 ---
 
@@ -610,7 +610,7 @@ layout: section
 
 # El entorno .NET
 
-<div class="opacity-70">Punto 2 del tema · SDK, CLI, NuGet e IDE</div>
+<div class="opacity-70">SDK, CLI, NuGet e IDE</div>
 
 ---
 
@@ -678,21 +678,15 @@ graph TD
 | Versión | Estado | LangVersion |
 |---------|--------|-------------|
 | .NET 10 | Actual (2025) | C# 14 |
-| .NET 11 | Preview (2026) | C# 15 |
+| .NET 11 | **Nuevo (nov 2026)** | C# 15 |
 
 </div>
 
 <TipBox type="nota">
 
-En esta asignatura usamos **.NET 10 + C# 14**, con `LangVersion` 14 en el `.csproj`.
+En esta asignatura usamos **.NET 10 + C# 14**, con `LangVersion` 14 en el `.csproj`. **C# 15 ya ha salido (noviembre de 2026)**: lo veremos próximamente.
 
 </TipBox>
-
-<RealExample app="Tu primer proyecto">
-
-El SDK es la "cocina" donde prepararemos nuestro primer programa en C#. Sin él, no se puede empezar.
-
-</RealExample>
 
 </div>
 </div>
@@ -804,13 +798,14 @@ C# 14 permite ejecutar **un solo archivo `.cs`** como script: sin crear proyecto
 <WindowFrame file="hola.cs">
 
 ```csharp
-#:package Newtonsoft.Json@13.0.3
+Console.Write("¿Cómo te llamas? ");
+string nombre = Console.ReadLine() ?? "";
 
-using Newtonsoft.Json;
+Console.Write("¿Cuántos años tienes? ");
+string texto = Console.ReadLine();
+int.TryParse(texto, out int edad);
 
-var persona = new { Nombre = "Ana", Edad = 22 };
-string json = JsonConvert.SerializeObject(persona);
-Console.WriteLine(json);
+Console.WriteLine($"¡Hola, {nombre}! Tienes {edad} años.");
 ```
 
 </WindowFrame>
@@ -822,15 +817,10 @@ Console.WriteLine(json);
 
 `dotnet run` crea un proyecto temporal en caché, restaura paquetes, compila en segundo plano y ejecuta. Tú solo ves el resultado.
 
-<TipBox type="truco" title="SDKs en scripts">
+<TipBox type="truco" title="Directivas en scripts">
 
-```csharp
-#:sdk Microsoft.NET.Sdk.Web
-
-var app = WebApplication.Create(args);
-app.MapGet("/", () => "¡Hola desde una API mínima!");
-app.Run();
-```
+- `#:package Nombre@versión` → añade un paquete NuGet **sin crear proyecto**
+- `#:sdk Nombre` → usa otro SDK si el script lo necesita
 
 </TipBox>
 
@@ -960,7 +950,7 @@ layout: section
 
 # Soluciones y proyectos
 
-<div class="opacity-70">Punto 3 del tema · .slnx, .csproj y compilación</div>
+<div class="opacity-70">.slnx, .csproj y compilación</div>
 
 ---
 
@@ -1281,6 +1271,2100 @@ Ya tienes el **algoritmo en papel**, el **entorno .NET** montado y la **solució
 <div class="text-sm opacity-70 mt-4">Puntos 4 · Estructura de un programa — 5 · Tipos de datos — 6 · Variables...</div>
 
 ---
+layout: section
+---
+
+<div class="ud-section-number">04</div>
+
+# Estructura de un programa
+
+<div class="opacity-70">Bloques, Top-Level Statements y namespaces</div>
+
+---
+
+## 4 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Distinguir sentencias, expresiones, métodos y bloques',
+    'Escribir tu primer programa con Top-Level Statements',
+    'Usar namespaces y using static con criterio',
+    'Elegir entre la estructura clásica y la moderna',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+¿Alguna vez has seguido una receta paso a paso? En C#, cada línea de esa receta es una **sentencia**: una instrucción que el ordenador ejecuta y termina con **`;`**.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="🧱" title="Sentencia" accent="accent">
+
+Instrucción que realiza una acción. Es la **unidad básica de ejecución** y termina siempre con punto y coma (`;`).
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="🧮" title="Expresión" accent="blue">
+
+Código que **produce un valor**: `edad + 1`, `"Hola" + nombre`, `a >= b`.
+
+</ConceptCard>
+
+</div>
+</div>
+</div>
+
+---
+
+## Entrada → proceso → salida
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Fase | Qué hace | Ejemplo |
+|------|----------|---------|
+| **📥 Entrada** | Recibe datos del usuario | `Console.ReadLine()` → `"Ana"` |
+| **⚙️ Proceso** | Transforma, calcula, decide | Comprobar si el usuario existe |
+| **📤 Salida** | Muestra el resultado | `Console.WriteLine()` → `"Hola, Ana"` |
+
+<TipBox type="nota">
+
+**E → P → S** es el patrón universal: todo programa, desde una calculadora hasta Netflix, hace exactamente estas tres cosas.
+
+</TipBox>
+
+</div>
+<div>
+
+<RealExample app="Gmail / Netflix">
+
+Cuando te logueas: **entrada** (escribes usuario y contraseña), **proceso** (el servidor comprueba si coinciden con la base de datos) y **salida** (accedes al perfil o ves un error).
+
+</RealExample>
+
+```mermaid
+graph LR
+    A[📥 Entrada] --> B[⚙️ Proceso]
+    B --> C[📤 Salida]
+    C -->|¿Sigue?| A
+
+    style A fill:#2196F3,color:#fff
+    style B fill:#FF9800,color:#fff
+    style C fill:#4CAF50,color:#fff
+```
+
+</div>
+</div>
+
+---
+
+## Sentencias, expresiones y bloques
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Program.cs">
+
+```csharp
+// Sentencia de declaración
+int edad = 22;
+
+// Sentencia de asignación
+edad = 23;
+
+// Sentencia de llamada a método
+Console.WriteLine("Hola");
+
+// Bloque: varias sentencias entre llaves
+if (edad >= 18)
+{
+    Console.WriteLine("Mayor de edad");
+}
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<WindowFrame file="Expresiones que producen valor">
+
+```csharp
+int a = 10;
+int b = 3;
+
+int suma = a + b;        // 13
+int division = a / b;    // 3  (entero)
+int resto = a % b;       // 1
+bool esPar = a % 2 == 0; // true
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+Olvidar el **punto y coma** es el error más común de quien empieza. C# es muy estricto con eso.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Top-Level Statements
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Antes (estructura clásica)">
+
+```csharp
+namespace MiProyecto
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("¡Hola, mundo!");
+        }
+    }
+}
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<WindowFrame file="Ahora (Top-Level Statements)">
+
+```csharp
+Console.WriteLine("¡Hola, mundo!");
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+Nació en **C# 9** y es la forma **moderna y recomendada**. **En este curso la usaremos siempre**: sin ceremonia de clases ni `Main`.
+
+</TipBox>
+
+</div>
+</div>
+
+<WindowFrame file="return: el final del programa" class="mt-3">
+
+```csharp
+Console.Write("¿Cómo te llamas? ");
+string nombre = Console.ReadLine() ?? "";
+
+if (string.IsNullOrEmpty(nombre))
+{
+    return;   // fin del programa: lo que hacía el Main
+}
+
+Console.WriteLine($"¡Hola, {nombre}!");
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+En la **UD02** veremos **funciones y procedimientos**: allí `return;` marcará el **final de cada uno**, igual que aquí marca el final del programa.
+
+</TipBox>
+
+---
+
+## Reglas de Top-Level Statements
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| # | Regla |
+|---|-------|
+| 1 | Solo **un archivo** por proyecto los puede usar |
+| 2 | Las declaraciones van **directas**, sin `class` ni `Main` |
+| 3 | Los `using` van **al inicio** del archivo |
+| 4 | Puedes definir **métodos** y usarlos después |
+
+</div>
+<div>
+
+<ConceptCard icon="⚠️" title="El archivo se llama Program.cs" accent="orange">
+
+El archivo principal de un proyecto de consola **siempre** se llama `Program.cs`. No le cambies el nombre: el compilador busca ese archivo específicamente.
+
+</ConceptCard>
+
+<TipBox type="truco">
+
+**¿Cuándo usar cada estructura?** Top-Level para scripts, prototipos y aprendizaje. La clásica, cuando el proyecto tiene **muchas clases**.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Namespaces y using static
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Namespace (file-scoped)">
+
+```csharp
+namespace MiProyecto.Models;   // C# 10+: sin llaves
+
+enum TipoSuscripcion { Basica, Estandar, Premium }
+
+struct Cancion { string Titulo; int Duracion; }
+// Todo esto vive junto y no se mezcla con otros namespaces
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+Un **namespace** es como una carpeta que agrupa código relacionado y **evita conflictos de nombres**. En C# 10+ se escribe con punto y coma.
+
+</TipBox>
+
+</div>
+<div>
+
+<WindowFrame file="using static">
+
+```csharp
+using static System.Console;
+
+// Sin using static
+System.Console.WriteLine("Hola");
+
+// Con using static
+WriteLine("Hola");
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+Úsalo solo con clases que usas **siempre** (como `Console`). Si abusas, se pierde legibilidad.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Resumen del punto 4
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Concepto | Descripción |
+|----------|-------------|
+| **Sentencia** | Acción que termina en `;` |
+| **Expresión** | Código que produce un valor |
+| **Bloque** | Sentencias entre `{}` |
+| **E → P → S** | Patrón de todo programa |
+| **Top-Level** | Código directo, sin `Main` (C# 9+) |
+| **Namespace** | Carpeta que agrupa código |
+| **`using static`** | Usa miembros estáticos sin el nombre de la clase |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Buenas prácticas" accent="green">
+
+- Siempre punto y coma al final de cada sentencia
+- Un solo archivo Top-Level por proyecto
+- El archivo principal se llama **`Program.cs`**
+- Nombres claros: el código debe explicarse solo
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 5** vemos los **tipos de datos**: cómo manejar la memoria según la información y cuál elegir para cada dato.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">05</div>
+
+# Tipos de datos
+
+<div class="opacity-70">Cómo manejar la memoria según la información y cuál elegir</div>
+
+---
+
+## 5 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Conocer los tipos numéricos y cuándo usar cada uno',
+    'Distinguir otros tipos: bool, char y string',
+    'Entender la promoción de tipos en operaciones',
+    'Diferenciar tipos por valor y por referencia',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+Si guardas la compra en una caja, eliges la caja **justa**: los tomates no van en la de los huevos. En C#, cada dato tiene su **tipo** y elegirlo mal cuesta memoria y errores.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="🏷️" title="Tipo de dato" accent="accent">
+
+Define **qué valores** puede contener y **cuánta memoria** ocupa. `int`, `double`, `bool`, `string`...
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="🪙" title="Los por defecto" accent="blue">
+
+- `int` → **enteros** (por defecto)
+- `double` → **decimales** (por defecto)
+- `decimal` → **dinero** 💰
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Tipos numéricos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Enteros con signo | Tamaño | Rango |
+|---|---|---|
+| `sbyte` | 8 bits | -128 a 127 |
+| `short` | 16 bits | -32.768 a 32.767 |
+| **`int`** | 32 bits | ±2.147.483.647 |
+| `long` | 64 bits | ±9,2 billones |
+
+| Enteros sin signo | Tamaño | Rango |
+|---|---|---|
+| `byte` | 8 bits | 0 a 255 |
+| `ushort` | 16 bits | 0 a 65.535 |
+| `uint` | 32 bits | 0 a 4.294.967.295 |
+| `ulong` | 64 bits | 0 a 18,4 billones |
+
+</div>
+<div>
+
+| Decimales | Precisión | Uso típico |
+|---|---|---|
+| `float` | ~6-9 dígitos | poco uso (sufijo `f`) |
+| **`double`** | ~15-17 dígitos | **por defecto** en decimales |
+| `decimal` | ~28-29 dígitos | **dinero** (sufijo `m`) |
+
+<TipBox type="advertencia">
+
+Un `byte` guarda hasta **255**: si una puntuación pasa de ahí, **desborda**. Para dinero, nunca uses `int` ni `double`: siempre `decimal`.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Otros tipos de datos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Tipo | Valores | Por defecto |
+|---|---|---|
+| **`bool`** | `true` / `false` | `false` |
+| **`char`** | Un carácter Unicode | `'\0'` |
+| **`string`** | Texto (variable) | **`null`** |
+
+<WindowFrame file="Ejemplos">
+
+```csharp
+bool activo = true;
+char inicial = 'J';          // comillas simples
+string nombre = "José Luis"; // comillas dobles
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<ConceptCard icon="🔍" title="El tipo var" accent="green">
+
+C# **infiera** el tipo a partir del valor asignado. El tipo **no cambia** después:
+
+```csharp
+var edad = 22;      // int
+var nombre = "Ana"; // string
+```
+
+</ConceptCard>
+
+<TipBox type="nota">
+
+Hay más tipos: `DateTime`, `Guid`, tuplas `(int, string)`... Los verás cuando los necesites.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Promoción de tipos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="La regla de oro">
+
+```csharp
+byte a = 10;
+byte b = 20;
+var c = a + b;   // tipo de c: ¡int, no byte!
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+Cuando operas con tipos distintos, C# **eleva** el más pequeño al más grande. Toda operación entera promociona a **mínimo `int`**.
+
+</TipBox>
+
+<RealExample app="Sonda Mars Climate Orbiter">
+
+En 1999 se perdió una sonda por mezclar unidades imperiales y métricas.
+
+</RealExample>
+
+</div>
+<div>
+
+| Prioridad (de mayor a menor) | Gana |
+|---|---|
+| 1 | `decimal` (nunca con `float`/`double`) |
+| 2 | `double` |
+| 3 | `float` |
+| 4 | `long` |
+| 5 | `uint` (con `int` → `long`) |
+| 6 | **todo lo demás → `int`** |
+
+</div>
+</div>
+
+---
+
+## Por valor o por referencia
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Categoría | Tipos | Al copiar... |
+|---|---|---|
+| **Por valor** 📦 | `int`, `double`, `bool`, `char` | Se copia el **contenido** (Stack) |
+| **Por referencia** 🔗 | `string`, `array`, clases | Se copia la **referencia** (dato en Heap) |
+
+<TipBox type="nota">
+
+**Stack:** rápido y ordenado, para datos fijos. **Heap:** flexible, para objetos de tamaño variable.
+
+</TipBox>
+
+</div>
+<div>
+
+<WindowFrame file="null: el error clásico">
+
+```csharp
+string nombre;        // vale null (no "vacío")
+Console.WriteLine(nombre.Length);
+// ❌ NullReferenceException
+```
+
+</WindowFrame>
+
+<TipBox type="truco">
+
+Protección: `string x = nombre ?? "Desconocido";` — si es `null`, usa el valor de la derecha.
+
+</TipBox>
+
+<TipBox type="advertencia">
+
+Usar un valor `null` como si tuviera objeto es **el error más común** en programación.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Resumen del punto 5
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Concepto | Descripción |
+|----------|-------------|
+| **`int`** | Enteros, tipo por defecto |
+| **`double`** | Decimales, por defecto |
+| **`decimal`** | Dinero y finanzas |
+| **`bool` / `char` / `string`** | Lógico, carácter, texto |
+| **`var`** | El compilador infiere el tipo |
+| **Promoción** | El más grande manda en la operación |
+| **Por valor / referencia** | Stack vs Heap |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Buenas prácticas" accent="green">
+
+- `int` para enteros, `decimal` para dinero
+- `var` cuando el tipo es evidente
+- Cuidado con `null` en `string`
+- Guion bajo en números grandes: `1_500_000`
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 6**: **variables, constantes y literales** — cómo guardar esos datos con nombre.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">06</div>
+
+# Variables, constantes y literales
+
+<div class="opacity-70">Cómo guardar los datos con nombre</div>
+
+---
+
+## 6 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Declarar variables con buenas prácticas de nombres',
+    'Protegerte de los valores null',
+    'Distinguir variable, constante y literal',
+    'Agrupar datos con enum, struct y tuplas',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+¿Cómo guardarías el precio de la compra para usarlo luego? En C#, en una **variable**: una zona de memoria con nombre donde guardas un dato que puede cambiar.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="📦" title="Variable" accent="accent">
+
+Contenedor con nombre que almacena un dato que **puede cambiar** durante la ejecución: `int edad = 22;`
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="🏷️" title="Identificador" accent="blue">
+
+El **nombre** que le damos a variables, constantes, métodos o clases. Es la etiqueta con la que nos referimos a algo.
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Declarar y nombrar
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Declaración">
+
+```csharp
+int edad = 22;        // declaración + valor
+edad = 23;            // asignación (cambia)
+
+string nombre = "Ana";
+double nota = 8.75;
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+Si una variable local **no está inicializada** y la usas, el compilador da error. Se evitan bugs con valores "basura" de memoria.
+
+</TipBox>
+
+</div>
+<div>
+
+| Tipo | Nombre | Ejemplo |
+|---|---|---|
+| Variable | **camelCase** | `int edadDelAlumno` |
+| Constante | **PascalCase** | `const double Iva` |
+| Clase/método | **PascalCase** | `CalcularTotal()` |
+
+<ConceptCard icon="✅" title="Código autoexplicativo" accent="green">
+
+❌ `int d = 30;` → ✅ `int diasDelMes = 30;`
+
+Un buen programador escribe código que **se entiende solo**.
+
+</ConceptCard>
+
+</div>
+</div>
+
+---
+
+## Ámbito y vida de una variable
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Ámbito (scope)">
+
+```csharp
+int total = 100;      // visible en todo el método
+
+if (true)
+{
+    int descuento = 10; // solo dentro de las llaves
+    Console.WriteLine(total + descuento);
+}
+
+Console.WriteLine(descuento); // ❌ fuera de ámbito
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+Si anidas demasiados bloques, las variables de dentro se vuelven difíciles de seguir. **Anida lo justo.**
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="📍" title="Ámbito (scope)" accent="accent">
+
+Zona del código donde la variable **es visible** y puede usarse.
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="⏱️" title="Vida (lifetime)" accent="blue">
+
+**Cuánto tiempo vive**: mientras se ejecuta su bloque. Al salir, la memoria se libera.
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Null y tipos nullable
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="El error del billón de dólares">
+
+```csharp
+string nombre;           // vale null, NO ""
+Console.WriteLine(nombre.Length);
+// ❌ NullReferenceException
+
+// Protección con ??
+string seguro = nombre ?? "Desconocido";
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+`null` significa **"no apunta a ningún objeto"**. Con `<Nullable>enable</Nullable>` el compilador te avisa antes de que falle.
+
+</TipBox>
+
+</div>
+<div>
+
+<WindowFrame file="Comprobar antes de usar">
+
+```csharp
+string nombre = null;
+
+// ¿Sin valor o vacío?
+if (string.IsNullOrEmpty(nombre))
+{
+    Console.WriteLine("Falta el nombre");
+}
+
+// Longitud solo si tiene valor
+int? longitud = nombre?.Length;
+```
+
+</WindowFrame>
+
+<RealExample app="Formularios web">
+
+Si el usuario deja un campo vacío, el servidor comprueba `IsNullOrEmpty` antes de usarlo: **evitas el fallo sin complicarte**.
+
+</RealExample>
+
+</div>
+</div>
+
+---
+
+## Constantes y literales
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Característica | Variable | Constante | Literal |
+|---|---|---|---|
+| **Puede cambiar** | Sí | **No** | No |
+| **Se declara** | Con tipo | con `const` | No se declara |
+| **Ejemplo** | `int x = 5;` | `const int X = 5;` | `5` |
+
+<WindowFrame file="const">
+
+```csharp
+const double Iva = 21.0;
+const string Pais = "España";
+
+Iva = 22.0;   // ❌ error de compilación
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+| `const` | `readonly` |
+|---|---|
+| Se asigna en la **declaración** | Se asigna en el **constructor** |
+| Tiempo: **compilación** | Tiempo: **ejecución** |
+| Valores que **nunca** cambian | Valores que cambian rara vez |
+
+<TipBox type="nota">
+
+Un **literal** es el valor en sí escrito en el código: `5`, `"hola"`, `true`, `21.0m`. No tiene nombre.
+
+</TipBox>
+
+<TipBox type="advertencia">
+
+Como las constantes se reemplazan **en compilación**, no puedes usar valores calculados en ejecución.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Enum, struct y tupla
+
+<div class="grid grid-cols-3 gap-4 items-start">
+<div>
+
+<ConceptCard icon="📋" title="enum" accent="accent">
+
+Conjunto de **valores con nombre**. Solo admite los definidos.
+
+```csharp
+enum TipoSuscripcion
+{ Basica, Estandar, Premium }
+```
+
+</ConceptCard>
+
+</div>
+<div>
+
+<ConceptCard icon="🧰" title="struct" accent="blue">
+
+Agrupa varios campos bajo un mismo nombre (mini-cajita).
+
+```csharp
+struct Cancion
+{
+    string Titulo;
+    int DuracionSegundos;
+}
+```
+
+</ConceptCard>
+
+</div>
+<div>
+
+<ConceptCard icon="📦" title="tupla" accent="green">
+
+Agrupa valores **sin crear clase**. Rápida y temporal.
+
+```csharp
+var compra = ("Pan", 1.20m, 2);
+Console.WriteLine(compra.Item2);
+```
+
+</ConceptCard>
+
+</div>
+</div>
+
+<TipBox type="truco">
+
+**Regla práctica:** 2-3 valores temporales → **tupla**. Modelo con sentido propio (canción, jugador) → **struct**. Opciones fijas → **enum**.
+
+</TipBox>
+
+---
+
+## Resumen del punto 6
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Concepto | Descripción |
+|----------|-------------|
+| **Variable** | Contenedor que cambia (`int x = 5;`) |
+| **Identificador** | Nombre de variable, método, clase... |
+| **Ámbito** | Dónde es visible la variable |
+| **`null`** | "No apunta a ningún objeto" |
+| **Constante** | `const`: no cambia jamás |
+| **Literal** | El valor escrito en el código |
+| **`enum` / `struct` / `tupla`** | Opciones, entidades, paquetes rápidos |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Buenas prácticas" accent="green">
+
+- **camelCase** en variables, **PascalCase** en constantes
+- Nombres que se entienden sin comentarios
+- Protege los `string` con `??`
+- Inicializa siempre al declarar
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 7**: **operadores y expresiones** — cómo calcular con todo lo que has guardado.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">07</div>
+
+# Operadores y expresiones
+
+<div class="opacity-70">Calcular, comparar y decidir</div>
+
+---
+
+## 7 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Usar operadores aritméticos y relacionales',
+    'Combinar condiciones con operadores lógicos',
+    'Elegir bien la precedencia en operaciones',
+    'Aplicar el ternario y la coalescencia nula',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+En la calculadora pulsas `+` y `−`. En C# haces lo mismo, pero además puedes **comparar** (`>`, `==`) y **combinar condiciones** (`&&`, `||`).
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="🧮" title="Expresión" accent="accent">
+
+Combinación de valores, variables y operadores que **produce un resultado**: `precio * 1.21`
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="⚙️" title="Operandos y operador" accent="blue">
+
+**Operandos:** el dato sobre el que se opera (`precio`, `1.21`). **Operador:** la instrucción (`*`).
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Operadores aritméticos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Operador | Nombre | Ejemplo | Resultado |
+|---|---|---|---|
+| `+` `-` `*` | Suma, resta, mult. | `5 + 3` | `8` |
+| `/` | División | `5 / 3` | `1` |
+| `%` | Módulo (resto) | `5 % 3` | `2` |
+| `++` `--` | Incremento | `x++` | `x = x + 1` |
+
+<TipBox type="nota">
+
+El **módulo** (`%`) sirve, por ejemplo, para saber si un número es **par**: `numero % 2 == 0`.
+
+</TipBox>
+
+</div>
+<div>
+
+<WindowFrame file="Cuidado con la división">
+
+```csharp
+int a = 10, b = 3;
+
+Console.WriteLine(a / b);              // 3  (¡trunca!)
+Console.WriteLine((double)a / b);      // 3.333...
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+La división entre enteros **trunca, no redondea**: `10 / 3` da `3`, no `3.33`. Convierte antes con `(double)`.
+
+</TipBox>
+
+<TipBox type="truco">
+
+`x += 3` es "suma y asigna". `x = +3` es "asigna un positivo": **no dan el mismo resultado** y el compilador no avisa.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Comparar y combinar
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Relacionales | Significado |
+|---|---|
+| `==` `!=` | igual / distinto |
+| `>` `<` `>=` `<=` | mayor, menor... |
+
+| Lógicos | Significado |
+|---|---|
+| `&&` | **Y** (ambas ciertas) |
+| `\|\|` | **O** (al menos una) |
+| `!` | **NO** (invierte) |
+
+<TipBox type="nota">
+
+Todos devuelven **`bool`**: `true` o `false`.
+
+</TipBox>
+
+</div>
+<div>
+
+<WindowFrame file="Cortocircuito">
+
+```csharp
+int edad = 20;
+// Si la primera es false, la segunda NO se evalúa
+bool ok = edad >= 18 && HaySuficienteDinero();
+
+// ??= asigna solo si es null
+string apodo = null;
+apodo ??= "Invitado";
+```
+
+</WindowFrame>
+
+<TipBox type="truco">
+
+El `&&` y el `||` usan **cortocircuito**: si el resultado ya está decidido, no gastan tiempo en el segundo término.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Leyes de De Morgan
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Original | Equivalente |
+|---|---|
+| `!(A && B)` | `!A \|\| !B` |
+| `!(A \|\| B)` | `!A && !B` |
+
+<RealExample app="Netflix">
+
+"Recomendar si te gustó la película X **y** es de suspense **o** es de terror": así se ven sus reglas de recomendación combinando condiciones.
+
+</RealExample>
+
+</div>
+<div>
+
+<WindowFrame file="Negar una condición">
+
+```csharp
+bool esAdulto = edad >= 18;
+
+// ❌ Confuso
+if (!(edad >= 18)) { }
+
+// ✅ Más claro
+if (edad < 18) { }
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+**`=` asigna** y **`==` compara**. Si escribes `if (x = 5)` el compilador avisa... pero no siempre lo verás.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Ternario y coalescencia
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Operador ternario">
+
+```csharp
+int edad = 20;
+
+string mensaje = (edad >= 18)
+    ? "Mayor de edad"
+    : "Menor de edad";
+
+Console.WriteLine(mensaje);
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+**Sintaxis:** `(condición) ? valor_si_true : valor_si_false`. Elige **uno de dos valores**.
+
+</TipBox>
+
+</div>
+<div>
+
+<WindowFrame file="Coalescencia ??">
+
+```csharp
+string nombre = null;
+
+// Si es null, usa el valor de la derecha
+string seguro = nombre ?? "Desconocido";
+
+// ?? es un ternario rápido para null
+string v2 = nombre != null ? nombre : "Desconocido";
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+No anides más de **3 niveles** de ternario: el código se vuelve ilegible. Un ternario por línea.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Precedencia de operadores
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| # | Operadores |
+|---|---|
+| 1 | `()` paréntesis |
+| 2 | `++` `--` `!` |
+| 3 | `*` `/` `%` |
+| 4 | `+` `-` |
+| 5 | `<` `>` `<=` `>=` |
+| 6 | `==` `!=` |
+| 7 | `&&` |
+| 8 | `\|\|` |
+
+</div>
+<div>
+
+<WindowFrame file="El error silencioso">
+
+```csharp
+// ¿108,9 o 118,9?
+double total = base + iva * (1 - dto);
+// ✅ con paréntesis explícitos
+double ok = (base + iva) * (1 - dto);
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+Este tipo de error **no avisa al compilar**: es de los más peligrosos. **Cuando dudes, usa paréntesis.**
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Resumen del punto 7
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Tipo | Operadores | Uso |
+|---|---|---|
+| **Aritméticos** | `+ - * / % ++ --` | Cálculos |
+| **Asignación** | `= += -= *= /= %=` | Guardar valores |
+| **Relacionales** | `== != > < >= <=` | Comparar |
+| **Lógicos** | `&& \|\| !` | Combinar condiciones |
+| **Ternario** | `? :` | Elegir entre dos valores |
+| **Coalescencia** | `??` | Valor por defecto si `null` |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Buenas prácticas" accent="green">
+
+- División entre enteros: convierte con `(double)`
+- Paréntesis cuando dudes de la precedencia
+- Un ternario por línea, máximo 3 niveles
+- `==` compara, `=` asigna
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 8**: **conversiones de tipo** — cómo convertir un dato de un tipo a otro sin romper nada.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">08</div>
+
+# Conversiones de tipo
+
+<div class="opacity-70">Convertir datos entre tipos sin romper nada</div>
+
+---
+
+## 8 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Distinguir conversiones implícitas y explícitas',
+    'Convertir texto a número de forma segura',
+    'Elegir entre Parse, TryParse y Convert',
+    'Evitar los errores clásicos de conversión',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+`Console.ReadLine()` siempre devuelve **texto**. Si el usuario escribe "25" y tú necesitas un número, toca **convertir**: ese es el oficio de este punto.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="🔄" title="Conversión de tipo" accent="accent">
+
+Cambiar un valor de un tipo a otro: `int` → `double`, o `string` → `int`.
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="🚦" title="Implícita vs explícita" accent="blue">
+
+- **Implícita:** la hace el compilador (sin riesgo).
+- **Explícita (cast):** la pides tú con `(tipo)`.
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Implícitas y explícitas
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Conversión | ¿Pierde datos? | Ejemplo |
+|---|---|---|
+| **Implícita** (pequeño → grande) | **No** | `int` → `double` |
+| **Explícita** (grande → pequeño) | **Sí** | `double` → `int` |
+
+<WindowFrame file="Implícita: automática">
+
+```csharp
+int edad = 22;
+double nota = edad;   // OK, sin avisar
+// 22 pasa a ser 22.0
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<WindowFrame file="Explícita: cast">
+
+```csharp
+double pi = 3.99;
+int entero = (int)pi;   // ¡3! Trunca, no redondea
+
+long grande = 1000;
+int pequeño = (int)grande; // OK si cabe
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+El cast **corta la parte decimal**: `(int)3.99` da `3`, no `4`. Y si el número no cabe, se **desborda** sin aviso.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Parse, TryParse y Convert
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Situación | Usa | Si falla |
+|---|---|---|
+| El texto **siempre** es válido | `Parse()` | Excepción 💥 |
+| El texto **viene del usuario** | `TryParse()` | Devuelve `false` ✅ |
+| Puede ser `null` | `Convert.ToInt32()` | Devuelve `0` |
+
+<WindowFrame file="TryParse: el seguro">
+
+```csharp
+string texto = "42";
+
+bool ok = int.TryParse(texto, out int resultado);
+string msg = ok ? $"Es: {resultado}"
+                : "No es un número";
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<ConceptCard icon="🛡️" title="Regla de oro" accent="green">
+
+Con datos de usuario → **siempre `TryParse`**. Nunca `Parse` en producción.
+
+</ConceptCard>
+
+<TipBox type="nota">
+
+`out` es un **parámetro de salida**: el método siempre rellena la variable. Si falla, queda el valor por defecto (`0`).
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Errores comunes de conversión
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="❌ Mal">
+
+```csharp
+// Excepción si el usuario escribe "abc"
+int edad = int.Parse(Console.ReadLine());
+
+// Trunca en vez de redondear
+double precio = 3.99;
+int euros = (int)precio;      // 3
+
+// División entera
+int r = 10 / 3;               // 3
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<WindowFrame file="✅ Bien">
+
+```csharp
+int.TryParse(Console.ReadLine(), out int edad);
+
+double precio = 3.99;
+int euros = (int)Math.Round(precio); // 4
+
+double r = 10 / 3.0;           // 3.33
+```
+
+</WindowFrame>
+
+<RealExample app="Formularios web">
+
+Cuando pides el código postal y lo conviertes a número, el servidor usa `TryParse`: si escribes "abc", **detecta el error sin romperse**.
+
+</RealExample>
+
+</div>
+</div>
+
+---
+
+## Resumen del punto 8
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Tipo | Cómo se hace | Cuándo usarla |
+|---|---|---|
+| **Implícita** | Automática | Sin riesgo de pérdida |
+| **Explícita** | `(tipo)valor` | Tú controlas la pérdida |
+| **`Parse`** | `int.Parse(txt)` | Texto 100% fiable |
+| **`TryParse`** | `int.TryParse(txt, out r)` | **Datos de usuario** |
+| **`Convert`** | `Convert.ToInt32(v)` | Tolerante con `null` |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Buenas prácticas" accent="green">
+
+- Datos de usuario → **`TryParse`** siempre
+- El cast **trunca**: redondea antes si hace falta
+- Convierte antes de dividir si necesitas decimales
+- Comprueba también el rango si `0` no vale
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 9**: **entrada y salida de datos** — cómo hablar con el usuario.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">09</div>
+
+# Entrada y salida de datos
+
+<div class="opacity-70">Hablar con el usuario</div>
+
+---
+
+## 9 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Mostrar datos con Write y WriteLine',
+    'Unir textos con concatenación e interpolación',
+    'Leer lo que escribe el usuario con ReadLine',
+    'Convertir esa lectura a número de forma segura',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+Todo programa habla: **muestra** algo por pantalla y **pregunta** algo al usuario. En C#, todo eso vive en la clase `Console`.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="📤" title="Salida" accent="accent">
+
+`Console.WriteLine()` escribe y **salta de línea**; `Console.Write()` escribe **sin** saltar.
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="📥" title="Entrada" accent="blue">
+
+`Console.ReadLine()` lee lo que escribe el usuario. **Siempre devuelve `string`**.
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Salida: Write y WriteLine
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Interpolación de strings">
+
+```csharp
+string nombre = "Ana";
+int edad = 22;
+
+// ❌ Concatenación: poco legible
+Console.WriteLine("Hola " + nombre +
+                  ", tienes " + edad + " años");
+
+// ✅ Interpolación con $
+Console.WriteLine($"Hola {nombre}, tienes {edad} años");
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+| Operación | Cómo | Ejemplo |
+|---|---|---|
+| Salto de línea | `WriteLine()` | `WriteLine("Hola")` |
+| Sin salto | `Write()` | `Write("Hola ")` |
+| Concatenación | `+` | `"Hola " + nombre` |
+| Interpolación | `$""` | `$"Hola {nombre}"` |
+
+<WindowFrame file="Formatos">
+
+```csharp
+Console.WriteLine($"Precio: {precio:F2}");  // 19,99
+Console.WriteLine($"Aprobado: {0.85:P0}");  // 85 %
+Console.WriteLine($"Total: {1000000:N0}");  // 1.000.000
+```
+
+</WindowFrame>
+
+</div>
+</div>
+
+---
+
+## Entrada: Console.ReadLine
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Pedir datos">
+
+```csharp
+Console.Write("¿Cuántos años tienes? ");
+string texto = Console.ReadLine();
+
+int.TryParse(texto, out int edad);
+
+Console.WriteLine($"Tienes {edad} años");
+```
+
+</WindowFrame>
+
+<TipBox type="nota">
+
+Usa `Write` para el mensaje: así el cursor **se queda en la misma línea** esperando lo que escriba el usuario.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="⚠️" title="Siempre string" accent="orange">
+
+`ReadLine()` devuelve **texto**. Para necesitar un número, convierte con `TryParse` (punto 8).
+
+</ConceptCard>
+
+<TipBox type="truco">
+
+Alinea en columnas: `{nombre,-10}` izquierda (texto) · `{nota,6}` derecha (números).
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Resumen del punto 9
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Operación | Método | Ejemplo |
+|---|---|---|
+| **Salida con salto** | `WriteLine()` | `WriteLine("Hola")` |
+| **Salida sin salto** | `Write()` | `Write("Hola ")` |
+| **Concatenación** | `+` | `"Hola " + nombre` |
+| **Interpolación** | `$""` | `$"Hola {nombre}"` |
+| **Entrada** | `ReadLine()` | `string x = ReadLine()` |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Buenas prácticas" accent="green">
+
+- `WriteLine` para la mayoría de salidas
+- **Interpolación** `$""` en vez de concatenar con `+`
+- `ReadLine` → siempre `string` → `TryParse`
+- Mensajes claros al pedir datos
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 10**: **comentarios y documentación** — cómo explicar tu código a los demás.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">10</div>
+
+# Comentarios y documentación
+
+<div class="opacity-70">Explicar tu código a los demás</div>
+
+---
+
+## 10 · Punto de partida
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<Objetivos
+  :items="[
+    'Escribir comentarios de una línea y de varios',
+    'Comentar el por qué, no el qué',
+    'Documentar con XMLDoc las APIs públicas',
+    'Evitar comentarios obsoletos y código muerto',
+  ]"
+/>
+
+<TipBox type="consejo" title="Punto de partida">
+
+El **80 %** del tiempo de un programador no es escribir código nuevo, sino **leer y mantener** el de otros. Tu comentario será la ayuda de quien venga después.
+
+</TipBox>
+
+</div>
+<div>
+
+<ConceptCard icon="💬" title="Comentario" accent="accent">
+
+Nota que escribe el programador para explicar el código. El compilador **lo ignora por completo**.
+
+</ConceptCard>
+
+<div class="mt-3">
+
+<ConceptCard icon="📖" title="Documentación" accent="blue">
+
+Comentarios `///` que aparecen como **tooltip** en el IDE al pasar el ratón.
+
+</ConceptCard>
+
+</div>
+
+</div>
+</div>
+
+---
+
+## Tipos de comentarios
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="Comentarios en C#">
+
+```csharp
+// Una línea: explicación breve
+
+/* Varias líneas:
+   para explicar algo largo
+   que ocupa varias líneas */
+
+int total = 100;  // al final de la línea
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+| Tipo | Sintaxis | Uso |
+|---|---|---|
+| **Una línea** | `// texto` | Explicaciones breves |
+| **Varias líneas** | `/* texto */` | Bloques largos |
+| **XMLDoc** | `/// <summary>` | Documentación de API |
+
+<TipBox type="nota">
+
+Los comentarios **no afectan al programa**: puedes añadirlos o quitarlos sin miedo (aunque un comentario viejo sí puede engañarte).
+
+</TipBox>
+
+<TipBox type="advertencia">
+
+Nunca dejes **código comentado** para "guardarlo": eso es trabajo para Git, no para el código.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Comentar el por qué, no el qué
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="❌ MAL">
+
+```csharp
+// Cuenta el contador
+int contador = 0;
+
+// El IVA es del 16 %
+double iva = 0.21;   // ¡el comentario miente!
+```
+
+</WindowFrame>
+
+</div>
+<div>
+
+<WindowFrame file="✅ BIEN">
+
+```csharp
+// El IVA general es del 21 % (Ley 37/1992)
+double iva = 0.21;
+
+// Sin descuento porque es campaña de navidad
+double total = precio * 1.21;
+```
+
+</WindowFrame>
+
+<RealExample app="Equipos de 5-15 personas">
+
+En Google, Microsoft o Spotify el mismo código lo tocan 3-4 programadores distintos. **Los buenos comentarios ahorran tiempo y dinero.**
+
+</RealExample>
+
+</div>
+</div>
+
+---
+
+## Documentación XML
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+<WindowFrame file="xml doc">
+
+```csharp
+/// <summary>
+/// Calcula la suma de dos números.
+/// </summary>
+/// <param name="a">Primer número.</param>
+/// <param name="b">Segundo número.</param>
+/// <returns>La suma de ambos.</returns>
+int Sumar(int a, int b)
+{
+    return a + b;
+}
+```
+
+</WindowFrame>
+
+<TipBox type="advertencia">
+
+`///` solo va **sobre declaraciones** (clases, métodos, propiedades). Dentro de código suelto, el compilador avisa con un error.
+
+</TipBox>
+
+</div>
+<div>
+
+| Etiqueta | Para qué |
+|---|---|
+| `<summary>` | Qué hace el método |
+| `<param>` | Qué representa cada parámetro |
+| `<returns>` | Qué devuelve |
+| `<example>` | Un ejemplo de uso |
+
+<TipBox type="nota">
+
+Se escriben con `///` y el IDE muestra la ayuda al pasar el ratón. Documenta **clases públicas, interfaces y métodos públicos**.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Resumen del punto 10
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+| Buenas prácticas | Malas prácticas |
+|---|---|
+| Comentar el **por qué** | Comentar el **qué** |
+| Código **autoexplicativo** | Comentarios obvios |
+| XMLDoc en lo **público** | Comentarios **desactualizados** |
+| Actualizar al cambiar el código | **Código comentado** (borrarlo) |
+
+</div>
+<div>
+
+<ConceptCard icon="✅" title="Checklist de equipo" accent="green">
+
+- ✅ Comentario en cada método público
+- ✅ Decisiones de negocio explicadas
+- ✅ Nombres que se entienden solos
+- ✅ Sin código muerto comentado
+
+</ConceptCard>
+
+<div class="mt-3">
+
+**⏭️ ¿Qué viene después?** En el **punto 11** cerramos el tema con el **resumen general** y la checklist de supervivencia.
+
+</div>
+
+</div>
+</div>
+
+---
+layout: section
+---
+
+<div class="ud-section-number">11</div>
+
+# Resumen y conclusiones
+
+<div class="opacity-70">Cierre del tema</div>
+
+---
+
+## Mapa conceptual del tema
+
+```mermaid
+graph LR
+    A[1. Algoritmos<br>y paradigmas] --> B[2. Lenguajes<br>y traducción]
+    B --> C[3. Entorno .NET<br>y soluciones]
+    C --> D[4-6. Estructura,<br>tipos y variables]
+    D --> E[7-10. Operadores,<br>conversiones, E/S, comentarios]
+    E --> F[11. Resumen ✅]
+
+    style A fill:#2196F3,color:#fff
+    style B fill:#2196F3,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#9C27B0,color:#fff
+    style E fill:#9C27B0,color:#fff
+    style F fill:#4CAF50,color:#fff
+```
+
+<TipBox type="nota">
+
+**Patrón universal:** todo programa hace **entrada → proceso → salida**, y siempre empiezas por el **algoritmo en papel** antes de escribir código.
+
+</TipBox>
+
+---
+
+## Errores comunes a evitar
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Error | Cómo evitarlo |
+|---|---|
+| Olvidar `;` al final | Revisa cada línea |
+| Confundir `=` y `==` | `=` asigna, `==` compara |
+| División entre enteros | Convierte: `(double)10 / 3` |
+| No inicializar variables | Asigna al declarar |
+
+</div>
+<div>
+
+| Error | Cómo evitarlo |
+|---|---|
+| `Parse` sin validar | Usa **`TryParse`** |
+| Confundir `Write` y `WriteLine` | `WriteLine` para nueva línea |
+| `int` para dinero | Usa **`decimal`** |
+
+<TipBox type="advertencia">
+
+Los errores de **precedencia** no avisan al compilar: usa paréntesis cuando dudes.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## Checklist de supervivencia
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+<ConceptCard icon="🧠" title="¿Lo tienes claro?" accent="accent">
+
+- [ ] ¿Diseño el algoritmo **en papel** antes de codificar?
+- [ ] ¿Conozco las **6 características** de un algoritmo?
+- [ ] ¿Diferencio **compilado** de **interpretado**?
+- [ ] ¿Sé qué es el **léxico**, la **sintaxis** y la **semántica**?
+
+</ConceptCard>
+
+</div>
+<div>
+
+<ConceptCard icon="🧰" title="¿Lo sabes hacer?" accent="blue">
+
+- [ ] ¿Diferencio **`.slnx`** de **`.csproj`**?
+- [ ] ¿Uso **`var`** sabiendo que no cambia de tipo?
+- [ ] ¿Elijo bien **implícita** o **explícita**?
+- [ ] ¿Recuerdo que **`ReadLine`** devuelve siempre `string`?
+
+</ConceptCard>
+
+</div>
+</div>
+
+<TipBox type="truco">
+
+La mejor forma de aprender es **practicar**: abre el IDE, prueba cada ejemplo, **rompélolos y arréglalos**.
+
+</TipBox>
+
+---
+
+## Herramientas y comandos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+<div>
+
+| Comando | Para qué |
+|---|---|
+| `dotnet new sln` | Crea una solución |
+| `dotnet new console` | Crea un proyecto |
+| `dotnet sln add` | Añade proyecto a la solución |
+| `dotnet build` | Compila |
+
+</div>
+<div>
+
+| Comando | Para qué |
+|---|---|
+| `dotnet run` | Compila y ejecuta |
+| `dotnet restore` | Restaura paquetes |
+| `dotnet add package` | Añade un paquete NuGet |
+| `dotnet run archivo.cs` | Ejecuta un **script** (C# 14) |
+
+<TipBox type="nota">
+
+**IDE recomendado:** JetBrains **Rider**. Alternativas: Visual Studio Code y Visual Studio.
+
+</TipBox>
+
+</div>
+</div>
+
+---
+
+## ¿Qué viene después?
+
+<div class="grid grid-cols-2 gap-5 items-start">
+<div>
+
+```mermaid
+graph LR
+    A[UD01 ✅<br>Introducción] --> B[UD02<br>Estructurada<br>y modular]
+    B --> C[UD03<br>Almacenamiento<br>y cadenas]
+    C --> D[UD04<br>POO]
+
+    style A fill:#4CAF50,color:#fff
+    style B fill:#2196F3,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#9C27B0,color:#fff
+```
+
+</div>
+<div>
+
+<ConceptCard icon="🚀" title="UD02: Programación estructurada y modular" accent="green">
+
+Aprendremos a **organizar** el código con estructuras de control (`if`, `for`, `while`) y a dividirlo en **funciones reutilizables**.
+
+</ConceptCard>
+
+<TipBox type="nota">
+
+Todo lo visto aquí es la **base**: sin tipos de datos y variables, no hay estructuras de control.
+
+</TipBox>
+
+</div>
+</div>
+
+<!-- FIN PUNTOS -->
+
+---
 layout: center
 ---
 
@@ -1288,7 +3372,7 @@ layout: center
 
 <PacMan :size="64" />
 
-# ¡A programar! <span class="ud-emoji">🚀</span>
+# ¡A desarrollar! <span class="ud-emoji">🚀</span>
 
 <b class="text-lg">Tema 01: Introducción a la Programación Software</b>
 

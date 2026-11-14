@@ -186,6 +186,9 @@ html.dark .slidev-layout a {
   padding: 0.32em 0.7em;
   border-bottom: 1px solid var(--ud-divider);
   color: var(--ud-text-mute);
+  /* Si una palabra es más ancha que la celda, se parte en vez de
+     ensanchar la tabla e invadir la columna de al lado (evita solapes) */
+  overflow-wrap: anywhere;
 }
 
 .slidev-layout tr:last-child td {
@@ -345,8 +348,16 @@ html.dark .text-main {
 
 .slidev-layout .ud-tip:not(:first-child),
 .slidev-layout .ud-card:not(:first-child),
+.slidev-layout .ud-concept:not(:first-child),
 .slidev-layout .ud-quote:not(:first-child) {
   margin-top: 0.65em;
+}
+
+/* Aire explícito cuando un ConceptCard va justo detrás de una tabla markdown */
+.slidev-layout table + .ud-concept,
+.slidev-layout table + .ud-tip,
+.slidev-layout table + .ud-window {
+  margin-top: 1em;
 }
 
 /* ============================================================

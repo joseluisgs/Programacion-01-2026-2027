@@ -26,6 +26,11 @@ UD01.  Introducción a la Programación Software. 1DAW. Curso 2026-2027
 - [Entrada, salida y conversiones de tipo](https://youtu.be/jSi1oujIhWs)
 - [Lista de reproducción](https://www.youtube.com/playlist?list=PLK1PMlIrqj3c)
 
+## Presentaciones
+
+- [Tema completo (claro, para imprimir)](presentaciones/ud01-introduccion-claro.pdf)
+- [Tema completo (oscuro, para pantalla)](presentaciones/ud01-introduccion-oscuro.pdf)
+
 ## Resultados de aprendizaje y criterios de evaluación
 
 - RA1: Reconoce la estructura de un programa informático, identificando y relacionando los elementos propios del lenguaje de programación utilizado.

@@ -16,5 +16,8 @@
     "slidev-addon-gsap": "latest",
     "slidev-component-poll": "latest",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.65.1"
   }
 }
