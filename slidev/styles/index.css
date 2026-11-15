@@ -182,15 +182,11 @@ html.dark .slidev-layout a {
   line-height: 1.6;
 }
 
-/* El código EN LÍNEA de la PROSA nunca se parte a mitad (bug: `"Hola" +` /
-   `nombre` en dos líneas). OJO: solo prosa — en tablas y dentro de `pre` el
-   nowrap recortaba el código (bug: "enum TipoSuscripcion { Basica, Estand"). */
-.slidev-layout p > code,
-.slidev-layout li > code,
-.slidev-layout .ud-tip > p > code,
-.slidev-layout .ud-card > p > code,
-.slidev-layout .ud-real > p > code,
-.slidev-layout .ud-concept > p > code {
+/* El código de las VIÑETAS no se parte (chips cortos: `int.TryParse`, `??`).
+   En prosa y dentro de cajas SÍ se permite partir: con `nowrap` un chip largo
+   desbordaba la caja (bug: "when (e is FormatException || ..." se salía de la
+   Nota). Si un chip de la prosa queda feo partido, se acorta el texto. */
+.slidev-layout li > code {
   white-space: nowrap;
 }
 
@@ -523,6 +519,12 @@ html.dark .ud-highlight {
      arriba y la etiqueta "¿Sigue?" la cruzaba la línea del flujo) */
   margin-top: 1.1em;
   overflow: hidden;
+}
+
+/* ...salvo cuando el diagrama va justo debajo del título: ahí el aire ya lo
+   pone el h2 y el margen extra solo acercaba el contenido al pie */
+.slidev-layout h2 + .mermaid {
+  margin-top: 0;
 }
 
 /* Separación entre bloques apilados dentro de la misma columna */
