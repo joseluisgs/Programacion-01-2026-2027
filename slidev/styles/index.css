@@ -186,9 +186,10 @@ html.dark .slidev-layout a {
   padding: 0.32em 0.7em;
   border-bottom: 1px solid var(--ud-divider);
   color: var(--ud-text-mute);
-  /* Si una palabra es más ancha que la celda, se parte en vez de
-     ensanchar la tabla e invadir la columna de al lado (evita solapes) */
-  overflow-wrap: anywhere;
+  /* Parte palabras SOLO si no caben ni solas (evita cortar "Interpretado"
+     en "Interpretad/o"); con 'anywhere' se partía cualquier palabra fea.
+     Si aun así una celda no cabe, se reduzce el font-size de la tabla. */
+  overflow-wrap: break-word;
 }
 
 .slidev-layout tr:last-child td {
@@ -325,17 +326,25 @@ html.dark .text-main {
   margin: 0.2em 0;
 }
 
-/* Listas con viñeta cuadrada del tema → redondeadas de marca */
+/* Listas con viñeta cuadrada del tema → redondeadas de marca.
+   Sangría colgante: el marcador va en posición absoluta y el texto tiene
+   padding-left → las líneas continuadas se alinean con el texto de la
+   primera línea (no con el margen de la slide). */
 .slidev-layout ul {
   list-style: none;
-  padding-left: 0.2em;
+  padding-left: 1.35em;
+}
+
+.slidev-layout ul li {
+  position: relative;
 }
 
 .slidev-layout ul li::before {
   content: '▹';
+  position: absolute;
+  left: -1.05em;
   color: var(--ud-accent);
   font-weight: 700;
-  margin-right: 0.5em;
 }
 
 /* ============================================================
@@ -346,11 +355,35 @@ html.dark .text-main {
   margin-bottom: 0.85em;
 }
 
-.slidev-layout .ud-tip:not(:first-child),
-.slidev-layout .ud-card:not(:first-child),
-.slidev-layout .ud-concept:not(:first-child),
-.slidev-layout .ud-quote:not(:first-child) {
+/* Ritmo vertical entre bloques apilados en una COLUMNA (nada pegado).
+   OJO: NO aplica a hijos directos de .grid — están en la misma fila y un
+   margin-top desalinearía la primera tarjeta respecto a las demás
+   (bug: "una tarjeta empieza más arriba que las otras"). */
+.slidev-layout :not(.grid) > .ud-tip:not(:first-child),
+.slidev-layout :not(.grid) > .ud-card:not(:first-child),
+.slidev-layout :not(.grid) > .ud-concept:not(:first-child),
+.slidev-layout :not(.grid) > .ud-quote:not(:first-child) {
   margin-top: 0.65em;
+}
+
+/* Aire generoso DESPUÉS de un grid: la tarjeta más alta empuja y el bloque
+   siguiente no debe tocarse (bug: "struct se solapa con el Truco") */
+.slidev-layout .grid + .ud-tip,
+.slidev-layout .grid + .ud-card,
+.slidev-layout .grid + .ud-real,
+.slidev-layout .grid + .ud-window,
+.slidev-layout .grid + p,
+.slidev-layout .grid + table {
+  margin-top: 1.1em;
+}
+
+/* Hijos directos de un grid: sin margen extra, la separación da la fila
+   (gap) y todos arrancan a la misma altura */
+.slidev-layout .grid > .ud-tip:not(:first-child),
+.slidev-layout .grid > .ud-card:not(:first-child),
+.slidev-layout .grid > .ud-concept:not(:first-child),
+.slidev-layout .grid > .ud-quote:not(:first-child) {
+  margin-top: 0;
 }
 
 /* Aire explícito cuando un ConceptCard va justo detrás de una tabla markdown */

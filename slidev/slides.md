@@ -48,7 +48,7 @@ Todo el material de la UD01 está publicado en el repositorio de GitHub, organiz
 </div>
 <div class="flex flex-col items-center justify-center gap-4 pt-4">
 
-<RepoBadge caption="Repositorio con materiales de la unidad" size="lg" />
+<RepoBadge caption="Repositorio con materiales de la unidad" />
 
 <div class="text-sm opacity-75 text-center max-w-55">
 
@@ -485,10 +485,9 @@ Usa **eventos** para notificaciones, **funcional** (LINQ) para procesar millones
 
 ```csharp
 string nombre = "Ana";     // ✅ Válido (sintaxis + semántica)
-// int edad = "Ana";       // ❌ Error semántico: texto en un número
-// string = "Ana" nombre;  // ❌ Error de sintaxis: el orden no vale
+// int edad = "Ana";       // ❌ Semántico: texto en un número
+// string = "Ana" nombre;  // ❌ Sintaxis: el orden no vale
 ```
-
 </WindowFrame>
 
 </div>
@@ -1134,7 +1133,7 @@ Para añadir paquetes, un solo comando: `dotnet add package Newtonsoft.Json` —
 
 ## El archivo .slnx
 
-<div class="grid grid-cols-2 gap-5 items-start">
+<div class="grid gap-5 items-start" style="grid-template-columns: 1.3fr 1fr">
 <div>
 
 <WindowFrame file="MiPrimeraSolucion.slnx">
@@ -1429,14 +1428,11 @@ Olvidar el **punto y coma** es el error más común de quien empieza. C# es muy 
 <WindowFrame file="Antes (estructura clásica)">
 
 ```csharp
-namespace MiProyecto
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("¡Hola, mundo!");
-        }
+        Console.WriteLine("¡Hola, mundo!");
     }
 }
 ```
@@ -1450,6 +1446,8 @@ namespace MiProyecto
 
 ```csharp
 Console.WriteLine("¡Hola, mundo!");
+
+return;   // fin del programa: lo que hacía Main
 ```
 
 </WindowFrame>
@@ -1463,23 +1461,7 @@ Nació en **C# 9** y es la forma **moderna y recomendada**. **En este curso la u
 </div>
 </div>
 
-<WindowFrame file="return: el final del programa" class="mt-3">
-
-```csharp
-Console.Write("¿Cómo te llamas? ");
-string nombre = Console.ReadLine() ?? "";
-
-if (string.IsNullOrEmpty(nombre))
-{
-    return;   // fin del programa: lo que hacía el Main
-}
-
-Console.WriteLine($"¡Hola, {nombre}!");
-```
-
-</WindowFrame>
-
-<TipBox type="nota">
+<TipBox type="nota" class="mt-3">
 
 En la **UD02** veremos **funciones y procedimientos**: allí `return;` marcará el **final de cada uno**, igual que aquí marca el final del programa.
 
@@ -2133,7 +2115,7 @@ Como las constantes se reemplazan **en compilación**, no puedes usar valores ca
 
 ## Enum, struct y tupla
 
-<div class="grid grid-cols-3 gap-4 items-start">
+<div class="grid grid-cols-3 gap-4">
 <div>
 
 <ConceptCard icon="📋" title="enum" accent="accent">
