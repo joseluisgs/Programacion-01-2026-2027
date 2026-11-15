@@ -40,6 +40,12 @@ const rows = [
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5em;
   text-align: left;
+  /* Nunca a sangre: el mapa se mantenía dentro de los márgenes de la slide
+     y se metía debajo del pie (bug: "la imagen invade el footer") */
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding-bottom: 0.6em;
 }
 
 .ud-cooking-item {

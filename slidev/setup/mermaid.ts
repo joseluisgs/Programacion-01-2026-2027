@@ -36,7 +36,9 @@ export default (): MermaidConfig => ({
     useMaxWidth: true,
   },
   themeVariables: {
-    fontSize: '15px',
+    // Legible en pantalla y en PDF: 15px se veía diminuto en los diagramas
+    // pequeños (bug: "nodos con texto de 8px")
+    fontSize: '19px',
     fontFamily: "'Ubuntu', 'Segoe UI', system-ui, sans-serif",
   },
 })

@@ -521,7 +521,21 @@ C# es **estático y fuerte**.
 </div>
 <div>
 
-<img src="/codigo-compilado-vs-interpretado.png" alt="Compilado vs interpretado" class="rounded-lg shadow max-h-44 object-contain mx-auto" />
+```mermaid
+graph LR
+    A[Código fuente] --> B[Compilador]
+    B --> C[Código máquina]
+    C --> D[Ejecución]
+    A --> E[Intérprete]
+    E --> F[Ejecuta línea a línea]
+
+    style A fill:#4CAF50,color:#fff
+    style B fill:#2196F3,color:#fff
+    style C fill:#FF9800,color:#fff
+    style D fill:#4CAF50,color:#fff
+    style E fill:#9C27B0,color:#fff
+    style F fill:#f44336,color:#fff
+```
 
 </div>
 </div>
@@ -1354,11 +1368,15 @@ Cuando te logueas: **entrada** (escribes usuario y contraseña), **proceso** (el
 graph LR
     A[📥 Entrada] --> B[⚙️ Proceso]
     B --> C[📤 Salida]
-    C -->|¿Sigue?| A
+    C --> D{¿Sigue?}
+    D -->|Sí| B
+    D -->|No| E[✅ Fin]
 
     style A fill:#2196F3,color:#fff
     style B fill:#FF9800,color:#fff
     style C fill:#4CAF50,color:#fff
+    style D fill:#9C27B0,color:#fff
+    style E fill:#607D8B,color:#fff
 ```
 
 </div>
@@ -1832,7 +1850,7 @@ Usar un valor `null` como si tuviera objeto es **el error más común** en progr
 | **`int`** | Enteros, tipo por defecto |
 | **`double`** | Decimales, por defecto |
 | **`decimal`** | Dinero y finanzas |
-| **`bool` / `char` / `string`** | Lógico, carácter, texto |
+| **`bool / char / string`** | Lógico, carácter, texto |
 | **`var`** | El compilador infiere el tipo |
 | **Promoción** | El más grande manda en la operación |
 | **Por valor / referencia** | Stack vs Heap |
@@ -2090,23 +2108,42 @@ Iva = 22.0;   // ❌ error de compilación
 </div>
 <div>
 
-| `const` | `readonly` |
-|---|---|
-| Se asigna en la **declaración** | Se asigna en el **constructor** |
-| Tiempo: **compilación** | Tiempo: **ejecución** |
-| Valores que **nunca** cambian | Valores que cambian rara vez |
-
 <TipBox type="nota">
 
 Un **literal** es el valor en sí escrito en el código: `5`, `"hola"`, `true`, `21.0m`. No tiene nombre.
 
 </TipBox>
 
+</div>
+</div>
+
+---
+
+## Constante frente a readonly
+
+| `const` | `readonly` |
+|---|---|
+| Se asigna en la **declaración** | Se asigna en el **constructor** |
+| Tiempo: **compilación** | Tiempo: **ejecución** |
+| Valores que **nunca** cambian | Valores que cambian rara vez |
+
+<div class="grid grid-cols-2 gap-4 mt-4 items-start">
+<div>
+
 <TipBox type="advertencia">
 
 Como las constantes se reemplazan **en compilación**, no puedes usar valores calculados en ejecución.
 
 </TipBox>
+
+</div>
+<div>
+
+<RealExample app="Tiendas online">
+
+El **IVA** (21%) y la **moneda** ("EUR") son `const`: no cambian nunca. Pero el **precio** de un carrito es `readonly`: se asigna al crear el pedido y después no se toca.
+
+</RealExample>
 
 </div>
 </div>
@@ -2178,13 +2215,14 @@ Console.WriteLine(compra.Item2);
 
 | Concepto | Descripción |
 |----------|-------------|
-| **Variable** | Contenedor que cambia (`int x = 5;`) |
+| **Variable** | Cambia de valor: `int x = 5;` |
 | **Identificador** | Nombre de variable, método, clase... |
 | **Ámbito** | Dónde es visible la variable |
 | **`null`** | "No apunta a ningún objeto" |
 | **Constante** | `const`: no cambia jamás |
 | **Literal** | El valor escrito en el código |
-| **`enum` / `struct` / `tupla`** | Opciones, entidades, paquetes rápidos |
+| **`enum / struct / tupla`** | Opciones, entidades, paquetes rápidos |
+
 
 </div>
 <div>

@@ -39,6 +39,7 @@ dist/
 
 # Agentes (configuración, nunca se sube)
 AGENTS.md
+AUDITORIA.md
 
 # Multimedia y docs (no se suben)
 multimedia/
