@@ -195,12 +195,12 @@ public class Persona
     /// <summary>
     /// Nombre de la persona.
     /// </summary>
-    public string Nombre { get; set; }
+    public string Nombre;
 
     /// <summary>
     /// Edad de la persona en años.
     /// </summary>
-    public int Edad { get; set; }
+    public int Edad;
 
     /// <summary>
     /// Crea una nueva instancia de Persona.
