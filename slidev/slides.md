@@ -183,7 +183,6 @@ Un ordenador es **muy literal**: no admite ambigüedades. Por eso el algoritmo d
 </div>
 <div>
 
-<WindowFrame file="Program.cs">
 
 ```csharp
 // Tu primer programa en C# 14 (Top-Level Statements)
@@ -191,7 +190,6 @@ Console.WriteLine("¡Hola, mundo!");
 Console.WriteLine("Estoy aprendiendo a programar");
 ```
 
-</WindowFrame>
 
 <RealExample app="Spotify">
 
@@ -481,14 +479,12 @@ Usa **eventos** para notificaciones, **funcional** (LINQ) para procesar millones
 <div class="grid grid-cols-2 gap-4 mt-3 items-start">
 <div>
 
-<WindowFrame file="Componentes.cs">
 
 ```csharp
 string nombre = "Ana";     // ✅ Válido (sintaxis + semántica)
 // int edad = "Ana";       // ❌ Semántico: texto en un número
 // string = "Ana" nombre;  // ❌ Sintaxis: el orden no vale
 ```
-</WindowFrame>
 
 </div>
 <div>
@@ -711,7 +707,6 @@ En esta asignatura usamos **.NET 10 + C# 14**, con `LangVersion` 14 en el `.cspr
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
 
-<WindowFrame file="terminal · PowerShell">
 
 ```bash
 # 1. Descarga el SDK en:
@@ -725,7 +720,6 @@ dotnet --list-sdks      # SDKs instalados
 dotnet --list-runtimes  # Runtimes disponibles
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -770,7 +764,6 @@ En **Entornos de Desarrollo** verás en detalle el proceso de traducción y las 
 </div>
 <div>
 
-<WindowFrame file="Crear proyecto paso a paso">
 
 ```bash
 mkdir MiPrimerProyecto
@@ -780,7 +773,6 @@ dotnet build
 dotnet run
 ```
 
-</WindowFrame>
 
 </div>
 </div>
@@ -808,7 +800,6 @@ C# 14 permite ejecutar **un solo archivo `.cs`** como script: sin crear proyecto
 
 </TipBox>
 
-<WindowFrame file="hola.cs">
 
 ```csharp
 Console.Write("¿Cómo te llamas? ");
@@ -821,7 +812,6 @@ int.TryParse(texto, out int edad);
 Console.WriteLine($"¡Hola, {nombre}! Tienes {edad} años.");
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -862,7 +852,6 @@ Console.WriteLine($"¡Hola, {nombre}! Tienes {edad} años.");
 </div>
 <div>
 
-<WindowFrame file="terminal · NuGet">
 
 ```bash
 # Instalar un paquete
@@ -878,7 +867,6 @@ dotnet remove package Newtonsoft.Json
 dotnet package search "json"
 ```
 
-</WindowFrame>
 
 <TipBox type="consejo">
 
@@ -1016,7 +1004,6 @@ Conjunto de archivos que se **compilan juntos** para crear un programa o bibliot
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Árbol de carpetas">
 
 ```text
 NombreSolucion/
@@ -1030,7 +1017,6 @@ NombreSolucion/
     └── NombreSolucion.Test.csproj
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -1059,7 +1045,6 @@ La carpeta de la solución y la del proyecto deben tener **el mismo nombre**. Es
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
 
-<WindowFrame file="terminal · Paso a paso">
 
 ```bash
 mkdir MiPrimeraSolucion
@@ -1069,12 +1054,10 @@ dotnet new console --name MiPrimeraSolucion
 dotnet sln add MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
-</WindowFrame>
 
 </div>
 <div>
 
-<WindowFrame file="terminal · Verificar">
 
 ```bash
 # Ver qué proyectos contiene
@@ -1085,7 +1068,6 @@ dotnet sln list
 #   MiPrimeraSolucion/MiPrimeraSolucion.csproj
 ```
 
-</WindowFrame>
 
 <TipBox type="consejo">
 
@@ -1103,7 +1085,6 @@ Siempre **primero la solución, luego los proyectos dentro**. Con `dotnet sln ad
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="MiPrimeraSolucion.csproj">
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -1120,7 +1101,6 @@ Siempre **primero la solución, luego los proyectos dentro**. Con `dotnet sln ad
 </Project>
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -1150,7 +1130,6 @@ Para añadir paquetes, un solo comando: `dotnet add package Newtonsoft.Json` —
 <div class="grid gap-5 items-start" style="grid-template-columns: 1.3fr 1fr">
 <div>
 
-<WindowFrame file="MiPrimeraSolucion.slnx">
 
 ```xml
 <Solution>
@@ -1159,7 +1138,6 @@ Para añadir paquetes, un solo comando: `dotnet add package Newtonsoft.Json` —
 </Solution>
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -1213,7 +1191,6 @@ Roslyn traduce a **IL**, se genera un ensamblado (`.dll`) en `bin/`, y la **CLR*
 </div>
 <div>
 
-<WindowFrame file="terminal · Compilar">
 
 ```bash
 # Compilar (genera archivos en bin/)
@@ -1230,7 +1207,6 @@ dotnet clean
 dotnet restore
 ```
 
-</WindowFrame>
 
 </div>
 </div>
@@ -1389,7 +1365,6 @@ graph LR
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Program.cs">
 
 ```csharp
 // Sentencia de declaración
@@ -1408,12 +1383,10 @@ if (edad >= 18)
 }
 ```
 
-</WindowFrame>
 
 </div>
 <div>
 
-<WindowFrame file="Expresiones que producen valor">
 
 ```csharp
 int a = 10;
@@ -1425,7 +1398,6 @@ int resto = a % b;       // 1
 bool esPar = a % 2 == 0; // true
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -1443,7 +1415,6 @@ Olvidar el **punto y coma** es el error más común de quien empieza. C# es muy 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Antes (estructura clásica)">
 
 ```csharp
 class Program
@@ -1455,12 +1426,10 @@ class Program
 }
 ```
 
-</WindowFrame>
 
 </div>
 <div>
 
-<WindowFrame file="Ahora (Top-Level Statements)">
 
 ```csharp
 Console.WriteLine("¡Hola, mundo!");
@@ -1468,7 +1437,6 @@ Console.WriteLine("¡Hola, mundo!");
 return;   // fin del programa: lo que hacía Main
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -1524,7 +1492,6 @@ El archivo principal de un proyecto de consola **siempre** se llama `Program.cs`
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Namespace (file-scoped)">
 
 ```csharp
 namespace MiProyecto.Models;   // C# 10+: sin llaves
@@ -1535,7 +1502,6 @@ struct Cancion { string Titulo; int Duracion; }
 // Todo esto vive junto y no se mezcla con otros namespaces
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -1546,7 +1512,6 @@ Un **namespace** es como una carpeta que agrupa código relacionado y **evita co
 </div>
 <div>
 
-<WindowFrame file="using static">
 
 ```csharp
 using static System.Console;
@@ -1558,7 +1523,6 @@ System.Console.WriteLine("Hola");
 WriteLine("Hola");
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -1715,7 +1679,6 @@ Un `byte` guarda hasta **255**: si una puntuación pasa de ahí, **desborda**. P
 | **`char`** | Un carácter Unicode | `'\0'` |
 | **`string`** | Texto (variable) | **`null`** |
 
-<WindowFrame file="Ejemplos">
 
 ```csharp
 bool activo = true;
@@ -1723,7 +1686,6 @@ char inicial = 'J';          // comillas simples
 string nombre = "José Luis"; // comillas dobles
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -1755,7 +1717,6 @@ Hay más tipos: `DateTime`, `Guid`, tuplas `(int, string)`... Los verás cuando 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="La regla de oro">
 
 ```csharp
 byte a = 10;
@@ -1763,7 +1724,6 @@ byte b = 20;
 var c = a + b;   // tipo de c: ¡int, no byte!
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -1813,7 +1773,6 @@ En 1999 se perdió una sonda por mezclar unidades imperiales y métricas.
 </div>
 <div>
 
-<WindowFrame file="null: el error clásico">
 
 ```csharp
 string nombre;        // vale null (no "vacío")
@@ -1821,7 +1780,6 @@ Console.WriteLine(nombre.Length);
 // ❌ NullReferenceException
 ```
 
-</WindowFrame>
 
 <TipBox type="truco">
 
@@ -1937,7 +1895,6 @@ El **nombre** que le damos a variables, constantes, métodos o clases. Es la eti
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Declaración">
 
 ```csharp
 int edad = 22;        // declaración + valor
@@ -1947,7 +1904,6 @@ string nombre = "Ana";
 double nota = 8.75;
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -1982,7 +1938,6 @@ Un buen programador escribe código que **se entiende solo**.
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Ámbito (scope)">
 
 ```csharp
 int total = 100;      // visible en todo el método
@@ -1996,7 +1951,6 @@ if (true)
 Console.WriteLine(descuento); // ❌ fuera de ámbito
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -2033,7 +1987,6 @@ Zona del código donde la variable **es visible** y puede usarse.
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="El error del billón de dólares">
 
 ```csharp
 string nombre;           // vale null, NO ""
@@ -2044,7 +1997,6 @@ Console.WriteLine(nombre.Length);
 string seguro = nombre ?? "Desconocido";
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -2055,7 +2007,6 @@ string seguro = nombre ?? "Desconocido";
 </div>
 <div>
 
-<WindowFrame file="Comprobar antes de usar">
 
 ```csharp
 string nombre = null;
@@ -2070,7 +2021,6 @@ if (string.IsNullOrEmpty(nombre))
 int? longitud = nombre?.Length;
 ```
 
-</WindowFrame>
 
 <RealExample app="Formularios web">
 
@@ -2094,7 +2044,6 @@ Si el usuario deja un campo vacío, el servidor comprueba `IsNullOrEmpty` antes 
 | **Se declara** | Con tipo | con `const` | No se declara |
 | **Ejemplo** | `int x = 5;` | `const int X = 5;` | `5` |
 
-<WindowFrame file="const">
 
 ```csharp
 const double Iva = 21.0;
@@ -2103,7 +2052,6 @@ const string Pais = "España";
 Iva = 22.0;   // ❌ error de compilación
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -2322,7 +2270,6 @@ El **módulo** (`%`) sirve, por ejemplo, para saber si un número es **par**: `n
 </div>
 <div>
 
-<WindowFrame file="Cuidado con la división">
 
 ```csharp
 int a = 10, b = 3;
@@ -2331,7 +2278,6 @@ Console.WriteLine(a / b);              // 3  (¡trunca!)
 Console.WriteLine((double)a / b);      // 3.333...
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -2375,7 +2321,6 @@ Todos devuelven **`bool`**: `true` o `false`.
 </div>
 <div>
 
-<WindowFrame file="Cortocircuito">
 
 ```csharp
 int edad = 20;
@@ -2387,7 +2332,6 @@ string apodo = null;
 apodo ??= "Invitado";
 ```
 
-</WindowFrame>
 
 <TipBox type="truco">
 
@@ -2419,7 +2363,6 @@ El `&&` y el `||` usan **cortocircuito**: si el resultado ya está decidido, no 
 </div>
 <div>
 
-<WindowFrame file="Negar una condición">
 
 ```csharp
 bool esAdulto = edad >= 18;
@@ -2431,7 +2374,6 @@ if (!(edad >= 18)) { }
 if (edad < 18) { }
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -2449,7 +2391,6 @@ if (edad < 18) { }
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Operador ternario">
 
 ```csharp
 int edad = 20;
@@ -2461,7 +2402,6 @@ string mensaje = (edad >= 18)
 Console.WriteLine(mensaje);
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -2472,7 +2412,6 @@ Console.WriteLine(mensaje);
 </div>
 <div>
 
-<WindowFrame file="Coalescencia ??">
 
 ```csharp
 string nombre = null;
@@ -2484,7 +2423,6 @@ string seguro = nombre ?? "Desconocido";
 string v2 = nombre != null ? nombre : "Desconocido";
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -2516,7 +2454,6 @@ No anides más de **3 niveles** de ternario: el código se vuelve ilegible. Un t
 </div>
 <div>
 
-<WindowFrame file="El error silencioso">
 
 ```csharp
 // ¿108,9 o 118,9?
@@ -2525,7 +2462,6 @@ double total = base + iva * (1 - dto);
 double ok = (base + iva) * (1 - dto);
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -2640,7 +2576,6 @@ Cambiar un valor de un tipo a otro: `int` → `double`, o `string` → `int`.
 | **Implícita** (pequeño → grande) | **No** | `int` → `double` |
 | **Explícita** (grande → pequeño) | **Sí** | `double` → `int` |
 
-<WindowFrame file="Implícita: automática">
 
 ```csharp
 int edad = 22;
@@ -2648,12 +2583,10 @@ double nota = edad;   // OK, sin avisar
 // 22 pasa a ser 22.0
 ```
 
-</WindowFrame>
 
 </div>
 <div>
 
-<WindowFrame file="Explícita: cast">
 
 ```csharp
 double pi = 3.99;
@@ -2663,7 +2596,6 @@ long grande = 1000;
 int pequeño = (int)grande; // OK si cabe
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
@@ -2687,7 +2619,6 @@ El cast **corta la parte decimal**: `(int)3.99` da `3`, no `4`. Y si el número 
 | El texto **viene del usuario** | `TryParse()` | Devuelve `false` ✅ |
 | Puede ser `null` | `Convert.ToInt32()` | Devuelve `0` |
 
-<WindowFrame file="TryParse: el seguro">
 
 ```csharp
 string texto = "42";
@@ -2697,7 +2628,6 @@ string msg = ok ? $"Es: {resultado}"
                 : "No es un número";
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -2724,7 +2654,6 @@ Con datos de usuario → **siempre `TryParse`**. Nunca `Parse` en producción.
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="❌ Mal">
 
 ```csharp
 // Excepción si el usuario escribe "abc"
@@ -2738,12 +2667,10 @@ int euros = (int)precio;      // 3
 int r = 10 / 3;               // 3
 ```
 
-</WindowFrame>
 
 </div>
 <div>
 
-<WindowFrame file="✅ Bien">
 
 ```csharp
 int.TryParse(Console.ReadLine(), out int edad);
@@ -2754,7 +2681,6 @@ int euros = (int)Math.Round(precio); // 4
 double r = 10 / 3.0;           // 3.33
 ```
 
-</WindowFrame>
 
 <RealExample app="Formularios web">
 
@@ -2862,7 +2788,6 @@ Todo programa habla: **muestra** algo por pantalla y **pregunta** algo al usuari
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Interpolación de strings">
 
 ```csharp
 string nombre = "Ana";
@@ -2876,7 +2801,6 @@ Console.WriteLine("Hola " + nombre +
 Console.WriteLine($"Hola {nombre}, tienes {edad} años");
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -2888,7 +2812,6 @@ Console.WriteLine($"Hola {nombre}, tienes {edad} años");
 | Concatenación | `+` | `"Hola " + nombre` |
 | Interpolación | `$""` | `$"Hola {nombre}"` |
 
-<WindowFrame file="Formatos">
 
 ```csharp
 Console.WriteLine($"Precio: {precio:F2}");  // 19,99
@@ -2896,7 +2819,6 @@ Console.WriteLine($"Aprobado: {0.85:P0}");  // 85 %
 Console.WriteLine($"Total: {1000000:N0}");  // 1.000.000
 ```
 
-</WindowFrame>
 
 </div>
 </div>
@@ -2908,7 +2830,6 @@ Console.WriteLine($"Total: {1000000:N0}");  // 1.000.000
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Pedir datos">
 
 ```csharp
 Console.Write("¿Cuántos años tienes? ");
@@ -2919,7 +2840,6 @@ int.TryParse(texto, out int edad);
 Console.WriteLine($"Tienes {edad} años");
 ```
 
-</WindowFrame>
 
 <TipBox type="nota">
 
@@ -3042,7 +2962,6 @@ Comentarios `///` que aparecen como **tooltip** en el IDE al pasar el ratón.
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="Comentarios en C#">
 
 ```csharp
 // Una línea: explicación breve
@@ -3054,7 +2973,6 @@ Comentarios `///` que aparecen como **tooltip** en el IDE al pasar el ratón.
 int total = 100;  // al final de la línea
 ```
 
-</WindowFrame>
 
 </div>
 <div>
@@ -3087,7 +3005,6 @@ Nunca dejes **código comentado** para "guardarlo": eso es trabajo para Git, no 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="❌ MAL">
 
 ```csharp
 // Cuenta el contador
@@ -3097,12 +3014,10 @@ int contador = 0;
 double iva = 0.21;   // ¡el comentario miente!
 ```
 
-</WindowFrame>
 
 </div>
 <div>
 
-<WindowFrame file="✅ BIEN">
 
 ```csharp
 // El IVA general es del 21 % (Ley 37/1992)
@@ -3112,7 +3027,6 @@ double iva = 0.21;
 double total = precio * 1.21;
 ```
 
-</WindowFrame>
 
 <RealExample app="Equipos de 5-15 personas">
 
@@ -3130,7 +3044,6 @@ En Google, Microsoft o Spotify el mismo código lo tocan 3-4 programadores disti
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
 
-<WindowFrame file="xml doc">
 
 ```csharp
 /// <summary>
@@ -3145,7 +3058,6 @@ int Sumar(int a, int b)
 }
 ```
 
-</WindowFrame>
 
 <TipBox type="advertencia">
 
