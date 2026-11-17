@@ -114,7 +114,10 @@ html.dark {
 }
 
 .slidev-layout.default > h2 + * {
-  margin-top: auto;
+  /* !important: el centrado manda SIEMPRE sobre los márgenes fijos de los
+     bloques (bug: `.ud-real:not(:first-child)` (0,3,0) ganaba al auto
+     (0,2,1) y la slide quedaba pegada arriba con la mitad inferior vacía) */
+  margin-top: auto !important;
 }
 
 .slidev-layout.default > *:last-child {
@@ -445,8 +448,37 @@ html.dark .text-main {
   margin-top: 1em;
 }
 
-/* Aire generoso DESPUÉS de un grid: la tarjeta más alta empuja y el bloque
-   siguiente no debe tocarse (bug: "struct se solapa con el Truco") */
+/* ⚠️ La regla de arriba exige un ANCESTRO `.slidev-layout`, así que NO
+   matchea cuando el bloque es HIJO DIRECTO del layout (el layout no tiene
+   ancestro `.slidev-layout`) → margin-top:0 y bloques pegados
+   (bug: "Ejemplo real toca Advertencia 0px"). Se repite aquí, apuntando a
+   hijos directos. (ud-real/ud-window ya los cubre la regla de 0.85em
+   más abajo, que sí es descendiente.) */
+.slidev-layout > .ud-tip:not(:first-child),
+.slidev-layout > .ud-card:not(:first-child),
+.slidev-layout > .ud-concept:not(:first-child),
+.slidev-layout > .ud-quote:not(:first-child) {
+  margin-top: 1em;
+}
+
+/* Componente → bloque de código: el wrapper de código trae margin-top de
+   4px con !important de Slidev → solo ganándole con !important
+   (bug: "el recuadro Truco pega al bloque de código") */
+.slidev-layout > .ud-tip + .slidev-code-wrapper,
+.slidev-layout > .ud-real + .slidev-code-wrapper,
+.slidev-layout > .ud-card + .slidev-code-wrapper,
+.slidev-layout > .ud-quote + .slidev-code-wrapper,
+.slidev-layout > .ud-concept + .slidev-code-wrapper {
+  margin-top: 0.85em !important;
+}
+
+/* Lista → tabla: venían a 0px (bug: "el párrafo queda pegado a la tabla") */
+.slidev-layout > ul + table,
+.slidev-layout > p + table {
+  margin-top: 1em;
+}
+
+/* Aire generoso DESPUÉS de un grid (bug: "muy pegada, sin aire") */
 .slidev-layout .grid + .ud-tip,
 .slidev-layout .grid + .ud-card,
 .slidev-layout .grid + .ud-real,
@@ -454,7 +486,13 @@ html.dark .text-main {
 .slidev-layout .grid + p,
 .slidev-layout .grid + table,
 .slidev-layout .grid + .mermaid {
-  margin-top: 1.2em;
+  margin-top: 1.5em;
+}
+
+/* Las imágenes sueltas dejan aire por debajo (bug: "la imagen está muy
+   pegada, no hay aire"). Solo imágenes de markdown, no las de flex. */
+.slidev-layout p:has(> img) {
+  margin-bottom: 1.1em;
 }
 
 /* Slides con mucho aire muerto abajo: `ud-vcenter` hace que el contenido
