@@ -7,6 +7,12 @@ defineProps<{
   code: string
   title: string
   ccee: string[]
+  /**
+   * Letras explícitas de cada CCEE (p. ej. ['a', 'g']). Si no se pasan,
+   * se generan en secuencia a), b), c)… — pero OJO: las letras reales son
+   * las del README de la unidad (no siempre son consecutivas).
+   */
+  letters?: string[]
 }>()
 </script>
 
@@ -20,7 +26,7 @@ defineProps<{
       <div class="ud-raa-ccee-head">Criterios de evaluación (CCEE)</div>
       <div class="ud-raa-grid">
         <div v-for="(c, i) in ccee" :key="i" class="ud-raa-item" v-click>
-          <span class="ud-raa-letter">{{ String.fromCharCode(97 + i) }})</span>
+          <span class="ud-raa-letter">{{ (letters && letters[i]) || String.fromCharCode(97 + i) }})</span>
           <span>{{ c }}</span>
         </div>
       </div>
