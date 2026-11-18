@@ -165,7 +165,7 @@ layout: section
 
 ---
 
-## ¿Qué es programar?
+## 💡 ¿Qué es programar?
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -202,7 +202,7 @@ Al decir "reproduce mi lista de favoritos", el programa busca tu lista, verifica
 
 ---
 
-## El algoritmo: 6 características
+## 🧮 El algoritmo: 6 características
 
 <div class="grid grid-cols-3 gap-3">
 
@@ -219,7 +219,7 @@ Al decir "reproduce mi lista de favoritos", el programa busca tu lista, verifica
 
 ---
 
-## Ejemplo: preparar un café
+## ☕ Ejemplo: preparar un café
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -259,7 +259,7 @@ El algoritmo es una **receta**: da igual si cocinas en gas, eléctrica o leña, 
 
 ---
 
-## Del pseudocódigo a C#
+## 🧮 Del pseudocódigo a C#
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -295,7 +295,7 @@ string taza = "taza";
 
 ---
 
-## El algoritmo completo en C#
+## 🧮 El algoritmo completo en C#
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -336,7 +336,7 @@ Console.WriteLine("¡Café listo!");
 
 ---
 
-## Representar algoritmos: 3 formas
+## 🧮 Representar algoritmos: 3 formas
 
 <div class="grid grid-cols-3 gap-3">
 
@@ -391,7 +391,7 @@ Primero el papel (o el borrador), luego el código. Los planos antes de construi
 
 ---
 
-## Estrategias para diseñar algoritmos
+## 🧮 Estrategias para diseñar algoritmos
 
 <div class="grid grid-cols-4 gap-3">
 
@@ -414,7 +414,7 @@ Primero el papel (o el borrador), luego el código. Los planos antes de construi
 
 ---
 
-## Paradigmas: formas de programar
+## 🧬 Paradigmas: formas de programar
 
 | Paradigma | Pregunta clave | Ejemplo en C# |
 |----------|----------------|---------------|
@@ -438,7 +438,7 @@ Son **herramientas de un taller**: un martillo (imperativo) clava muy bien, pero
 
 ---
 
-## Evolución de paradigmas
+## 🧬 Evolución de paradigmas
 
 ```mermaid
 graph LR
@@ -466,7 +466,7 @@ Usa **eventos** para notificaciones, **funcional** (LINQ) para procesar millones
 
 ---
 
-## Los 3 componentes de un lenguaje
+## 🧩 Los 3 componentes de un lenguaje
 
 <div class="grid grid-cols-3 gap-3">
 
@@ -502,7 +502,7 @@ C# es **estático y fuerte**.
 
 ---
 
-## ¿Compilado o interpretado?
+## 🧩 ¿Compilado o interpretado?
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -544,7 +544,7 @@ El **compilador** traduce un libro entero del inglés al español antes de dárs
 
 ---
 
-## Algoritmo vs programa
+## 🧮 Algoritmo vs programa
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -662,7 +662,7 @@ graph TD
 
 ---
 
-## ¿Cómo funciona tu código?
+## 💡 ¿Cómo funciona tu código?
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -702,7 +702,7 @@ En esta asignatura usamos **.NET 10 + C# 14**, con `LangVersion` 14 en el `.cspr
 
 ---
 
-## Instalar y verificar el SDK
+## ✅ Instalar y verificar el SDK
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -747,7 +747,7 @@ En **Entornos de Desarrollo** verás en detalle el proceso de traducción y las 
 
 ---
 
-## La CLI: tus comandos de cada día
+## 💻 La CLI: tus comandos de cada día
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -789,7 +789,7 @@ dotnet run
 
 ---
 
-## Scripting en C# 14: sin proyecto
+## 📜 Scripting en C# 14: sin proyecto
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -832,7 +832,7 @@ Console.WriteLine($"¡Hola, {nombre}! Tienes {edad} años.");
 
 ---
 
-## NuGet: la tienda de paquetes
+## 📦 NuGet: la tienda de paquetes
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -879,7 +879,7 @@ Antes de instalar un paquete, comprueba que esté **mantenido activamente**: fec
 
 ---
 
-## IDEs: dónde escribes tu código
+## 💻 IDEs: dónde escribes tu código
 
 <div class="grid grid-cols-2 gap-4 items-start">
 
@@ -999,7 +999,7 @@ Conjunto de archivos que se **compilan juntos** para crear un programa o bibliot
 
 ---
 
-## Estructura de archivos
+## 📁 Estructura de archivos
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1040,7 +1040,7 @@ La carpeta de la solución y la del proyecto deben tener **el mismo nombre**. Es
 
 ---
 
-## Crear solución y proyecto con la CLI
+## 🗂️ Crear solución y proyecto con la CLI
 
 <div class="grid grid-cols-2 gap-5 items-start">
 <div>
@@ -1080,7 +1080,7 @@ Siempre **primero la solución, luego los proyectos dentro**. Con `dotnet sln ad
 
 ---
 
-## El archivo .csproj
+## 🛠️ El archivo .csproj
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1125,7 +1125,7 @@ Para añadir paquetes, un solo comando: `dotnet add package Newtonsoft.Json` —
 
 ---
 
-## El archivo .slnx
+## 📁 El archivo .slnx
 
 <div class="grid gap-5 items-start" style="grid-template-columns: 1.3fr 1fr">
 <div>
@@ -1165,7 +1165,7 @@ Si en una carpeta existen `.sln` y `.slnx`, tendrás que indicar cuál usar. Cre
 
 ---
 
-## Compilar y ejecutar
+## ▶️ Compilar y ejecutar
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1314,7 +1314,7 @@ Código que **produce un valor**: `edad + 1`, `"Hola" + nombre`, `a >= b`.
 
 ---
 
-## Entrada → proceso → salida
+## 🔄 Entrada → proceso → salida
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1360,7 +1360,7 @@ graph LR
 
 ---
 
-## Sentencias, expresiones y bloques
+## 🧱 Sentencias, expresiones y bloques
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1410,7 +1410,7 @@ Olvidar el **punto y coma** es el error más común de quien empieza. C# es muy 
 
 ---
 
-## Top-Level Statements
+## 📝 Top-Level Statements
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1455,7 +1455,7 @@ En la **UD02** veremos **funciones y procedimientos**: allí `return;` marcará 
 
 ---
 
-## Reglas de Top-Level Statements
+## 📝 Reglas de Top-Level Statements
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1487,7 +1487,7 @@ El archivo principal de un proyecto de consola **siempre** se llama `Program.cs`
 
 ---
 
-## Namespaces y using static
+## 🏷️ Namespaces y using static
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1629,7 +1629,7 @@ Define **qué valores** puede contener y **cuánta memoria** ocupa. `int`, `doub
 
 ---
 
-## Tipos numéricos
+## 🔢 Tipos numéricos
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1668,7 +1668,7 @@ Un `byte` guarda hasta **255**: si una puntuación pasa de ahí, **desborda**. P
 
 ---
 
-## Otros tipos de datos
+## 🏷️ Otros tipos de datos
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1712,7 +1712,7 @@ Hay más tipos: `DateTime`, `Guid`, tuplas `(int, string)`... Los verás cuando 
 
 ---
 
-## Promoción de tipos
+## 🔄 Promoción de tipos
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1754,7 +1754,7 @@ En 1999 se perdió una sonda por mezclar unidades imperiales y métricas.
 
 ---
 
-## Por valor o por referencia
+## ↔️ Por valor o por referencia
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1890,7 +1890,7 @@ El **nombre** que le damos a variables, constantes, métodos o clases. Es la eti
 
 ---
 
-## Declarar y nombrar
+## ✏️ Declarar y nombrar
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1933,7 +1933,7 @@ Un buen programador escribe código que **se entiende solo**.
 
 ---
 
-## Ámbito y vida de una variable
+## 🎯 Ámbito y vida de una variable
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -1982,7 +1982,7 @@ Zona del código donde la variable **es visible** y puede usarse.
 
 ---
 
-## Null y tipos nullable
+## 💤 Null y tipos nullable
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2033,7 +2033,7 @@ Si el usuario deja un campo vacío, el servidor comprueba `IsNullOrEmpty` antes 
 
 ---
 
-## Constantes y literales
+## 🔐 Constantes y literales
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2067,7 +2067,7 @@ Un **literal** es el valor en sí escrito en el código: `5`, `"hola"`, `true`, 
 
 ---
 
-## Constante frente a readonly
+## 🔐 Constante frente a readonly
 
 | `const` | `readonly` |
 |---|---|
@@ -2098,7 +2098,7 @@ El **IVA** (21%) y la **moneda** ("EUR") son `const`: no cambian nunca. Pero el 
 
 ---
 
-## Enum, struct y tupla
+## 🏷️ Enum, struct y tupla
 
 <div class="grid grid-cols-3 gap-4">
 <div>
@@ -2249,7 +2249,7 @@ Combinación de valores, variables y operadores que **produce un resultado**: `p
 
 ---
 
-## Operadores aritméticos
+## ➗ Operadores aritméticos
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2296,7 +2296,7 @@ La división entre enteros **trunca, no redondea**: `10 / 3` da `3`, no `3.33`. 
 
 ---
 
-## Comparar y combinar
+## ⚖️ Comparar y combinar
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2344,7 +2344,7 @@ El `&&` y el `||` usan **cortocircuito**: si el resultado ya está decidido, no 
 
 ---
 
-## Leyes de De Morgan
+## ⚖️ Leyes de De Morgan
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2386,7 +2386,7 @@ if (edad < 18) { }
 
 ---
 
-## Ternario y coalescencia
+## ⚖️ Ternario y coalescencia
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2435,7 +2435,7 @@ No anides más de **3 niveles** de ternario: el código se vuelve ilegible. Un t
 
 ---
 
-## Precedencia de operadores
+## ⚖️ Precedencia de operadores
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2566,7 +2566,7 @@ Cambiar un valor de un tipo a otro: `int` → `double`, o `string` → `int`.
 
 ---
 
-## Implícitas y explícitas
+## 🔄 Implícitas y explícitas
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2608,7 +2608,7 @@ El cast **corta la parte decimal**: `(int)3.99` da `3`, no `4`. Y si el número 
 
 ---
 
-## Parse, TryParse y Convert
+## 🔄 Parse, TryParse y Convert
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2649,7 +2649,7 @@ Con datos de usuario → **siempre `TryParse`**. Nunca `Parse` en producción.
 
 ---
 
-## Errores comunes de conversión
+## ⚠️ Errores comunes de conversión
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2783,7 +2783,7 @@ Todo programa habla: **muestra** algo por pantalla y **pregunta** algo al usuari
 
 ---
 
-## Salida: Write y WriteLine
+## 📤 Salida: Write y WriteLine
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2825,7 +2825,7 @@ Console.WriteLine($"Total: {1000000:N0}");  // 1.000.000
 
 ---
 
-## Entrada: Console.ReadLine
+## 📥 Entrada: Console.ReadLine
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -2957,7 +2957,7 @@ Comentarios `///` que aparecen como **tooltip** en el IDE al pasar el ratón.
 
 ---
 
-## Tipos de comentarios
+## 💬 Tipos de comentarios
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -3000,7 +3000,7 @@ Nunca dejes **código comentado** para "guardarlo": eso es trabajo para Git, no 
 
 ---
 
-## Comentar el por qué, no el qué
+## 💬 Comentar el por qué, no el qué
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -3039,7 +3039,7 @@ En Google, Microsoft o Spotify el mismo código lo tocan 3-4 programadores disti
 
 ---
 
-## Documentación XML
+## 📖 Documentación XML
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
@@ -3226,7 +3226,7 @@ La mejor forma de aprender es **practicar**: abre el IDE, prueba cada ejemplo, *
 
 ---
 
-## Herramientas y comandos
+## 🧰 Herramientas y comandos
 
 <div class="grid grid-cols-2 gap-4 items-start">
 <div>
